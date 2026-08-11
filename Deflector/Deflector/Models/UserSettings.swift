@@ -16,12 +16,12 @@ final class UserSettings: ObservableObject {
         static let sideButtonShortcutName = "sideButtonShortcutName"
     }
     
-    @Published var sideButtonShortcutName: String? = {
+    @Published var sideButtonShortcutName: String = {
         if let value = UserDefaults.standard.string(forKey: Keys.sideButtonShortcutName) {
             return value
         }
         
-        return nil
+        return ""
     }() {
         didSet {
             UserDefaults.standard.set(sideButtonShortcutName, forKey: Keys.sideButtonShortcutName)
