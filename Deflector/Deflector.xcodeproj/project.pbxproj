@@ -16,6 +16,11 @@
 			path = Deflector;
 			sourceTree = "<group>";
 		};
+		7A31AA00302B24B10045FB9A /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +35,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				7A31AA00302B24B10045FB9A /* Shared */,
 				000000000000000000000010 /* Deflector */,
 				000000000000000000000020 /* Products */,
 			);
@@ -58,6 +64,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* Deflector */,
+				7A31AA00302B24B10045FB9A /* Shared */,
 			);
 			name = Deflector;
 			productName = MyApp;
