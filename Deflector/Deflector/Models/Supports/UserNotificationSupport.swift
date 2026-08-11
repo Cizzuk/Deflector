@@ -61,8 +61,20 @@ class UserNotificationSupport {
     
     static func sendDeflectionNotification(name: String) async {
         let content = UNMutableNotificationContent()
-        content.title = String(localized: "Running Shortcut")
+        content.title = String(localized: "Deflection")
         content.body = name
+        content.sound = .none
+        content.interruptionLevel = .timeSensitive
+        
+        await sendNotification(content: content)
+    }
+    
+    static func sendDeflectionErrorNotification(reason: LocalizedStringResource? = nil) async {
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Deflection failed")
+        if let reason {
+            content.body = String(localized: reason)
+        }
         content.sound = .none
         content.interruptionLevel = .timeSensitive
         
