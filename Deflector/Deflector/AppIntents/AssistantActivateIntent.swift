@@ -20,6 +20,5 @@ struct AssistantActivateIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
-        let content = UNMutableNotificationContent()
     }
 }
