@@ -20,5 +20,11 @@ struct AssistantActivateIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
+        if let name = UserSettings.shared.sideButtonShortcutName {
+            await UserNotificationSupport.sendDeflectionNotification(name: name)
+        } else {
+            await UserNotificationSupport.sendDeflectionErrorNotification(reason: "No shortcut is set for the Side Button.")
+        }
+        return .result()
     }
 }
