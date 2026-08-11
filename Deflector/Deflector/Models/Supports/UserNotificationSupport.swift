@@ -59,7 +59,10 @@ class UserNotificationSupport {
         }
     }
     
-    static func sendDeflectionNotification(content: UNMutableNotificationContent) async {
+    static func sendDeflectionNotification(name: String) async {
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Running Shortcut")
+        content.body = name
         content.sound = .none
         content.interruptionLevel = .timeSensitive
         
