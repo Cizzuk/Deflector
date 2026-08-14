@@ -12,21 +12,24 @@ class ColorHelper {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
+        var alpha: CGFloat = 0
         
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: nil)
+        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         
         let r = UInt32(red * 255) << 24
         let g = UInt32(green * 255) << 16
         let b = UInt32(blue * 255) << 8
+        let a = UInt32(alpha * 255)
         
-        return r | g | b
+        return r | g | b | a
     }
     
     static func uInt32ToColor(_ value: UInt32) -> Color {
         let red = Double((value >> 24) & 0xFF) / 255.0
         let green = Double((value >> 16) & 0xFF) / 255.0
         let blue = Double((value >> 8) & 0xFF) / 255.0
+        let alpha = Double(value & 0xFF) / 255.0
         
-        return Color(red: red, green: green, blue: blue)
+        return Color(red: red, green: green, blue: blue, opacity: alpha)
     }
 }
