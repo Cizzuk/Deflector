@@ -13,6 +13,10 @@ class DeflectorActivitySupport {
         return !Activity<DeflectorActivityAttributes>.activities.isEmpty
     }
     
+    static func isEnabled() -> Bool {
+        return ActivityAuthorizationInfo().areActivitiesEnabled
+    }
+    
     static func start(
         endDate: Date? = nil,
         state: DeflectorActivityAttributes.ContentState
