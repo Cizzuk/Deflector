@@ -15,6 +15,11 @@ struct SendDeflectionNotificationIntent: AppIntent {
     @Parameter(title: "Shortcut Name")
     var name: String
     
+    init() {}
+    init(name: String) {
+        self.name = name
+    }
+    
     @MainActor
     func perform() async throws -> some IntentResult {
         if name.isEmpty {
