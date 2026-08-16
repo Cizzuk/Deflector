@@ -14,6 +14,7 @@ struct SideButtonSettingsView: View {
         List {
             Section {
                 TextField("Shortcut Name", text: $userSettings.sideButtonShortcutName)
+                    .submitLabel(.done)
             } header: {
                 Text("Side Button Shortcut")
             }
