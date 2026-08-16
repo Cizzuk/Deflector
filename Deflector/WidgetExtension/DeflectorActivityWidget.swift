@@ -57,16 +57,14 @@ struct DeflectorActivityWidget: Widget {
                     .padding(.bottom, 10)
                 }
             } compactLeading: {
-                Label("Deflector", systemImage: "suit.diamond.fill")
-                    .labelStyle(.iconOnly)
-                    .foregroundStyle(.dropblue)
-                    .padding(.leading, 2)
+                EmptyView().frame(width: 0, height: 0)
             } compactTrailing: {
-                EmptyView()
+                EmptyView().frame(width: 0, height: 0)
             } minimal: {
-                Label("Deflector", systemImage: "suit.diamond.fill")
+                Label("Deflector", systemImage: "suit.diamond")
                     .labelStyle(.iconOnly)
                     .foregroundStyle(.dropblue)
+                    .padding(.horizontal, 3)
             }
         }
     }
