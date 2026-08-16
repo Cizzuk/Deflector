@@ -10,16 +10,6 @@ import SwiftUI
 struct SideButtonSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     
-    private var canOpenSettingsURL: Bool {
-        guard URL(string: UIApplication.openSettingsURLString) != nil else { return false }
-        return true
-    }
-    
-    private func openSettingsURL() {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(settingsURL)
-    }
-    
     var body: some View {
         List {
             Section {
@@ -32,8 +22,8 @@ struct SideButtonSettingsView: View {
             }
             
             Section {
-                if canOpenSettingsURL {
-                    Button(action: { openSettingsURL() }) {
+                if OpenSettingsSupport.canOpenSettingsURL {
+                    Button(action: { OpenSettingsSupport.openSettingsURL() }) {
                         Label("Open Settings", systemImage: "gear")
                     }
                 }

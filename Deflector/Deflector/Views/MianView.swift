@@ -65,8 +65,5 @@ struct MianView: View {
             }
             .navigationTitle("Deflector")
         }
-        .task {
-            _ = await UserNotificationSupport.requestAuthorization()
-        }
     }
 }
