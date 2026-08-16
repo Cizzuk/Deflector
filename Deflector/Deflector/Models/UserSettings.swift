@@ -37,12 +37,7 @@ final class UserSettings: ObservableObject {
             return buttons
         }
         
-        return [
-            DeflectorActivityButton(shortcutName: "Camera", iconName: "camera"),
-            DeflectorActivityButton(shortcutName: "Play", iconName: "play.fill"),
-            DeflectorActivityButton(shortcutName: "Flashlight", iconName: "flashlight.on.fill"),
-            DeflectorActivityButton(shortcutName: "Power", iconName: "power"),
-        ]
+        return []
     }() {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityButtons) {
