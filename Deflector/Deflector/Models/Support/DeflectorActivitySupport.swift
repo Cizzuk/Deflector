@@ -17,14 +17,17 @@ class DeflectorActivitySupport {
         return ActivityAuthorizationInfo().areActivitiesEnabled
     }
     
-    static func start(
-        endDate: Date? = nil,
-        state: DeflectorActivityAttributes.ContentState
-    ) throws {
+    private static func makeContentState() -> DeflectorActivityAttributes.ContentState {
+        let buttons = UserSettings.shared.liveActivityButtons
+        let state = DeflectorActivityAttributes.ContentState(buttons: buttons)
+        return state
+    }
+    
+    static func start(endDate: Date? = nil) throws {
         endAll()
         
         let content = ActivityContent(
-            state: state,
+            state: makeContentState(),
             staleDate: endDate
         )
         
@@ -35,17 +38,16 @@ class DeflectorActivitySupport {
         )
     }
     
-    static func update(state: DeflectorActivityAttributes.ContentState) {
+    static func update() {
         let activities = Activity<DeflectorActivityAttributes>.activities
         
         let content = ActivityContent(
-            state: state,
+            state: makeContentState(),
             staleDate: nil
         )
         
         Task {
             for activity in activities {
-                guard activity.content.state != state else { continue }
                 await activity.update(content)
             }
         }
