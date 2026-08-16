@@ -14,6 +14,7 @@ final class UserSettings: ObservableObject {
 
     private enum Keys {
         static let sideButtonShortcutName = "sideButtonShortcutName"
+        static let liveActivityButtons = "liveActivityButtons"
     }
     
     @Published var sideButtonShortcutName: String = {
@@ -25,6 +26,21 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(sideButtonShortcutName, forKey: Keys.sideButtonShortcutName)
+        }
+    }
+    
+    @Published var liveActivityButtons: [DeflectorActivityButton] = {
+        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityButtons),
+           let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
+            return buttons
+        }
+        
+        return []
+    }() {
+        didSet {
+            if let data = try? JSONEncoder().encode(liveActivityButtons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
+            }
         }
     }
 }
