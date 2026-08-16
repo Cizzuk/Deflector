@@ -1,5 +1,5 @@
 //
-//  SideButtonShortcutSettingsView.swift
+//  SideButtonSettingsView.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/11.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SideButtonShortcutSettingsView: View {
+struct SideButtonSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     
     var body: some View {
