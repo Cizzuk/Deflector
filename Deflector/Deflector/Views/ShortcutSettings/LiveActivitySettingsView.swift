@@ -30,7 +30,7 @@ struct LiveActivitySettingsView: View {
                         Label("Icon", systemImage: button.iconName)
                             .labelStyle(.iconOnly)
                             .frame(width: 30)
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(Color(uiColor: .label))
                     }
                     
                     TextField("Shortcut Name", text: $button.shortcutName)
