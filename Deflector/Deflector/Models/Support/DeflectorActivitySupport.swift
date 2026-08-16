@@ -19,7 +19,14 @@ class DeflectorActivitySupport {
     
     private static func makeContentState() -> DeflectorActivityAttributes.ContentState {
         let buttons = UserSettings.shared.liveActivityButtons
-        let state = DeflectorActivityAttributes.ContentState(buttons: buttons)
+        let islandButtons = UserSettings.shared.liveActivityIslandButtons
+        let useDifferentOnIsland = UserSettings.shared.liveActivityUseDifferentOnIsland
+        
+        let state = DeflectorActivityAttributes.ContentState(
+            buttons: buttons,
+            islandButtons: useDifferentOnIsland ? islandButtons : nil
+        )
+        
         return state
     }
     

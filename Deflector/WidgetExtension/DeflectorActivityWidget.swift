@@ -45,13 +45,15 @@ struct DeflectorActivityWidget: Widget {
     
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
-            ShortcutButtons(buttons: context.state.buttons)
+            let buttons = context.state.buttons
+            ShortcutButtons(buttons: buttons)
             .padding(20)
             .activityBackgroundTint(.clear)
         } dynamicIsland: { context in
-            DynamicIsland {
+            let buttons = context.state.islandButtons ?? context.state.buttons
+            return DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
-                    ShortcutButtons(buttons: context.state.buttons)
+                    ShortcutButtons(buttons: buttons)
                     .padding(.bottom, 10)
                 }
             } compactLeading: {

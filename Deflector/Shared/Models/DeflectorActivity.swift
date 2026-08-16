@@ -19,5 +19,6 @@ nonisolated struct DeflectorActivityButton: Codable, Equatable, Hashable, Identi
 nonisolated struct DeflectorActivityAttributes: ActivityAttributes {
     struct ContentState: Codable, Hashable {
         var buttons: [DeflectorActivityButton]
+        var islandButtons: [DeflectorActivityButton]?
     }
 }
