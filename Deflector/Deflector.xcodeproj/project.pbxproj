@@ -10,6 +10,8 @@
 		7A193EC1302E9D340041A05B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC0302E9D340041A05B /* WidgetKit.framework */; };
 		7A193EC3302E9D340041A05B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC2302E9D340041A05B /* SwiftUI.framework */; };
 		7A193ECE302E9D360041A05B /* WidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A193EBE302E9D340041A05B /* WidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A6637113032195900EE1209 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7A6637103032195900EE1209 /* Localizable.xcstrings */; };
+		7A6637123032195900EE1209 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7A6637103032195900EE1209 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 		7A193EBE302E9D340041A05B /* WidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A193EC0302E9D340041A05B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7A193EC2302E9D340041A05B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7A6637103032195900EE1209 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -91,6 +94,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				7A6637103032195900EE1209 /* Localizable.xcstrings */,
 				7A31AA00302B24B10045FB9A /* Shared */,
 				000000000000000000000010 /* Deflector */,
 				7A193EC4302E9D340041A05B /* WidgetExtension */,
@@ -186,6 +190,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
@@ -204,11 +209,13 @@
 		000000000000000140000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				7A6637113032195900EE1209 /* Localizable.xcstrings in Resources */,
 			);
 		};
 		7A193EBC302E9D340041A05B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				7A6637123032195900EE1209 /* Localizable.xcstrings in Resources */,
 			);
 		};
 /* End PBXResourcesBuildPhase section */
@@ -299,6 +306,7 @@
 				PROJECT_UNIQUE_VALUE = IR9U26QB;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 				XROS_DEPLOYMENT_TARGET = 27.0;
@@ -362,6 +370,7 @@
 				PROJECT_UNIQUE_VALUE = IR9U26QB;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 				XROS_DEPLOYMENT_TARGET = 27.0;
 			};
