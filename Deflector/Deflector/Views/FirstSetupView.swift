@@ -52,6 +52,30 @@ struct FirstSetupView: View {
                 }
             }
             .onAppear { updateUNAuthorizationStatus() }
+            
+            Section {
+                Text("Please download the automation shortcut from the link. After that, edit the shortcut and enable the notification automation.")
+                
+                if let url =  URL(string: "https://cizz.uk/deflector/automation") {
+                    Link(destination: url) {
+                        Label("Get Automation Shortcut", systemImage: "arrow.down")
+                    }
+                }
+                if let url = URL(string: "shortcuts://") {
+                    Button(action: { UIApplication.shared.open(url) }) {
+                        Label("Open Shortcuts App", systemImage: "square.2.layers.3d")
+                    }
+                }
+            } header: {
+                Label("Automation", systemImage: "square.2.layers.3d")
+            }
+            
+            Section {
+                Text("Setup is complete! Return to the screen and start using your favorite shortcuts with Deflector.")
+                Text("If it doesn't work properly, please return to this setup and try again.")
+            } header: {
+                Label("All Done!", systemImage: "checkmark")
+            }
         }
         .navigationTitle("First Setup")
         .navigationBarTitleDisplayMode(.inline)
