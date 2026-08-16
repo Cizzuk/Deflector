@@ -9,8 +9,7 @@ import SwiftUI
 
 struct LiveActivitySettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
-    @State private var isActivityActive: Bool = DeflectorActivitySupport.isActive()
-    @State private var errorLabel: LocalizedStringResource? = nil
+    @StateObject private var vm = LiveActivitySettingsViewModel()
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
@@ -75,20 +74,12 @@ struct LiveActivitySettingsView: View {
     var body: some View {
         List {
             Section {
-                if isActivityActive {
-                    Button(action: {
-                        DeflectorActivitySupport.endAll()
-                        isActivityActive = false
-                    }) {
+                if vm.isLiveActivityActive {
+                    Button(action: { vm.endLiveActivity() }) {
                         Label("End Activity", systemImage: "stop.fill")
                     }
                 } else {
-                    Button(action: {
-                        do {
-                            try DeflectorActivitySupport.start()
-                            isActivityActive = true
-                        } catch {}
-                    }) {
+                    Button(action: { vm.startLiveActivity() }) {
                         Label("Start Activity", systemImage: "play.fill")
                     }
                 }
@@ -114,11 +105,16 @@ struct LiveActivitySettingsView: View {
                 Text("Dynamic Island")
             }
         }
-        .animation(.default, value: isActivityActive)
+        .animation(.default, value: vm.isLiveActivityActive)
         .animation(.default, value: userSettings.liveActivityButtons)
         .animation(.default, value: userSettings.liveActivityIslandButtons)
         .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
         .navigationTitle("Live Activity")
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Error", isPresented: .constant(vm.errorMessage != nil)) {
+            Button("OK", role: .close) { vm.errorMessage = nil }
+        } message: {
+            Text(vm.errorMessage ?? "")
+        }
     }
 }
