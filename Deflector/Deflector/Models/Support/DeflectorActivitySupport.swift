@@ -21,7 +21,6 @@ class DeflectorActivitySupport {
         let buttons = UserSettings.shared.liveActivityButtons
         let islandButtons = UserSettings.shared.liveActivityIslandButtons
         let useDifferentOnIsland = UserSettings.shared.liveActivityUseDifferentOnIsland
-        let blackBackground = UserSettings.shared.liveActivityUseBlackBackground
         
         let state = DeflectorActivityAttributes.ContentState(
             buttons: buttons,
