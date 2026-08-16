@@ -13,7 +13,7 @@ nonisolated struct DeflectorActivityButton: Codable, Equatable, Hashable, Identi
     var id: UUID = UUID()
     var shortcutName: String
     var iconName: String = "suit.diamond"
-    var color: UInt32 = 0xFFFFFFFF
+    var color: UInt32 = 0x3A87FEFF
 }
 
 nonisolated struct DeflectorActivityAttributes: ActivityAttributes {
