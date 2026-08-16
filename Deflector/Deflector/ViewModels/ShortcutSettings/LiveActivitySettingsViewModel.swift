@@ -30,7 +30,12 @@ class LiveActivitySettingsViewModel: ObservableObject {
     
     // MARK: - Live Activity Management
     
-    func startLiveActivity() {
+    func startLiveActivity() async {
+        if await UserNotificationSupport.authorizationStatus() != .authorized {
+            errorMessage = "Notifications are not allowed. Please complete the first setup."
+            return
+        }
+        
         do {
             try DeflectorActivitySupport.start()
             isLiveActivityActive = true

@@ -81,7 +81,7 @@ struct LiveActivitySettingsView: View {
                         Label("End Activity", systemImage: "stop.fill")
                     }
                 } else {
-                    Button(action: { vm.startLiveActivity() }) {
+                    Button(action: { Task { await vm.startLiveActivity() } }) {
                         Label("Start Activity", systemImage: "play.fill")
                     }
                 }
