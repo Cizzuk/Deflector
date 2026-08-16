@@ -86,7 +86,7 @@ struct LiveActivitySettingsView: View {
                     }
                 }
             } header: {
-                Text("Activity Controls")
+                Text("Activity Control")
             } footer: {
                 Text("Live Activity is active for only 8 hours. To display a Live Activity persistently, create an automation in the Shortcuts to start the activity every 8 hours.")
             }
