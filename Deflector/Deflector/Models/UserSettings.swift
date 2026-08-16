@@ -15,6 +15,8 @@ final class UserSettings: ObservableObject {
     private enum Keys {
         static let sideButtonShortcutName = "sideButtonShortcutName"
         static let liveActivityButtons = "liveActivityButtons"
+        static let liveActivityIslandButtons = "liveActivityIslandButtons"
+        static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
     }
     
     @Published var sideButtonShortcutName: String = {
@@ -35,12 +37,40 @@ final class UserSettings: ObservableObject {
             return buttons
         }
         
+        return [
+            DeflectorActivityButton(shortcutName: "Camera", iconName: "camera"),
+            DeflectorActivityButton(shortcutName: "Play", iconName: "play.fill"),
+            DeflectorActivityButton(shortcutName: "Flashlight", iconName: "flashlight.on.fill"),
+            DeflectorActivityButton(shortcutName: "Power", iconName: "power"),
+        ]
+    }() {
+        didSet {
+            if let data = try? JSONEncoder().encode(liveActivityButtons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
+            }
+        }
+    }
+    
+    @Published var liveActivityIslandButtons: [DeflectorActivityButton] = {
+        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityButtons),
+           let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
+            return buttons
+        }
+        
         return []
     }() {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityButtons) {
                 UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
             }
+        }
+    }
+    
+    @Published var liveActivityUseDifferentOnIsland: Bool = {
+        return UserDefaults.standard.bool(forKey: Keys.liveActivityUseDifferentOnIsland)
+    }() {
+        didSet {
+            UserDefaults.standard.set(liveActivityUseDifferentOnIsland, forKey: Keys.liveActivityUseDifferentOnIsland)
         }
     }
 }
