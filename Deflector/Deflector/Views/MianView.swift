@@ -62,6 +62,12 @@ struct MianView: View {
                         }
                     }
                 }
+                
+                Section {
+                    NavigationLink(destination: AboutView()) {
+                        Label("About", systemImage: "info.circle")
+                    }
+                }
             }
             .navigationTitle("Deflector")
         }
