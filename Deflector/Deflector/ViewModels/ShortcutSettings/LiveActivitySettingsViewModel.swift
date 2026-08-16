@@ -7,11 +7,28 @@
 
 import ActivityKit
 import Combine
-import Foundation
+import SwiftUI
 
 class LiveActivitySettingsViewModel: ObservableObject {
     @Published var errorMessage: LocalizedStringResource? = nil
     @Published var isLiveActivityActive: Bool = DeflectorActivitySupport.isActive()
+    
+    // MARK: - Lifecycle
+    
+    func onChange(scenePhase: ScenePhase) {
+        switch scenePhase {
+        case .active:
+            isLiveActivityActive = DeflectorActivitySupport.isActive()
+        case .inactive:
+            break
+        case .background:
+            break
+        @unknown default:
+            break
+        }
+    }
+    
+    // MARK: - Live Activity Management
     
     func startLiveActivity() {
         do {

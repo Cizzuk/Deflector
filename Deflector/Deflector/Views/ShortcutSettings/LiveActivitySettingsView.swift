@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LiveActivitySettingsView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var userSettings = UserSettings.shared
     @StateObject private var vm = LiveActivitySettingsViewModel()
     
@@ -71,6 +72,7 @@ struct LiveActivitySettingsView: View {
         }
     }
     
+    // MARK: - View
     var body: some View {
         List {
             Section {
@@ -111,6 +113,7 @@ struct LiveActivitySettingsView: View {
         .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
         .navigationTitle("Live Activity")
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
         .alert("Error", isPresented: .constant(vm.errorMessage != nil)) {
             Button("OK", role: .close) { vm.errorMessage = nil }
         } message: {
