@@ -13,6 +13,7 @@ struct DeflectorActivityWidget: Widget {
     let kind: String = "net.cizzuk.deflector.WidgetExtension.DeflectorActivityWidget"
     
     struct ShortcutButtons: View {
+        @Environment(\.activityFamily) var activityFamily
         var buttons: [DeflectorActivityButton]
         var showLabel: Bool = true
         
@@ -28,11 +29,13 @@ struct DeflectorActivityWidget: Widget {
                                 .font(.title)
                                 .foregroundStyle(color)
                                 .frame(width: 35, height: 35)
-                            Text(button.shortcutName)
-                                .lineLimit(1)
-                                .font(.caption)
-                                .foregroundStyle(color.opacity(0.8))
-                                .accessibilityHidden(true)
+                            if activityFamily != .small {
+                                Text(button.shortcutName)
+                                    .lineLimit(1)
+                                    .font(.caption)
+                                    .foregroundStyle(color.opacity(0.8))
+                                    .accessibilityHidden(true)
+                            }
                         }
                     }
                     .buttonStyle(.plain)
@@ -69,5 +72,6 @@ struct DeflectorActivityWidget: Widget {
                     .padding(.horizontal, 3)
             }
         }
+        .supplementalActivityFamilies([.small])
     }
 }
