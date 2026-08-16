@@ -46,7 +46,7 @@ struct FirstSetupView: View {
                 Label("Notifications", systemImage: "bell")
             } footer: {
                 switch unAuthorizationStatus {
-                case .authorized: Text("Notifications are Allowed")
+                case .authorized: Text("Notifications are allowed.")
                 case .notDetermined: EmptyView()
                 default: Text("Please allow notifications in Settings.")
                 }
