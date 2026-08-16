@@ -13,17 +13,51 @@ struct LiveActivitySettingsView: View {
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
+        @State private var iconEditorID: UUID? = nil
+        @State private var iconEditorText: String = ""
+        @State private var showIconEditor: Bool = false
         
         var body: some View {
             ForEach($buttons) { $button in
-                TextField("Shortcut Name", text: $button.shortcutName)
-                    .submitLabel(.done)
+                HStack(spacing: 10) {
+                    UInt32ColorPicker("Color", selection: $button.color)
+                        .labelsHidden()
+                    
+                    Button(action: {
+                        iconEditorID = button.id
+                        iconEditorText = button.iconName
+                        showIconEditor = true
+                    }) {
+                        Label("Icon", systemImage: button.iconName)
+                            .labelStyle(.iconOnly)
+                            .frame(width: 30)
+                            .foregroundStyle(ColorHelper.uInt32ToColor(button.color))
+                    }
+                    
+                    TextField("Shortcut Name", text: $button.shortcutName)
+                        .submitLabel(.done)
+                }
             }
             .onMove { indices, newOffset in
                 buttons.move(fromOffsets: indices, toOffset: newOffset)
             }
             .onDelete { indexSet in
                 buttons.remove(atOffsets: indexSet)
+            }
+            .alert("Please enter a system icon image name", isPresented: $showIconEditor) {
+                TextField("Name", text: $iconEditorText)
+                Button("Cancel", role: .cancel) {
+                    iconEditorID = nil
+                    iconEditorText = ""
+                }
+                Button("Done", role: .confirm) {
+                    if let id = iconEditorID,
+                       let index = buttons.firstIndex(where: { $0.id == id }) {
+                        buttons[index].iconName = iconEditorText
+                    }
+                    iconEditorID = nil
+                    iconEditorText = ""
+                }
             }
             
             if buttons.count < 4 {
