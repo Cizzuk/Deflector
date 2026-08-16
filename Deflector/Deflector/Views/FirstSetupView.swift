@@ -48,7 +48,7 @@ struct FirstSetupView: View {
                 switch unAuthorizationStatus {
                 case .authorized: Text("Notifications are allowed.")
                 case .notDetermined: EmptyView()
-                default: Text("Please allow notifications in Settings.")
+                default: Text("Notifications are denied. Please allow notifications in Settings.")
                 }
             }
             .onAppear { updateUNAuthorizationStatus() }
