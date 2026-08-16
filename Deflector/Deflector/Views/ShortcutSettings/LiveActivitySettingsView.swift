@@ -108,6 +108,12 @@ struct LiveActivitySettingsView: View {
             } header: {
                 Text("Dynamic Island")
             }
+            
+            Section {
+                Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
+                    Text("Use Black Background on Lock Screen")
+                }
+            }
         }
         .animation(.default, value: vm.isLiveActivityActive)
         .animation(.default, value: userSettings.liveActivityButtons)

@@ -17,6 +17,7 @@ final class UserSettings: ObservableObject {
         static let liveActivityButtons = "liveActivityButtons"
         static let liveActivityIslandButtons = "liveActivityIslandButtons"
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
+        static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
     }
     
     @Published var sideButtonShortcutName: String = {
@@ -68,6 +69,15 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityUseDifferentOnIsland, forKey: Keys.liveActivityUseDifferentOnIsland)
+            DeflectorActivitySupport.update()
+        }
+    }
+    
+    @Published var liveActivityUseBlackBackground: Bool = {
+        return UserDefaults.standard.bool(forKey: Keys.liveActivityUseBlackBackground)
+    }() {
+        didSet {
+            UserDefaults.standard.set(liveActivityUseBlackBackground, forKey: Keys.liveActivityUseBlackBackground)
             DeflectorActivitySupport.update()
         }
     }

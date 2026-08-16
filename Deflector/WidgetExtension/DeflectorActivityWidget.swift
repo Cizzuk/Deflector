@@ -46,9 +46,11 @@ struct DeflectorActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
             let buttons = context.state.buttons
+            let background = context.state.blackBackground ? Color.black : Color.clear
             ShortcutButtons(buttons: buttons)
             .padding(20)
-            .activityBackgroundTint(.clear)
+            .activityBackgroundTint(background)
+            
         } dynamicIsland: { context in
             let buttons = context.state.islandButtons ?? context.state.buttons
             return DynamicIsland {
