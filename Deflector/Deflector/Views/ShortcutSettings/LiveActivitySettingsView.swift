@@ -46,6 +46,9 @@ struct LiveActivitySettingsView: View {
             }
             .alert("Please enter a system icon image name", isPresented: $showIconEditor) {
                 TextField("Name", text: $iconEditorText)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .submitLabel(.done)
                 Button("Cancel", role: .cancel) {
                     iconEditorID = nil
                     iconEditorText = ""
@@ -73,23 +76,23 @@ struct LiveActivitySettingsView: View {
     var body: some View {
         List {
             Section {
-                Button(action: {
-                    do {
-                        try DeflectorActivitySupport.start()
-                        isActivityActive = true
-                    } catch {}
-                }) {
-                    Label("Start Activity", systemImage: "play.fill")
+                if isActivityActive {
+                    Button(action: {
+                        DeflectorActivitySupport.endAll()
+                        isActivityActive = false
+                    }) {
+                        Label("End Activity", systemImage: "stop.fill")
+                    }
+                } else {
+                    Button(action: {
+                        do {
+                            try DeflectorActivitySupport.start()
+                            isActivityActive = true
+                        } catch {}
+                    }) {
+                        Label("Start Activity", systemImage: "play.fill")
+                    }
                 }
-                .disabled(isActivityActive)
-                
-                Button(action: {
-                    DeflectorActivitySupport.endAll()
-                    isActivityActive = false
-                }) {
-                    Label("End Activity", systemImage: "stop.fill")
-                }
-                .disabled(!isActivityActive)
             } header: {
                 Text("Activity Controls")
             }
@@ -112,6 +115,7 @@ struct LiveActivitySettingsView: View {
                 Text("Dynamic Island")
             }
         }
+        .animation(.default, value: isActivityActive)
         .animation(.default, value: userSettings.liveActivityButtons)
         .animation(.default, value: userSettings.liveActivityIslandButtons)
         .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
