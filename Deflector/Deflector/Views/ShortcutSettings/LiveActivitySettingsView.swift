@@ -10,12 +10,12 @@ import SwiftUI
 struct LiveActivitySettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     @State private var isActivityActive: Bool = DeflectorActivitySupport.isActive()
+    @State private var errorLabel: LocalizedStringResource? = nil
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
         @State private var iconEditorID: UUID? = nil
         @State private var iconEditorText: String = ""
-        @State private var showIconEditor: Bool = false
         
         var body: some View {
             ForEach($buttons) { $button in
@@ -26,7 +26,6 @@ struct LiveActivitySettingsView: View {
                     Button(action: {
                         iconEditorID = button.id
                         iconEditorText = button.iconName
-                        showIconEditor = true
                     }) {
                         Label("Icon", systemImage: button.iconName)
                             .labelStyle(.iconOnly)
@@ -44,7 +43,7 @@ struct LiveActivitySettingsView: View {
             .onDelete { indexSet in
                 buttons.remove(atOffsets: indexSet)
             }
-            .alert("Please enter a system icon image name", isPresented: $showIconEditor) {
+            .alert("Please enter a system icon image name", isPresented: .constant(iconEditorID != nil)) {
                 TextField("Name", text: $iconEditorText)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
