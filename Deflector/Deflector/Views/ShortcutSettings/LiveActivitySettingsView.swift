@@ -40,10 +40,25 @@ struct LiveActivitySettingsView: View {
                     TextField("Shortcut Name", text: $button.shortcutName)
                         .submitLabel(.done)
                 }
+                .onMove { indices, newOffset in
+                    userSettings.liveActivityButtons.move(fromOffsets: indices, toOffset: newOffset)
+                }
+                .onDelete { indexSet in
+                    userSettings.liveActivityButtons.remove(atOffsets: indexSet)
+                }
+                
+                if userSettings.liveActivityButtons.count < 4 {
+                    Button(action: {
+                        userSettings.liveActivityButtons.append(DeflectorActivityButton(shortcutName: ""))
+                    }) {
+                        Label("Add Shortcut", systemImage: "plus")
+                    }
+                }
             } header: {
                 Text("Shortcuts")
             }
         }
+        .animation(.default, value: userSettings.liveActivityButtons)
         .navigationTitle("Live Activity")
         .navigationBarTitleDisplayMode(.inline)
     }
