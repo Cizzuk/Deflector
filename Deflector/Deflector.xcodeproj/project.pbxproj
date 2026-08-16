@@ -52,11 +52,21 @@
 			);
 			target = 7A193EBD302E9D340041A05B /* WidgetExtensionExtension */;
 		};
+		7A6637C130321CF600EE1209 /* Exceptions for "Deflector" folder in "Deflector" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 000000000000000100000000 /* Deflector */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		000000000000000000000010 /* Deflector */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7A6637C130321CF600EE1209 /* Exceptions for "Deflector" folder in "Deflector" target */,
+			);
 			path = Deflector;
 			sourceTree = "<group>";
 		};
@@ -387,6 +397,7 @@
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Deflector/Info.plist;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
@@ -429,6 +440,7 @@
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Deflector/Info.plist;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
