@@ -11,6 +11,31 @@ struct LiveActivitySettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     @State private var isActivityActive: Bool = DeflectorActivitySupport.isActive()
     
+    struct ShortcutList: View {
+        @Binding var buttons: [DeflectorActivityButton]
+        
+        var body: some View {
+            ForEach($buttons) { $button in
+                TextField("Shortcut Name", text: $button.shortcutName)
+                    .submitLabel(.done)
+            }
+            .onMove { indices, newOffset in
+                buttons.move(fromOffsets: indices, toOffset: newOffset)
+            }
+            .onDelete { indexSet in
+                buttons.remove(atOffsets: indexSet)
+            }
+            
+            if buttons.count < 4 {
+                Button(action: {
+                    buttons.append(DeflectorActivityButton(shortcutName: ""))
+                }) {
+                    Label("Add Shortcut", systemImage: "plus")
+                }
+            }
+        }
+    }
+    
     var body: some View {
         List {
             Section {
@@ -36,29 +61,26 @@ struct LiveActivitySettingsView: View {
             }
             
             Section {
-                ForEach($userSettings.liveActivityButtons) { $button in
-                    TextField("Shortcut Name", text: $button.shortcutName)
-                        .submitLabel(.done)
-                }
-                .onMove { indices, newOffset in
-                    userSettings.liveActivityButtons.move(fromOffsets: indices, toOffset: newOffset)
-                }
-                .onDelete { indexSet in
-                    userSettings.liveActivityButtons.remove(atOffsets: indexSet)
-                }
-                
-                if userSettings.liveActivityButtons.count < 4 {
-                    Button(action: {
-                        userSettings.liveActivityButtons.append(DeflectorActivityButton(shortcutName: ""))
-                    }) {
-                        Label("Add Shortcut", systemImage: "plus")
-                    }
-                }
+                ShortcutList(buttons: $userSettings.liveActivityButtons)
             } header: {
                 Text("Shortcuts")
             }
+            
+            Section {
+                Toggle(isOn: $userSettings.liveActivityUseDifferentOnIsland) {
+                    Text("Use Different Shortcuts on Dynamic Island")
+                }
+                
+                if userSettings.liveActivityUseDifferentOnIsland {
+                    ShortcutList(buttons: $userSettings.liveActivityIslandButtons)
+                }
+            } header: {
+                Text("Dynamic Island")
+            }
         }
         .animation(.default, value: userSettings.liveActivityButtons)
+        .animation(.default, value: userSettings.liveActivityIslandButtons)
+        .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
         .navigationTitle("Live Activity")
         .navigationBarTitleDisplayMode(.inline)
     }
