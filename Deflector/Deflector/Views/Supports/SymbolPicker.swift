@@ -38,10 +38,14 @@ struct SymbolPicker: View {
             }
             .navigationTitle("Choose Symbol")
             .navigationBarTitleDisplayMode(.inline)
-            .onDisappear { callback(symbol) }
+            .navigationBarBackButtonHidden(true)
+            .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: { dismiss() }) {
+                    Button(action: {
+                        callback(symbol)
+                        dismiss()
+                    }) {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)

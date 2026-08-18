@@ -11,11 +11,13 @@ struct LiveActivitySettingsView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var userSettings = UserSettings.shared
     @StateObject private var vm = LiveActivitySettingsViewModel()
+    @State private var iconEditorID: UUID? = nil
+    @State private var iconEditorText: String = ""
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
-        @State private var iconEditorID: UUID? = nil
-        @State private var iconEditorText: String = ""
+        @Binding var iconEditorID: UUID?
+        @Binding var iconEditorText: String
         
         var body: some View {
             ForEach($buttons) { $button in
@@ -50,15 +52,6 @@ struct LiveActivitySettingsView: View {
             .onDelete { indexSet in
                 buttons.remove(atOffsets: indexSet)
             }
-            .sheet(isPresented: .constant(iconEditorID != nil)) {
-                SymbolPicker(iconEditorText) { symbol in
-                    if let id = iconEditorID,
-                       let index = buttons.firstIndex(where: { $0.id == id }) {
-                        buttons[index].iconName = symbol
-                    }
-                    iconEditorID = nil
-                }
-            }
             
             if buttons.count < 4 {
                 Button(action: {
@@ -90,7 +83,7 @@ struct LiveActivitySettingsView: View {
             }
             
             Section {
-                ShortcutList(buttons: $userSettings.liveActivityButtons)
+                ShortcutList(buttons: $userSettings.liveActivityButtons, iconEditorID: $iconEditorID, iconEditorText: $iconEditorText)
             } header: {
                 Text("Shortcuts")
             }
@@ -101,7 +94,7 @@ struct LiveActivitySettingsView: View {
                 }
                 
                 if userSettings.liveActivityUseDifferentOnIsland {
-                    ShortcutList(buttons: $userSettings.liveActivityIslandButtons)
+                    ShortcutList(buttons: $userSettings.liveActivityIslandButtons, iconEditorID: $iconEditorID, iconEditorText: $iconEditorText)
                 }
             } header: {
                 Text("Dynamic Island")
@@ -117,6 +110,18 @@ struct LiveActivitySettingsView: View {
         .animation(.default, value: userSettings.liveActivityButtons)
         .animation(.default, value: userSettings.liveActivityIslandButtons)
         .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
+        .sheet(isPresented: .constant(iconEditorID != nil)) {
+            SymbolPicker(iconEditorText) { symbol in
+                if let iconEditorID  {
+                    if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == iconEditorID }) {
+                        userSettings.liveActivityButtons[index].iconName = symbol
+                    } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == iconEditorID }) {
+                        userSettings.liveActivityIslandButtons[index].iconName = symbol
+                    }
+                }
+                iconEditorID = nil
+            }
+        }
         .navigationTitle("Live Activity")
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
