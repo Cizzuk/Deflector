@@ -38,7 +38,6 @@ struct SymbolPicker: View {
             }
             .navigationTitle("Choose Symbol")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
             .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
