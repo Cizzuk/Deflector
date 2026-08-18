@@ -26,7 +26,7 @@ struct DeflectorActivityWidget: Widget {
                         VStack(spacing: 2) {
                             Label(button.shortcutName, systemImage: button.iconName)
                                 .labelStyle(.iconOnly)
-                                .font(.title)
+                                .font(activityFamily == .small ? .title2 : .title)
                                 .foregroundStyle(color)
                                 .frame(width: 35, height: 35)
                             if activityFamily != .small {
@@ -42,7 +42,7 @@ struct DeflectorActivityWidget: Widget {
                     .tint(ColorHelper.uInt32ToColor(button.color))
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, activityFamily == .small ? 0 : 20)
         }
     }
     
@@ -69,7 +69,7 @@ struct DeflectorActivityWidget: Widget {
                 Label("Deflector", systemImage: "suit.diamond")
                     .labelStyle(.iconOnly)
                     .foregroundStyle(.dropblue)
-                    .padding(.horizontal, 3)
+                    .padding(.horizontal, 2)
             }
         }
         .supplementalActivityFamilies([.small])
