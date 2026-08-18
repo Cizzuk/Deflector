@@ -14,7 +14,6 @@ struct LiveActivitySettingsView: View {
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
-        @State private var iconEditActive: Bool = false
         @State private var iconEditorID: UUID? = nil
         @State private var iconEditorText: String = ""
         
@@ -27,7 +26,6 @@ struct LiveActivitySettingsView: View {
                     Button(action: {
                         iconEditorID = button.id
                         iconEditorText = button.iconName
-                        iconEditActive = true
                     }) {
                         Group {
                             if UIImage(systemName: button.iconName) != nil {
@@ -52,7 +50,7 @@ struct LiveActivitySettingsView: View {
             .onDelete { indexSet in
                 buttons.remove(atOffsets: indexSet)
             }
-            .sheet(isPresented: $iconEditActive) {
+            .sheet(isPresented: .constant(iconEditorID != nil)) {
                 SymbolPicker(iconEditorText) { symbol in
                     if let id = iconEditorID,
                        let index = buttons.firstIndex(where: { $0.id == id }) {
