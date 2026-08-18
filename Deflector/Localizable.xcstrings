@@ -76,6 +76,7 @@
       }
     },
     "Cancel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -94,6 +95,9 @@
           }
         }
       }
+    },
+    "Choose Symbol" : {
+
     },
     "Cizzuk" : {
       "shouldTranslate" : false
@@ -288,6 +292,7 @@
       "shouldTranslate" : false
     },
     "Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -398,6 +403,7 @@
       }
     },
     "Please enter a system icon image name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -546,6 +552,9 @@
           }
         }
       }
+    },
+    "Symbol" : {
+
     },
     "To run shortcuts using Deflector, you need to set up an automation in the Shortcuts app." : {
       "localizations" : {

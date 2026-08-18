@@ -14,6 +14,7 @@ struct LiveActivitySettingsView: View {
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
+        @State private var iconEditActive: Bool = false
         @State private var iconEditorID: UUID? = nil
         @State private var iconEditorText: String = ""
         
@@ -26,11 +27,18 @@ struct LiveActivitySettingsView: View {
                     Button(action: {
                         iconEditorID = button.id
                         iconEditorText = button.iconName
+                        iconEditActive = true
                     }) {
-                        Label("Icon", systemImage: button.iconName)
-                            .labelStyle(.iconOnly)
-                            .frame(width: 30)
-                            .foregroundStyle(Color(uiColor: .label))
+                        Group {
+                            if UIImage(systemName: button.iconName) != nil {
+                                Label("Icon", systemImage: button.iconName)
+                            } else {
+                                Label("Icon", systemImage: "questionmark.square.dashed")
+                            }
+                        }
+                        .labelStyle(.iconOnly)
+                        .frame(width: 30)
+                        .foregroundStyle(Color(uiColor: .label))
                     }
                     .buttonStyle(.borderless)
                     
@@ -44,22 +52,13 @@ struct LiveActivitySettingsView: View {
             .onDelete { indexSet in
                 buttons.remove(atOffsets: indexSet)
             }
-            .alert("Please enter a system icon image name", isPresented: .constant(iconEditorID != nil)) {
-                TextField("Name", text: $iconEditorText)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .submitLabel(.done)
-                Button("Cancel", role: .cancel) {
-                    iconEditorID = nil
-                    iconEditorText = ""
-                }
-                Button("Done", role: .confirm) {
+            .sheet(isPresented: $iconEditActive) {
+                SymbolPicker(iconEditorText) { symbol in
                     if let id = iconEditorID,
                        let index = buttons.firstIndex(where: { $0.id == id }) {
-                        buttons[index].iconName = iconEditorText
+                        buttons[index].iconName = symbol
                     }
                     iconEditorID = nil
-                    iconEditorText = ""
                 }
             }
             
