@@ -32,7 +32,7 @@ struct SymbolPicker: View {
                             .accessibilityHidden(true)
                         Spacer()
                     }
-                    TextField("Symbol", text: $symbol)
+                    TextField("Symbol Name", text: $symbol)
                         .submitLabel(.done)
                 }
             }

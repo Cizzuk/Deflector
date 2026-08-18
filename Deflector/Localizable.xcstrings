@@ -75,17 +75,6 @@
         }
       }
     },
-    "Cancel" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャンセル"
-          }
-        }
-      }
-    },
     "Change App Icon" : {
       "localizations" : {
         "ja" : {
@@ -97,7 +86,14 @@
       }
     },
     "Choose Symbol" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボルを選択"
+          }
+        }
+      }
     },
     "Cizzuk" : {
       "shouldTranslate" : false
@@ -291,17 +287,6 @@
     "MIT License\n\nCopyright (c) 2026 Cizzuk\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE." : {
       "shouldTranslate" : false
     },
-    "Name" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "名前"
-          }
-        }
-      }
-    },
     "No shortcut is set for the Side Button." : {
       "localizations" : {
         "ja" : {
@@ -398,17 +383,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "リンクから、オートメーション用のショートカットをダウンロードしてください。その後ショートカットを編集して、通知のオートメーションを有効にしてください。"
-          }
-        }
-      }
-    },
-    "Please enter a system icon image name" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "システムアイコンの名前を入力してください。"
           }
         }
       }
@@ -553,8 +527,15 @@
         }
       }
     },
-    "Symbol" : {
-
+    "Symbol Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル名"
+          }
+        }
+      }
     },
     "To run shortcuts using Deflector, you need to set up an automation in the Shortcuts app." : {
       "localizations" : {
