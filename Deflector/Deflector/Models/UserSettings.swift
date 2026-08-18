@@ -49,7 +49,7 @@ final class UserSettings: ObservableObject {
     }
     
     @Published var liveActivityIslandButtons: [DeflectorActivityButton] = {
-        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityButtons),
+        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandButtons),
            let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
             return buttons
         }
@@ -57,8 +57,8 @@ final class UserSettings: ObservableObject {
         return []
     }() {
         didSet {
-            if let data = try? JSONEncoder().encode(liveActivityButtons) {
-                UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
+            if let data = try? JSONEncoder().encode(liveActivityIslandButtons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandButtons)
                 DeflectorActivitySupport.update()
             }
         }
