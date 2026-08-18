@@ -104,6 +104,9 @@ struct LiveActivitySettingsView: View {
                 Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
                     Text("Use Black Background on Lock Screen")
                 }
+                Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
+                    Text("Show Shortcut Names")
+                }
             }
         }
         .animation(.default, value: vm.isLiveActivityActive)

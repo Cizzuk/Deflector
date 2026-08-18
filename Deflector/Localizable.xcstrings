@@ -467,6 +467,16 @@
         }
       }
     },
+    "Show Shortcut Names" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット名を表示"
+          }
+        }
+      }
+    },
     "Side Button" : {
       "localizations" : {
         "ja" : {

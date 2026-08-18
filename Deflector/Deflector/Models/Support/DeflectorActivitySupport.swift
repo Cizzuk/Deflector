@@ -25,7 +25,8 @@ class DeflectorActivitySupport {
         let state = DeflectorActivityAttributes.ContentState(
             buttons: buttons,
             islandButtons: useDifferentOnIsland ? islandButtons : nil,
-            blackBackground: UserSettings.shared.liveActivityUseBlackBackground
+            blackBackground: UserSettings.shared.liveActivityUseBlackBackground,
+            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames
         )
         
         return state

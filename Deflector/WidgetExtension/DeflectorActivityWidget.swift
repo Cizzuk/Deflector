@@ -29,7 +29,7 @@ struct DeflectorActivityWidget: Widget {
                                 .font(activityFamily == .small ? .title2 : .title)
                                 .foregroundStyle(color)
                                 .frame(width: 35, height: 35)
-                            if activityFamily != .small {
+                            if showLabel && activityFamily != .small {
                                 Text(button.shortcutName)
                                     .lineLimit(1)
                                     .font(.caption)
@@ -50,16 +50,18 @@ struct DeflectorActivityWidget: Widget {
         ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
             let buttons = context.state.buttons
             let background = context.state.blackBackground ? Color.black : Color.clear
-            ShortcutButtons(buttons: buttons)
+            let showLabel = context.state.showShortcutNames
+            ShortcutButtons(buttons: buttons, showLabel: showLabel)
             .padding(20)
             .activityBackgroundTint(background)
             
         } dynamicIsland: { context in
             let buttons = context.state.islandButtons ?? context.state.buttons
+            let showLabel = context.state.showShortcutNames
             return DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
-                    ShortcutButtons(buttons: buttons)
-                    .padding(.bottom, 10)
+                    ShortcutButtons(buttons: buttons, showLabel: showLabel)
+                        .padding(.bottom, showLabel ? 10 : 18)
                 }
             } compactLeading: {
                 EmptyView().frame(width: 0, height: 0)
