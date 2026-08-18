@@ -32,6 +32,7 @@ struct LiveActivitySettingsView: View {
                             .frame(width: 30)
                             .foregroundStyle(Color(uiColor: .label))
                     }
+                    .buttonStyle(.borderless)
                     
                     TextField("Shortcut Name", text: $button.shortcutName)
                         .submitLabel(.done)
