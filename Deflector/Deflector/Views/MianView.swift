@@ -67,6 +67,12 @@ struct MianView: View {
                     NavigationLink(destination: AboutView()) {
                         Label("About", systemImage: "info.circle")
                     }
+                    if UIApplication.shared.supportsAlternateIcons {
+                        NavigationLink(destination: ChangeIconView()) {
+                            Label("Change App Icon", systemImage: "app.dashed")
+                        }
+                    }
+                    
                 }
             }
             .navigationTitle("Deflector")
