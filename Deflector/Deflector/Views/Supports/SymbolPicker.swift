@@ -77,11 +77,11 @@ struct SymbolPicker: View {
 //                    ])
 //                }
 //                
-//                Section("Health") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                Section("Health") {
+                    SymbolButtonsGrid([
+                        "cross.fill", "ear.fill", "heart.fill", "pills.fill", "bandage.fill", "stethoscope", "syringe.fill", "facemask.fill", "bed.double.fill", "brain.fill", "staroflife", "list.bullet.clipboard", "medical.thermometer.fill", "heart.text.clipboard.fill", "ivfluid.bag.fill", "apple.meditate"
+                    ])
+                }
 //                
 //                Section("Objects & Tools") {
 //                    SymbolButtonsGrid([
