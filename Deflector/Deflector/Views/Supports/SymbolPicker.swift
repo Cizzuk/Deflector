@@ -211,7 +211,7 @@ struct SymbolPicker: View {
                 
                 Section("Arrows") {
                     SymbolButtonsGrid([
-                        "arrowshape.turn.up.backward.fill", "arrowshape.turn.up.forward.fill", "chevron.backward.fill", "chevron.forward.fill", "chevron.up", "chevron.down", "arrow.3.trianglepath", "location.fill", "arrow.down.forward.and.arrow.up.backward", "arrow.up.and.down.and.arrow.left.and.right", "arrow.2.squarepath", "arrow.trianglehead.2.clockwise.rotate.90", "shuffle", "arrow.turn.up.right", "arrow.backward", "arrow.forward", "arrow.up", "arrow.down", "arrow.up.forward", "arrow.up.backward"
+                        "arrowshape.turn.up.backward.fill", "arrowshape.turn.up.forward.fill", "chevron.backward", "chevron.forward", "chevron.up", "chevron.down", "arrow.3.trianglepath", "location.fill", "arrow.down.forward.and.arrow.up.backward", "arrow.up.and.down.and.arrow.left.and.right", "arrow.2.squarepath", "arrow.trianglehead.2.clockwise.rotate.90", "shuffle", "arrow.turn.up.right", "arrow.backward", "arrow.forward", "arrow.up", "arrow.down", "arrow.up.forward", "arrow.up.backward"
                     ])
                 }
                 
