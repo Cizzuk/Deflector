@@ -137,17 +137,17 @@ struct SymbolPicker: View {
 //                    ])
 //                }
 //                
-//                Section("Keyboard") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                Section("Keyboard") {
+                    SymbolButtonsGrid([
+                        "globe", "keyboard.fill", "power", "command", "sun.max.fill"
+                    ])
+                }
 //                
-//                Section("Camera & Photos") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                Section("Camera & Photos") {
+                    SymbolButtonsGrid([
+                        "photo.fill", "camera.fill", "bolt.fill", "camera.aperture", "arrow.trianglehead.2.clockwise.rotate.90", "camera.filters", "livephoto", "livephoto.play", "camera.viewfinder"
+                    ])
+                }
 //                
 //                Section("Communication") {
 //                    SymbolButtonsGrid([
