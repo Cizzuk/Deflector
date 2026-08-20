@@ -65,35 +65,35 @@ struct SymbolPicker: View {
                     ])
                 }
                 
-//                Section("Transportation") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
+                Section("Transportation") {
+                    SymbolButtonsGrid([
+                        "car.fill", "bolt.car.fill", "bus.fill", "tram.fill", "bicycle", "motorcycle.fill", "airplane", "sailboat.fill", "fuelpump.fill", "airplane.ticket.fill", "figure.walk", "figure.wave", "scooter", "ferry", "truck.box.fill", "ev.charger.fill"
+                    ])
+                }
+                
 //                Section("Automotive") {
 //                    SymbolButtonsGrid([
 //                        "",
 //                    ])
 //                }
-//                
+                
                 Section("Health") {
                     SymbolButtonsGrid([
                         "cross.fill", "ear.fill", "heart.fill", "pills.fill", "bandage.fill", "stethoscope", "syringe.fill", "facemask.fill", "bed.double.fill", "brain.fill", "staroflife.fill", "list.bullet.clipboard", "medical.thermometer.fill", "heart.text.clipboard.fill", "ivfluid.bag.fill", "apple.meditate"
                     ])
                 }
-//                
+                
 //                Section("Objects & Tools") {
 //                    SymbolButtonsGrid([
 //                        "",
 //                    ])
 //                }
-//                
-//                Section("Gaming") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                
+                Section("Gaming") {
+                    SymbolButtonsGrid([
+                        "house.fill", "gamecontroller.fill", "plus", "flag.2.crossed.fill", "xmark", "flag.pattern.checkered", "arcade.stick.console.fill", "gearshift.layout.sixspeed", "formfitting.gamecontroller", "dpad.fill"
+                    ])
+                }
                 
                 Section("Home") {
                     SymbolButtonsGrid([
@@ -101,42 +101,42 @@ struct SymbolPicker: View {
                     ])
                 }
                 
-//                Section("Commerce") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Objects") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
+                Section("Commerce") {
+                    SymbolButtonsGrid([
+                        "cart.fill", "bag.fill", "creditcard.fill", "dollarsign", "eurosign", "sterlingsign", "yensign", "bitcoinsign", "signature", "basket.fill", "banknote.fill"
+                    ])
+                }
+                
+                Section("Objects") {
+                    SymbolButtonsGrid([
+                        "storefront.fill", "safari.fill",
+                    ])
+                }
+                
                 Section("Variable") {
                     SymbolButtonsGrid([
                         "thermometer.medium", "speaker.wave.1.fill", "speaker.wave.2.fill", "speaker.wave.3.fill", "wand.and.rays", "square.stack.3d.down.forward.fill", "ellipsis", "rays", "wifi", "airplay.audio", "waveform", "livephoto", "apple.homekit", "antenna.radiowaves.left.and.right", "key.radiowaves.forward.fill", "bell.badge.waveform.fill", "chart.bar.xaxis"
                     ])
                 }
-//                
-//                Section("Weather") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Nature") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Human") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
+                
+                Section("Weather") {
+                    SymbolButtonsGrid([
+                        "thermometer.medium", "degreesign.celsius", "degreesign.fahrenheit", "humidity.fill", "sparkles", "sun.max.fill", "moon.fill", "snowflake", "cloud.fill", "cloud.rain.fill", "wind", "tornado"
+                    ])
+                }
+                
+                Section("Nature") {
+                    SymbolButtonsGrid([
+                        "flame.fill", "mountain.2", "bolt.fill", "drop.fill", "carrot.fill", "fish.fill", "atom", "pawprint.fill", "tortoise.fill", "hare.fill", "lizard.fill", "bird.fill", "ladybug.fill", "leaf.fill", "humidity.fill", "sparkles", "sun.max.fill", "moon.fill", "snowflake", "cloud.fill", "cloud.rain.fill", "wind", "tornado", "fossil.shell.fill", "apple.meditate"
+                    ])
+                }
+                
+                Section("Human") {
+                    SymbolButtonsGrid([
+                        "shoeprints.fill", "ear.fill", "figure.stand", "figure.roll", "person.fill", "person.2.fill", "figure", "figure.dance", "brain.fill", "hand.raised.fill", "hand.raised.slash.fill", "hand.thumbsup.fill", "person.number.sign.rectangle", "person.badge.creditcard", "hand.point.up.braille.fill", "face.smiling", "figure.wave", "calendar.and.person", "person.crop.circle.badge.magnifyingglass.fill", "wheelchair", "hand.point.up.left.fill", "accessibility.fill"
+                    ])
+                }
+                
                 Section("Keyboard") {
                     SymbolButtonsGrid([
                         "globe", "keyboard.fill", "power", "command", "sun.max.fill"
