@@ -79,7 +79,7 @@ struct SymbolPicker: View {
 //                
                 Section("Health") {
                     SymbolButtonsGrid([
-                        "cross.fill", "ear.fill", "heart.fill", "pills.fill", "bandage.fill", "stethoscope", "syringe.fill", "facemask.fill", "bed.double.fill", "brain.fill", "staroflife", "list.bullet.clipboard", "medical.thermometer.fill", "heart.text.clipboard.fill", "ivfluid.bag.fill", "apple.meditate"
+                        "cross.fill", "ear.fill", "heart.fill", "pills.fill", "bandage.fill", "stethoscope", "syringe.fill", "facemask.fill", "bed.double.fill", "brain.fill", "staroflife.fill", "list.bullet.clipboard", "medical.thermometer.fill", "heart.text.clipboard.fill", "ivfluid.bag.fill", "apple.meditate"
                     ])
                 }
 //                
@@ -97,7 +97,7 @@ struct SymbolPicker: View {
                 
                 Section("Home") {
                     SymbolButtonsGrid([
-                        "house.fill", "lightbulb.fill", "washer.fill", "stove.fill", "bathtub.fill", "bed.double.fill", "stairs", "poweroutlet.strip", "heater.vertical.fill", "spigot.fill", "chair.fill", "robotic.vacuum.fill", "apple.homekit", "lamp.ceiling.fill", "fan.fill", "fan.ceiling.fill", "popcorn.fill", "sofa.fill", "oven.fill", "microwave.fill", "toilet.fill", "cabinet", "shower.handheld.fill"
+                        "house.fill", "lightbulb.fill", "washer.fill", "stove.fill", "bathtub.fill", "bed.double.fill", "stairs", "poweroutlet.strip", "heater.vertical.fill", "spigot.fill", "chair.fill", "robotic.vacuum.fill", "apple.homekit", "lamp.ceiling.fill", "fan.fill", "fan.ceiling.fill", "popcorn.fill", "sofa.fill", "oven.fill", "microwave.fill", "toilet.fill", "cabinet.fill", "shower.handheld.fill"
                     ])
                 }
                 
