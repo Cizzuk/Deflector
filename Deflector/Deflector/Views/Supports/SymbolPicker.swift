@@ -179,24 +179,24 @@ struct SymbolPicker: View {
                     ])
                 }
                 
-//                Section("Time") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Privacy & Security") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Editing") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
+                Section("Time") {
+                    SymbolButtonsGrid([
+                        "clock.fill", "alarm.fill", "stopwatch.fill", "hourglass", "timer"
+                    ])
+                }
+                
+                Section("Privacy & Security") {
+                    SymbolButtonsGrid([
+                        "key.fill", "lock.fill", "lock.open.fill", "hand.raised.fill", "hand.raised.slash.fill", "exclamationmark.triangle.fill", "checkmark", "nosign", "key.radiowaves.forward.fill", "firewall.fill", "seal.fill", "shield.fill"
+                    ])
+                }
+                
+                Section("Editing") {
+                    SymbolButtonsGrid([
+                        "wand.and.sparkles", "wand.and.rays", "paintbrush.fill", "pencil", "scissors", "eyedropper.halffull", "bandage.fill", "crop", "slider.horizontal.3", "camera.filters", "square.and.pencil", "dial.low.fill", "dial.high.fill", "eraser.fill", "scribble.variable", "pencil.and.scribble", "signature", "paintbrush.pointed.fill", "move.3d", "beziercurve"
+                    ])
+                }
+                
 //                Section("People") {
 //                    SymbolButtonsGrid([
 //                        "",
@@ -208,36 +208,36 @@ struct SymbolPicker: View {
 //                        "",
 //                    ])
 //                }
-//                
-//                Section("Arrows") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Shapes") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Math") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Indices") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Text Formatting") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                
+                Section("Arrows") {
+                    SymbolButtonsGrid([
+                        "arrowshape.turn.up.backward.fill", "arrowshape.turn.up.forward.fill", "chevron.backward.fill", "chevron.forward.fill", "chevron.up", "chevron.down", "arrow.3.trianglepath", "location.fill", "arrow.down.forward.and.arrow.up.backward", "arrow.up.and.down.and.arrow.left.and.right", "arrow.2.squarepath", "arrow.trianglehead.2.clockwise.rotate.90", "shuffle", "arrow.turn.up.right", "arrow.backward", "arrow.forward", "arrow.up", "arrow.down", "arrow.up.forward", "arrow.up.backward"
+                    ])
+                }
+                
+                Section("Shapes") {
+                    SymbolButtonsGrid([
+                        "square.fill", "circle.fill", "capsule.portrait.fill", "rectangle.fill", "rectangle.portrait.fill", "oval.fill", "oval.portrait.fill", "triangle.fill", "diamond.fill", "octagon.fill", "hexagon.fill", "pentagon.fill", "seal.fill", "rhombus.fill", "shield.fill"
+                    ])
+                }
+                
+                Section("Math") {
+                    SymbolButtonsGrid([
+                        "plus", "radicand.squareroot", "function", "percent", "sum", "compass.drawing", "angle", "graph.2d"
+                    ])
+                }
+                
+                Section("Indices") {
+                    SymbolButtonsGrid([
+                        "eurosign", "sterlingsign", "yensign", "p.square.fill", "t.square.fill"
+                    ])
+                }
+                
+                Section("Text Formatting") {
+                    SymbolButtonsGrid([
+                        "list.bullet", "checklist", "character.textbox", "signature", "numbers", "textformat.characters", "textformat", "textformat.size", "textformat.superscript", "textformat.subscript", "bold.italic.underline", "characters.lowercase", "characters.uppercase", "text.alignleft", "text.aligncenter", "text.alignright", "text.justify", "text.square.filled", "character.text.justify"
+                    ])
+                }
             }
             .navigationTitle("Choose Symbol")
             .navigationBarTitleDisplayMode(.inline)
