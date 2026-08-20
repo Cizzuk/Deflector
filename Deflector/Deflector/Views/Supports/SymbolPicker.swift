@@ -142,24 +142,24 @@ struct SymbolPicker: View {
                         "globe", "keyboard.fill", "power", "command", "sun.max.fill"
                     ])
                 }
-//                
+                
                 Section("Camera & Photos") {
                     SymbolButtonsGrid([
                         "photo.fill", "camera.fill", "bolt.fill", "camera.aperture", "arrow.trianglehead.2.clockwise.rotate.90", "camera.filters", "livephoto", "livephoto.play", "camera.viewfinder"
                     ])
                 }
-//                
-//                Section("Communication") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Media") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                
+                Section("Communication") {
+                    SymbolButtonsGrid([
+                        "video.fill", "microphone.fill", "message.fill", "text.bubble.fill", "envelope.fill", "phone.fill", "recordingtape", "quote.bubble.fill", "waveform"
+                    ])
+                }
+                
+                Section("Media") {
+                    SymbolButtonsGrid([
+                        "play.rectangle.fill", "play.fill", "backward.fill", "stop.fill", "forward.fill", "infinity", "shuffle"
+                    ])
+                }
 //                
 //                Section("Fitness") {
 //                    SymbolButtonsGrid([
