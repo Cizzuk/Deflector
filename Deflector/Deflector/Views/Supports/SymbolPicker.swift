@@ -127,13 +127,13 @@ struct SymbolPicker: View {
                 
                 Section("Nature") {
                     SymbolButtonsGrid([
-                        "flame.fill", "mountain.2", "bolt.fill", "drop.fill", "carrot.fill", "fish.fill", "atom", "pawprint.fill", "tortoise.fill", "hare.fill", "lizard.fill", "bird.fill", "ladybug.fill", "leaf.fill", "humidity.fill", "sparkles", "sun.max.fill", "moon.fill", "snowflake", "cloud.fill", "cloud.rain.fill", "wind", "tornado", "fossil.shell.fill", "apple.meditate"
+                        "flame.fill", "mountain.2.fill", "bolt.fill", "drop.fill", "carrot.fill", "fish.fill", "atom", "pawprint.fill", "tortoise.fill", "hare.fill", "lizard.fill", "bird.fill", "ladybug.fill", "leaf.fill", "humidity.fill", "sparkles", "sun.max.fill", "moon.fill", "snowflake", "cloud.fill", "cloud.rain.fill", "wind", "tornado", "fossil.shell.fill", "apple.meditate"
                     ])
                 }
                 
                 Section("Human") {
                     SymbolButtonsGrid([
-                        "shoeprints.fill", "ear.fill", "figure.stand", "figure.roll", "person.fill", "person.2.fill", "figure", "figure.dance", "brain.fill", "hand.raised.fill", "hand.raised.slash.fill", "hand.thumbsup.fill", "person.number.sign.rectangle", "person.badge.creditcard", "hand.point.up.braille.fill", "face.smiling", "figure.wave", "calendar.and.person", "person.crop.circle.badge.magnifyingglass.fill", "wheelchair", "hand.point.up.left.fill", "accessibility.fill"
+                        "shoeprints.fill", "ear.fill", "figure.stand", "figure.roll", "person.fill", "person.2.fill", "figure", "figure.dance", "brain.fill", "hand.raised.fill", "hand.raised.slash.fill", "hand.thumbsup.fill", "person.number.sign.rectangle", "person.badge.creditcard", "hand.point.up.braille.fill", "face.smiling", "figure.wave", "calendar.and.person", "person.crop.circle.badge.magnifyingglass.fill", "wheelchair", "hand.point.up.left.fill", "hand.tap.fill", "accessibility.fill"
                     ])
                 }
                 
@@ -167,18 +167,18 @@ struct SymbolPicker: View {
                     ])
                 }
                 
-//                Section("Fitness") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
-//                Section("Accessibility") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
-//                
+                Section("Fitness") {
+                    SymbolButtonsGrid([
+                        "gamecontroller.fill", "tennisball.fill", "trophy.fill", "figure.roll", "figure.dance", "figure.walk", "figure.run", "dumbbell.fill", "sportscourt.fill", "duffle.bag.fill", "flag.pattern.checkered", "figure.cooldown", "medal.fill"
+                    ])
+                }
+                
+                Section("Accessibility") {
+                    SymbolButtonsGrid([
+                        "ear.fill", "figure.roll", "figure", "hand.point.up.braille.fill", "arrow.up.and.down.and.arrow.left.and.right", "quote.bubble.fill", "tortoise.fill", "hare.fill", "textformat.size", "wheelchair", "hand.tap.fill", "accessibility.fill", "siri"
+                    ])
+                }
+                
 //                Section("Time") {
 //                    SymbolButtonsGrid([
 //                        "",
