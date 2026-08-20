@@ -18,6 +18,23 @@ struct SymbolPicker: View {
         self.callback = callback
     }
     
+    func SymbolButtonsGrid(_ names: [String]) -> some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))], alignment: .center) {
+            ForEach(names, id: \.self) { name in
+                Button(action: { symbol = name }) {
+                    Image(systemName: name)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(symbol == name ? .accent : .secondary)
+                        .padding(10)
+                        .accessibilityLabel(name)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -34,6 +51,18 @@ struct SymbolPicker: View {
                     }
                     TextField("Symbol Name", text: $symbol)
                         .submitLabel(.done)
+                }
+                
+                Section("Maps") {
+                    SymbolButtonsGrid([
+                        "car.fill", "bus.fill", "tram.fill", "bicycle", "map.fill", "figure.walk", "location.fill", "mappin.and.ellipse", "arrow.up.and.down.and.arrow.left.and.right", "point.topleft.down.to.point.bottomright.curvepath"
+                    ])
+                }
+                
+                Section("Devices") {
+                    SymbolButtonsGrid([
+                        "applewatch", "macbook", "keyboard.fill", "printer.fill", "server.rack", "gamecontroller.fill", "headphones", "ear.fill", "hifispeaker.fill", "earpods", "airpods", "airpods.pro", "appletv.fill", "homepod.fill", "iphone", "apps.iphone", "ipad", "ipad.landscape", "ipod", "mediastick", "tv", "vision.pro", "arcade.stick.console.fill", "pc", "homepod.mini.fill"
+                    ])
                 }
             }
             .navigationTitle("Choose Symbol")
