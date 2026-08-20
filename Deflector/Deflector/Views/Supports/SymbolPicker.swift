@@ -44,7 +44,7 @@ struct SymbolPicker: View {
                         Image(systemName: symbol)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 50)
+                            .frame(width: 50, height: 50)
                             .padding()
                             .accessibilityHidden(true)
                         Spacer()
