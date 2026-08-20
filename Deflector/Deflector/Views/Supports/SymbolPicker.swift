@@ -113,11 +113,11 @@ struct SymbolPicker: View {
 //                    ])
 //                }
 //                
-//                Section("Variable") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                Section("Variable") {
+                    SymbolButtonsGrid([
+                        "thermometer.medium", "speaker.wave.1.fill", "speaker.wave.2.fill", "speaker.wave.3.fill", "wand.and.rays", "square.stack.3d.down.forward.fill", "ellipsis", "rays", "wifi", "airplay.audio", "waveform", "livephoto", "apple.homekit", "antenna.radiowaves.left.and.right", "key.radiowaves.forward.fill", "bell.badge.waveform.fill", "chart.bar.xaxis"
+                    ])
+                }
 //                
 //                Section("Weather") {
 //                    SymbolButtonsGrid([
