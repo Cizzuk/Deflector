@@ -160,7 +160,13 @@ struct SymbolPicker: View {
                         "play.rectangle.fill", "play.fill", "backward.fill", "stop.fill", "forward.fill", "infinity", "shuffle"
                     ])
                 }
-//                
+                
+                Section("Connectivity") {
+                    SymbolButtonsGrid([
+                        "externaldrive.connected.to.line.below.fill", "network", "icloud.fill", "wifi", "personalhotspot", "bolt.horizontal.fill", "bonjour", "antenna.radiowaves.left.and.right"
+                    ])
+                }
+                
 //                Section("Fitness") {
 //                    SymbolButtonsGrid([
 //                        "",
