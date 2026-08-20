@@ -64,6 +64,174 @@ struct SymbolPicker: View {
                         "applewatch", "macbook", "keyboard.fill", "printer.fill", "server.rack", "gamecontroller.fill", "headphones", "ear.fill", "hifispeaker.fill", "earpods", "airpods", "airpods.pro", "appletv.fill", "homepod.fill", "iphone", "apps.iphone", "ipad", "ipad.landscape", "ipod", "mediastick", "tv", "vision.pro", "arcade.stick.console.fill", "pc", "homepod.mini.fill"
                     ])
                 }
+                
+//                Section("Transportation") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Automotive") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Health") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Objects & Tools") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Gaming") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+                
+                Section("Home") {
+                    SymbolButtonsGrid([
+                        "house.fill", "lightbulb.fill", "washer.fill", "stove.fill", "bathtub.fill", "bed.double.fill", "stairs", "poweroutlet.strip", "heater.vertical.fill", "spigot.fill", "chair.fill", "robotic.vacuum.fill", "apple.homekit", "lamp.ceiling.fill", "fan.fill", "fan.ceiling.fill", "popcorn.fill", "sofa.fill", "oven.fill", "microwave.fill", "toilet.fill", "cabinet", "shower.handheld.fill"
+                    ])
+                }
+                
+//                Section("Commerce") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Objects") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Variable") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Weather") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Nature") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Human") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Keyboard") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Camera & Photos") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Communication") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Media") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Fitness") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Accessibility") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Time") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Privacy & Security") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Editing") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("People") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Symbols") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Arrows") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Shapes") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Math") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Indices") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
+//                
+//                Section("Text Formatting") {
+//                    SymbolButtonsGrid([
+//                        "",
+//                    ])
+//                }
             }
             .navigationTitle("Choose Symbol")
             .navigationBarTitleDisplayMode(.inline)
