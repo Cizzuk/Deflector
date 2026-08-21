@@ -19,15 +19,15 @@ struct SymbolPicker: View {
     }
     
     func SymbolButtonsGrid(_ names: [String]) -> some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))], alignment: .center) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 44))], alignment: .center) {
             ForEach(names, id: \.self) { name in
                 Button(action: { symbol = name }) {
                     Image(systemName: name)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 28, height: 28)
                         .foregroundStyle(symbol == name ? .accent : .secondary)
-                        .padding(10)
+                        .padding(8)
                         .accessibilityLabel(name)
                 }
                 .buttonStyle(.plain)
@@ -67,7 +67,7 @@ struct SymbolPicker: View {
                 
                 Section("Transportation") {
                     SymbolButtonsGrid([
-                        "car.fill", "bolt.car.fill", "bus.fill", "tram.fill", "bicycle", "motorcycle.fill", "airplane", "sailboat.fill", "fuelpump.fill", "airplane.ticket.fill", "figure.walk", "figure.wave", "scooter", "ferry", "truck.box.fill", "ev.charger.fill"
+                        "car.fill", "bolt.car.fill", "bus.fill", "tram.fill", "bicycle", "motorcycle.fill", "airplane", "sailboat.fill", "fuelpump.fill", "airplane.ticket.fill", "figure.walk", "figure.wave", "scooter", "ferry.fill", "truck.box.fill", "ev.charger.fill"
                     ])
                 }
                 
