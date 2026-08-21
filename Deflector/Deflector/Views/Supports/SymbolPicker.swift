@@ -91,7 +91,7 @@ struct SymbolPicker: View {
                 
                 Section("Gaming") {
                     SymbolButtonsGrid([
-                        "house.fill", "gamecontroller.fill", "plus", "flag.2.crossed.fill", "xmark", "flag.pattern.checkered", "arcade.stick.console.fill", "gearshift.layout.sixspeed", "formfitting.gamecontroller", "dpad.fill"
+                        "house.fill", "gamecontroller.fill", "plus", "flag.2.crossed.fill", "xmark", "flag.pattern.checkered", "arcade.stick.console.fill", "gearshift.layout.sixspeed", "formfitting.gamecontroller.fill", "dpad.fill"
                     ])
                 }
                 
