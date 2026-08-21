@@ -25,6 +25,16 @@
         }
       }
     },
+    "Accessibility" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセシビリティ"
+          }
+        }
+      }
+    },
     "Activity Control" : {
       "localizations" : {
         "ja" : {
@@ -65,12 +75,32 @@
         }
       }
     },
+    "Arrows" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "矢印"
+          }
+        }
+      }
+    },
     "Automation" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "オートメーション"
+          }
+        }
+      }
+    },
+    "Camera & Photos" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラと写真"
           }
         }
       }
@@ -85,16 +115,6 @@
         }
       }
     },
-    "Choose Symbol" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "シンボルを選択"
-          }
-        }
-      }
-    },
     "Cizzuk" : {
       "shouldTranslate" : false
     },
@@ -104,6 +124,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "色"
+          }
+        }
+      }
+    },
+    "Commerce" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コマース"
+          }
+        }
+      }
+    },
+    "Communication" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コミュニケーション"
+          }
+        }
+      }
+    },
+    "Connectivity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コネクティビティ"
           }
         }
       }
@@ -144,6 +194,16 @@
         }
       }
     },
+    "Devices" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス"
+          }
+        }
+      }
+    },
     "Done" : {
       "localizations" : {
         "ja" : {
@@ -160,6 +220,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamic Island"
+          }
+        }
+      }
+    },
+    "Editing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
           }
         }
       }
@@ -214,6 +284,26 @@
         }
       }
     },
+    "Fitness" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィットネス"
+          }
+        }
+      }
+    },
+    "Gaming" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゲーム"
+          }
+        }
+      }
+    },
     "Get Automation Shortcut" : {
       "localizations" : {
         "ja" : {
@@ -224,12 +314,32 @@
         }
       }
     },
-    "Icon" : {
+    "Health" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アイコン"
+            "value" : "ヘルスケア"
+          }
+        }
+      }
+    },
+    "Home" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム"
+          }
+        }
+      }
+    },
+    "Human" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人"
           }
         }
       }
@@ -244,12 +354,32 @@
         }
       }
     },
+    "Indices" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インデックス"
+          }
+        }
+      }
+    },
     "Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本限定。サイドボタンに割り当てられた音声アシスタントを変更できます。ショートカットを使ってお気に入りの音声アシスタントを使用します。"
+          }
+        }
+      }
+    },
+    "Keyboard" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーボード"
           }
         }
       }
@@ -284,8 +414,48 @@
         }
       }
     },
+    "Maps" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップ"
+          }
+        }
+      }
+    },
+    "Math" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数学"
+          }
+        }
+      }
+    },
+    "Media" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディア"
+          }
+        }
+      }
+    },
     "MIT License\n\nCopyright (c) 2026 Cizzuk\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE." : {
       "shouldTranslate" : false
+    },
+    "Nature" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自然"
+          }
+        }
+      }
     },
     "No shortcut is set for the Side Button." : {
       "localizations" : {
@@ -333,6 +503,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通知が許可されていません。初期セットアップを完了してください。"
+          }
+        }
+      }
+    },
+    "Objects" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物"
+          }
+        }
+      }
+    },
+    "Objects & Tools" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オブジェクトとツール"
           }
         }
       }
@@ -407,6 +597,16 @@
         }
       }
     },
+    "Privacy & Security" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーとセキュリティ"
+          }
+        }
+      }
+    },
     "Privacy Policy" : {
       "localizations" : {
         "ja" : {
@@ -433,6 +633,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "セットアップが完了しました！画面を戻り、Deflectorでお好きなショートカットを使いましょう。"
+          }
+        }
+      }
+    },
+    "Shapes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図形"
           }
         }
       }
@@ -537,6 +747,16 @@
         }
       }
     },
+    "Symbol" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル"
+          }
+        }
+      }
+    },
     "Symbol Name" : {
       "localizations" : {
         "ja" : {
@@ -547,12 +767,52 @@
         }
       }
     },
+    "Symbols" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記号"
+          }
+        }
+      }
+    },
+    "Text Formatting" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テキストフォーマット"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時計"
+          }
+        }
+      }
+    },
     "To run shortcuts using Deflector, you need to set up an automation in the Shortcuts app." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deflectorからショートカットを実行するには、ショートカットアプリでオートメーションを設定する必要があります。"
+          }
+        }
+      }
+    },
+    "Transportation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交通"
           }
         }
       }
@@ -617,12 +877,32 @@
         }
       }
     },
+    "Variable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変数"
+          }
+        }
+      }
+    },
     "Version" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天気"
           }
         }
       }
@@ -643,6 +923,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamic Islandやロック画面に、ショートカットを実行するボタンを設定できます。"
+          }
+        }
+      }
+    },
+    "You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[SF Symbols](https://developer.apple.com/jp/sf-symbols/)に収録されているシンボルを利用できます。"
           }
         }
       }
