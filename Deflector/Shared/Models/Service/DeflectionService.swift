@@ -13,7 +13,7 @@ class DeflectionService {
     
     var lastDeflectionTime: Date?
     
-    func sendDeflectionNotification(name: String) async {
+    func sendNotification(name: String) async {
         // Sent within 0.5 seconds will be ignored
         if let lastDeflectionTime {
             let distance = lastDeflectionTime.distance(to: Date())
@@ -30,7 +30,7 @@ class DeflectionService {
         await UserNotificationSupport.sendNotification(content: content)
     }
     
-    func sendDeflectionErrorNotification(reason: LocalizedStringResource? = nil) async {
+    func sendErrorNotification(reason: LocalizedStringResource? = nil) async {
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Deflection failed")
         if let reason {
