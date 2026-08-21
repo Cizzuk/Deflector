@@ -202,12 +202,12 @@ struct SymbolPicker: View {
 //                        "",
 //                    ])
 //                }
-//                
-//                Section("Symbols") {
-//                    SymbolButtonsGrid([
-//                        "",
-//                    ])
-//                }
+                
+                Section("Symbols") {
+                    SymbolButtonsGrid([
+                        "barcode", "qrcode", "square.and.arrow.down.fill", "square.and.arrow.up", "questionmark", "info", "square.grid.2x2.fill", "square.grid.4x3.fill", "point.3.filled.connected.trianglepath.dotted", "peacesign", "airplay.video", "music.note.list", "music.note", "waveform.path", "plus.square.fill.on.square.fill", "qrcode.viewfinder", "text.page.fill", "apple.terminal.fill", "applescript.fill", "building.classical.columns.fill", "finder", "shazam.logo.fill", "apple.intelligence", "suit.spade.fill", "suit.diamond.fill", "suit.club.fill", "sparkle"
+                    ])
+                }
                 
                 Section("Arrows") {
                     SymbolButtonsGrid([
