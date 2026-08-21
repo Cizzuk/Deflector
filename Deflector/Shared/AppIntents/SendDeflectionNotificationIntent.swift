@@ -23,9 +23,9 @@ struct SendDeflectionNotificationIntent: AppIntent {
     @MainActor
     func perform() async throws -> some IntentResult {
         if name.isEmpty {
-            await UserNotificationSupport.sendDeflectionErrorNotification(reason: "Shortcut name is unset")
+            await DeflectionService.shared.sendDeflectionErrorNotification(reason: "Shortcut name is unset")
         } else {
-            await UserNotificationSupport.sendDeflectionNotification(name: name)
+            await DeflectionService.shared.sendDeflectionNotification(name: name)
         }
         
         return .result()
