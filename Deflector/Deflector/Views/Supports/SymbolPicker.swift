@@ -109,7 +109,7 @@ struct SymbolPicker: View {
                 
                 Section("Objects") {
                     SymbolButtonsGrid([
-                        "storefront.fill", "safari.fill",
+                        "storefront.fill", "safari.fill", "star.fill", "star.leadinghalf.filled", "rectangle.grid.2x2.fill", "rectangle.split.2x1.fill", "rectangle.split.3x1.fill", "square.stack.fill", "paint.bucket.classic"
                     ])
                 }
                 
