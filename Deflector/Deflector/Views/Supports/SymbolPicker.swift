@@ -51,6 +51,8 @@ struct SymbolPicker: View {
                     }
                     TextField("Symbol Name", text: $symbol)
                         .submitLabel(.done)
+                } footer: {
+                    Text("You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/).")
                 }
                 
                 Section("Maps") {
@@ -239,7 +241,7 @@ struct SymbolPicker: View {
                     ])
                 }
             }
-            .navigationTitle("Choose Symbol")
+            .navigationTitle("Symbol")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
             .toolbar {

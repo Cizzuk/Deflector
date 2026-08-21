@@ -31,9 +31,9 @@ struct LiveActivitySettingsView: View {
                     }) {
                         Group {
                             if UIImage(systemName: button.iconName) != nil {
-                                Label("Icon", systemImage: button.iconName)
+                                Label("Symbol", systemImage: button.iconName)
                             } else {
-                                Label("Icon", systemImage: "questionmark.square.dashed")
+                                Label("Symbol", systemImage: "questionmark.square.dashed")
                             }
                         }
                         .labelStyle(.iconOnly)
