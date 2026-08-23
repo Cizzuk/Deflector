@@ -79,7 +79,15 @@ struct LiveActivitySettingsView: View {
             } header: {
                 Text("Activity Control")
             } footer: {
-                Text("Live Activity is active for only 8 hours. To display a Live Activity persistently, create an automation in the Shortcuts to start the activity every 8 hours.")
+                VStack(alignment: .leading) {
+                    Text("The activity will be ended by the system in 8 hours. To make it persistent, please use an automation that restarts the activity automatically.")
+                    if let url =  URL(string: "https://cizz.uk/deflector/infactivity") {
+                        Link(destination: url) {
+                            Text("Get the Automation to Persist the Activity...")
+                                .font(.footnote)
+                        }
+                    }
+                }
             }
             
             Section {
