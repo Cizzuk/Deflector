@@ -47,12 +47,10 @@ class DeflectorActivitySupport {
         )
         
         // Prepared a system call for automatic restart
-        if UserSettings.shared.liveActivityAutoRestart {
-            Task {
-                await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.5 * 60 * 60, repeats: false)
-                await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: trigger)
-            }
+        Task {
+            await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.5 * 60 * 60, repeats: false)
+            await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: trigger)
         }
     }
     
@@ -91,7 +89,7 @@ class DeflectorActivitySupport {
     
     // If activity is active, restart it to extend the time
     static func refresh() throws {
-        if UserSettings.shared.liveActivityAutoRestart && isActive() {
+        if isActive() {
             try start()
         }
     }

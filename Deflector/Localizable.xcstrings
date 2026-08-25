@@ -88,16 +88,6 @@
         }
       }
     },
-    "Auto Activity Persistence" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティビティの自動永続化"
-          }
-        }
-      }
-    },
     "Automation" : {
       "localizations" : {
         "ja" : {
@@ -789,16 +779,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "テキストフォーマット"
-          }
-        }
-      }
-    },
-    "The activity will be ended by the system in 8 hours. Turn on this setting to attempt automatic activity persistence." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティビティは8時間後にシステムによって終了されます。アクティビティの自動永続化を試みるには、この設定をオンにします。"
           }
         }
       }
