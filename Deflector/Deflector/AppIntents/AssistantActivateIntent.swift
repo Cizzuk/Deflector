@@ -6,7 +6,6 @@
 //
 
 import AppIntents
-import UserNotifications
 
 @AppIntent(schema: .assistant.activate)
 struct AssistantActivateIntent: AppIntent {

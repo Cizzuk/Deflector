@@ -75,6 +75,9 @@
         }
       }
     },
+    "Argument" : {
+      "shouldTranslate" : false
+    },
     "Arrows" : {
       "localizations" : {
         "ja" : {
@@ -776,6 +779,12 @@
           }
         }
       }
+    },
+    "System Automation Detect Intent" : {
+      "shouldTranslate" : false
+    },
+    "System Call Intent" : {
+      "shouldTranslate" : false
     },
     "Text Formatting" : {
       "localizations" : {
