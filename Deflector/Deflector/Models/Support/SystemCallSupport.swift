@@ -28,13 +28,30 @@ class SystemCallSupport {
         }
     }
     
-    static func sendSystemCall(_ argument: SystemCallArgs) async {
+    static func addSystemCall(_ argument: SystemCallArgs, trigger: UNNotificationTrigger) async {
         let content = UNMutableNotificationContent()
         content.title = "System Call"
         content.body = argument.rawValue
         content.sound = .none
         content.interruptionLevel = .timeSensitive
         
-        await UserNotificationSupport.sendNotification(content: content)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        do {
+            try await UNUserNotificationCenter.current().add(request)
+        } catch {
+            print("Failed to add notification request: \(error)")
+        }
+    }
+    
+    static func cancelSystemCalls(_ argument: SystemCallArgs) async {
+        let notificationCenter = UNUserNotificationCenter.current()
+        let pendingRequests = await notificationCenter.pendingNotificationRequests()
+        
+        for request in pendingRequests {
+            if request.content.categoryIdentifier == "System Call" && request.content.body == argument.rawValue {
+                notificationCenter.removePendingNotificationRequests(withIdentifiers: [request.identifier])
+            }
+        }
     }
 }

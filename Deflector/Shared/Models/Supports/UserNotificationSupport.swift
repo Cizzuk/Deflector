@@ -44,18 +44,4 @@ class UserNotificationSupport {
 
         return false
     }
-    
-    static func sendNotification(content: UNMutableNotificationContent) async {
-        content.sound = .none
-        content.interruptionLevel = .timeSensitive
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-        
-        let notificationCenter = UNUserNotificationCenter.current()
-        do {
-            try await notificationCenter.add(request)
-        } catch {
-            print("Failed to add notification request: \(error)")
-        }
-    }
 }
