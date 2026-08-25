@@ -14,15 +14,15 @@ extension Notification.Name {
 class SystemCallSupport {
     enum SystemCallArgs: String {
         case pingTest = "Ping Test"
-        case startDeflectorActivity = "Start Deflector Activity"
+        case refreshDeflectorActivity = "Refresh Deflector Activity"
     }
     
     static func handleSystemCall(_ argument: String) {
         switch SystemCallArgs(rawValue: argument) {
         case .pingTest:
             NotificationCenter.default.post(name: .pingTestReceived, object: nil)
-        case .startDeflectorActivity:
-            try? DeflectorActivitySupport.start()
+        case .refreshDeflectorActivity:
+            try? DeflectorActivitySupport.refresh()
         default:
             break
         }
@@ -49,7 +49,7 @@ class SystemCallSupport {
         let pendingRequests = await notificationCenter.pendingNotificationRequests()
         
         for request in pendingRequests {
-            if request.content.categoryIdentifier == "System Call" && request.content.body == argument.rawValue {
+            if request.content.title == "System Call" && request.content.body == argument.rawValue {
                 notificationCenter.removePendingNotificationRequests(withIdentifiers: [request.identifier])
             }
         }

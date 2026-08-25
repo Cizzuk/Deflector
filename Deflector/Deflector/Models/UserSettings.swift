@@ -19,6 +19,7 @@ final class UserSettings: ObservableObject {
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
+        static let liveActivityAutoRestart = "liveActivityAutoRestart"
     }
     
     @Published var sideButtonShortcutName: String = {
@@ -92,6 +93,17 @@ final class UserSettings: ObservableObject {
         didSet {
             UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
             DeflectorActivitySupport.update()
+        }
+    }
+    
+    @Published var liveActivityAutoRestart: Bool = {
+        if UserDefaults.standard.object(forKey: Keys.liveActivityAutoRestart) == nil {
+            return true
+        }
+        return UserDefaults.standard.bool(forKey: Keys.liveActivityAutoRestart)
+    }() {
+        didSet {
+            UserDefaults.standard.set(liveActivityAutoRestart, forKey: Keys.liveActivityAutoRestart)
         }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import ActivityKit
-import Foundation
+import UserNotifications
 
 class DeflectorActivitySupport {
     static func isActive() -> Bool {
@@ -45,6 +45,15 @@ class DeflectorActivitySupport {
             content: content,
             pushType: nil
         )
+        
+        // Prepared a system call for automatic restart
+        if UserSettings.shared.liveActivityAutoRestart {
+            Task {
+                await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.5 * 60 * 60, repeats: false)
+                await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: trigger)
+            }
+        }
     }
     
     static func update() {
@@ -73,5 +82,17 @@ class DeflectorActivitySupport {
             semaphore.signal()
         }
         semaphore.wait()
+        
+        // Remove the system call for automatic restart
+        Task {
+            await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+        }
+    }
+    
+    // If activity is active, restart it to extend the time
+    static func refresh() throws {
+        if UserSettings.shared.liveActivityAutoRestart && isActive() {
+            try start()
+        }
     }
 }

@@ -88,6 +88,16 @@
         }
       }
     },
+    "Auto Activity Persistence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティビティの自動永続化"
+          }
+        }
+      }
+    },
     "Automation" : {
       "localizations" : {
         "ja" : {
@@ -160,9 +170,6 @@
           }
         }
       }
-    },
-    "Deflection" : {
-      "shouldTranslate" : false
     },
     "Deflection failed" : {
       "localizations" : {
@@ -313,16 +320,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "オートメーション用のショートカットを入手"
-          }
-        }
-      }
-    },
-    "Get the Automation to Persist the Activity..." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティビティ永続化用のオートメーションを入手…"
           }
         }
       }
@@ -796,12 +793,12 @@
         }
       }
     },
-    "The activity will be ended by the system in 8 hours. To make it persistent, please use an automation that restarts the activity automatically." : {
+    "The activity will be ended by the system in 8 hours. Turn on this setting to attempt automatic activity persistence." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アクティビティは8時間後にシステムによって終了されます。永続化するには、アクティビティを自動で開始するオートメーションを使用してください。"
+            "value" : "アクティビティは8時間後にシステムによって終了されます。アクティビティの自動永続化を試みるには、この設定をオンにします。"
           }
         }
       }

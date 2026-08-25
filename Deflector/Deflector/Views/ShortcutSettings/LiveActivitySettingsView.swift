@@ -78,16 +78,6 @@ struct LiveActivitySettingsView: View {
                 }
             } header: {
                 Text("Activity Control")
-            } footer: {
-                VStack(alignment: .leading) {
-                    Text("The activity will be ended by the system in 8 hours. To make it persistent, please use an automation that restarts the activity automatically.")
-                    if let url =  URL(string: "https://cizz.uk/deflector/infactivity") {
-                        Link(destination: url) {
-                            Text("Get the Automation to Persist the Activity...")
-                                .font(.footnote)
-                        }
-                    }
-                }
             }
             
             Section {
@@ -115,6 +105,11 @@ struct LiveActivitySettingsView: View {
                 Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
                     Text("Show Shortcut Names")
                 }
+                Toggle(isOn: $userSettings.liveActivityAutoRestart) {
+                    Text("Auto Activity Persistence")
+                }
+            } footer: {
+                Text("The activity will be ended by the system in 8 hours. Turn on this setting to attempt automatic activity persistence.")
             }
         }
         .animation(.default, value: vm.isLiveActivityActive)
