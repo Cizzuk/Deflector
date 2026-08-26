@@ -10,7 +10,7 @@ import UserNotifications
 
 struct SystemAutomationDetectIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "System Automation Detect Intent"
-    static let isDiscoverable = true
+    static let isDiscoverable = false
     static var supportedModes: IntentModes = .background
     
     @Parameter(title: "Version")

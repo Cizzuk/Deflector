@@ -9,7 +9,7 @@ import AppIntents
 
 struct SystemShortcutPickerIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "System Shortcut Picker Intent"
-    static let isDiscoverable = true
+    static let isDiscoverable = false
     static var supportedModes: IntentModes = .background
     
     @Parameter(title: "Shortcut Name")
