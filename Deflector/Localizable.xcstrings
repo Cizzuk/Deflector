@@ -873,6 +873,16 @@
         }
       }
     },
+    "Set 'Use Different Shortcuts on Dynamic Island'" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を設定"
+          }
+        }
+      }
+    },
     "Set Side Button Shortcut" : {
       "localizations" : {
         "ja" : {
@@ -1118,16 +1128,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "交通"
-          }
-        }
-      }
-    },
-    "Turn 'Use Different Shortcuts on Dynamic Island'" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「Dynamic Islandで異なるショートカットを使用する」を設定"
           }
         }
       }
