@@ -21,35 +21,9 @@ class DeflectionService {
         }
         lastDeflectionTime = Date()
         
-        await addUserNotification(
-            title: "Deflection",
-            body: name
-        )
-    }
-    
-    func sendErrorNotification(reason: LocalizedStringResource? = nil) async {
-        let title = String(localized: "Deflection failed")
-        
-        let body: String?
-        if let reason {
-            body = String(localized: reason)
-        } else {
-            body = nil
-        }
-        
-        await addUserNotification(
-            title: title,
-            body: body
-        )
-    }
-    
-    private func addUserNotification(
-        title: String,
-        body: String? = nil
-    ) async {
         let content = UNMutableNotificationContent()
-        content.title = title
-        if let body { content.body = body }
+        content.title = "Deflection"
+        content.body = name
         content.sound = .none
         content.interruptionLevel = .timeSensitive
         
@@ -60,5 +34,21 @@ class DeflectionService {
         } catch {
             print("Failed to add notification request: \(error)")
         }
+    }
+    
+    func sendErrorNotification(reason: LocalizedStringResource? = nil) async {
+        let subtitle = String(localized: "Deflection failed")
+        
+        let body: String?
+        if let reason {
+            body = String(localized: reason)
+        } else {
+            body = nil
+        }
+        
+        await UserNotificationSupport.addNotificationToDisplay(
+            subtitle: subtitle,
+            body: body
+        )
     }
 }

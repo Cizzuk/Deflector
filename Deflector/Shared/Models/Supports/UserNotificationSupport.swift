@@ -44,4 +44,26 @@ class UserNotificationSupport {
 
         return false
     }
+    
+    static func addNotificationToDisplay(
+        subtitle: String? = nil,
+        body: String? = nil,
+        trigger: UNNotificationTrigger? = nil
+    ) async {
+        let content = UNMutableNotificationContent()
+        content.title = "Notification"
+        content.sound = .none
+        content.interruptionLevel = .timeSensitive
+        
+        if let subtitle { content.subtitle = subtitle }
+        if let body { content.body = body }
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        do {
+            try await UNUserNotificationCenter.current().add(request)
+        } catch {
+            print("Failed to add notification request: \(error)")
+        }
+    }
 }
