@@ -15,6 +15,16 @@
       },
       "shouldTranslate" : false
     },
+    "${control} Deflector Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorのライブアクティビティを${control}"
+          }
+        }
+      }
+    },
     "About" : {
       "localizations" : {
         "ja" : {
@@ -214,6 +224,26 @@
         }
       }
     },
+    "Control" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コントロール"
+          }
+        }
+      }
+    },
+    "Control Deflector Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorのライブアクティビティをコントロール"
+          }
+        }
+      }
+    },
     "Deflection failed" : {
       "localizations" : {
         "ja" : {
@@ -290,22 +320,22 @@
         }
       }
     },
+    "End" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
+          }
+        }
+      }
+    },
     "End Activity" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アクティビティを終了"
-          }
-        }
-      }
-    },
-    "End Deflector Live Activity" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deflectorのライブアクティビティを終了"
           }
         }
       }
@@ -973,22 +1003,22 @@
         }
       }
     },
+    "Start" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始"
+          }
+        }
+      }
+    },
     "Start Activity" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アクティビティを開始"
-          }
-        }
-      }
-    },
-    "Start Deflector Live Activity" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deflectorのライブアクティビティを開始"
           }
         }
       }
@@ -1068,6 +1098,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deflectorからショートカットを実行するには、ショートカットアプリでオートメーションを設定する必要があります。"
+          }
+        }
+      }
+    },
+    "Toggle" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切り替える"
           }
         }
       }
