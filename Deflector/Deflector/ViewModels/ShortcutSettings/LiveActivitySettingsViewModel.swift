@@ -39,7 +39,9 @@ class LiveActivitySettingsViewModel: ObservableObject {
         do {
             try DeflectorActivitySupport.start()
             isLiveActivityActive = true
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
         } catch let error as ActivityAuthorizationError {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             switch error {
             case .attributesTooLarge:
                 errorMessage = "Unable to start the activity because the data of the shortcuts are too large."
@@ -60,5 +62,6 @@ class LiveActivitySettingsViewModel: ObservableObject {
     func endLiveActivity() {
         DeflectorActivitySupport.endAll()
         isLiveActivityActive = false
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
 }
