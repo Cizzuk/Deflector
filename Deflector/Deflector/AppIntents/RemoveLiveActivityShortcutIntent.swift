@@ -1,5 +1,5 @@
 //
-//  RemoveLiveActivityShortcut.swift
+//  RemoveLiveActivityShortcutIntent.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/26.
@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct RemoveLiveActivityShortcut: LiveActivityIntent {
+struct RemoveLiveActivityShortcutIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Remove Shortcut from Live Activity"
     static let description: LocalizedStringResource = "Removes all shortcuts from Live Activity with matching names."
     static let isDiscoverable = true

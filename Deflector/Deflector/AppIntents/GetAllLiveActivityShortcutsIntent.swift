@@ -1,5 +1,5 @@
 //
-//  GetAllLiveActivityShortcuts.swift
+//  GetAllLiveActivityShortcutsIntent.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/26.
@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct GetAllLiveActivityShortcuts: LiveActivityIntent {
+struct GetAllLiveActivityShortcutsIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Get All Live Activity Shortcuts"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background

@@ -1,5 +1,5 @@
 //
-//  AddLiveActivityShortcut.swift
+//  AddLiveActivityShortcutIntent.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/26.
@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct AddLiveActivityShortcut: LiveActivityIntent {
+struct AddLiveActivityShortcutIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Add Shortcut to Live Activity"
     static let description: LocalizedStringResource = "Adds a shortcut to Live Activity. Adding 5 or more may cause display issues."
     static let isDiscoverable = true

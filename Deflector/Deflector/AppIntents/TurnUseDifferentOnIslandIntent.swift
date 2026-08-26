@@ -1,5 +1,5 @@
 //
-//  TurnUseDifferentOnIsland.swift
+//  TurnUseDifferentOnIslandIntent.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/26.
@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct TurnUseDifferentOnIsland: LiveActivityIntent {
+struct TurnUseDifferentOnIslandIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Turn 'Use Different Shortcuts on Dynamic Island'"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background

@@ -1,5 +1,5 @@
 //
-//  GetSideButtonShortcut.swift
+//  GetSideButtonShortcutIntent.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/26.
@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct GetSideButtonShortcut: LiveActivityIntent {
+struct GetSideButtonShortcutIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Get Side Button Shortcut Name"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
