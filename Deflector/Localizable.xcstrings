@@ -190,12 +190,12 @@
     "Deflector Automation" : {
       "shouldTranslate" : false
     },
-    "Deflector uses Notifications and Automation to run your favorite Shortcuts from Deflector. To do this, you first need to complete a few setup steps." : {
+    "Deflector uses notifications and automation to run your favorite shortcuts from Live Activity and Side Button. To do this, you first need to complete a few setup steps." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deflectorは通知とオートメーションを使用して、ショートカットを実行します。 そのため、最初にいくつかのセットアップを行う必要があります。"
+            "value" : "Deflectorでは、ライブアクティビティやサイドボタンからショートカットを実行するために、通知とオートメーションを使用します。 そのため、最初にいくつかのセットアップを行う必要があります。"
           }
         }
       }
@@ -326,6 +326,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deflector Automationを入手"
+          }
+        }
+      }
+    },
+    "Go to Deflector Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorの設定へ"
           }
         }
       }
