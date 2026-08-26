@@ -31,6 +31,7 @@ struct ShortcutPicker: View {
     private func callShortcutPicker() async {
         let settings = await UserNotificationSupport.notificationSettings()
         if !UserNotificationSupport.isAlertAvailable(settings: settings) {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             errorMessage = "Cannot display the shortcut list because notifications are disabled. Please complete the first setup."
             return
         }
