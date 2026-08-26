@@ -16,8 +16,6 @@ struct FirstSetupView: View {
         List {
             Section {
                 Text("Deflector uses notifications and automation to run your favorite shortcuts from Live Activity and Side Button. To do this, you first need to complete a few setup steps.")
-            } header: {
-                Label("Welcome!", systemImage: "suit.diamond")
             }
             
             // MARK: - Notifications
@@ -98,7 +96,7 @@ struct FirstSetupView: View {
         .onReceive(NotificationCenter.default.publisher(for: .pingTestReceived)) { _ in
             vm.handlePingTestReceived()
         }
-        .navigationTitle("First Setup")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Welcome!")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
