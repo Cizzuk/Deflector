@@ -19,12 +19,12 @@ struct AssistantActivateIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
-        let name = UserSettings.shared.sideButtonShortcutName
+        let shortcutName = UserSettings.shared.sideButtonShortcutName
         
-        if name.isEmpty {
+        if shortcutName.isEmpty {
             await DeflectionService.shared.sendErrorNotification(reason: "No shortcut is set for the Side Button.")
         } else {
-            await DeflectionService.shared.runShortcut(shortcutName: name)
+            await DeflectionService.shared.runShortcut(shortcutName: shortcutName)
         }
         
         return .result()

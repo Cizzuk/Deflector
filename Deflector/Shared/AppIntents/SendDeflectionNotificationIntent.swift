@@ -13,19 +13,19 @@ struct SendDeflectionNotificationIntent: AppIntent {
     static var supportedModes: IntentModes = .background
     
     @Parameter(title: "Shortcut Name")
-    var name: String
+    var shortcutName: String
     
     init() {}
-    init(name: String) {
-        self.name = name
+    init(shortcutName: String) {
+        self.shortcutName = shortcutName
     }
     
     @MainActor
     func perform() async throws -> some IntentResult {
-        if name.isEmpty {
+        if shortcutName.isEmpty {
             await DeflectionService.shared.sendErrorNotification(reason: "Shortcut name is unset")
         } else {
-            await DeflectionService.shared.runShortcut(shortcutName: name)
+            await DeflectionService.shared.runShortcut(shortcutName: shortcutName)
         }
         
         return .result()

@@ -22,7 +22,7 @@ struct DeflectorActivityWidget: Widget {
             LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                 ForEach(buttons) { button in
                     let color = ColorHelper.uInt32ToColor(button.color)
-                    Button(intent: SendDeflectionNotificationIntent(name: button.shortcutName)) {
+                    Button(intent: SendDeflectionNotificationIntent(shortcutName: button.shortcutName)) {
                         VStack(spacing: 2) {
                             Label(button.shortcutName, systemImage: button.iconName)
                                 .labelStyle(.iconOnly)
