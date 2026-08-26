@@ -18,8 +18,13 @@ import SwiftUI
 }
 
 struct MianView: View {
-    @StateObject private var userSettings = UserSettings.shared
-    @State private var path: [Route] = []
+    @State private var path: [Route] = {
+        if UserSettings.shared.isFirstSetupCompleted {
+            return []
+        } else {
+            return [.firstSetup]
+        }
+    }()
     
     enum Route: Hashable {
         case firstSetup

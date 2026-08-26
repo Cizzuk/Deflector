@@ -13,12 +13,21 @@ final class UserSettings: ObservableObject {
     private init() { }
 
     private enum Keys {
+        static let isFirstSetupCompleted = "isFirstSetupCompleted"
         static let sideButtonShortcutName = "sideButtonShortcutName"
         static let liveActivityButtons = "liveActivityButtons"
         static let liveActivityIslandButtons = "liveActivityIslandButtons"
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
+    }
+    
+    @Published var isFirstSetupCompleted: Bool = {
+        return UserDefaults.standard.bool(forKey: Keys.isFirstSetupCompleted)
+    }() {
+        didSet {
+            UserDefaults.standard.set(isFirstSetupCompleted, forKey: Keys.isFirstSetupCompleted)
+        }
     }
     
     @Published var sideButtonShortcutName: String = {

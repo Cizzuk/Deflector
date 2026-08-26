@@ -56,6 +56,7 @@ class FirstSetupViewModel: ObservableObject {
         case .authorized:
             notificationStatusText = "Notifications are allowed."
             showRequestUNAuthorizationButton = false
+            UserSettings.shared.isFirstSetupCompleted = true
         case .notDetermined:
             notificationStatusText = ""
             showRequestUNAuthorizationButton = true
