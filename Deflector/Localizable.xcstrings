@@ -357,6 +357,16 @@
         }
       }
     },
+    "If shortcuts or automations are not working properly, restarting your device may resolve the issue." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットやオートメーションがうまく動作しないときは、デバイスを再起動すると改善することがあります。"
+          }
+        }
+      }
+    },
     "Indices" : {
       "localizations" : {
         "ja" : {

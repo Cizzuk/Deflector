@@ -119,6 +119,7 @@ struct FirstSetupView: View {
             Section {
                 Text("Setup is complete! You can now assign and run your favorite shortcuts for Live Activities or Side Button.")
                 Text("If it doesn't work properly, please return to this setup and try again.")
+                Text("If shortcuts or automations are not working properly, restarting your device may resolve the issue.")
             } header: {
                 Label("All Done!", systemImage: "checkmark")
             }
