@@ -22,7 +22,7 @@ struct FirstSetupView: View {
             // MARK: - Notifications
             
             Section {
-                Text("Please allow notifications. After that, I recommend changing the settings to show Alerts only in the Notification Center.")
+                Text("Please allow notifications to run the automation. Next, change the alert settings to Notification Center only.")
                 
                 if vm.showRequestUNAuthorizationButton {
                     Button(action: { Task { await vm.requestUNAuthorization() } }) {
@@ -43,7 +43,7 @@ struct FirstSetupView: View {
             // MARK: - Deflector Automation
             
             Section {
-                Text("Please download \"Deflector Automation\", the automation required to run Deflector. Then, edit the shortcut to enable the notification automation.")
+                Text("Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation.")
                 
                 if let url =  URL(string: "https://cizz.uk/deflector/automation") {
                     Link(destination: url) {

@@ -593,17 +593,17 @@
         }
       }
     },
-    "Please allow notifications. After that, I recommend changing the settings to show Alerts only in the Notification Center." : {
+    "Please allow notifications to run the automation. Next, change the alert settings to Notification Center only." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通知を許可してください。その後、通知センターでのみアラートを表示するように、設定を変更することをお勧めします。"
+            "value" : "オートメーションを実行するために、通知を許可してください。次にアラートの設定を通知センターのみに変更してください。"
           }
         }
       }
     },
-    "Please download \"Deflector Automation\", the automation required to run Deflector. Then, edit the shortcut to enable the notification automation." : {
+    "Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
