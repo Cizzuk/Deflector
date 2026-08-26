@@ -27,6 +27,11 @@ struct ShortcutPicker: View {
         self.callback = callback
     }
     
+    private func close() {
+        callback(shortcutName)
+        dismiss()
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -71,12 +76,10 @@ struct ShortcutPicker: View {
             .navigationTitle("Shortcut")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
+            .accessibilityAction(.escape) { close() }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        callback(shortcutName)
-                        dismiss()
-                    }) {
+                    Button(action: { close() }) {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)

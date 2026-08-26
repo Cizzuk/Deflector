@@ -18,7 +18,7 @@ struct SymbolPicker: View {
         self.callback = callback
     }
     
-    func SymbolButtonsGrid(_ names: [String]) -> some View {
+    private func SymbolButtonsGrid(_ names: [String]) -> some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 44))], alignment: .center) {
             ForEach(names, id: \.self) { name in
                 Button(action: { symbol = name }) {
@@ -33,6 +33,11 @@ struct SymbolPicker: View {
                 .buttonStyle(.plain)
             }
         }
+    }
+    
+    private func close() {
+        callback(symbol)
+        dismiss()
     }
     
     var body: some View {
@@ -244,12 +249,10 @@ struct SymbolPicker: View {
             .navigationTitle("Symbol")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
+            .accessibilityAction(.escape) { close() }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        callback(symbol)
-                        dismiss()
-                    }) {
+                    Button(action: { close() }) {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)
