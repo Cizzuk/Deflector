@@ -63,7 +63,7 @@ struct ShortcutPicker: View {
                     }
                 }
             }
-            .onAppear() { isFocused = true }
+            .onAppear { isFocused = true }
             .onReceive(NotificationCenter.default.publisher(for: .shortcutWasPicked)) { notification in
                 if isWaitingAutomationCallback,
                    let userInfo = notification.userInfo,
