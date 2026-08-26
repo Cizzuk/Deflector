@@ -11,8 +11,8 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             MianView()
-                .scrollDismissesKeyboard(.interactively)
                 .tint(.accent)
+                .scrollDismissesKeyboard(.interactively)
         }
     }
 }
