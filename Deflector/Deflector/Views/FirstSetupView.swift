@@ -9,28 +9,7 @@ import SwiftUI
 
 struct FirstSetupView: View {
     @Environment(\.scenePhase) private var scenePhase
-    
-    @State private var unAuthorizationStatus: UNAuthorizationStatus?
-    @State private var deflectorAutomationTest: DeflectorAutomationTestResult = .notTested
-    
-    enum DeflectorAutomationTestResult {
-        case notTested
-        case testing
-        case success
-    }
-    
-    private func requestUNAuthorization() {
-        Task {
-            _ = await UserNotificationSupport.requestAuthorization()
-            unAuthorizationStatus = await UserNotificationSupport.authorizationStatus()
-        }
-    }
-    
-    private func updateUNAuthorizationStatus() {
-        Task {
-            unAuthorizationStatus = await UserNotificationSupport.authorizationStatus()
-        }
-    }
+    @StateObject private var vm = FirstSetupViewModel()
     
     var body: some View {
         List {
@@ -45,8 +24,8 @@ struct FirstSetupView: View {
             Section {
                 Text("Please allow notifications. After that, I recommend changing the settings to show Alerts only in the Notification Center.")
                 
-                if unAuthorizationStatus == .notDetermined {
-                    Button(action: { requestUNAuthorization() }) {
+                if vm.showRequestUNAuthorizationButton {
+                    Button(action: { Task { await vm.requestUNAuthorization() } }) {
                         Label("Allow Notifications", systemImage: "bell")
                     }
                 }
@@ -57,14 +36,8 @@ struct FirstSetupView: View {
             } header: {
                 Label("Notifications", systemImage: "bell")
             } footer: {
-                Group {
-                    switch unAuthorizationStatus {
-                    case .authorized: Text("Notifications are allowed.")
-                    case .notDetermined: EmptyView()
-                    default: Text("Notifications are denied. Please allow notifications in Settings.")
-                    }
-                }
-                .padding(.bottom, 10)
+                Text(vm.notificationStatusText)
+                    .padding(.bottom, 10)
             }
             
             // MARK: - Deflector Automation
@@ -74,7 +47,7 @@ struct FirstSetupView: View {
                 
                 if let url =  URL(string: "https://cizz.uk/deflector/automation") {
                     Link(destination: url) {
-                        Label("Get Deflector Automation", systemImage: "arrow.down")
+                        Label("Get Deflector Automation", systemImage: "square.and.arrow.down")
                     }
                 }
                 
@@ -84,34 +57,24 @@ struct FirstSetupView: View {
                     }
                 }
                 
-                Button(action: {
-                    deflectorAutomationTest = .testing
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    Task { await SystemCallSupport.addSystemCall(.pingTest) }
-                }) {
+                Button(action: { vm.startDeflectorAutomationTest() }) {
                     Label {
                         Text("Run Automation Test")
                     } icon: {
-                        switch deflectorAutomationTest {
+                        switch vm.deflectorAutomationTestStatus {
                         case .notTested: Image(systemName: "play")
                         case .testing: ProgressView().progressViewStyle(.circular)
-                        case .success: Image(systemName: "checkmark.seal")
+                        case .success: Image(systemName: "checkmark.circle")
                         }
                     }
                 }
                 .foregroundStyle(.accent)
-                .disabled(deflectorAutomationTest != .notTested)
+                .disabled(!vm.deflectorAutomationTestButtonIsActive)
             } header: {
                 Label("Deflector Automation", systemImage: "square.2.layers.3d")
             } footer: {
-                Group {
-                    switch deflectorAutomationTest {
-                    case .notTested: Text("Not tested yet.")
-                    case .testing: Text("Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly.")
-                    case .success: Text("Test successful! It may be working correctly.")
-                    }
-                }
-                .padding(.bottom, 10)
+                Text(vm.deflectorAutomationTestText)
+                    .padding(.bottom, 10)
             }
             
             // MARK: - All Done!
@@ -124,18 +87,9 @@ struct FirstSetupView: View {
                 Label("All Done!", systemImage: "checkmark")
             }
         }
-        .onAppear { updateUNAuthorizationStatus() }
-        .onChange(of: scenePhase) {
-            if scenePhase == .active {
-                updateUNAuthorizationStatus()
-                deflectorAutomationTest = .notTested
-            }
-        }
+        .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
         .onReceive(NotificationCenter.default.publisher(for: .pingTestReceived)) { _ in
-            if deflectorAutomationTest == .testing {
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                deflectorAutomationTest = .success
-            }
+            vm.handlePingTestReceived()
         }
         .navigationTitle("First Setup")
         .navigationBarTitleDisplayMode(.inline)
