@@ -31,7 +31,8 @@ class LiveActivitySettingsViewModel: ObservableObject {
     // MARK: - Live Activity Management
     
     func startLiveActivity() async {
-        if await UserNotificationSupport.notificationSettings().authorizationStatus != .authorized {
+        let settings = await UserNotificationSupport.notificationSettings()
+        if UserNotificationSupport.isAlertAvailable(settings: settings) {
             errorMessage = "Notifications are not allowed. Please complete the first setup."
             return
         }

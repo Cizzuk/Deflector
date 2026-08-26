@@ -16,6 +16,7 @@ struct ShortcutPicker: View {
     
     @FocusState private var isFocused: Bool
     @State private var isWaitingAutomationCallback: Bool = false
+    @State private var errorMessage: LocalizedStringResource?
     
     init(
         _ shortcutName: String,
@@ -25,6 +26,28 @@ struct ShortcutPicker: View {
         self.shortcutName = shortcutName
         self.prompt = prompt
         self.callback = callback
+    }
+    
+    private func callShortcutPicker() async {
+        let settings = await UserNotificationSupport.notificationSettings()
+        if !UserNotificationSupport.isAlertAvailable(settings: settings) {
+            errorMessage = "Cannot display the shortcut list because notifications are disabled. Please complete the first setup."
+            return
+        }
+        
+        isWaitingAutomationCallback = true
+        UIImpactFeedbackGenerator().impactOccurred()
+        await ShortcutPickerSupport.callShortcutPicker(prompt: prompt)
+    }
+    
+    private func handleShortcutPickNotification(_ notification: Notification) {
+        if isWaitingAutomationCallback,
+           let userInfo = notification.userInfo,
+           let pickedShortcutName = userInfo["shortcutName"] as? String {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            shortcutName = pickedShortcutName
+            isWaitingAutomationCallback = false
+        }
     }
     
     private func close() {
@@ -48,11 +71,7 @@ struct ShortcutPicker: View {
                 }
                 
                 Section {
-                    Button(action: {
-                        isWaitingAutomationCallback = true
-                        UIImpactFeedbackGenerator().impactOccurred()
-                        Task { await ShortcutPickerSupport.callShortcutPicker(prompt: prompt) }
-                    }) {
+                    Button(action: { Task { await callShortcutPicker() } }) {
                         Label("Choose from the list of shortcuts", systemImage: "square.2.layers.3d")
                     }
                 } footer: {
@@ -65,13 +84,7 @@ struct ShortcutPicker: View {
             }
             .onAppear { isFocused = true }
             .onReceive(NotificationCenter.default.publisher(for: .shortcutWasPicked)) { notification in
-                if isWaitingAutomationCallback,
-                   let userInfo = notification.userInfo,
-                   let pickedShortcutName = userInfo["shortcutName"] as? String {
-                    UINotificationFeedbackGenerator().notificationOccurred(.success)
-                    shortcutName = pickedShortcutName
-                    isWaitingAutomationCallback = false
-                }
+                handleShortcutPickNotification(notification)
             }
             .navigationTitle("Shortcut")
             .navigationBarTitleDisplayMode(.inline)
@@ -84,6 +97,11 @@ struct ShortcutPicker: View {
                     }
                     .buttonStyle(.glassProminent)
                 }
+            }
+            .alert("Error", isPresented: .constant(errorMessage != nil)) {
+                Button("OK", role: .close) { errorMessage = nil }
+            } message: {
+                Text(errorMessage ?? "")
             }
         }
     }

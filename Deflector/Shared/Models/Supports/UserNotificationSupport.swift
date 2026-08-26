@@ -14,14 +14,18 @@ class UserNotificationSupport {
         return settings
     }
     
-    static func isAvailable() async -> Bool {
-        let authorizationStatus = await notificationSettings().authorizationStatus
+    static func isAlertAvailable(settings: UNNotificationSettings?) -> Bool {
+        guard let settings else { return false }
         
-        if authorizationStatus == .notDetermined || authorizationStatus == .authorized {
-            return true
+        if settings.authorizationStatus != .authorized {
+            return false
         }
         
-        return false
+        if settings.alertSetting != .enabled && settings.lockScreenSetting != .enabled && settings.notificationCenterSetting != .enabled {
+            return false
+        }
+        
+        return true
     }
     
     static func requestAuthorization() async -> Bool {

@@ -14,7 +14,7 @@ class FirstSetupViewModel: ObservableObject {
     private var unNotificationSettings: UNNotificationSettings?
     
     @Published var deflectorAutomationTestText: LocalizedStringResource = "Not tested yet."
-    @Published var deflectorAutomationTestButtonIsActive: Bool = true
+    @Published var deflectorAutomationTestButtonIsActive: Bool = false
     @Published var deflectorAutomationTestStatus: DeflectorAutomationTestStatus = .notTested
     
     enum DeflectorAutomationTestStatus {
@@ -24,7 +24,10 @@ class FirstSetupViewModel: ObservableObject {
     }
     
     init() {
-        Task { await updateUNAuthorizationStatus() }
+        Task {
+            await updateUNAuthorizationStatus()
+            resetDeflectorAutomationTest()
+        }
     }
     
     // MARK: - Lifecycle
@@ -32,8 +35,10 @@ class FirstSetupViewModel: ObservableObject {
     func onChange(scenePhase: ScenePhase) {
         switch scenePhase {
         case .active:
-            Task { await updateUNAuthorizationStatus() }
-            resetDeflectorAutomationTest()
+            Task {
+                await updateUNAuthorizationStatus()
+                resetDeflectorAutomationTest()
+            }
         case .inactive:
             break
         case .background:
@@ -60,21 +65,28 @@ class FirstSetupViewModel: ObservableObject {
             
             if unNotificationSettings?.alertSetting == .enabled {
                 notificationStatusText = "Notifications are allowed, but banner alerts are enabled. I recommend enabling Notification Center only."
-                return
+                deflectorAutomationTestButtonIsActive = true
+                
             } else if unNotificationSettings?.lockScreenSetting == .enabled {
                 notificationStatusText = "Notifications are allowed, but lock screen alerts are enabled. I recommend enabling Notification Center only."
-                return
+                deflectorAutomationTestButtonIsActive = true
+                
             } else if unNotificationSettings?.alertSetting != .enabled && unNotificationSettings?.lockScreenSetting != .enabled && unNotificationSettings?.notificationCenterSetting != .enabled {
                 notificationStatusText = "Notifications are allowed, but all alert types are disabled. Please enable Notification Center alert in Settings."
+                deflectorAutomationTestButtonIsActive = false
+                
             } else {
                 notificationStatusText = "Notifications are allowed."
+                deflectorAutomationTestButtonIsActive = true
             }
         case .notDetermined:
             showRequestUNAuthorizationButton = true
             notificationStatusText = ""
+            deflectorAutomationTestButtonIsActive = false
         default:
             showRequestUNAuthorizationButton = false
-            notificationStatusText = "Notifications are denied. Please allow notifications in Settings."
+            notificationStatusText = "Notifications are disabled. Please allow notifications in Settings."
+            deflectorAutomationTestButtonIsActive = false
         }
     }
     
@@ -83,7 +95,7 @@ class FirstSetupViewModel: ObservableObject {
     func resetDeflectorAutomationTest() {
         deflectorAutomationTestStatus = .notTested
         deflectorAutomationTestText = "Not tested yet."
-        deflectorAutomationTestButtonIsActive = true
+        deflectorAutomationTestButtonIsActive = UserNotificationSupport.isAlertAvailable(settings: unNotificationSettings)
     }
     
     func startDeflectorAutomationTest() {

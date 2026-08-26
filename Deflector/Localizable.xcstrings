@@ -98,6 +98,16 @@
         }
       }
     },
+    "Cannot display the shortcut list because notifications are disabled. Please complete the first setup." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知が許可されていないため、ショートカットのリストを表示できません。初期セットアップを完了してください。"
+          }
+        }
+      }
+    },
     "Change App Icon" : {
       "localizations" : {
         "ja" : {
@@ -563,12 +573,12 @@
         }
       }
     },
-    "Notifications are denied. Please allow notifications in Settings." : {
+    "Notifications are disabled. Please allow notifications in Settings." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通知は許可されていません。設定から許可してください。"
+            "value" : "通知は無効になっています。設定から許可してください。"
           }
         }
       }
