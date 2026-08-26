@@ -17,7 +17,7 @@ class DeflectionService {
         // Sent within 0.5 seconds will be ignored
         if let lastDeflectionTime {
             let distance = lastDeflectionTime.distance(to: Date())
-            if distance < 0.5 { return }
+            if distance < 0.25 { return }
         }
         lastDeflectionTime = Date()
         
