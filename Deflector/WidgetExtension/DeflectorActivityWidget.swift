@@ -61,7 +61,7 @@ struct DeflectorActivityWidget: Widget {
             return DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
-                        .padding(.bottom, showLabel ? 10 : 18)
+                        .padding(.bottom, showLabel ? 12 : 18)
                 }
             } compactLeading: {
                 EmptyView().frame(width: 0, height: 0)
