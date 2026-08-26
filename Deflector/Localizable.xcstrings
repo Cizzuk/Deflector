@@ -347,22 +347,12 @@
         }
       }
     },
-    "If it does not work properly, make sure that access while locked and access for Deflector are permitted in the shortcut's privacy settings." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正しく動作しない場合は、ショートカットのプライバシー設定から、ロック中のアクセスとDeflectorへのアクセスが許可されていることを確認してください。"
-          }
-        }
-      }
-    },
     "If it doesn't work properly, please return to this setup and try again." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "正しく動作しない場合は、このセットアップに戻って再度お試しください。"
+            "value" : "正しく動作しない場合は、このセットアップを再度お試しください。"
           }
         }
       }
@@ -690,12 +680,12 @@
         }
       }
     },
-    "Setup is complete! Return to the screen and start using your favorite shortcuts with Deflector." : {
+    "Setup is complete! You can now assign and run your favorite shortcuts for Live Activities or Side Button." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "セットアップが完了しました！画面を戻り、Deflectorでお好きなショートカットを使いましょう。"
+            "value" : "セットアップが完了しました！ライブアクティビティやサイドボタンに、ショートカットを登録して実行することができます。"
           }
         }
       }
