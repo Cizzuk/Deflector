@@ -31,11 +31,11 @@ struct LiveActivitySettingsView: View {
                     
                     Button(action: {
                         iconEditorID = button.id
-                        iconEditorText = button.iconName
+                        iconEditorText = button.symbol
                     }) {
                         Group {
-                            if UIImage(systemName: button.iconName) != nil {
-                                Label("Symbol", systemImage: button.iconName)
+                            if UIImage(systemName: button.symbol) != nil {
+                                Label("Symbol", systemImage: button.symbol)
                             } else {
                                 Label("Symbol", systemImage: "questionmark.square.dashed")
                             }
@@ -136,9 +136,9 @@ struct LiveActivitySettingsView: View {
             SymbolPicker(iconEditorText) { symbol in
                 if let iconEditorID  {
                     if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == iconEditorID }) {
-                        userSettings.liveActivityButtons[index].iconName = symbol
+                        userSettings.liveActivityButtons[index].symbol = symbol
                     } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == iconEditorID }) {
-                        userSettings.liveActivityIslandButtons[index].iconName = symbol
+                        userSettings.liveActivityIslandButtons[index].symbol = symbol
                     }
                 }
                 iconEditorID = nil

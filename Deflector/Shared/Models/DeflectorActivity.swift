@@ -12,7 +12,7 @@ import SwiftUI
 nonisolated struct DeflectorActivityButton: Codable, Equatable, Hashable, Identifiable {
     var id: UUID = UUID()
     var shortcutName: String
-    var iconName: String = "suit.diamond"
+    var symbol: String = "suit.diamond"
     var color: UInt32 = 0xFFFFFFFF
 }
 

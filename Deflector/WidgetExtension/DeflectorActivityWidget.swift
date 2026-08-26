@@ -24,7 +24,7 @@ struct DeflectorActivityWidget: Widget {
                     let color = ColorHelper.uInt32ToColor(button.color)
                     Button(intent: SendDeflectionNotificationIntent(shortcutName: button.shortcutName)) {
                         VStack(spacing: 2) {
-                            Label(button.shortcutName, systemImage: button.iconName)
+                            Label(button.shortcutName, systemImage: button.symbol)
                                 .labelStyle(.iconOnly)
                                 .font(activityFamily == .small ? .title2 : .title)
                                 .foregroundStyle(color)
