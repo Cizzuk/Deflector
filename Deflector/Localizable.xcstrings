@@ -55,6 +55,36 @@
         }
       }
     },
+    "Add Shortcut to Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティにショートカットを追加"
+          }
+        }
+      }
+    },
+    "Add to Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandに追加"
+          }
+        }
+      }
+    },
+    "Adds a shortcut to Live Activity. Adding 5 or more may cause display issues." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティにショートカットを追加します。5つ以上追加すると、表示上の問題を引き起こす可能性があります。"
+          }
+        }
+      }
+    },
     "All Done!" : {
       "localizations" : {
         "ja" : {
@@ -330,12 +360,42 @@
         }
       }
     },
+    "Get All Live Activity Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのライブアクティビティのショートカットを取得"
+          }
+        }
+      }
+    },
     "Get Deflector Automation" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deflector Automationを入手"
+          }
+        }
+      }
+    },
+    "Get from Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandから取得"
+          }
+        }
+      }
+    },
+    "Get Side Button Shortcut Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカット名を取得"
           }
         }
       }
@@ -713,6 +773,36 @@
         }
       }
     },
+    "Remove from Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandから削除"
+          }
+        }
+      }
+    },
+    "Remove Shortcut from Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティからショートカットを削除"
+          }
+        }
+      }
+    },
+    "Removes all shortcuts from Live Activity with matching names." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致する名前のショートカットをライブアクティビティからすべて削除します。"
+          }
+        }
+      }
+    },
     "Requested to display the shortcut list. If it does not appear, Deflector Automation may not be working correctly." : {
       "localizations" : {
         "ja" : {
@@ -749,6 +839,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deflection通知を送信"
+          }
+        }
+      }
+    },
+    "Set Side Button Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカットを設定"
+          }
+        }
+      }
+    },
+    "Set Side Button Shortcut to ${shortcutName}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカットを ${shortcutName} に設定"
+          }
+        }
+      }
+    },
+    "Setting" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
           }
         }
       }
@@ -958,6 +1078,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "交通"
+          }
+        }
+      }
+    },
+    "Turn 'Use Different Shortcuts on Dynamic Island'" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を設定"
+          }
+        }
+      }
+    },
+    "Turn 'Use Different Shortcuts on Dynamic Island' ${setting}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を${setting}に設定"
           }
         }
       }
