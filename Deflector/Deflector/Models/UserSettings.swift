@@ -64,7 +64,7 @@ final class UserSettings: ObservableObject {
             return buttons
         }
         
-        return []
+        return [DeflectorActivityButton(shortcutName: "")]
     }() {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityIslandButtons) {
