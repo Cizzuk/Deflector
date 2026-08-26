@@ -62,6 +62,6 @@ class LiveActivitySettingsViewModel: ObservableObject {
     func endLiveActivity() {
         DeflectorActivitySupport.endAll()
         isLiveActivityActive = false
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        UIImpactFeedbackGenerator().impactOccurred()
     }
 }

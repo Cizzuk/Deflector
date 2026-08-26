@@ -74,7 +74,7 @@ class FirstSetupViewModel: ObservableObject {
     }
     
     func startDeflectorAutomationTest() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        UIImpactFeedbackGenerator().impactOccurred()
         deflectorAutomationTestStatus = .testing
         deflectorAutomationTestText = "Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly."
         deflectorAutomationTestButtonIsActive = false

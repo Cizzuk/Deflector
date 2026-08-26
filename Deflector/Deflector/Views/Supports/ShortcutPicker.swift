@@ -50,7 +50,7 @@ struct ShortcutPicker: View {
                 Section {
                     Button(action: {
                         isWaitingAutomationCallback = true
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        UIImpactFeedbackGenerator().impactOccurred()
                         Task { await ShortcutPickerSupport.callShortcutPicker(prompt: prompt) }
                     }) {
                         Label("Choose from the list of shortcuts", systemImage: "square.2.layers.3d")
