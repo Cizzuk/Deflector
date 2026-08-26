@@ -19,12 +19,19 @@ import SwiftUI
 
 struct MianView: View {
     @StateObject private var userSettings = UserSettings.shared
+    @State private var path: [Route] = []
+    
+    enum Route: Hashable {
+        case firstSetup
+        case liveActivitySettings, sideButtonSettings
+        case about, changeIcon
+    }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 Section {
-                    NavigationLink(destination: FirstSetupView()) {
+                    NavigationLink(value: Route.firstSetup) {
                         VStack(alignment: .leading) {
                             Label("First Setup", systemImage: "gearshape")
                                 .font(.title3)
@@ -38,7 +45,7 @@ struct MianView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: LiveActivitySettingsView()) {
+                    NavigationLink(value: Route.liveActivitySettings) {
                         VStack(alignment: .leading) {
                             Label("Live Activity", systemImage: "clock.badge")
                                 .font(.title3)
@@ -51,7 +58,7 @@ struct MianView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: SideButtonSettingsView()) {
+                    NavigationLink(value: Route.sideButtonSettings) {
                         VStack(alignment: .leading) {
                             Label("Side Button", systemImage: "button.vertical.right")
                                 .font(.title3)
@@ -64,11 +71,11 @@ struct MianView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: AboutView()) {
+                    NavigationLink(value: Route.about) {
                         Label("About", systemImage: "info.circle")
                     }
                     if UIApplication.shared.supportsAlternateIcons {
-                        NavigationLink(destination: ChangeIconView()) {
+                        NavigationLink(value: Route.changeIcon) {
                             Label("Change App Icon", systemImage: "app.dashed")
                         }
                     }
@@ -76,6 +83,15 @@ struct MianView: View {
                 }
             }
             .navigationTitle("Deflector")
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .firstSetup: FirstSetupView()
+                case .liveActivitySettings: LiveActivitySettingsView()
+                case .sideButtonSettings: SideButtonSettingsView()
+                case .about: AboutView()
+                case .changeIcon: ChangeIconView()
+                }
+            }
         }
     }
 }
