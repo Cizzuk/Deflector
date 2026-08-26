@@ -50,7 +50,7 @@ struct LiveActivitySettingsView: View {
                         shortcutPickerID = button.id
                         shortcutPickerText = button.shortcutName
                     }) {
-                        Text(button.shortcutName.isEmpty ? "Not Set" : button.shortcutName)
+                        Text(button.shortcutName.isEmpty ? String(localized: "Not Set") : button.shortcutName)
                             .foregroundStyle(button.shortcutName.isEmpty ? Color(uiColor: .placeholderText) : Color(uiColor: .label))
                     }
                 }
