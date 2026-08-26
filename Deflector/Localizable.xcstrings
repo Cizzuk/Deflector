@@ -116,7 +116,14 @@
       }
     },
     "Argument" : {
-      "shouldTranslate" : false
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "引数"
+          }
+        }
+      }
     },
     "Arrows" : {
       "localizations" : {
