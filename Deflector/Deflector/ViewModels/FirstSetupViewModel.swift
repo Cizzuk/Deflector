@@ -55,15 +55,26 @@ class FirstSetupViewModel: ObservableObject {
         
         switch unNotificationSettings?.authorizationStatus {
         case .authorized:
-            notificationStatusText = "Notifications are allowed."
             showRequestUNAuthorizationButton = false
             UserSettings.shared.isFirstSetupCompleted = true
+            
+            if unNotificationSettings?.alertSetting == .enabled {
+                notificationStatusText = "Notifications are allowed, but banner alerts are enabled. I recommend enabling Notification Center only."
+                return
+            } else if unNotificationSettings?.lockScreenSetting == .enabled {
+                notificationStatusText = "Notifications are allowed, but lock screen alerts are enabled. I recommend enabling Notification Center only."
+                return
+            } else if unNotificationSettings?.alertSetting != .enabled && unNotificationSettings?.lockScreenSetting != .enabled && unNotificationSettings?.notificationCenterSetting != .enabled {
+                notificationStatusText = "Notifications are allowed, but all alert types are disabled. Please enable Notification Center alert in Settings."
+            } else {
+                notificationStatusText = "Notifications are allowed."
+            }
         case .notDetermined:
-            notificationStatusText = ""
             showRequestUNAuthorizationButton = true
+            notificationStatusText = ""
         default:
-            notificationStatusText = "Notifications are denied. Please allow notifications in Settings."
             showRequestUNAuthorizationButton = false
+            notificationStatusText = "Notifications are denied. Please allow notifications in Settings."
         }
     }
     

@@ -523,6 +523,36 @@
         }
       }
     },
+    "Notifications are allowed, but all alert types are disabled. Please enable Notification Center alert in Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていますが、すべての種類のアラートが無効になっています。設定から通知センターのアラートを有効にしてください。"
+          }
+        }
+      }
+    },
+    "Notifications are allowed, but banner alerts are enabled. I recommend enabling Notification Center only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていますが、バナーのアラートが有効です。通知センターのみ有効にすることをおすすめします。"
+          }
+        }
+      }
+    },
+    "Notifications are allowed, but lock screen alerts are enabled. I recommend enabling Notification Center only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていますが、ロック画面のアラートが有効です。通知センターのみ有効にすることをおすすめします。"
+          }
+        }
+      }
+    },
     "Notifications are allowed." : {
       "localizations" : {
         "ja" : {
