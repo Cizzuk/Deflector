@@ -11,7 +11,7 @@ import SwiftUI
 class FirstSetupViewModel: ObservableObject {
     @Published var notificationStatusText: LocalizedStringResource = ""
     @Published var showRequestUNAuthorizationButton: Bool = true
-    private var unAuthorizationStatus: UNAuthorizationStatus?
+    private var unNotificationSettings: UNNotificationSettings?
     
     @Published var deflectorAutomationTestText: LocalizedStringResource = "Not tested yet."
     @Published var deflectorAutomationTestButtonIsActive: Bool = true
@@ -47,12 +47,13 @@ class FirstSetupViewModel: ObservableObject {
     
     func requestUNAuthorization() async {
         _ = await UserNotificationSupport.requestAuthorization()
-        unAuthorizationStatus = await UserNotificationSupport.authorizationStatus()
+        await updateUNAuthorizationStatus()
     }
     
     func updateUNAuthorizationStatus() async {
-        unAuthorizationStatus = await UserNotificationSupport.authorizationStatus()
-        switch unAuthorizationStatus {
+        unNotificationSettings = await UserNotificationSupport.notificationSettings()
+        
+        switch unNotificationSettings?.authorizationStatus {
         case .authorized:
             notificationStatusText = "Notifications are allowed."
             showRequestUNAuthorizationButton = false
