@@ -118,6 +118,16 @@
         }
       }
     },
+    "Choose from the list of shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのリストから選択"
+          }
+        }
+      }
+    },
     "Cizzuk" : {
       "shouldTranslate" : false
     },
@@ -457,6 +467,16 @@
         }
       }
     },
+    "Not Set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未設定"
+          }
+        }
+      }
+    },
     "Notifications" : {
       "localizations" : {
         "ja" : {
@@ -567,22 +587,32 @@
         }
       }
     },
-    "Please enter the name of the shortcut to launch the voice assistant." : {
+    "Please set the shortcut name to launch the voice assistant." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "音声アシスタントを起動するショートカットの名前を入力してください。"
+            "value" : "音声アシスタントを起動するショートカットの名前を設定してください。"
           }
         }
       }
     },
-    "Please set Deflector to the Side Button in Settings." : {
+    "Please set the shortcut name to run from the Live Activity." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定でDeflectorをサイドボタンに割り当ててください。"
+            "value" : "ライブアクティビティから実行するショートカットの名前を設定してください。"
+          }
+        }
+      }
+    },
+    "Please turn on \"Press Side Button for Deflector\" in the Settings. To run the shortcut from the Side Button, the device must be physically located in a region that supports [Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定で「サイドボタンを押してDeflectorを使用」をオンにしてください。サイドボタンからショートカットを実行するには、デバイスが[Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone)をサポートする地域に物理的に存在している必要があります。"
           }
         }
       }
@@ -603,6 +633,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライバシーポリシー"
+          }
+        }
+      }
+    },
+    "Requested to display the shortcut list. If it does not appear, Deflector Automation may not be working correctly." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのリストの表示をリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+          }
+        }
+      }
+    },
+    "Select Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを選択"
           }
         }
       }
@@ -633,6 +683,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "図形"
+          }
+        }
+      }
+    },
+    "Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット"
           }
         }
       }
@@ -693,16 +753,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サイドボタンDeflector"
-          }
-        }
-      }
-    },
-    "Side Button Shortcut" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サイドボタンショートカット"
           }
         }
       }
@@ -771,6 +821,9 @@
       "shouldTranslate" : false
     },
     "System Call Intent" : {
+      "shouldTranslate" : false
+    },
+    "System Shortcut Picker Intent" : {
       "shouldTranslate" : false
     },
     "Text Formatting" : {
@@ -859,6 +912,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ロック画面で黒い背景を使用する"
+          }
+        }
+      }
+    },
+    "Use Deflector Automation to display a list of your shortcuts and easily select the one you want." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflector Automationを用いて、リストからショートカットを簡単に選択できます。"
           }
         }
       }
