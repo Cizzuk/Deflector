@@ -84,8 +84,6 @@ struct FirstSetupView: View {
                     }
                 }
                 
-                Text("If it does not work properly, make sure that access while locked and access for Deflector are permitted in the shortcut's privacy settings.")
-                
                 Button(action: {
                     deflectorAutomationTest = .testing
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -119,7 +117,7 @@ struct FirstSetupView: View {
             // MARK: - All Done!
             
             Section {
-                Text("Setup is complete! Return to the screen and start using your favorite shortcuts with Deflector.")
+                Text("Setup is complete! You can now assign and run your favorite shortcuts for Live Activities or Side Button.")
                 Text("If it doesn't work properly, please return to this setup and try again.")
             } header: {
                 Label("All Done!", systemImage: "checkmark")
