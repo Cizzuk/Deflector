@@ -32,4 +32,20 @@ class ColorHelper {
         
         return Color(red: red, green: green, blue: blue, opacity: alpha)
     }
+    
+    static func colorCodeToUInt32(_ string: String) -> UInt32? {
+        var hexString = string.uppercased().filter { "0123456789ABCDEF".contains($0) }
+        
+        guard [3,4,6,8].contains(hexString.count) else { return nil }
+        
+        if hexString.count == 3 || hexString.count == 4 {
+            hexString = hexString.map { "\($0)\($0)" }.joined()
+        }
+        
+        if hexString.count == 6 {
+            hexString += "FF"
+        }
+        
+        return UInt32(hexString, radix: 16)
+    }
 }
