@@ -9,16 +9,22 @@ import SwiftUI
 
 struct SideButtonSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
+    @State private var isShowingShortcutPicker = false
     
     var body: some View {
         List {
             Section {
-                TextField("Shortcut Name", text: $userSettings.sideButtonShortcutName)
-                    .submitLabel(.done)
+                Button(action: { isShowingShortcutPicker = true }) {
+                    if userSettings.sideButtonShortcutName.isEmpty {
+                        Label("Not Set", systemImage: "square.2.layers.3d")
+                    } else {
+                        Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
+                    }
+                }
             } header: {
-                Text("Side Button Shortcut")
+                Text("Select Shortcut")
             } footer: {
-                Text("Please enter the name of the shortcut to launch the voice assistant.")
+                Text("Please set the shortcut name to launch the voice assistant.")
             }
             
             Section {
@@ -28,7 +34,15 @@ struct SideButtonSettingsView: View {
                     }
                 }
             } footer: {
-                Text("Please set Deflector to the Side Button in Settings.")
+                Text("Please turn on \"Press Side Button for Deflector\" in the Settings. To run the shortcut from the Side Button, the device must be physically located in a region that supports [Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone).")
+            }
+        }
+        .sheet(isPresented: $isShowingShortcutPicker) {
+            ShortcutPicker(
+                userSettings.sideButtonShortcutName,
+                prompt: "Please set the shortcut name to launch the voice assistant."
+            ) { shortcutName in
+                userSettings.sideButtonShortcutName = shortcutName
             }
         }
         .navigationTitle("Side Button")

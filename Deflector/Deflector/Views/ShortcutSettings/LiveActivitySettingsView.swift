@@ -13,11 +13,15 @@ struct LiveActivitySettingsView: View {
     @StateObject private var vm = LiveActivitySettingsViewModel()
     @State private var iconEditorID: UUID? = nil
     @State private var iconEditorText: String = ""
+    @State private var shortcutPickerID: UUID? = nil
+    @State private var shortcutPickerText: String = ""
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
         @Binding var iconEditorID: UUID?
         @Binding var iconEditorText: String
+        @Binding var shortcutPickerID: UUID?
+        @Binding var shortcutPickerText: String
         
         var body: some View {
             ForEach($buttons) { $button in
@@ -42,8 +46,13 @@ struct LiveActivitySettingsView: View {
                     }
                     .buttonStyle(.borderless)
                     
-                    TextField("Shortcut Name", text: $button.shortcutName)
-                        .submitLabel(.done)
+                    Button(action: {
+                        shortcutPickerID = button.id
+                        shortcutPickerText = button.shortcutName
+                    }) {
+                        Text(button.shortcutName.isEmpty ? "Not Set" : button.shortcutName)
+                            .foregroundStyle(button.shortcutName.isEmpty ? Color(uiColor: .placeholderText) : Color(uiColor: .label))
+                    }
                 }
             }
             .onMove { indices, newOffset in
@@ -81,7 +90,13 @@ struct LiveActivitySettingsView: View {
             }
             
             Section {
-                ShortcutList(buttons: $userSettings.liveActivityButtons, iconEditorID: $iconEditorID, iconEditorText: $iconEditorText)
+                ShortcutList(
+                    buttons: $userSettings.liveActivityButtons,
+                    iconEditorID: $iconEditorID,
+                    iconEditorText: $iconEditorText,
+                    shortcutPickerID: $shortcutPickerID,
+                    shortcutPickerText: $shortcutPickerText
+                )
             } header: {
                 Text("Shortcuts")
             }
@@ -92,7 +107,13 @@ struct LiveActivitySettingsView: View {
                 }
                 
                 if userSettings.liveActivityUseDifferentOnIsland {
-                    ShortcutList(buttons: $userSettings.liveActivityIslandButtons, iconEditorID: $iconEditorID, iconEditorText: $iconEditorText)
+                    ShortcutList(
+                        buttons: $userSettings.liveActivityIslandButtons,
+                        iconEditorID: $iconEditorID,
+                        iconEditorText: $iconEditorText,
+                        shortcutPickerID: $shortcutPickerID,
+                        shortcutPickerText: $shortcutPickerText
+                    )
                 }
             } header: {
                 Text("Dynamic Island")
@@ -121,6 +142,21 @@ struct LiveActivitySettingsView: View {
                     }
                 }
                 iconEditorID = nil
+            }
+        }
+        .sheet(isPresented: .constant(shortcutPickerID != nil)) {
+            ShortcutPicker(
+                shortcutPickerText,
+                prompt: "Please set the shortcut name to run from the Live Activity."
+            ) { shortcutName in
+                if let shortcutPickerID  {
+                    if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
+                        userSettings.liveActivityButtons[index].shortcutName = shortcutName
+                    } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
+                        userSettings.liveActivityIslandButtons[index].shortcutName = shortcutName
+                    }
+                }
+                shortcutPickerID = nil
             }
         }
         .navigationTitle("Live Activity")
