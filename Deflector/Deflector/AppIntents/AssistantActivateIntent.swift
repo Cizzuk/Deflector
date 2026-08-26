@@ -24,7 +24,7 @@ struct AssistantActivateIntent: AppIntent {
         if name.isEmpty {
             await DeflectionService.shared.sendErrorNotification(reason: "No shortcut is set for the Side Button.")
         } else {
-            await DeflectionService.shared.sendNotification(name: name)
+            await DeflectionService.shared.runShortcut(shortcutName: name)
         }
         
         return .result()

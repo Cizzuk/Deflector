@@ -25,7 +25,7 @@ struct SendDeflectionNotificationIntent: AppIntent {
         if name.isEmpty {
             await DeflectionService.shared.sendErrorNotification(reason: "Shortcut name is unset")
         } else {
-            await DeflectionService.shared.sendNotification(name: name)
+            await DeflectionService.shared.runShortcut(shortcutName: name)
         }
         
         return .result()

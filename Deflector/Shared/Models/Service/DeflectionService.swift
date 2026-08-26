@@ -13,7 +13,7 @@ class DeflectionService {
     
     var lastDeflectionTime: Date?
     
-    func sendNotification(name: String) async {
+    func runShortcut(shortcutName: String) async {
         // Sent within 0.5 seconds will be ignored
         if let lastDeflectionTime {
             let distance = lastDeflectionTime.distance(to: Date())
@@ -23,7 +23,7 @@ class DeflectionService {
         
         let content = UNMutableNotificationContent()
         content.title = "Deflection"
-        content.body = name
+        content.body = shortcutName
         content.sound = .none
         content.interruptionLevel = .timeSensitive
         
