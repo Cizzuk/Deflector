@@ -28,7 +28,7 @@ class SystemCallSupport {
         }
     }
     
-    static func addSystemCall(_ argument: SystemCallArgs, trigger: UNNotificationTrigger) async {
+    static func addSystemCall(_ argument: SystemCallArgs, trigger: UNNotificationTrigger? = nil) async {
         let content = UNMutableNotificationContent()
         content.title = "System Call"
         content.body = argument.rawValue

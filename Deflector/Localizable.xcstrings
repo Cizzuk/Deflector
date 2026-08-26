@@ -88,16 +88,6 @@
         }
       }
     },
-    "Automation" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "オートメーション"
-          }
-        }
-      }
-    },
     "Camera & Photos" : {
       "localizations" : {
         "ja" : {
@@ -182,6 +172,9 @@
       }
     },
     "Deflector" : {
+      "shouldTranslate" : false
+    },
+    "Deflector Automation" : {
       "shouldTranslate" : false
     },
     "Deflector uses Notifications and Automation to run your favorite Shortcuts from Deflector. To do this, you first need to complete a few setup steps." : {
@@ -314,12 +307,12 @@
         }
       }
     },
-    "Get Automation Shortcut" : {
+    "Get Deflector Automation" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "オートメーション用のショートカットを入手"
+            "value" : "Deflector Automationを入手"
           }
         }
       }
@@ -350,6 +343,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "人"
+          }
+        }
+      }
+    },
+    "If it does not work properly, make sure that access while locked and access for Deflector are permitted in the shortcut's privacy settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正しく動作しない場合は、ショートカットのプライバシー設定から、ロック中のアクセスとDeflectorへのアクセスが許可されていることを確認してください。"
           }
         }
       }
@@ -477,6 +480,16 @@
         }
       }
     },
+    "Not tested yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだテストしていません。"
+          }
+        }
+      }
+    },
     "Notifications" : {
       "localizations" : {
         "ja" : {
@@ -577,12 +590,12 @@
         }
       }
     },
-    "Please download the automation shortcut from the link. After that, edit the shortcut and enable the notification automation." : {
+    "Please download \"Deflector Automation\", the automation required to run Deflector. Then, edit the shortcut to enable the notification automation." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "リンクから、オートメーション用のショートカットをダウンロードしてください。その後ショートカットを編集して、通知のオートメーションを有効にしてください。"
+            "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。 次にショートカットを編集して、通知のオートメーションを有効にしてください。"
           }
         }
       }
@@ -643,6 +656,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットのリストの表示をリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+          }
+        }
+      }
+    },
+    "Run Automation Test" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションのテストを実行"
           }
         }
       }
@@ -826,6 +849,16 @@
     "System Shortcut Picker Intent" : {
       "shouldTranslate" : false
     },
+    "Test successful! It may be working correctly." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テストが成功しました！ おそらく正しく動作しています。"
+          }
+        }
+      }
+    },
     "Text Formatting" : {
       "localizations" : {
         "ja" : {
@@ -952,6 +985,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        }
+      }
+    },
+    "Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションの応答を待っています。数秒待っても応答がない場合は、正しく設定できていない可能性があります。"
           }
         }
       }

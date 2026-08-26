@@ -8,7 +8,16 @@
 import SwiftUI
 
 struct FirstSetupView: View {
-    @State var unAuthorizationStatus: UNAuthorizationStatus?
+    @Environment(\.scenePhase) private var scenePhase
+    
+    @State private var unAuthorizationStatus: UNAuthorizationStatus?
+    @State private var deflectorAutomationTest: DeflectorAutomationTestResult = .notTested
+    
+    enum DeflectorAutomationTestResult {
+        case notTested
+        case testing
+        case success
+    }
     
     private func requestUNAuthorization() {
         Task {
@@ -31,6 +40,8 @@ struct FirstSetupView: View {
                 Label("Welcome!", systemImage: "suit.diamond")
             }
             
+            // MARK: - Notifications
+            
             Section {
                 Text("Please allow notifications. After that, I recommend changing the settings to show Alerts only in the Notification Center.")
                 
@@ -39,42 +50,92 @@ struct FirstSetupView: View {
                         Label("Allow Notifications", systemImage: "bell")
                     }
                 }
+                
                 Button(action: { OpenSettingsSupport.openSettingsURL() }) {
                     Label("Open Settings", systemImage: "gear")
                 }
             } header: {
                 Label("Notifications", systemImage: "bell")
             } footer: {
-                switch unAuthorizationStatus {
-                case .authorized: Text("Notifications are allowed.")
-                case .notDetermined: EmptyView()
-                default: Text("Notifications are denied. Please allow notifications in Settings.")
+                Group {
+                    switch unAuthorizationStatus {
+                    case .authorized: Text("Notifications are allowed.")
+                    case .notDetermined: EmptyView()
+                    default: Text("Notifications are denied. Please allow notifications in Settings.")
+                    }
                 }
+                .padding(.bottom, 10)
             }
-            .onAppear { updateUNAuthorizationStatus() }
+            
+            // MARK: - Deflector Automation
             
             Section {
-                Text("Please download the automation shortcut from the link. After that, edit the shortcut and enable the notification automation.")
+                Text("Please download \"Deflector Automation\", the automation required to run Deflector. Then, edit the shortcut to enable the notification automation.")
                 
                 if let url =  URL(string: "https://cizz.uk/deflector/automation") {
                     Link(destination: url) {
-                        Label("Get Automation Shortcut", systemImage: "arrow.down")
+                        Label("Get Deflector Automation", systemImage: "arrow.down")
                     }
                 }
+                
                 if let url = URL(string: "shortcuts://") {
                     Button(action: { UIApplication.shared.open(url) }) {
                         Label("Open Shortcuts App", systemImage: "square.2.layers.3d")
                     }
                 }
+                
+                Text("If it does not work properly, make sure that access while locked and access for Deflector are permitted in the shortcut's privacy settings.")
+                
+                Button(action: {
+                    deflectorAutomationTest = .testing
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    Task { await SystemCallSupport.addSystemCall(.pingTest) }
+                }) {
+                    Label {
+                        Text("Run Automation Test")
+                    } icon: {
+                        switch deflectorAutomationTest {
+                        case .notTested: Image(systemName: "play")
+                        case .testing: ProgressView().progressViewStyle(.circular)
+                        case .success: Image(systemName: "checkmark.seal")
+                        }
+                    }
+                }
+                .foregroundStyle(.accent)
+                .disabled(deflectorAutomationTest != .notTested)
             } header: {
-                Label("Automation", systemImage: "square.2.layers.3d")
+                Label("Deflector Automation", systemImage: "square.2.layers.3d")
+            } footer: {
+                Group {
+                    switch deflectorAutomationTest {
+                    case .notTested: Text("Not tested yet.")
+                    case .testing: Text("Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly.")
+                    case .success: Text("Test successful! It may be working correctly.")
+                    }
+                }
+                .padding(.bottom, 10)
             }
+            
+            // MARK: - All Done!
             
             Section {
                 Text("Setup is complete! Return to the screen and start using your favorite shortcuts with Deflector.")
                 Text("If it doesn't work properly, please return to this setup and try again.")
             } header: {
                 Label("All Done!", systemImage: "checkmark")
+            }
+        }
+        .onAppear { updateUNAuthorizationStatus() }
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
+                updateUNAuthorizationStatus()
+                deflectorAutomationTest = .notTested
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .pingTestReceived)) { _ in
+            if deflectorAutomationTest == .testing {
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                deflectorAutomationTest = .success
             }
         }
         .navigationTitle("First Setup")
