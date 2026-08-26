@@ -17,6 +17,7 @@ struct SideButtonSettingsView: View {
                 Button(action: { isShowingShortcutPicker = true }) {
                     if userSettings.sideButtonShortcutName.isEmpty {
                         Label("Not Set", systemImage: "square.2.layers.3d")
+                            .foregroundStyle(.secondary)
                     } else {
                         Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
                     }
