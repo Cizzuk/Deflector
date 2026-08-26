@@ -52,8 +52,8 @@ struct DeflectorActivityWidget: Widget {
             let background = context.state.blackBackground ? Color.black : Color.clear
             let showLabel = context.state.showShortcutNames
             ShortcutButtons(buttons: buttons, showLabel: showLabel)
-            .padding(20)
-            .activityBackgroundTint(background)
+                .padding(20)
+                .activityBackgroundTint(background)
             
         } dynamicIsland: { context in
             let buttons = context.state.islandButtons ?? context.state.buttons
@@ -74,6 +74,6 @@ struct DeflectorActivityWidget: Widget {
                     .padding(.horizontal, 2)
             }
         }
-        .supplementalActivityFamilies([.small])
+        .supplementalActivityFamilies([.small, .medium])
     }
 }
