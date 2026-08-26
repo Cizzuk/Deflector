@@ -11,15 +11,15 @@ struct LiveActivitySettingsView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var userSettings = UserSettings.shared
     @StateObject private var vm = LiveActivitySettingsViewModel()
-    @State private var iconEditorID: UUID? = nil
-    @State private var iconEditorText: String = ""
+    @State private var symbolPickerID: UUID? = nil
+    @State private var symbolPickerText: String = ""
     @State private var shortcutPickerID: UUID? = nil
     @State private var shortcutPickerText: String = ""
     
     struct ShortcutList: View {
         @Binding var buttons: [DeflectorActivityButton]
-        @Binding var iconEditorID: UUID?
-        @Binding var iconEditorText: String
+        @Binding var symbolPickerID: UUID?
+        @Binding var symbolPickerText: String
         @Binding var shortcutPickerID: UUID?
         @Binding var shortcutPickerText: String
         
@@ -30,8 +30,8 @@ struct LiveActivitySettingsView: View {
                         .labelsHidden()
                     
                     Button(action: {
-                        iconEditorID = button.id
-                        iconEditorText = button.symbol
+                        symbolPickerID = button.id
+                        symbolPickerText = button.symbol
                     }) {
                         Group {
                             if UIImage(systemName: button.symbol) != nil {
@@ -92,8 +92,8 @@ struct LiveActivitySettingsView: View {
             Section {
                 ShortcutList(
                     buttons: $userSettings.liveActivityButtons,
-                    iconEditorID: $iconEditorID,
-                    iconEditorText: $iconEditorText,
+                    symbolPickerID: $symbolPickerID,
+                    symbolPickerText: $symbolPickerText,
                     shortcutPickerID: $shortcutPickerID,
                     shortcutPickerText: $shortcutPickerText
                 )
@@ -109,8 +109,8 @@ struct LiveActivitySettingsView: View {
                 if userSettings.liveActivityUseDifferentOnIsland {
                     ShortcutList(
                         buttons: $userSettings.liveActivityIslandButtons,
-                        iconEditorID: $iconEditorID,
-                        iconEditorText: $iconEditorText,
+                        symbolPickerID: $symbolPickerID,
+                        symbolPickerText: $symbolPickerText,
                         shortcutPickerID: $shortcutPickerID,
                         shortcutPickerText: $shortcutPickerText
                     )
@@ -132,16 +132,16 @@ struct LiveActivitySettingsView: View {
         .animation(.default, value: userSettings.liveActivityButtons)
         .animation(.default, value: userSettings.liveActivityIslandButtons)
         .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
-        .sheet(isPresented: .constant(iconEditorID != nil)) {
-            SymbolPicker(iconEditorText) { symbol in
-                if let iconEditorID  {
-                    if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == iconEditorID }) {
+        .sheet(isPresented: .constant(symbolPickerID != nil)) {
+            SymbolPicker(symbolPickerText) { symbol in
+                if let symbolPickerID  {
+                    if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == symbolPickerID }) {
                         userSettings.liveActivityButtons[index].symbol = symbol
-                    } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == iconEditorID }) {
+                    } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == symbolPickerID }) {
                         userSettings.liveActivityIslandButtons[index].symbol = symbol
                     }
                 }
-                iconEditorID = nil
+                symbolPickerID = nil
             }
         }
         .sheet(isPresented: .constant(shortcutPickerID != nil)) {
