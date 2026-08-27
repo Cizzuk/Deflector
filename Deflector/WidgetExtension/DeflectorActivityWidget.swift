@@ -24,17 +24,25 @@ struct DeflectorActivityWidget: Widget {
                     let color = ColorHelper.uInt32ToColor(button.color)
                     Button(intent: SendDeflectionNotificationIntent(shortcutName: button.shortcutName)) {
                         VStack(spacing: 2) {
-                            Label(button.shortcutName, systemImage: button.symbol)
-                                .labelStyle(.iconOnly)
-                                .font(activityFamily == .small ? .title2 : .title)
-                                .foregroundStyle(color)
-                                .frame(width: 35, height: 35)
-                            if showLabel && activityFamily != .small {
+                            if button.symbol.isEmpty {
                                 Text(button.shortcutName)
-                                    .lineLimit(1)
-                                    .font(.caption)
-                                    .foregroundStyle(color.opacity(0.8))
-                                    .accessibilityHidden(true)
+                                    .lineLimit(2)
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundStyle(color)
+                            } else {
+                                Label(button.shortcutName, systemImage: button.symbol)
+                                    .labelStyle(.iconOnly)
+                                    .font(activityFamily == .small ? .title2 : .title)
+                                    .foregroundStyle(color)
+                                    .frame(width: 35, height: 35)
+                                if showLabel && activityFamily != .small {
+                                    Text(button.shortcutName)
+                                        .lineLimit(1)
+                                        .font(.caption)
+                                        .foregroundStyle(color.opacity(0.8))
+                                        .accessibilityHidden(true)
+                                }
                             }
                         }
                     }

@@ -33,16 +33,22 @@ struct LiveActivitySettingsView: View {
                         symbolPickerID = button.id
                         symbolPickerText = button.symbol
                     }) {
-                        Group {
-                            if UIImage(systemName: button.symbol) != nil {
-                                Label("Symbol", systemImage: button.symbol)
+                        Label {
+                            Text("Symbol")
+                        } icon: {
+                            if button.symbol.isEmpty {
+                                Image(systemName: "square.dashed")
+                                    .foregroundStyle(Color(uiColor: .placeholderText))
+                            } else if UIImage(systemName: button.symbol) != nil {
+                                Image(systemName: button.symbol)
+                                    .foregroundStyle(Color(uiColor: .label))
                             } else {
-                                Label("Symbol", systemImage: "questionmark.square.dashed")
+                                Image(systemName: "questionmark.square.dashed")
+                                    .foregroundStyle(Color(uiColor: .label))
                             }
                         }
                         .labelStyle(.iconOnly)
                         .frame(width: 30)
-                        .foregroundStyle(Color(uiColor: .label))
                     }
                     .buttonStyle(.borderless)
                     
