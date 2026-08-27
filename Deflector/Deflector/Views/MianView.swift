@@ -42,7 +42,7 @@ struct MianView: View {
                                 .font(.title3)
                                 .padding(5)
                                 .padding(.bottom, 5)
-                            Text("To run shortcuts using Deflector, you need to set up an automation in the Shortcuts app.")
+                            Text("If Deflector does not work properly, please try restarting your device and redoing this setup.")
                                 .font(.subheadline)
                             
                         }

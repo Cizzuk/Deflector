@@ -487,6 +487,16 @@
         }
       }
     },
+    "If Deflector does not work properly, please try restarting your device and redoing this setup." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もしDeflectorがうまく動作しない場合は、デバイスを再起動して、このセットアップをやり直してみてください。"
+          }
+        }
+      }
+    },
     "If it doesn't work properly, please return to this setup and try again." : {
       "localizations" : {
         "ja" : {
@@ -1125,16 +1135,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "時計"
-          }
-        }
-      }
-    },
-    "To run shortcuts using Deflector, you need to set up an automation in the Shortcuts app." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deflectorからショートカットを実行するには、ショートカットアプリでオートメーションを設定する必要があります。"
           }
         }
       }
