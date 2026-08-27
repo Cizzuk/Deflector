@@ -980,12 +980,12 @@
         }
       }
     },
-    "Shortcut name is unset" : {
+    "Shortcut name is not set." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカット名が設定されていません"
+            "value" : "ショートカット名が設定されていません。"
           }
         }
       }
