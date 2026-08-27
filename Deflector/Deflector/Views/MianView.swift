@@ -18,11 +18,11 @@ import SwiftUI
 }
 
 struct MianView: View {
-    @State private var path: [Route] = {
+    @State private var path: Route? = {
         if UserSettings.shared.isFirstSetupCompleted {
-            return []
+            return nil
         } else {
-            return [.firstSetup]
+            return .firstSetup
         }
     }()
     
@@ -33,8 +33,8 @@ struct MianView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $path) {
-            List {
+        NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
+            List(selection: $path) {
                 Section {
                     NavigationLink(value: Route.firstSetup) {
                         VStack(alignment: .leading) {
@@ -88,15 +88,16 @@ struct MianView: View {
                 }
             }
             .navigationTitle("Deflector")
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .firstSetup: FirstSetupView()
-                case .liveActivitySettings: LiveActivitySettingsView()
-                case .sideButtonSettings: SideButtonSettingsView()
-                case .about: AboutView()
-                case .changeIcon: ChangeIconView()
-                }
+        } detail: {
+            switch path {
+            case .firstSetup: FirstSetupView()
+            case .liveActivitySettings: LiveActivitySettingsView()
+            case .sideButtonSettings: SideButtonSettingsView()
+            case .about: AboutView()
+            case .changeIcon: ChangeIconView()
+            case .none: EmptyView()
             }
         }
+        .navigationSplitViewStyle(.balanced)
     }
 }
