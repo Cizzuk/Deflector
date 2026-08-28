@@ -1,5 +1,5 @@
 //
-//  MianView.swift
+//  MainView.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/11.
@@ -10,14 +10,14 @@ import SwiftUI
 @main struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            MianView()
+            MainView()
                 .tint(.accent)
                 .scrollDismissesKeyboard(.interactively)
         }
     }
 }
 
-struct MianView: View {
+struct MainView: View {
     @State private var path: Route? = {
         if UserSettings.shared.isFirstSetupCompleted {
             return nil
