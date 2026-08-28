@@ -68,6 +68,7 @@ struct ShortcutPicker: View {
                 } footer: {
                     if let prompt {
                         Text(prompt)
+                            .padding(.bottom, 10)
                     }
                 }
                 

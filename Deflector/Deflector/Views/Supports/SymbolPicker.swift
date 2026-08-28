@@ -71,7 +71,7 @@ struct SymbolPicker: View {
                         .submitLabel(.done)
                 } footer: {
                     Text("You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/).")
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 10)
                 }
                 
                 SymbolButtonsGrid("Maps", [

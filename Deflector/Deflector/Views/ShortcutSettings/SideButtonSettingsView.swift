@@ -31,6 +31,7 @@ struct SideButtonSettingsView: View {
                 Text("Select Shortcut")
             } footer: {
                 Text("Please set the shortcut name to launch the voice assistant.")
+                    .padding(.bottom, 10)
             }
             
             Section {
