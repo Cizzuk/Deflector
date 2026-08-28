@@ -48,6 +48,11 @@ struct FirstSetupView: View {
                     Link(destination: url) {
                         Label("Get Deflector Automation", systemImage: "square.and.arrow.down")
                     }
+                    .contextMenu {
+                        Button(action: { UIPasteboard.general.string = url.absoluteString }) {
+                            Label("Copy Link", systemImage: "document.on.document")
+                        }
+                    }
                 }
                 
                 if let url = URL(string: "shortcuts://") {
