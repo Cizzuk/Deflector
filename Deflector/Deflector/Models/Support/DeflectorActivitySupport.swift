@@ -33,7 +33,7 @@ class DeflectorActivitySupport {
     }
     
     static func start(endDate: Date? = nil) throws {
-        endAll()
+        endAll(forStart: true)
         
         let content = ActivityContent(
             state: makeContentState(),
@@ -46,7 +46,7 @@ class DeflectorActivitySupport {
             pushType: nil
         )
         
-        // Prepared a system call for automatic restart
+        // Prepare a system call for automatic restart.
         Task {
             await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.5 * 60 * 60, repeats: false)
@@ -69,7 +69,7 @@ class DeflectorActivitySupport {
         }
     }
     
-    static func endAll() {
+    static func endAll(forStart: Bool = false) {
         let activities = Activity<DeflectorActivityAttributes>.activities
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -81,9 +81,11 @@ class DeflectorActivitySupport {
         }
         semaphore.wait()
         
-        // Remove the system call for automatic restart
-        Task {
-            await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+        if !forStart {
+            // Remove the system call for automatic restart.
+            Task {
+                await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+            }
         }
     }
     
