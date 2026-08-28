@@ -41,7 +41,6 @@ struct MianView: View {
                             Label("First Setup", systemImage: "gearshape")
                                 .font(.title3)
                                 .padding(5)
-                                .padding(.bottom, 5)
                             Text("If Deflector does not work properly, please try restarting your device and redoing this setup.")
                                 .font(.subheadline)
                             
@@ -55,7 +54,6 @@ struct MianView: View {
                             Label("Live Activity", systemImage: "clock.badge")
                                 .font(.title3)
                                 .padding(5)
-                                .padding(.bottom, 5)
                             Text("You can set buttons to run shortcuts on the Dynamic Island and the Lock Screen.")
                                 .font(.subheadline)
                         }
@@ -68,7 +66,6 @@ struct MianView: View {
                             Label("Side Button", systemImage: "button.vertical.right")
                                 .font(.title3)
                                 .padding(5)
-                                .padding(.bottom, 5)
                             Text("Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
                                 .font(.subheadline)
                         }
