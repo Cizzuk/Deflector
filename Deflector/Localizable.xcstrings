@@ -261,6 +261,16 @@
         }
       }
     },
+    "Copy Link" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リンクをコピー"
+          }
+        }
+      }
+    },
     "Deflection failed" : {
       "localizations" : {
         "ja" : {
