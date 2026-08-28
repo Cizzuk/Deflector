@@ -45,6 +45,16 @@
         }
       }
     },
+    "Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティビティはロック画面とDynamic Islandに表示されます。Dynamic Islandからショートカットを使用するには、長押しします。"
+          }
+        }
+      }
+    },
     "Activity Control" : {
       "localizations" : {
         "ja" : {
