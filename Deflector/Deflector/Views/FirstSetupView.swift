@@ -86,7 +86,7 @@ struct FirstSetupView: View {
             Section {
                 Text("Setup is complete! You can now assign and run your favorite shortcuts for Live Activities or Side Button.")
                 Button(action: { dismiss() }) {
-                    Label("Go to Deflector Settings", systemImage: "chevron.backward")
+                    Label("Deflector Settings", systemImage: "chevron.backward")
                 }
             } header: {
                 Label("All Done!", systemImage: "checkmark")
