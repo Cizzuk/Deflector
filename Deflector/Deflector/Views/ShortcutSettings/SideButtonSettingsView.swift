@@ -18,7 +18,7 @@ struct SideButtonSettingsView: View {
                     if userSettings.sideButtonShortcutName.isEmpty {
                         Label {
                             Text("Not Set")
-                                .foregroundStyle(Color(uiColor: UIColor.placeholderText))
+                                .foregroundStyle(Color(uiColor: .placeholderText))
                         } icon: {
                             Image(systemName: "square.2.layers.3d")
                         }
@@ -26,7 +26,7 @@ struct SideButtonSettingsView: View {
                         Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
                     }
                 }
-                .foregroundStyle(Color(uiColor: UIColor.label))
+                .foregroundStyle(Color(uiColor: .label))
             } header: {
                 Text("Select Shortcut")
             } footer: {
