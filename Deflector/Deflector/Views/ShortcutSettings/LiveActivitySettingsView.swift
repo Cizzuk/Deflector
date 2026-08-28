@@ -141,7 +141,10 @@ struct LiveActivitySettingsView: View {
         .animation(.default, value: userSettings.liveActivityButtons)
         .animation(.default, value: userSettings.liveActivityIslandButtons)
         .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
-        .sheet(isPresented: .constant(symbolPickerID != nil)) {
+        .sheet(isPresented: Binding(
+            get: { symbolPickerID != nil },
+            set: { if !$0 { symbolPickerID = nil } }
+        )) {
             SymbolPicker(symbolPickerText) { symbol in
                 if let symbolPickerID  {
                     if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == symbolPickerID }) {
@@ -153,7 +156,10 @@ struct LiveActivitySettingsView: View {
                 symbolPickerID = nil
             }
         }
-        .sheet(isPresented: .constant(shortcutPickerID != nil)) {
+        .sheet(isPresented: Binding(
+            get: { shortcutPickerID != nil },
+            set: { if !$0 { shortcutPickerID = nil } }
+        )) {
             ShortcutPicker(
                 shortcutPickerText,
                 prompt: "Please set the shortcut name to run from the Live Activity."
@@ -171,7 +177,10 @@ struct LiveActivitySettingsView: View {
         .navigationTitle("Live Activity")
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
-        .alert("Error", isPresented: .constant(vm.errorMessage != nil)) {
+        .alert("Error", isPresented: Binding(
+            get: { vm.errorMessage != nil },
+            set: { if !$0 { vm.errorMessage = nil } }
+        )) {
             Button("OK", role: .close) { vm.errorMessage = nil }
         } message: {
             Text(vm.errorMessage ?? "")
