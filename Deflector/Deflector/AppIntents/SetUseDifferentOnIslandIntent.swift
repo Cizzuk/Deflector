@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct SetUseDifferentOnIslandIntent: LiveActivityIntent {
+struct SetUseDifferentOnIslandIntent: AppIntent {
     static let title: LocalizedStringResource = "Set 'Use Different Shortcuts on Dynamic Island'"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background

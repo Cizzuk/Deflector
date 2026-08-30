@@ -8,9 +8,13 @@
 import AppIntents
 import UserNotifications
 
-struct SystemAutomationDetectIntent: LiveActivityIntent {
+struct SystemAutomationDetectIntent: AppIntent {
     static let title: LocalizedStringResource = "System Automation Detect Intent"
+    #if DEBUG
+    static let isDiscoverable = true
+    #else
     static let isDiscoverable = false
+    #endif
     static var supportedModes: IntentModes = .background
     
     @Parameter(title: "Version")

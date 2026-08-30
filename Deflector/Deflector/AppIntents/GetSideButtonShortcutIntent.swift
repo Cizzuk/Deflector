@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct GetSideButtonShortcutIntent: LiveActivityIntent {
+struct GetSideButtonShortcutIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Side Button Shortcut Name"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background

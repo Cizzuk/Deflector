@@ -9,7 +9,11 @@ import AppIntents
 
 struct SystemCallIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "System Call Intent"
+    #if DEBUG
+    static let isDiscoverable = true
+    #else
     static let isDiscoverable = false
+    #endif
     static var supportedModes: IntentModes = .background
     
     @Parameter(title: "Argument")

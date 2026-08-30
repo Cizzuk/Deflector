@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct GetAllLiveActivityShortcutsIntent: LiveActivityIntent {
+struct GetAllLiveActivityShortcutsIntent: AppIntent {
     static let title: LocalizedStringResource = "Get All Live Activity Shortcuts"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background

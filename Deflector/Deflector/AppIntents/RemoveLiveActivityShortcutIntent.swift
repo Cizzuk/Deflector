@@ -7,7 +7,7 @@
 
 import AppIntents
 
-struct RemoveLiveActivityShortcutIntent: LiveActivityIntent {
+struct RemoveLiveActivityShortcutIntent: AppIntent {
     static let title: LocalizedStringResource = "Remove Shortcut from Live Activity"
     static let description: LocalizedStringResource = "Removes all shortcuts from Live Activity with matching names."
     static let isDiscoverable = true

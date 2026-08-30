@@ -10,7 +10,11 @@ import AppIntents
 @AppIntent(schema: .assistant.activate)
 struct AssistantActivateIntent: AppIntent {
     static let title: LocalizedStringResource = "Side Button Deflector"
+    #if DEBUG
+    static let isDiscoverable = true
+    #else
     static let isDiscoverable = false
+    #endif
     static var supportedModes: IntentModes = .foreground
     
     init() {
