@@ -93,8 +93,8 @@ struct FirstSetupView: View {
             }
             
             Section {
-                Text("If it doesn't work properly, please return to this setup and try again.")
                 Text("If shortcuts or automations are not working properly, restarting your device may resolve the issue.")
+                Text("If it still doesn't work properly, please return to this setup and try again.")
             }
         }
         .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }

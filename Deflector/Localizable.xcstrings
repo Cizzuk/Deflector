@@ -517,12 +517,12 @@
         }
       }
     },
-    "If it doesn't work properly, please return to this setup and try again." : {
+    "If it still doesn't work properly, please return to this setup and try again." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "正しく動作しない場合は、このセットアップを再度お試しください。"
+            "value" : "それでも正しく動作しない場合は、このセットアップを再度お試しください。"
           }
         }
       }
@@ -532,7 +532,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカットやオートメーションがうまく動作しないときは、デバイスを再起動すると改善することがあります。"
+            "value" : "ショートカットやオートメーションが正しく動作しないときは、デバイスを再起動すると改善することがあります。"
           }
         }
       }
