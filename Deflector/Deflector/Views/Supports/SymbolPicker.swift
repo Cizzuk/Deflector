@@ -199,6 +199,7 @@ struct SymbolPicker: View {
                 ])
             }
             .searchable(text: $searchQuery)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
             .navigationTitle("Symbol")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
