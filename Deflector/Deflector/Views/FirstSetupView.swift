@@ -29,8 +29,10 @@ struct FirstSetupView: View {
                     }
                 }
                 
-                Button(action: { OpenSettingsSupport.openSettingsURL() }) {
-                    Label("Open Settings", systemImage: "gear")
+                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                    Button(action: { UIApplication.shared.open(url) }) {
+                        Label("Open Settings", systemImage: "gear")
+                    }
                 }
             } header: {
                 Label("Notifications", systemImage: "bell")

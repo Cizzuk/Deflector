@@ -35,8 +35,8 @@ struct SideButtonSettingsView: View {
             }
             
             Section {
-                if OpenSettingsSupport.canOpenSettingsURL {
-                    Button(action: { OpenSettingsSupport.openSettingsURL() }) {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    Button(action: { UIApplication.shared.open(url) }) {
                         Label("Open Settings", systemImage: "gear")
                     }
                 }
