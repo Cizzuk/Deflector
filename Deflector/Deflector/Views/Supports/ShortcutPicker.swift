@@ -15,6 +15,7 @@ struct ShortcutPicker: View {
     var callback: (String) -> Void
     
     @FocusState private var isFocused: Bool
+    @State private var disableCallButton: Bool = false
     @State private var isWaitingAutomationCallback: Bool = false
     @State private var errorMessage: LocalizedStringResource?
     
@@ -36,9 +37,16 @@ struct ShortcutPicker: View {
             return
         }
         
+        disableCallButton = true
         isWaitingAutomationCallback = true
+        
         UIImpactFeedbackGenerator().impactOccurred()
         await ShortcutPickerSupport.callShortcutPicker(prompt: prompt)
+        
+        // Prevent rapidly tapping
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            disableCallButton = false
+        }
     }
     
     private func handleShortcutPickNotification(_ notification: Notification) {
@@ -47,6 +55,7 @@ struct ShortcutPicker: View {
            let pickedShortcutName = userInfo["shortcutName"] as? String {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             shortcutName = pickedShortcutName
+            disableCallButton = false
             isWaitingAutomationCallback = false
         }
     }
@@ -74,8 +83,19 @@ struct ShortcutPicker: View {
                 
                 Section {
                     Button(action: { Task { await callShortcutPicker() } }) {
-                        Label("Choose from the list of shortcuts", systemImage: "square.2.layers.3d")
+                        Label {
+                            Text("Choose from the list of shortcuts")
+                        } icon: {
+                            if isWaitingAutomationCallback {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            } else {
+                                Image(systemName: "square.2.layers.3d")
+                            }
+                        }
                     }
+                    .foregroundStyle(.accent)
+                    .disabled(disableCallButton)
                 } footer: {
                     if isWaitingAutomationCallback {
                         Text("Requested to display the shortcut list. If it does not appear, Deflector Automation may not be working correctly.")
