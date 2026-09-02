@@ -12,16 +12,42 @@ struct SetUseDifferentOnIslandIntent: AppIntent {
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
     
-    @Parameter(title: "Setting")
-    var setting: Bool
+    enum TurnEnum: String, AppEnum {
+        case turn
+        case toggle
+        
+        static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Operation")
+        static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+            .turn: "Turn",
+            .toggle: "Toggle"
+        ]
+    }
+    
+    @Parameter(title: "Operation", default: .turn)
+    var operation: TurnEnum?
+    
+    @Parameter(title: "State", default: false)
+    var state: Bool
     
     static var parameterSummary: some ParameterSummary {
-        Summary("Turn 'Use Different Shortcuts on Dynamic Island' \(\.$setting)")
+        When(\.$operation, .equalTo, .turn) {
+            Summary("\(\.$operation) 'Use Different Shortcuts on Dynamic Island' \(\.$state)")
+        } otherwise: {
+            Summary("\(\.$operation) 'Use Different Shortcuts on Dynamic Island'")
+        }
     }
     
     @MainActor
-    func perform() async throws -> some IntentResult {
-        UserSettings.shared.liveActivityUseDifferentOnIsland = setting
-        return .result()
+    func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+        switch operation {
+        case .turn:
+            UserSettings.shared.liveActivityUseDifferentOnIsland = state
+        case .toggle:
+            UserSettings.shared.liveActivityUseDifferentOnIsland.toggle()
+        default:
+            break
+        }
+        
+        return .result(value: UserSettings.shared.liveActivityUseDifferentOnIsland)
     }
 }
