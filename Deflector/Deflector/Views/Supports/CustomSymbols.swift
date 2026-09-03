@@ -88,7 +88,7 @@ struct CustomSymbols: View {
             .onAppear { loadCustomSymbols() }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    PhotosPicker(selection: $selectedPhoto) {
+                    PhotosPicker(selection: $selectedPhoto, matching: .images) {
                         Label("Add New Symbol", systemImage: "plus")
                     }
                     .tint(Color(uiColor: .label))
