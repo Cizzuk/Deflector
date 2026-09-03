@@ -36,19 +36,20 @@ struct LiveActivitySettingsView: View {
                         Label {
                             Text("Symbol")
                         } icon: {
-                            if button.symbol.isEmpty {
-                                Image(systemName: "square.dashed")
-                                    .foregroundStyle(Color(uiColor: .placeholderText))
-                            } else if UIImage(systemName: button.symbol) != nil {
-                                Image(systemName: button.symbol)
-                                    .foregroundStyle(Color(uiColor: .label))
+                            let symbolImage = SymbolHelper.getSymbolImage(button.symbol)
+                            if symbolImage.type == .custom {
+                                symbolImage.image?
+                                    .resizable()
+                                    .scaledToFit()
                             } else {
-                                Image(systemName: "questionmark.square.dashed")
-                                    .foregroundStyle(Color(uiColor: .label))
+                                symbolImage.image?
+                                    .font(.system(size: 20, weight: .regular))
+                                    .foregroundStyle(Color(uiColor: symbolImage.type == .none ? .placeholderText : .label))
                             }
                         }
+                        .frame(width: 24, height: 24)
                         .labelStyle(.iconOnly)
-                        .frame(width: 30)
+                        .padding(.horizontal, 8)
                     }
                     .buttonStyle(.borderless)
                     
