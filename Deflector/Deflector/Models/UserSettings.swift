@@ -93,9 +93,6 @@ final class UserSettings: ObservableObject {
     }
     
     @Published var liveActivityShowShortcutNames: Bool = {
-        if UserDefaults.standard.object(forKey: Keys.liveActivityShowShortcutNames) == nil {
-            return true
-        }
         return UserDefaults.standard.bool(forKey: Keys.liveActivityShowShortcutNames)
     }() {
         didSet {
