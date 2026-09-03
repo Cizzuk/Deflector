@@ -91,6 +91,7 @@ struct CustomSymbols: View {
                     PhotosPicker(selection: $selectedPhoto) {
                         Label("Add New Symbol", systemImage: "plus")
                     }
+                    .tint(Color(uiColor: .label))
                     .onChange(of: selectedPhoto) {
                         if let item = selectedPhoto {
                             Task { await handlePhotoPickerSelection(item) }
