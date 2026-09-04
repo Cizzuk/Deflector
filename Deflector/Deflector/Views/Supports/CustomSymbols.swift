@@ -72,10 +72,12 @@ struct CustomSymbols: View {
                     .accessibilityValue(item.id)
                 }
                 .onDelete { indexSet in
-                    indexSet.forEach { index in
+                    for index in indexSet.sorted(by: >) {
                         let symbolNameToDelete = customSymbols[index].id
+                        
                         if SymbolHelper.deleteCustomSymbol(symbolName: symbolNameToDelete) {
                             customSymbols.remove(at: index)
+
                             if symbol == symbolNameToDelete {
                                 symbol = ""
                             }
