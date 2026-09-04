@@ -55,7 +55,6 @@ struct CustomSymbols: View {
                         HStack {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .foregroundStyle(isSelected ? .accent : .secondary)
-                                .labelStyle(.iconOnly)
                             item.image
                                 .resizable()
                                 .scaledToFit()
