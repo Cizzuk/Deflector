@@ -21,13 +21,14 @@ struct CustomSymbols: View {
     
     private func loadCustomSymbols() {
         DispatchQueue.global(qos: .userInteractive).async {
-            if let symbolNames = SymbolHelper.getCustomSymbolNames() {
-                symbolNames.forEach { symbolName in
-                    if customSymbols.first(where: { $0.id == symbolName }) == nil,
-                       let image = SymbolHelper.getSymbolImage(symbolName).image {
-                        DispatchQueue.main.async {
-                            customSymbols.append(CustomSymbol(id: symbolName, image: image))
-                        }
+            guard let symbolNames = SymbolHelper.getCustomSymbolNames() else { return }
+            
+            for symbolName in symbolNames {
+                guard let image = SymbolHelper.getSymbolImage(symbolName).image else { continue }
+                
+                DispatchQueue.main.async {
+                    if customSymbols.first(where: { $0.id == symbolName }) == nil {
+                        customSymbols.append(CustomSymbol(id: symbolName, image: image))
                     }
                 }
             }
