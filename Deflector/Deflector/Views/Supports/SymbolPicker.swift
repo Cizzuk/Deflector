@@ -59,12 +59,21 @@ struct SymbolPicker: View {
                 Section {
                     HStack {
                         Spacer()
-                        Image(systemName: symbol)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .padding()
-                            .accessibilityHidden(true)
+                        Group {
+                            let symbolImage = SymbolHelper.getSymbolImage(symbol)
+                            if symbolImage.type == .custom {
+                                symbolImage.image?
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                symbolImage.image?
+                                    .font(.system(size: 40, weight: .regular))
+                                    .foregroundStyle(Color(uiColor: symbolImage.type == .none ? .placeholderText : .label))
+                            }
+                        }
+                        .frame(width: 50, height: 50)
+                        .padding(10)
+                        .accessibilityHidden(true)
                         Spacer()
                     }
                     TextField("Symbol Name", text: $symbol)
@@ -73,6 +82,11 @@ struct SymbolPicker: View {
                     Text("You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/).")
                         .padding(.bottom, 10)
                 }
+                
+                NavigationLink(destination: CustomSymbols(symbol: $symbol)) {
+                    Label("Custom Symbols", systemImage: "photo.badge.plus")
+                }
+                .foregroundStyle(.accent)
                 
                 SymbolButtonsGrid("Maps", [
                     "car.fill", "bus.fill", "tram.fill", "bicycle", "map.fill", "figure.walk", "location.fill", "mappin.and.ellipse", "arrow.up.and.down.and.arrow.left.and.right", "point.topleft.down.to.point.bottomright.curvepath"

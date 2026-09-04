@@ -85,6 +85,16 @@
         }
       }
     },
+    "Add New Symbol" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボルを追加"
+          }
+        }
+      }
+    },
     "Add Shortcut" : {
       "localizations" : {
         "ja" : {
@@ -287,6 +297,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "リンクをコピー"
+          }
+        }
+      }
+    },
+    "Custom Symbol" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムシンボル"
+          }
+        }
+      }
+    },
+    "Custom Symbols" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムシンボル"
           }
         }
       }

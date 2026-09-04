@@ -54,6 +54,7 @@ struct FirstSetupView: View {
                         Button(action: { UIPasteboard.general.string = url.absoluteString }) {
                             Label("Copy Link", systemImage: "document.on.document")
                         }
+                        .tint(Color(uiColor: .label))
                     }
                 }
                 

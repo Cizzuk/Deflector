@@ -11,7 +11,7 @@ import Foundation
 final class UserSettings: ObservableObject {
     static let shared = UserSettings()
     private init() { }
-
+    
     private enum Keys {
         static let isFirstSetupCompleted = "isFirstSetupCompleted"
         static let sideButtonShortcutName = "sideButtonShortcutName"
@@ -43,12 +43,15 @@ final class UserSettings: ObservableObject {
     }
     
     @Published var liveActivityButtons: [DeflectorActivityButton] = {
-        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityButtons),
-           let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
-            return buttons
+        guard let data = UserDefaults.standard.data(forKey: Keys.liveActivityButtons) else {
+            return [DeflectorActivityButton(shortcutName: "")]
         }
         
-        return [DeflectorActivityButton(shortcutName: "")]
+        guard let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) else {
+            return []
+        }
+        
+        return buttons
     }() {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityButtons) {
@@ -59,12 +62,15 @@ final class UserSettings: ObservableObject {
     }
     
     @Published var liveActivityIslandButtons: [DeflectorActivityButton] = {
-        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandButtons),
-           let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
-            return buttons
+        guard let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandButtons) else {
+            return [DeflectorActivityButton(shortcutName: "")]
         }
         
-        return [DeflectorActivityButton(shortcutName: "")]
+        guard let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) else {
+            return []
+        }
+        
+        return buttons
     }() {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityIslandButtons) {

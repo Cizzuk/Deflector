@@ -24,25 +24,38 @@ struct DeflectorActivityWidget: Widget {
                     let color = ColorHelper.uInt32ToColor(button.color)
                     Button(intent: SendDeflectionNotificationIntent(shortcutName: button.shortcutName)) {
                         VStack(spacing: 2) {
-                            if button.symbol.isEmpty {
+                            let symbolImage = SymbolHelper.getSymbolImage(button.symbol)
+                            let size: CGFloat = activityFamily == .small ? 26 : 38
+                            if symbolImage.type != .none {
+                                Label {
+                                    Text(button.shortcutName)
+                                } icon: {
+                                    if symbolImage.type == .custom {
+                                        symbolImage.image?
+                                            .resizable()
+                                            .scaledToFit()
+                                    } else {
+                                        symbolImage.image?
+                                            .font(.system(size: size*0.8, weight: .regular))
+                                            .foregroundStyle(color)
+                                    }
+                                }
+                                .frame(width: size, height: size)
+                                .labelStyle(.iconOnly)
+                                
+                                if showLabel && activityFamily != .small {
+                                    Text(button.shortcutName)
+                                        .lineLimit(1)
+                                        .font(.caption)
+                                        .foregroundStyle(color.opacity(0.75))
+                                        .accessibilityHidden(true)
+                                }
+                            } else {
                                 Text(button.shortcutName)
                                     .lineLimit(2)
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundStyle(color)
-                            } else {
-                                Label(button.shortcutName, systemImage: button.symbol)
-                                    .labelStyle(.iconOnly)
-                                    .font(activityFamily == .small ? .title2 : .title)
-                                    .foregroundStyle(color)
-                                    .frame(width: 35, height: 35)
-                                if showLabel && activityFamily != .small {
-                                    Text(button.shortcutName)
-                                        .lineLimit(1)
-                                        .font(.caption)
-                                        .foregroundStyle(color.opacity(0.8))
-                                        .accessibilityHidden(true)
-                                }
                             }
                         }
                     }
@@ -69,7 +82,7 @@ struct DeflectorActivityWidget: Widget {
             return DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
-                        .padding(.bottom, showLabel ? 12 : 18)
+                        .padding(.bottom, showLabel ? 15 : 18)
                 }
             } compactLeading: {
                 EmptyView().frame(width: 0, height: 0)
