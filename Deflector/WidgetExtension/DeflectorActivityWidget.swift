@@ -42,7 +42,6 @@ struct DeflectorActivityWidget: Widget {
                                 }
                                 .frame(width: size, height: size)
                                 .labelStyle(.iconOnly)
-                                .padding(4)
                                 
                                 if showLabel && activityFamily != .small {
                                     Text(button.shortcutName)
