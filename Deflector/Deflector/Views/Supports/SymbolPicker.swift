@@ -61,7 +61,7 @@ struct SymbolPicker: View {
                         Spacer()
                         Group {
                             let symbolImage = SymbolHelper.getSymbolImage(symbol)
-                            if symbolImage.type == .custom {
+                            if symbolImage.type.isPicture {
                                 symbolImage.image?
                                     .resizable()
                                     .scaledToFit()

@@ -9,17 +9,27 @@ import SwiftUI
 
 class SymbolHelper {
     enum SymbolType: String {
-        case custom
+        case custom, cizzuk
         case system
-        case none
-        case unknown
+        case none, unknown
         
         var prefix: String {
             switch self {
             case .custom: return ".custom."
+            case .cizzuk: return ".cizzuk."
             case .system: return ""
             case .none: return ""
             case .unknown: return ""
+            }
+        }
+        
+        var isPicture: Bool {
+            switch self {
+            case .custom: return true
+            case .cizzuk: return false
+            case .system: return false
+            case .none: return false
+            case .unknown: return false
             }
         }
     }
@@ -44,6 +54,12 @@ class SymbolHelper {
             let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
             if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
                 return (Image(uiImage: uiImage), .custom)
+            }
+        } else if symbolName.hasPrefix(SymbolType.cizzuk.prefix) {
+            let availableSymbols = ["alare", "bolt.alare", "cbnote", "checkmark.alare", "cse.emoji", "cse.private", "cse.quick", "cse", "sidebridge", "sidefish"]
+            let strippedSymbolName = String(symbolName.dropFirst(SymbolType.cizzuk.prefix.count))
+            if availableSymbols.contains(strippedSymbolName) {
+                return (Image(strippedSymbolName), .cizzuk)
             }
         }
         
