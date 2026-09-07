@@ -1,5 +1,5 @@
 //
-//  ShortcutPickerSupport.swift
+//  DeviceShortcutsSupport.swift
 //  Deflector
 //
 //  Created by Cizzuk on 2026/08/24.
@@ -8,21 +8,19 @@
 import UserNotifications
 
 extension Notification.Name {
-    static let shortcutWasPicked = Notification.Name("shortcutWasPicked")
+    static let deviceShortcutsReceived = Notification.Name("deviceShortcutsReceived")
 }
 
-class ShortcutPickerSupport {
-    static func handleShortcutPick(_ shortcutName: String) {
-        NotificationCenter.default.post(name: .shortcutWasPicked, object: nil, userInfo: ["shortcutName": shortcutName])
+class DeviceShortcutsSupport {
+    static func handleDeviceShortcuts(_ shortcuts: [String]) {
+        NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
     }
     
-    static func callShortcutPicker(prompt: LocalizedStringResource? = nil) async {
+    static func callDeviceShortcuts() async {
         let content = UNMutableNotificationContent()
-        content.title = "Shortcut Picker"
+        content.title = "Device Shortcuts"
         content.sound = .none
         content.interruptionLevel = .timeSensitive
-        
-        if let prompt { content.body = String(localized: prompt) }
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
         
