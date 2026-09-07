@@ -185,12 +185,12 @@
         }
       }
     },
-    "Cannot display the shortcut list because notifications are disabled. Please complete the first setup." : {
+    "Cannot request the shortcut list because notifications are disabled. Please complete the first setup." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通知が許可されていないため、ショートカットのリストを表示できません。初期セットアップを完了してください。"
+            "value" : "通知が許可されていないため、ショートカットのリストをリクエストできません。初期セットアップを完了してください。"
           }
         }
       }
@@ -201,16 +201,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アイコンを変更"
-          }
-        }
-      }
-    },
-    "Choose from the list of shortcuts" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ショートカットのリストから選択"
           }
         }
       }
@@ -513,6 +503,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サイドボタンのショートカット名を取得"
+          }
+        }
+      }
+    },
+    "Get the List of Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのリストを取得"
           }
         }
       }
@@ -950,12 +950,12 @@
         }
       }
     },
-    "Requested to display the shortcut list. If it does not appear, Deflector Automation may not be working correctly." : {
+    "Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカットのリストの表示をリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+            "value" : "ショートカットのリストをリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
           }
         }
       }
@@ -1186,7 +1186,10 @@
     "System Call Intent" : {
       "shouldTranslate" : false
     },
-    "System Shortcut Picker Intent" : {
+    "System Device Shortcuts Intent" : {
+      "shouldTranslate" : false
+    },
+    "System Device Shortcuts Intent ${shortcuts}" : {
       "shouldTranslate" : false
     },
     "Test successful! It may be working correctly." : {
@@ -1299,12 +1302,12 @@
         }
       }
     },
-    "Use Deflector Automation to display a list of your shortcuts and easily select the one you want." : {
+    "Use Deflector Automation to request a list of your shortcuts and easily select the one you want." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deflector Automationを用いて、リストからショートカットを簡単に選択できます。"
+            "value" : "Deflector Automationを用いてショートカットの一覧をリクエストし、簡単にショートカットを選択できるようにします。"
           }
         }
       }
@@ -1385,6 +1388,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[SF Symbols](https://developer.apple.com/jp/sf-symbols/)に収録されているシンボルを利用できます。"
+          }
+        }
+      }
+    },
+    "Your Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのショートカット"
           }
         }
       }

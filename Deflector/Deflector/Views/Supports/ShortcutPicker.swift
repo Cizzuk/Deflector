@@ -11,6 +11,7 @@ struct ShortcutPicker: View {
     @Environment(\.dismiss) var dismiss
     
     @State var shortcutName: String
+    @State var deviceShortcuts: [String] = []
     var prompt: LocalizedStringResource?
     var callback: (String) -> Void
     
@@ -29,19 +30,20 @@ struct ShortcutPicker: View {
         self.callback = callback
     }
     
-    private func callShortcutPicker() async {
+    private func callDeviceShortcuts() async {
         let settings = await UserNotificationSupport.notificationSettings()
         if !UserNotificationSupport.isAlertAvailable(settings: settings) {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
-            errorMessage = "Cannot display the shortcut list because notifications are disabled. Please complete the first setup."
+            errorMessage = "Cannot request the shortcut list because notifications are disabled. Please complete the first setup."
             return
         }
         
+        isFocused = false
         disableCallButton = true
         isWaitingAutomationCallback = true
         
         UIImpactFeedbackGenerator().impactOccurred()
-        await ShortcutPickerSupport.callShortcutPicker(prompt: prompt)
+        await DeviceShortcutsSupport.callDeviceShortcuts()
         
         // Prevent rapidly tapping
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -49,13 +51,12 @@ struct ShortcutPicker: View {
         }
     }
     
-    private func handleShortcutPickNotification(_ notification: Notification) {
+    private func handleDeviceShortcutsNotification(_ notification: Notification) {
         if isWaitingAutomationCallback,
            let userInfo = notification.userInfo,
-           let pickedShortcutName = userInfo["shortcutName"] as? String {
+           let receivedShortcuts = userInfo["shortcuts"] as? [String] {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
-            shortcutName = pickedShortcutName
-            disableCallButton = false
+            deviceShortcuts = receivedShortcuts
             isWaitingAutomationCallback = false
         }
     }
@@ -82,9 +83,9 @@ struct ShortcutPicker: View {
                 }
                 
                 Section {
-                    Button(action: { Task { await callShortcutPicker() } }) {
+                    Button(action: { Task { await callDeviceShortcuts() } }) {
                         Label {
-                            Text("Choose from the list of shortcuts")
+                            Text("Get the List of Shortcuts")
                         } icon: {
                             if isWaitingAutomationCallback {
                                 ProgressView()
@@ -98,15 +99,38 @@ struct ShortcutPicker: View {
                     .disabled(disableCallButton)
                 } footer: {
                     if isWaitingAutomationCallback {
-                        Text("Requested to display the shortcut list. If it does not appear, Deflector Automation may not be working correctly.")
+                        Text("Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly.")
+                            .padding(.bottom, 10)
                     } else {
-                        Text("Use Deflector Automation to display a list of your shortcuts and easily select the one you want.")
+                        Text("Use Deflector Automation to request a list of your shortcuts and easily select the one you want.")
+                            .padding(.bottom, 10)
+                    }
+                }
+
+                if !deviceShortcuts.isEmpty {
+                    Section {
+                        ForEach(deviceShortcuts, id: \.self) { shortcut in
+                            let isSelected = shortcutName == shortcut
+                            Button(action: { shortcutName = shortcut }) {
+                                HStack {
+                                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                                        .foregroundStyle(isSelected ? .accent : .secondary)
+                                        .accessibilityHidden(true)
+                                    Text(shortcut)
+                                        .lineLimit(1)
+                                        .foregroundStyle(isSelected ? .accent : .primary)
+                                }
+                            }
+                            .accessibilityAddTraits(isSelected ? .isSelected : [])
+                        }
+                    } header: {
+                        Text("Your Shortcuts")
                     }
                 }
             }
             .onAppear { isFocused = true }
-            .onReceive(NotificationCenter.default.publisher(for: .shortcutWasPicked)) { notification in
-                handleShortcutPickNotification(notification)
+            .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
+                handleDeviceShortcutsNotification(notification)
             }
             .navigationTitle("Shortcut")
             .navigationBarTitleDisplayMode(.inline)
