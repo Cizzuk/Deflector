@@ -25,7 +25,7 @@ struct LiveActivitySettingsView: View {
         
         var body: some View {
             ForEach($buttons) { $button in
-                HStack(spacing: 10) {
+                HStack(spacing: 18) {
                     UInt32ColorPicker("Color", selection: $button.color)
                         .labelsHidden()
                     
@@ -49,7 +49,6 @@ struct LiveActivitySettingsView: View {
                         }
                         .frame(width: 24, height: 24)
                         .labelStyle(.iconOnly)
-                        .padding(.horizontal, 8)
                     }
                     .buttonStyle(.borderless)
                     
