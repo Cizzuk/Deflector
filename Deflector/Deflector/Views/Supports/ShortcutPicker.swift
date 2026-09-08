@@ -15,6 +15,7 @@ struct ShortcutPicker: View {
     var prompt: LocalizedStringResource?
     var callback: (String) -> Void
     
+    @State private var searchQuery: String = ""
     @FocusState private var isFocused: Bool
     @State private var disableCallButton: Bool = false
     @State private var isWaitingAutomationCallback: Bool = false
@@ -109,7 +110,11 @@ struct ShortcutPicker: View {
 
                 if !deviceShortcuts.isEmpty {
                     Section {
-                        ForEach(deviceShortcuts, id: \.self) { shortcut in
+                        let filteredShortcuts = deviceShortcuts.filter { shortcut in
+                            searchQuery.isEmpty || shortcut.localizedCaseInsensitiveContains(searchQuery)
+                        }
+                        
+                        ForEach(filteredShortcuts, id: \.self) { shortcut in
                             let isSelected = shortcutName == shortcut
                             Button(action: { shortcutName = shortcut }) {
                                 HStack(spacing: 15) {
@@ -132,6 +137,8 @@ struct ShortcutPicker: View {
             .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
                 handleDeviceShortcutsNotification(notification)
             }
+            .searchable(text: $searchQuery, prompt: "Search Shortcuts")
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
             .navigationTitle("Shortcut")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()

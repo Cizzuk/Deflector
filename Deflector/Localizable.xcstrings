@@ -980,6 +980,16 @@
         }
       }
     },
+    "Search Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを検索"
+          }
+        }
+      }
+    },
     "Select Shortcut" : {
       "localizations" : {
         "ja" : {
