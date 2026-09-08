@@ -53,14 +53,13 @@ struct CustomSymbols: View {
                 ForEach(customSymbols) { item in
                     let isSelected = symbol == item.id
                     Button(action: { symbol = item.id }) {
-                        HStack {
+                        HStack(spacing: 15) {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .foregroundStyle(isSelected ? .accent : .secondary)
                             item.image
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)
-                                .padding(5)
                             Text(item.id)
                                 .lineLimit(1)
                                 .foregroundStyle(isSelected ? .accent : .secondary)
@@ -87,7 +86,6 @@ struct CustomSymbols: View {
             }
             .navigationTitle("Custom Symbols")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear { loadCustomSymbols() }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     PhotosPicker(selection: $selectedPhoto, matching: .images) {
@@ -103,5 +101,6 @@ struct CustomSymbols: View {
                 }
             }
         }
+        .onAppear { loadCustomSymbols() }
     }
 }

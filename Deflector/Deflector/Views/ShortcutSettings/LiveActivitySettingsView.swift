@@ -25,7 +25,7 @@ struct LiveActivitySettingsView: View {
         
         var body: some View {
             ForEach($buttons) { $button in
-                HStack(spacing: 10) {
+                HStack(spacing: 18) {
                     UInt32ColorPicker("Color", selection: $button.color)
                         .labelsHidden()
                     
@@ -49,7 +49,6 @@ struct LiveActivitySettingsView: View {
                         }
                         .frame(width: 24, height: 24)
                         .labelStyle(.iconOnly)
-                        .padding(.horizontal, 8)
                     }
                     .buttonStyle(.borderless)
                     
@@ -81,102 +80,104 @@ struct LiveActivitySettingsView: View {
     
     // MARK: - View
     var body: some View {
-        List {
-            Section {
-                if vm.isLiveActivityActive {
-                    Button(action: { vm.endLiveActivity() }) {
-                        Label("End Activity", systemImage: "stop.fill")
+        NavigationStack {
+            List {
+                Section {
+                    if vm.isLiveActivityActive {
+                        Button(action: { vm.endLiveActivity() }) {
+                            Label("End Activity", systemImage: "stop.fill")
+                        }
+                    } else {
+                        Button(action: { Task { await vm.startLiveActivity() } }) {
+                            Label("Start Activity", systemImage: "play.fill")
+                        }
                     }
-                } else {
-                    Button(action: { Task { await vm.startLiveActivity() } }) {
-                        Label("Start Activity", systemImage: "play.fill")
-                    }
-                }
-            } header: {
-                Text("Activity Control")
-            } footer: {
-                Text("Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it.")
-                    .padding(.bottom, 10)
-            }
-            
-            Section {
-                ShortcutList(
-                    buttons: $userSettings.liveActivityButtons,
-                    symbolPickerID: $symbolPickerID,
-                    symbolPickerText: $symbolPickerText,
-                    shortcutPickerID: $shortcutPickerID,
-                    shortcutPickerText: $shortcutPickerText
-                )
-            } header: {
-                Text("Shortcuts")
-            }
-            
-            Section {
-                Toggle(isOn: $userSettings.liveActivityUseDifferentOnIsland) {
-                    Text("Use Different Shortcuts on Dynamic Island")
+                } header: {
+                    Text("Activity Control")
+                } footer: {
+                    Text("Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it.")
+                        .padding(.bottom, 10)
                 }
                 
-                if userSettings.liveActivityUseDifferentOnIsland {
+                Section {
                     ShortcutList(
-                        buttons: $userSettings.liveActivityIslandButtons,
+                        buttons: $userSettings.liveActivityButtons,
                         symbolPickerID: $symbolPickerID,
                         symbolPickerText: $symbolPickerText,
                         shortcutPickerID: $shortcutPickerID,
                         shortcutPickerText: $shortcutPickerText
                     )
+                } header: {
+                    Text("Shortcuts")
                 }
-            } header: {
-                Text("Dynamic Island")
-            }
-            
-            Section {
-                Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
-                    Text("Use Black Background on Lock Screen")
+                
+                Section {
+                    Toggle(isOn: $userSettings.liveActivityUseDifferentOnIsland) {
+                        Text("Use Different Shortcuts on Dynamic Island")
+                    }
+                    
+                    if userSettings.liveActivityUseDifferentOnIsland {
+                        ShortcutList(
+                            buttons: $userSettings.liveActivityIslandButtons,
+                            symbolPickerID: $symbolPickerID,
+                            symbolPickerText: $symbolPickerText,
+                            shortcutPickerID: $shortcutPickerID,
+                            shortcutPickerText: $shortcutPickerText
+                        )
+                    }
+                } header: {
+                    Text("Dynamic Island")
                 }
-                Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
-                    Text("Show Shortcut Names")
-                }
-            }
-        }
-        .animation(.default, value: vm.isLiveActivityActive)
-        .animation(.default, value: userSettings.liveActivityButtons)
-        .animation(.default, value: userSettings.liveActivityIslandButtons)
-        .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
-        .sheet(isPresented: Binding(
-            get: { symbolPickerID != nil },
-            set: { if !$0 { symbolPickerID = nil } }
-        )) {
-            SymbolPicker(symbolPickerText) { symbol in
-                if let symbolPickerID  {
-                    if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == symbolPickerID }) {
-                        userSettings.liveActivityButtons[index].symbol = symbol
-                    } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == symbolPickerID }) {
-                        userSettings.liveActivityIslandButtons[index].symbol = symbol
+                
+                Section {
+                    Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
+                        Text("Use Black Background on Lock Screen")
+                    }
+                    Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
+                        Text("Show Shortcut Names")
                     }
                 }
-                symbolPickerID = nil
             }
-        }
-        .sheet(isPresented: Binding(
-            get: { shortcutPickerID != nil },
-            set: { if !$0 { shortcutPickerID = nil } }
-        )) {
-            ShortcutPicker(
-                shortcutPickerText,
-                prompt: "Please set the shortcut name to run from the Live Activity."
-            ) { shortcutName in
-                if let shortcutPickerID  {
-                    if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
-                        userSettings.liveActivityButtons[index].shortcutName = shortcutName
-                    } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
-                        userSettings.liveActivityIslandButtons[index].shortcutName = shortcutName
+            .animation(.default, value: vm.isLiveActivityActive)
+            .animation(.default, value: userSettings.liveActivityButtons)
+            .animation(.default, value: userSettings.liveActivityIslandButtons)
+            .animation(.default, value: userSettings.liveActivityUseDifferentOnIsland)
+            .sheet(isPresented: Binding(
+                get: { symbolPickerID != nil },
+                set: { if !$0 { symbolPickerID = nil } }
+            )) {
+                SymbolPicker(symbolPickerText) { symbol in
+                    if let symbolPickerID  {
+                        if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == symbolPickerID }) {
+                            userSettings.liveActivityButtons[index].symbol = symbol
+                        } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == symbolPickerID }) {
+                            userSettings.liveActivityIslandButtons[index].symbol = symbol
+                        }
                     }
+                    symbolPickerID = nil
                 }
-                shortcutPickerID = nil
             }
+            .sheet(isPresented: Binding(
+                get: { shortcutPickerID != nil },
+                set: { if !$0 { shortcutPickerID = nil } }
+            )) {
+                ShortcutPicker(
+                    shortcutPickerText,
+                    prompt: "Please set the shortcut name to run from the Live Activity."
+                ) { shortcutName in
+                    if let shortcutPickerID  {
+                        if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
+                            userSettings.liveActivityButtons[index].shortcutName = shortcutName
+                        } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
+                            userSettings.liveActivityIslandButtons[index].shortcutName = shortcutName
+                        }
+                    }
+                    shortcutPickerID = nil
+                }
+            }
+            .navigationTitle("Live Activity")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Live Activity")
-        .navigationBarTitleDisplayMode(.inline)
         .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
         .alert("Error", isPresented: Binding(
             get: { vm.errorMessage != nil },

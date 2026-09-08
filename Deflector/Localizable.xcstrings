@@ -45,6 +45,46 @@
         }
       }
     },
+    "1. Automations do not work at all for the first few minutes after the device boots up." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. デバイス起動後の数分間オートメーションが全く機能しない。"
+          }
+        }
+      }
+    },
+    "2. When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 最後にショートカットを開いてから時間が経過すると、ショートカットのダイアログが表示されなくなることがある。"
+          }
+        }
+      }
+    },
+    "3. If a shortcut executed from an automation does not finish successfully, automations will not run for a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. オートメーションから実行されたショートカットが正常に終了しないと、しばらくオートメーションが実行されなくなる。"
+          }
+        }
+      }
+    },
+    "4. If an error occurs during an automation, such as entering a non-existent shortcut name, the automation may repeatedly trigger errors and become unable to run for a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. 存在しないショートカット名を入力した場合など、オートメーション中にエラーが発生すると、オートメーションがエラーを発生させ続けてしばらく実行不可能になることがある。"
+          }
+        }
+      }
+    },
     "About" : {
       "localizations" : {
         "ja" : {
@@ -597,6 +637,16 @@
         }
       }
     },
+    "Issues" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題"
+          }
+        }
+      }
+    },
     "Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant." : {
       "localizations" : {
         "ja" : {
@@ -613,6 +663,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "キーボード"
+          }
+        }
+      }
+    },
+    "Known Issues" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既知の問題"
           }
         }
       }
@@ -970,6 +1030,26 @@
         }
       }
     },
+    "Search by Symbol Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル名で検索"
+          }
+        }
+      }
+    },
+    "Search Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを検索"
+          }
+        }
+      }
+    },
     "Select Shortcut" : {
       "localizations" : {
         "ja" : {
@@ -1208,6 +1288,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "テキストフォーマット"
+          }
+        }
+      }
+    },
+    "The issues listed here are bugs in the Shortcuts app. Because Deflector runs shortcuts through automation, it is affected by these bugs. These issues cannot be fixed in Deflector." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このリストにある問題は、ショートカットアプリに由来するバグです。Deflectorはオートメーションを経由してショートカットを実行するため、これらのバグの影響を受けます。これらはDeflectorでは修正できません。"
+          }
+        }
+      }
+    },
+    "There may be various other issues besides these. If an issue caused by a shortcut occurs, waiting for a while before trying again or restarting your device may resolve it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これら以外にも様々な問題があるかもしれません。ショートカットに由来する問題が発生した時は、しばらく待ってから再度試すか、デバイスを再起動すると改善することがあります。"
           }
         }
       }
