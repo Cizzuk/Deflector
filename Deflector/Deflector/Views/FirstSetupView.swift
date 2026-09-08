@@ -99,6 +99,11 @@ struct FirstSetupView: View {
                 Section {
                     Text("If shortcuts or automations are not working properly, restarting your device may resolve the issue.")
                     Text("If it still doesn't work properly, please return to this setup and try again.")
+                    
+                    NavigationLink(destination: KnownIssuesView()) {
+                        Text("Known Issues")
+                            .foregroundStyle(.accent)
+                    }
                 }
             }
             .navigationTitle("Welcome!")
