@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ChangeIconView: View {
     var body: some View {
-        List {
-            Section {
-                iconItem(iconName: "Deflector", iconID: "AppIcon")
-                iconItem(iconName: "Pride", iconID: "Pride")
-                iconItem(iconName: "Unity", iconID: "Unity")
+        NavigationStack {
+            List {
+                Section {
+                    iconItem(iconName: "Deflector", iconID: "AppIcon")
+                    iconItem(iconName: "Pride", iconID: "Pride")
+                    iconItem(iconName: "Unity", iconID: "Unity")
+                }
             }
+            .navigationTitle("Change App Icon")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Change App Icon")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func iconItem(iconName: String, iconID: String) -> some View {

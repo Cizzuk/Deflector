@@ -86,7 +86,6 @@ struct CustomSymbols: View {
             }
             .navigationTitle("Custom Symbols")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear { loadCustomSymbols() }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     PhotosPicker(selection: $selectedPhoto, matching: .images) {
@@ -102,5 +101,6 @@ struct CustomSymbols: View {
                 }
             }
         }
+        .onAppear { loadCustomSymbols() }
     }
 }

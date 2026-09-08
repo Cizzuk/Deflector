@@ -133,10 +133,6 @@ struct ShortcutPicker: View {
                     }
                 }
             }
-            .onAppear { isFocused = true }
-            .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
-                handleDeviceShortcutsNotification(notification)
-            }
             .searchable(text: $searchQuery, prompt: "Search Shortcuts")
             .searchPresentationToolbarBehavior(.avoidHidingContent)
             .navigationTitle("Shortcut")
@@ -159,6 +155,10 @@ struct ShortcutPicker: View {
             } message: {
                 Text(errorMessage ?? "")
             }
+        }
+        .onAppear { isFocused = true }
+        .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
+            handleDeviceShortcutsNotification(notification)
         }
     }
 }

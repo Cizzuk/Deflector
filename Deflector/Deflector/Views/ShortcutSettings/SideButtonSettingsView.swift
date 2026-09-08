@@ -12,47 +12,49 @@ struct SideButtonSettingsView: View {
     @State private var isShowingShortcutPicker = false
     
     var body: some View {
-        List {
-            Section {
-                Button(action: { isShowingShortcutPicker = true }) {
-                    if userSettings.sideButtonShortcutName.isEmpty {
-                        Label {
-                            Text("Not Set")
-                                .foregroundStyle(Color(uiColor: .placeholderText))
-                        } icon: {
-                            Image(systemName: "square.2.layers.3d")
+        NavigationStack {
+            List {
+                Section {
+                    Button(action: { isShowingShortcutPicker = true }) {
+                        if userSettings.sideButtonShortcutName.isEmpty {
+                            Label {
+                                Text("Not Set")
+                                    .foregroundStyle(Color(uiColor: .placeholderText))
+                            } icon: {
+                                Image(systemName: "square.2.layers.3d")
+                            }
+                        } else {
+                            Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
                         }
-                    } else {
-                        Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
                     }
+                    .foregroundStyle(Color(uiColor: .label))
+                } header: {
+                    Text("Select Shortcut")
+                } footer: {
+                    Text("Please set the shortcut name to launch the voice assistant.")
+                        .padding(.bottom, 10)
                 }
-                .foregroundStyle(Color(uiColor: .label))
-            } header: {
-                Text("Select Shortcut")
-            } footer: {
-                Text("Please set the shortcut name to launch the voice assistant.")
-                    .padding(.bottom, 10)
-            }
-            
-            Section {
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    Button(action: { UIApplication.shared.open(url) }) {
-                        Label("Open Settings", systemImage: "gear")
+                
+                Section {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        Button(action: { UIApplication.shared.open(url) }) {
+                            Label("Open Settings", systemImage: "gear")
+                        }
                     }
+                } footer: {
+                    Text("Please turn on \"Press Side Button for Deflector\" in the Settings. To run the shortcut from the Side Button, the device must be physically located in a region that supports [Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone).")
                 }
-            } footer: {
-                Text("Please turn on \"Press Side Button for Deflector\" in the Settings. To run the shortcut from the Side Button, the device must be physically located in a region that supports [Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone).")
             }
-        }
-        .sheet(isPresented: $isShowingShortcutPicker) {
-            ShortcutPicker(
-                userSettings.sideButtonShortcutName,
-                prompt: "Please set the shortcut name to launch the voice assistant."
-            ) { shortcutName in
-                userSettings.sideButtonShortcutName = shortcutName
+            .sheet(isPresented: $isShowingShortcutPicker) {
+                ShortcutPicker(
+                    userSettings.sideButtonShortcutName,
+                    prompt: "Please set the shortcut name to launch the voice assistant."
+                ) { shortcutName in
+                    userSettings.sideButtonShortcutName = shortcutName
+                }
             }
+            .navigationTitle("Side Button")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Side Button")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
