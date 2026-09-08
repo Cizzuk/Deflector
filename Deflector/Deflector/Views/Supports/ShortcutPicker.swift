@@ -112,7 +112,7 @@ struct ShortcutPicker: View {
                         ForEach(deviceShortcuts, id: \.self) { shortcut in
                             let isSelected = shortcutName == shortcut
                             Button(action: { shortcutName = shortcut }) {
-                                HStack {
+                                HStack(spacing: 15) {
                                     Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                         .foregroundStyle(isSelected ? .accent : .secondary)
                                         .accessibilityHidden(true)
