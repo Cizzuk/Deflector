@@ -213,7 +213,7 @@ struct SymbolPicker: View {
                     "list.bullet", "checklist", "character.textbox", "signature", "numbers", "textformat.characters", "textformat", "textformat.size", "textformat.superscript", "textformat.subscript", "bold.italic.underline", "characters.lowercase", "characters.uppercase", "text.alignleft", "text.aligncenter", "text.alignright", "text.justify", "text.square.filled", "character.text.justify"
                 ])
             }
-            .searchable(text: $searchQuery)
+            .searchable(text: $searchQuery, prompt: "Search by Symbol Name")
             .searchPresentationToolbarBehavior(.avoidHidingContent)
             .navigationTitle("Symbol")
             .navigationBarTitleDisplayMode(.inline)

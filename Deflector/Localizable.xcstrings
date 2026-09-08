@@ -970,6 +970,16 @@
         }
       }
     },
+    "Search by Symbol Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル名で検索"
+          }
+        }
+      }
+    },
     "Select Shortcut" : {
       "localizations" : {
         "ja" : {
