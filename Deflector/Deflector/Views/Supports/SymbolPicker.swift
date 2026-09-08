@@ -42,6 +42,7 @@ struct SymbolPicker: View {
                                 .accessibilityLabel(name)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityAddTraits(symbol == name ? .isSelected : [])
                     }
                 }
             }
