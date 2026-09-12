@@ -19,6 +19,7 @@ struct DeflectorActivityWidget: Widget {
         
         var body: some View {
             let columns = Array(repeating: GridItem(.flexible()), count: buttons.count)
+            
             LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                 ForEach(buttons) { button in
                     let color = ColorHelper.uInt32ToColor(button.color)
@@ -67,34 +68,91 @@ struct DeflectorActivityWidget: Widget {
         }
     }
     
-    var body: some WidgetConfiguration {
-        ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
+    struct ActivityView: View {
+        @Environment(\.activityFamily) var activityFamily
+        var context: ActivityViewContext<DeflectorActivityAttributes>
+        var dynamicIsland: DynamicIslandMode? = nil
+        
+        var body: some View {
+            let isSmall = activityFamily == .small
             let buttons = context.state.buttons
-            let background = context.state.blackBackground ? Color.black : Color.clear
             let showLabel = context.state.showShortcutNames
-            ShortcutButtons(buttons: buttons, showLabel: showLabel)
-                .padding(20)
-                .activityBackgroundTint(background)
+            let blackBackground = context.state.blackBackground
             
-        } dynamicIsland: { context in
-            let buttons = context.state.islandButtons ?? context.state.buttons
-            let showLabel = context.state.showShortcutNames
-            return DynamicIsland {
-                DynamicIslandExpandedRegion(.center) {
+            if let dynamicIsland {
+                switch dynamicIsland {
+                case .expanded:
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
                         .padding(.bottom, showLabel ? 15 : 18)
+                case .compactLeading:
+                    if DynamicIslandIconMode.shouldShowIcon(.compactLeading) {
+                        Image(systemName: "suit.diamond")
+                            .foregroundStyle(.dropblue)
+                            .padding(.horizontal, 2)
+                    } else {
+                        EmptyView().frame(width: 0, height: 0)
+                    }
+                case .compactTrailing:
+                    if DynamicIslandIconMode.shouldShowIcon(.compactTrailing) {
+                        Image(systemName: "square.2.layers.3d")
+                            .foregroundStyle(.dropblue)
+                            .padding(.horizontal, 2)
+                    } else {
+                        EmptyView().frame(width: 0, height: 0)
+                    }
+                case .minimal:
+                    if DynamicIslandIconMode.shouldShowIcon(.minimal) {
+                        Image(systemName: "suit.diamond")
+                            .foregroundStyle(.dropblue)
+                            .padding(.horizontal, 2)
+                    } else {
+                        EmptyView().frame(width: 0, height: 0)
+                    }
+                default:
+                    EmptyView().frame(width: 0, height: 0)
                 }
-            } compactLeading: {
-                EmptyView().frame(width: 0, height: 0)
-            } compactTrailing: {
-                EmptyView().frame(width: 0, height: 0)
-            } minimal: {
-                Label("Deflector", systemImage: "suit.diamond")
-                    .labelStyle(.iconOnly)
-                    .foregroundStyle(.dropblue)
-                    .padding(.horizontal, 2)
+                
+            } else {
+                ShortcutButtons(buttons: buttons, showLabel: showLabel)
+                    .padding(20)
+                    .activityBackgroundTint((blackBackground || isSmall) ? .black : .clear)
             }
         }
+    }
+    
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
+            ActivityView(context: context, dynamicIsland: nil)
+        } dynamicIsland: { context in
+            DynamicIsland {
+                DynamicIslandExpandedRegion(.center) {
+                    ActivityView(context: context, dynamicIsland: .expanded)
+                }
+            } compactLeading: {
+                ActivityView(context: context, dynamicIsland: .compactLeading)
+            } compactTrailing: {
+                ActivityView(context: context, dynamicIsland: .compactTrailing)
+            } minimal: {
+                ActivityView(context: context, dynamicIsland: .minimal)
+            }
+            .dynamicContentMargins()
+        }
         .supplementalActivityFamilies([.small, .medium])
+    }
+}
+
+extension DynamicIsland {
+    func dynamicContentMargins() -> DynamicIsland {
+        var modifiedIsland = self
+        if !DynamicIslandIconMode.shouldShowIcon(.compactLeading) {
+            modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .compactLeading)
+        }
+        if !DynamicIslandIconMode.shouldShowIcon(.compactTrailing) {
+            modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .compactTrailing)
+        }
+        if !DynamicIslandIconMode.shouldShowIcon(.minimal) {
+            modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .minimal)
+        }
+        return modifiedIsland
     }
 }
