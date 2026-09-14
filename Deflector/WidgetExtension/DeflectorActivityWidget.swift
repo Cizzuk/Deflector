@@ -75,11 +75,17 @@ struct DeflectorActivityWidget: Widget {
         
         var body: some View {
             let isSmall = activityFamily == .small
-            let buttons = context.state.buttons
             let showLabel = context.state.showShortcutNames
-            let blackBackground = context.state.blackBackground
             
             if let dynamicIsland {
+                let buttons = {
+                    if let islandButtons = context.state.islandButtons {
+                        return islandButtons
+                    } else {
+                        return context.state.buttons
+                    }
+                }()
+                
                 switch dynamicIsland {
                 case .expanded:
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
@@ -113,6 +119,9 @@ struct DeflectorActivityWidget: Widget {
                 }
                 
             } else {
+                let blackBackground = context.state.blackBackground
+                let buttons = context.state.buttons
+                
                 ShortcutButtons(buttons: buttons, showLabel: showLabel)
                     .padding(20)
                     .activityBackgroundTint((blackBackground || isSmall) ? .black : .clear)
