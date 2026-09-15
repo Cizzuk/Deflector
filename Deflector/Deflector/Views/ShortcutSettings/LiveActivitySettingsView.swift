@@ -136,6 +136,9 @@ struct LiveActivitySettingsView: View {
                     Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
                         Text("Show Shortcut Names")
                     }
+                    Toggle(isOn: $userSettings.liveActivityAlwaysHideAppIcon) {
+                        Text("Always Hide App Icon in Dynamic Island")
+                    }
                 }
             }
             .animation(.default, value: vm.isLiveActivityActive)

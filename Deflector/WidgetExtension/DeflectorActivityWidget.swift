@@ -78,6 +78,7 @@ struct DeflectorActivityWidget: Widget {
             let showLabel = context.state.showShortcutNames
             
             if let dynamicIsland {
+                let allowAppIcon = !context.state.alwaysHideAppIcon
                 let buttons = {
                     if let islandButtons = context.state.islandButtons {
                         return islandButtons
@@ -91,7 +92,7 @@ struct DeflectorActivityWidget: Widget {
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
                         .padding(.bottom, showLabel ? 15 : 18)
                 case .compactLeading:
-                    if DynamicIslandIconMode.shouldShowIcon(.compactLeading) {
+                    if allowAppIcon && DynamicIslandIconMode.shouldShowIcon(.compactLeading) {
                         Image(systemName: "suit.diamond")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
@@ -99,7 +100,7 @@ struct DeflectorActivityWidget: Widget {
                         EmptyView().frame(width: 0, height: 0)
                     }
                 case .compactTrailing:
-                    if DynamicIslandIconMode.shouldShowIcon(.compactTrailing) {
+                    if allowAppIcon && DynamicIslandIconMode.shouldShowIcon(.compactTrailing) {
                         Image(systemName: "square.2.layers.3d")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
@@ -107,7 +108,7 @@ struct DeflectorActivityWidget: Widget {
                         EmptyView().frame(width: 0, height: 0)
                     }
                 case .minimal:
-                    if DynamicIslandIconMode.shouldShowIcon(.minimal) {
+                    if allowAppIcon && DynamicIslandIconMode.shouldShowIcon(.minimal) {
                         Image(systemName: "suit.diamond")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)

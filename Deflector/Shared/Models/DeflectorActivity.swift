@@ -22,5 +22,6 @@ nonisolated struct DeflectorActivityAttributes: ActivityAttributes {
         var islandButtons: [DeflectorActivityButton]?
         var blackBackground: Bool
         var showShortcutNames: Bool
+        var alwaysHideAppIcon: Bool
     }
 }

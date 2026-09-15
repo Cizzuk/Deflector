@@ -20,6 +20,7 @@ final class UserSettings: ObservableObject {
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
+        static let liveActivityAlwaysHideAppIcon = "liveActivityAlwaysHideAppIcon"
     }
     
     @Published var isFirstSetupCompleted: Bool = {
@@ -103,6 +104,15 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
+            DeflectorActivitySupport.update()
+        }
+    }
+    
+    @Published var liveActivityAlwaysHideAppIcon: Bool = {
+        return UserDefaults.standard.bool(forKey: Keys.liveActivityAlwaysHideAppIcon)
+    }() {
+        didSet {
+            UserDefaults.standard.set(liveActivityAlwaysHideAppIcon, forKey: Keys.liveActivityAlwaysHideAppIcon)
             DeflectorActivitySupport.update()
         }
     }

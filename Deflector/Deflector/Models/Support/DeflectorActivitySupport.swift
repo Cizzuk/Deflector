@@ -26,7 +26,8 @@ class DeflectorActivitySupport {
             buttons: buttons,
             islandButtons: useDifferentOnIsland ? islandButtons : nil,
             blackBackground: UserSettings.shared.liveActivityUseBlackBackground,
-            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames
+            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames,
+            alwaysHideAppIcon: UserSettings.shared.liveActivityAlwaysHideAppIcon
         )
         
         return state
