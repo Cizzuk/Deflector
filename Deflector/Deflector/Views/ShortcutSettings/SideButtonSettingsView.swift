@@ -25,6 +25,7 @@ struct SideButtonSettingsView: View {
                             }
                         } else {
                             Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
+                                .lineLimit(1)
                         }
                     }
                     .foregroundStyle(Color(uiColor: .label))
