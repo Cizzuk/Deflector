@@ -53,9 +53,16 @@ struct FirstSetupView: View {
                         }
                         .contextMenu {
                             Button(action: { UIPasteboard.general.string = url.absoluteString }) {
-                                Label("Copy Link", systemImage: "document.on.document")
+                                Label("Copy iCloud Sharing Link", systemImage: "icloud.and.arrow.down")
                             }
                             .tint(Color(uiColor: .label))
+                            
+                            if let url = URL(string: "https://cizz.uk/deflector/automation/file") {
+                                Button(action: { UIPasteboard.general.string = url.absoluteString }) {
+                                    Label("Copy File Download Link", systemImage: "arrow.down.document")
+                                }
+                                .tint(Color(uiColor: .label))
+                            }
                         }
                     }
                     

@@ -331,12 +331,22 @@
         }
       }
     },
-    "Copy Link" : {
+    "Copy File Download Link" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "リンクをコピー"
+            "value" : "ファイルのダウンロードリンクをコピー"
+          }
+        }
+      }
+    },
+    "Copy iCloud Sharing Link" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud共有リンクをコピー"
           }
         }
       }
