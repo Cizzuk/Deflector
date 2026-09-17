@@ -98,13 +98,17 @@ struct MainView: View {
         .navigationSplitViewStyle(.balanced)
         .onOpenURL { url in
             if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
-                if url.host == "open" {
+                switch url.host {
+                case "activity_action":
+                    path = .liveActivitySettings
+                case "open":
                     switch url.path {
                     case "/firstsetup": path = .firstSetup
                     case "/liveactivity": path = .liveActivitySettings
                     case "/sidebutton": path = .sideButtonSettings
                     default: break
                     }
+                default: break
                 }
             }
         }
