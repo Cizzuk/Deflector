@@ -96,5 +96,17 @@ struct MainView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .onOpenURL { url in
+            if url.scheme == "deflector" {
+                if url.host == "open" {
+                    switch url.path {
+                    case "/firstsetup": path = .firstSetup
+                    case "/liveactivity": path = .liveActivitySettings
+                    case "/sidebutton": path = .sideButtonSettings
+                    default: break
+                    }
+                }
+            }
+        }
     }
 }

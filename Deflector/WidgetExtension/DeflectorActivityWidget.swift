@@ -131,8 +131,11 @@ struct DeflectorActivityWidget: Widget {
     }
     
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
+        let widgetURL = URL(string: "deflector://open/liveactivity") ?? nil
+        
+        return ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
             ActivityView(context: context, dynamicIsland: nil)
+                .widgetURL(widgetURL)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
@@ -146,6 +149,7 @@ struct DeflectorActivityWidget: Widget {
                 ActivityView(context: context, dynamicIsland: .minimal)
             }
             .dynamicContentMargins()
+            .widgetURL(widgetURL)
         }
         .supplementalActivityFamilies([.small, .medium])
     }
