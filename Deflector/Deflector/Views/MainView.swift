@@ -97,7 +97,7 @@ struct MainView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .onOpenURL { url in
-            if url.scheme == "deflector" {
+            if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
                 if url.host == "open" {
                     switch url.path {
                     case "/firstsetup": path = .firstSetup
