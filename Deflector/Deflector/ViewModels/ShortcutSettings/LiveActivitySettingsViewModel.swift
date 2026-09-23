@@ -57,7 +57,14 @@ class LiveActivitySettingsViewModel: ObservableObject {
                 errorMessage = "Failed to start Live Activity: \(error.localizedDescription)"
             }
         } catch {
-            errorMessage = "Failed to start Live Activity: \(error.localizedDescription)"
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            
+            let nsError = error as NSError
+            if nsError.domain == "ActivityKit.ActivityPayloadError" && nsError.code == 0 {
+                errorMessage = "Unable to start the activity because the data of the shortcuts are too large."
+            } else {
+                errorMessage = "Failed to start Live Activity: \(error.localizedDescription)"
+            }
         }
     }
     
