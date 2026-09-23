@@ -101,7 +101,7 @@ struct DeflectorActivityWidget: Widget {
                     }
                 case .compactTrailing:
                     if islandIcons.compactTrailing {
-                        Image(systemName: "square.2.layers.3d")
+                        Image(systemName: islandIcons.compactLeading ? "square.2.layers.3d" : "suit.diamond")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
                     } else {
