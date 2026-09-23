@@ -20,8 +20,9 @@ nonisolated struct DeflectorActivityAttributes: ActivityAttributes {
     struct ContentState: Codable, Hashable {
         var buttons: [DeflectorActivityButton]
         var islandButtons: [DeflectorActivityButton]?
-        var blackBackground: Bool
-        var showShortcutNames: Bool
-        var alwaysHideAppIcon: Bool
     }
+    
+    var blackBackground: Bool
+    var showShortcutNames: Bool
+    var alwaysHideAppIcon: Bool
 }

@@ -17,6 +17,14 @@ class DeflectorActivitySupport {
         return ActivityAuthorizationInfo().areActivitiesEnabled
     }
     
+    private static func makeAttributes() -> DeflectorActivityAttributes {
+        return DeflectorActivityAttributes(
+            blackBackground: UserSettings.shared.liveActivityUseBlackBackground,
+            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames,
+            alwaysHideAppIcon: UserSettings.shared.liveActivityAlwaysHideAppIcon
+        )
+    }
+    
     private static func makeContentState() -> DeflectorActivityAttributes.ContentState {
         let buttons = UserSettings.shared.liveActivityButtons
         let islandButtons = UserSettings.shared.liveActivityIslandButtons
@@ -24,10 +32,7 @@ class DeflectorActivitySupport {
         
         let state = DeflectorActivityAttributes.ContentState(
             buttons: buttons,
-            islandButtons: useDifferentOnIsland ? islandButtons : nil,
-            blackBackground: UserSettings.shared.liveActivityUseBlackBackground,
-            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames,
-            alwaysHideAppIcon: UserSettings.shared.liveActivityAlwaysHideAppIcon
+            islandButtons: useDifferentOnIsland ? islandButtons : nil
         )
         
         return state
@@ -42,7 +47,7 @@ class DeflectorActivitySupport {
         )
         
         let _ = try Activity.request(
-            attributes: DeflectorActivityAttributes(),
+            attributes: makeAttributes(),
             content: content,
             pushType: nil
         )

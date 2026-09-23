@@ -95,7 +95,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityUseBlackBackground, forKey: Keys.liveActivityUseBlackBackground)
-            DeflectorActivitySupport.update()
+            try? DeflectorActivitySupport.refresh()
         }
     }
     
@@ -104,7 +104,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
-            DeflectorActivitySupport.update()
+            try? DeflectorActivitySupport.refresh()
         }
     }
     
@@ -113,7 +113,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityAlwaysHideAppIcon, forKey: Keys.liveActivityAlwaysHideAppIcon)
-            DeflectorActivitySupport.update()
+            try? DeflectorActivitySupport.refresh()
         }
     }
 }

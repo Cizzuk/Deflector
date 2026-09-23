@@ -75,10 +75,10 @@ struct DeflectorActivityWidget: Widget {
         
         var body: some View {
             let isSmall = activityFamily == .small
-            let showLabel = context.state.showShortcutNames
+            let showLabel = context.attributes.showShortcutNames
             
             if let dynamicIsland {
-                let allowAppIcon = !context.state.alwaysHideAppIcon
+                let allowAppIcon = !context.attributes.alwaysHideAppIcon
                 let buttons = {
                     if let islandButtons = context.state.islandButtons {
                         return islandButtons
@@ -120,7 +120,7 @@ struct DeflectorActivityWidget: Widget {
                 }
                 
             } else {
-                let blackBackground = context.state.blackBackground
+                let blackBackground = context.attributes.blackBackground
                 let buttons = context.state.buttons
                 
                 ShortcutButtons(buttons: buttons, showLabel: showLabel)
