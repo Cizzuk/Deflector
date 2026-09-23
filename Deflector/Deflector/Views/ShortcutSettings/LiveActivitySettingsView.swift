@@ -131,6 +131,18 @@ struct LiveActivitySettingsView: View {
                 }
                 
                 Section {
+                    NavigationLink(destination: LiveActivityIslandIconSettingsView()) {
+                        HStack {
+                            Text("Dynamic Island Icons")
+                            Spacer()
+                            Text(UserSettings.shared.liveActivityIslandIcons == nil ? "Default" : "Customized")
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                }
+                
+                Section {
                     Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
                         Text("Use Black Background on Lock Screen")
                     }

@@ -291,6 +291,16 @@
         }
       }
     },
+    "Compact" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンパクト"
+          }
+        }
+      }
+    },
     "Connectivity" : {
       "localizations" : {
         "ja" : {
@@ -357,6 +367,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "カスタムシンボル"
+          }
+        }
+      }
+    },
+    "Customize Dynamic Island Icons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandのアイコンをカスタマイズする"
+          }
+        }
+      }
+    },
+    "Customized" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム"
+          }
+        }
+      }
+    },
+    "Default" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルト"
           }
         }
       }
@@ -433,6 +473,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamic Island"
+          }
+        }
+      }
+    },
+    "Dynamic Island Icons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandのアイコン"
           }
         }
       }
@@ -687,6 +737,16 @@
         }
       }
     },
+    "Leading Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先頭のアイコン"
+          }
+        }
+      }
+    },
     "License" : {
       "localizations" : {
         "ja" : {
@@ -733,6 +793,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "メディア"
+          }
+        }
+      }
+    },
+    "Minimal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミニマル"
+          }
+        }
+      }
+    },
+    "Minimal Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミニマルのアイコン"
           }
         }
       }
@@ -1338,6 +1418,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "切り替える"
+          }
+        }
+      }
+    },
+    "Trailing Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "後方のアイコン"
           }
         }
       }
