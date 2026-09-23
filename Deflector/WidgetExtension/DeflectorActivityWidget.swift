@@ -78,7 +78,7 @@ struct DeflectorActivityWidget: Widget {
             let showLabel = context.attributes.showShortcutNames
             
             if let dynamicIsland {
-                let allowAppIcon = !context.attributes.alwaysHideAppIcon
+                let islandIcons = context.attributes.islandIcons ?? .deviceDefault
                 let buttons = {
                     if let islandButtons = context.state.islandButtons {
                         return islandButtons
@@ -92,7 +92,7 @@ struct DeflectorActivityWidget: Widget {
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
                         .padding(.bottom, showLabel ? 15 : 18)
                 case .compactLeading:
-                    if allowAppIcon && DynamicIslandIconMode.shouldShowIcon(.compactLeading) {
+                    if islandIcons.compactLeading {
                         Image(systemName: "suit.diamond")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
@@ -100,7 +100,7 @@ struct DeflectorActivityWidget: Widget {
                         EmptyView().frame(width: 0, height: 0)
                     }
                 case .compactTrailing:
-                    if allowAppIcon && DynamicIslandIconMode.shouldShowIcon(.compactTrailing) {
+                    if islandIcons.compactTrailing {
                         Image(systemName: "square.2.layers.3d")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
@@ -108,7 +108,7 @@ struct DeflectorActivityWidget: Widget {
                         EmptyView().frame(width: 0, height: 0)
                     }
                 case .minimal:
-                    if allowAppIcon && DynamicIslandIconMode.shouldShowIcon(.minimal) {
+                    if islandIcons.minimal {
                         Image(systemName: "suit.diamond")
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
@@ -148,7 +148,7 @@ struct DeflectorActivityWidget: Widget {
             } minimal: {
                 ActivityView(context: context, dynamicIsland: .minimal)
             }
-            .dynamicContentMargins()
+            .dynamicContentMargins(settings: context.attributes.islandIcons)
             .widgetURL(widgetURL)
         }
         .supplementalActivityFamilies([.small, .medium])
@@ -156,15 +156,17 @@ struct DeflectorActivityWidget: Widget {
 }
 
 extension DynamicIsland {
-    func dynamicContentMargins() -> DynamicIsland {
+    func dynamicContentMargins(settings: DeflectorActivityIslandIcons?) -> DynamicIsland {
+        let islandIcons = settings ?? .deviceDefault
+        
         var modifiedIsland = self
-        if !DynamicIslandIconMode.shouldShowIcon(.compactLeading) {
+        if !islandIcons.compactLeading {
             modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .compactLeading)
         }
-        if !DynamicIslandIconMode.shouldShowIcon(.compactTrailing) {
+        if !islandIcons.compactTrailing {
             modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .compactTrailing)
         }
-        if !DynamicIslandIconMode.shouldShowIcon(.minimal) {
+        if !islandIcons.minimal {
             modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .minimal)
         }
         return modifiedIsland

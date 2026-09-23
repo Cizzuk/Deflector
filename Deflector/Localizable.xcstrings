@@ -195,16 +195,6 @@
         }
       }
     },
-    "Always Hide App Icon in Dynamic Island" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dynamic Islandで常にアプリアイコンを表示しない"
-          }
-        }
-      }
-    },
     "Argument" : {
       "localizations" : {
         "ja" : {

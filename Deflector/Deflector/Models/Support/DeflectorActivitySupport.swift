@@ -20,8 +20,7 @@ class DeflectorActivitySupport {
     private static func makeAttributes() -> DeflectorActivityAttributes {
         return DeflectorActivityAttributes(
             blackBackground: UserSettings.shared.liveActivityUseBlackBackground,
-            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames,
-            alwaysHideAppIcon: UserSettings.shared.liveActivityAlwaysHideAppIcon
+            showShortcutNames: UserSettings.shared.liveActivityShowShortcutNames
         )
     }
     

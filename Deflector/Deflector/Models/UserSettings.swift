@@ -14,13 +14,16 @@ final class UserSettings: ObservableObject {
     
     private enum Keys {
         static let isFirstSetupCompleted = "isFirstSetupCompleted"
+        
         static let sideButtonShortcutName = "sideButtonShortcutName"
+        
         static let liveActivityButtons = "liveActivityButtons"
         static let liveActivityIslandButtons = "liveActivityIslandButtons"
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
+        
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
-        static let liveActivityAlwaysHideAppIcon = "liveActivityAlwaysHideAppIcon"
+        static let liveActivityIslandIcons = "liveActivityIslandIcons"
     }
     
     @Published var isFirstSetupCompleted: Bool = {
@@ -108,11 +111,23 @@ final class UserSettings: ObservableObject {
         }
     }
     
-    @Published var liveActivityAlwaysHideAppIcon: Bool = {
-        return UserDefaults.standard.bool(forKey: Keys.liveActivityAlwaysHideAppIcon)
+    @Published var liveActivityIslandIcons: DeflectorActivityIslandIcons? = {
+        guard let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandIcons),
+              let icons = try? JSONDecoder().decode(DeflectorActivityIslandIcons.self, from: data)
+        else {
+            return nil
+        }
+        
+        return icons
     }() {
         didSet {
-            UserDefaults.standard.set(liveActivityAlwaysHideAppIcon, forKey: Keys.liveActivityAlwaysHideAppIcon)
+            if let icons = liveActivityIslandIcons,
+                let data = try? JSONEncoder().encode(icons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandIcons)
+            } else {
+                UserDefaults.standard.removeObject(forKey: Keys.liveActivityIslandIcons)
+            }
+            
             try? DeflectorActivitySupport.refresh()
         }
     }
