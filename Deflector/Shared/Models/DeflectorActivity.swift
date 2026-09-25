@@ -24,13 +24,13 @@ struct DeflectorActivityIslandIcons: Codable, Equatable, Hashable {
     
     static let deviceDefault: DeflectorActivityIslandIcons = {
         let placementForModel: [DynamicIslandMode] = {
-            switch ModelIdentifier {
-            case "iPhone19,2", "iPhone19,3", "iPhone19,7": // iPhone 18 Pro/Pro Max
-                return [.compactLeading, .minimal]
-            case "iPhone19,4": // iPhone Duo
+            switch DeviceInfo.dynamicIslandType {
+            case .vertical:
                 return [.compactLeading, .compactTrailing, .minimal]
-            default:
+            case .horizontal:
                 return [.minimal]
+            default:
+                return [.compactLeading, .minimal]
             }
         }()
         
