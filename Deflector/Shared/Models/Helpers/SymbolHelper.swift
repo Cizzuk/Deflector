@@ -8,7 +8,7 @@
 import SwiftUI
 
 class SymbolHelper {
-    enum SymbolType: String {
+    enum SymbolType: String, CaseIterable {
         case custom, cizzuk
         case system
         case none, unknown
@@ -44,18 +44,27 @@ class SymbolHelper {
         return itemURL
     }()
         
-    static func getSymbolImage(_ symbolName: String) -> (image: Image?, type: SymbolType) {
-        if symbolName.isEmpty {
+    static func getSymbolImage(
+        _ symbolName: String,
+        types: [SymbolType] = SymbolType.allCases
+    ) -> (image: Image?, type: SymbolType) {
+        // None
+        if types.contains(.none), symbolName.isEmpty {
             return (Image(systemName: "square.dashed"), .none)
         }
         
-        if symbolName.hasPrefix(SymbolType.custom.prefix),
-           let customSymbolDirURL = customSymbolDirURL {
-            let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
-            if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
-                return (Image(uiImage: uiImage), .custom)
+        // Custom
+        if types.contains(.custom) && symbolName.hasPrefix(SymbolType.custom.prefix) {
+            if let customSymbolDirURL = customSymbolDirURL {
+                let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
+                if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
+                    return (Image(uiImage: uiImage), .custom)
+                }
             }
-        } else if symbolName.hasPrefix(SymbolType.cizzuk.prefix) {
+        }
+        
+        // Cizzuk
+        if types.contains(.cizzuk) && symbolName.hasPrefix(SymbolType.cizzuk.prefix) {
             let availableSymbols = ["alare", "bolt.alare", "cbnote", "checkmark.alare", "cse.emoji", "cse.private", "cse.quick", "cse", "sidebridge", "sidefish"]
             let strippedSymbolName = String(symbolName.dropFirst(SymbolType.cizzuk.prefix.count))
             if availableSymbols.contains(strippedSymbolName) {
@@ -63,11 +72,17 @@ class SymbolHelper {
             }
         }
         
-        if UIImage(systemName: symbolName) != nil {
+        // System
+        if types.contains(.system) && UIImage(systemName: symbolName) != nil {
             return (Image(systemName: symbolName), .system)
         }
         
-        return (Image(systemName: "questionmark.square.dashed"), .unknown)
+        // Unknown
+        if types.contains(.unknown) {
+            return (Image(systemName: "questionmark.square.dashed"), .unknown)
+        }
+        
+        return (nil, .unknown)
     }
     
     static func getCustomSymbolNames() -> [String]? {
