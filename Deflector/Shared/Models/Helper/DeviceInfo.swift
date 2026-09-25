@@ -41,4 +41,18 @@ class DeviceInfo {
             return .unknown
         }
     }()
+    
+    static let unsupportedSideButtonAccess: Bool = {
+        // Not an iPhone
+        if UIDevice.current.userInterfaceIdiom != .phone {
+            return true
+        }
+        
+        // iPhone SE Gen 2,3
+        if ["iPhone14,6", "iPhone12,8"].contains(modelIdentifier) {
+            return true
+        }
+        
+        return false
+    }()
 }

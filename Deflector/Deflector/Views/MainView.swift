@@ -60,14 +60,16 @@ struct MainView: View {
                     }
                 }
                 
-                Section {
-                    NavigationLink(value: Route.sideButtonSettings) {
-                        VStack(alignment: .leading) {
-                            Label("Side Button", systemImage: "button.vertical.right")
-                                .font(.title3)
-                                .padding(5)
-                            Text("Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
-                                .font(.subheadline)
+                if !DeviceInfo.unsupportedSideButtonAccess {
+                    Section {
+                        NavigationLink(value: Route.sideButtonSettings) {
+                            VStack(alignment: .leading) {
+                                Label("Side Button", systemImage: "button.vertical.right")
+                                    .font(.title3)
+                                    .padding(5)
+                                Text("Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
+                                    .font(.subheadline)
+                            }
                         }
                     }
                 }
