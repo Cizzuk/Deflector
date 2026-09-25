@@ -34,7 +34,7 @@ class SymbolHelper {
         }
     }
     
-    static func customSymbolDirURL() -> URL? {
+    static let customSymbolDirURL: URL? = {
         guard let groupContainerURL = FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: appGroupID
         ) else { return nil }
@@ -42,7 +42,7 @@ class SymbolHelper {
         let itemURL = groupContainerURL.appending(path: "custom_symbols", directoryHint: .isDirectory)
         
         return itemURL
-    }
+    }()
         
     static func getSymbolImage(_ symbolName: String) -> (image: Image?, type: SymbolType) {
         if symbolName.isEmpty {
@@ -50,7 +50,7 @@ class SymbolHelper {
         }
         
         if symbolName.hasPrefix(SymbolType.custom.prefix),
-           let customSymbolDirURL = customSymbolDirURL() {
+           let customSymbolDirURL = customSymbolDirURL {
             let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
             if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
                 return (Image(uiImage: uiImage), .custom)
@@ -71,7 +71,7 @@ class SymbolHelper {
     }
     
     static func getCustomSymbolNames() -> [String]? {
-        guard let customSymbolDirURL = customSymbolDirURL(),
+        guard let customSymbolDirURL = customSymbolDirURL,
               let fileURLs = try? FileManager.default.contentsOfDirectory(at: customSymbolDirURL, includingPropertiesForKeys: nil)
         else { return nil }
         
@@ -80,7 +80,7 @@ class SymbolHelper {
     }
     
     static func saveCustomSymbol(image: UIImage) -> String? {
-        guard let customSymbolDirURL = customSymbolDirURL() else { return nil }
+        guard let customSymbolDirURL = customSymbolDirURL else { return nil }
         
         try? FileManager.default.createDirectory(at: customSymbolDirURL, withIntermediateDirectories: true, attributes: nil)
         
@@ -102,7 +102,7 @@ class SymbolHelper {
     }
     
     static func deleteCustomSymbol(symbolName: String) -> Bool {
-        guard let customSymbolDirURL = customSymbolDirURL() else { return false }
+        guard let customSymbolDirURL = customSymbolDirURL else { return false }
         
         let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
         
