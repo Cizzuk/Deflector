@@ -159,7 +159,7 @@ struct LiveActivitySettingsView: View {
                 get: { symbolPickerID != nil },
                 set: { if !$0 { symbolPickerID = nil } }
             )) {
-                SymbolPicker(symbolPickerText) { symbol in
+                SymbolPicker(symbolPickerText, showCustomSymbols: true) { symbol in
                     if let symbolPickerID  {
                         if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == symbolPickerID }) {
                             userSettings.liveActivityButtons[index].symbol = symbol

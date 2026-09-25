@@ -11,12 +11,18 @@ struct SymbolPicker: View {
     @Environment(\.dismiss) var dismiss
     
     @State var symbol: String
+    var showCustomSymbols: Bool
     var callback: (String) -> Void
     
     @State private var searchQuery: String = ""
     
-    init(_ symbol: String, callback: @escaping (String) -> Void) {
+    init(
+        _ symbol: String,
+        showCustomSymbols: Bool = true,
+        callback: @escaping (String) -> Void
+    ) {
         self.symbol = symbol
+        self.showCustomSymbols = showCustomSymbols
         self.callback = callback
     }
     
@@ -84,10 +90,12 @@ struct SymbolPicker: View {
                         .padding(.bottom, 10)
                 }
                 
-                NavigationLink(destination: CustomSymbols(symbol: $symbol)) {
-                    Label("Custom Symbols", systemImage: "photo.badge.plus")
+                if showCustomSymbols {
+                    NavigationLink(destination: CustomSymbols(symbol: $symbol)) {
+                        Label("Custom Symbols", systemImage: "photo.badge.plus")
+                    }
+                    .foregroundStyle(.accent)
                 }
-                .foregroundStyle(.accent)
                 
                 SymbolButtonsGrid("Maps", [
                     "car.fill", "bus.fill", "tram.fill", "bicycle", "map.fill", "figure.walk", "location.fill", "mappin.and.ellipse", "arrow.up.and.down.and.arrow.left.and.right", "point.topleft.down.to.point.bottomright.curvepath"
