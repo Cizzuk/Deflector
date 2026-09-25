@@ -105,12 +105,12 @@
         }
       }
     },
-    "Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it." : {
+    "Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it after closing Deflector." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アクティビティはロック画面とDynamic Islandに表示されます。Dynamic Islandからショートカットを使用するには、長押しします。"
+            "value" : "アクティビティはロック画面とDynamic Islandに表示されます。Dynamic Islandからショートカットを使用するには、Deflectorを閉じた後に長押しします。"
           }
         }
       }

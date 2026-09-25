@@ -96,7 +96,7 @@ struct LiveActivitySettingsView: View {
                 } header: {
                     Text("Activity Control")
                 } footer: {
-                    Text("Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it.")
+                    Text("Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it after closing Deflector.")
                         .padding(.bottom, 10)
                 }
                 
