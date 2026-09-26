@@ -35,10 +35,10 @@ struct LiveActivityIslandIconSettingsView: View {
                         DynamicIslandPreview(
                             compactLeading: .constant(userSettings.liveActivityIslandIcons?.compactLeading ?? false),
                             compactTrailing: .constant(userSettings.liveActivityIslandIcons?.compactTrailing ?? false),
-                            minimal: .constant(userSettings.liveActivityIslandIcons?.minimal ?? false),
                         )
                     }
                     .frame(maxWidth: .infinity)
+                    .padding(.bottom, 10)
                 }
                 
                 Section("Compact") {

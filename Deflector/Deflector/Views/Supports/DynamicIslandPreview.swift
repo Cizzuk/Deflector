@@ -14,7 +14,6 @@ struct DynamicIslandPreview: View {
     
     @Binding var compactLeading: Bool
     @Binding var compactTrailing: Bool
-    @Binding var minimal: Bool
     
     func makeHorizontalIsland(
         leading: Bool,
