@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct LiveActivityIslandIconSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     
     @State private var isOnCustomize = UserSettings.shared.liveActivityIslandIcons != nil
+    @State private var previewModes: [DynamicIslandMode] = []
     
     var body: some View {
         List {
@@ -28,6 +30,17 @@ struct LiveActivityIslandIconSettingsView: View {
             }
             
             if isOnCustomize {
+                Section {} footer: {
+                    ZStack(alignment: .center) {
+                        DynamicIslandPreview(
+                            compactLeading: .constant(userSettings.liveActivityIslandIcons?.compactLeading ?? false),
+                            compactTrailing: .constant(userSettings.liveActivityIslandIcons?.compactTrailing ?? false),
+                            minimal: .constant(userSettings.liveActivityIslandIcons?.minimal ?? false),
+                        )
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                
                 Section("Compact") {
                     Toggle(isOn: Binding(
                         get: { userSettings.liveActivityIslandIcons?.compactLeading ?? false },
