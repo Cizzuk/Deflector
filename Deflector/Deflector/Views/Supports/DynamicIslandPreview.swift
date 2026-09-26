@@ -32,8 +32,8 @@ struct DynamicIslandPreview: View {
     ) -> some View {
         let totalWidth: CGFloat = {
             var w: CGFloat = 0
-            if leading { w += 30 } else if trailing { w += 20 } else { w += 8 }
-            if trailing { w += 30 } else if leading { w += 20 } else { w += 8 }
+            if leading { w += 29 } else if trailing { w += 21 } else { w += 5 }
+            if trailing { w += 29 } else if leading { w += 21 } else { w += 5 }
             return w + centerMargin
         }()
         
@@ -41,22 +41,22 @@ struct DynamicIslandPreview: View {
             Capsule()
                 .fill(Color.black)
                 .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: colorScheme == .dark ? 1.5 : 0)
-                .frame(width: totalWidth, height: 37)
+                .frame(width: totalWidth, height: 38)
             
             HStack(alignment: .center, spacing: 0) {
                 if leading {
                     Image(systemName: "suit.diamond")
                         .resizable()
                         .scaledToFit()
-                        .padding(.trailing, 3)
+                        .padding(.trailing, 2)
                         .frame(width: 18, height: 18)
-                        .padding(.leading, 12)
+                        .padding(.leading, 11)
                         .foregroundStyle(.dropblue)
                         .transition(.blurReplace)
                 } else if trailing {
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 21)
                 } else {
-                    Spacer().frame(width: 8)
+                    Spacer().frame(width: 5)
                 }
                 
                 Spacer().frame(width: centerMargin)
@@ -66,20 +66,20 @@ struct DynamicIslandPreview: View {
                         .resizable()
                         .scaledToFit()
                         .id(leading ? "square.2.layers.3d" : "suit.diamond")
-                        .padding(.leading, leading ? 0 : 3)
+                        .padding(.leading, 2)
                         .frame(width: 18, height: 18)
-                        .padding(.trailing, 12)
+                        .padding(.trailing, 11)
                         .foregroundStyle(.dropblue)
                         .transition(.blurReplace)
                 } else if leading {
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 21)
                 } else {
-                    Spacer().frame(width: 8)
+                    Spacer().frame(width: 5)
                 }
             }
         }
-        .padding(.leading, (leading && !trailing) ? 0 : 10)
-        .padding(.trailing, (trailing && !leading) ? 0 : 10)
+        .padding(.leading, (leading && !trailing) ? 0 : 8)
+        .padding(.trailing, (trailing && !leading) ? 0 : 8)
         .animation(.bouncy, value: compactLeading)
         .animation(.bouncy, value: compactTrailing)
     }
@@ -94,7 +94,7 @@ struct DynamicIslandPreview: View {
             Capsule()
                 .fill(Color.black)
                 .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: colorScheme == .dark ? 1.5 : 0)
-                .frame(width: 37, height: totalHeight)
+                .frame(width: 38, height: totalHeight)
             
             VStack(alignment: .center, spacing: 0) {
                 Spacer().frame(height: topMargin)
