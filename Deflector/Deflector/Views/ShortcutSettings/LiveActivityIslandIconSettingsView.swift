@@ -12,7 +12,7 @@ struct LiveActivityIslandIconSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     
     @State private var isOnCustomize = UserSettings.shared.liveActivityIslandIcons != nil
-    @State private var previewModes: [DynamicIslandMode] = []
+    @State private var previewType: DeviceInfo.DynamicIslandType = DeviceInfo.dynamicIslandType
     
     var body: some View {
         List {
@@ -30,15 +30,25 @@ struct LiveActivityIslandIconSettingsView: View {
             }
             
             if isOnCustomize {
-                Section {} footer: {
+                Section {
                     ZStack(alignment: .center) {
                         DynamicIslandPreview(
                             compactLeading: .constant(userSettings.liveActivityIslandIcons?.compactLeading ?? false),
                             compactTrailing: .constant(userSettings.liveActivityIslandIcons?.compactTrailing ?? false),
+                            dynamicIslandType: $previewType,
                         )
                     }
+                    .accessibilityLabel("Dynamic Island Preview")
+                    .accessibilityRemoveTraits(.isImage)
                     .frame(maxWidth: .infinity)
-                    .padding(.bottom, 10)
+                }
+                .listRowBackground(Color.clear)
+                .contextMenu {
+                    Picker("Preview Type", selection: $previewType) {
+                        Text("Horizontal").tag(DeviceInfo.DynamicIslandType.horizontal)
+                        Text("Smaller Horizontal").tag(DeviceInfo.DynamicIslandType.horizontalSmall)
+                        Text("Vertical").tag(DeviceInfo.DynamicIslandType.vertical)
+                    }
                 }
                 
                 Section("Compact") {

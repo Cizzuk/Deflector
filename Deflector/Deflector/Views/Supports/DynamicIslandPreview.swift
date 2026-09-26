@@ -10,10 +10,20 @@ import WidgetKit
 
 struct DynamicIslandPreview: View {
     @Environment(\.colorScheme) var colorScheme
-    let dynamicIslandType: DeviceInfo.DynamicIslandType = DeviceInfo.dynamicIslandType
     
     @Binding var compactLeading: Bool
     @Binding var compactTrailing: Bool
+    @Binding var dynamicIslandType: DeviceInfo.DynamicIslandType
+    
+    init(
+        compactLeading: Binding<Bool>,
+        compactTrailing: Binding<Bool>,
+        dynamicIslandType: Binding<DeviceInfo.DynamicIslandType> = .constant(DeviceInfo.dynamicIslandType)
+    ) {
+        self._compactLeading = compactLeading
+        self._compactTrailing = compactTrailing
+        self._dynamicIslandType = dynamicIslandType
+    }
     
     private func makeHorizontalIsland(
         leading: Bool,

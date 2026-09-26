@@ -487,6 +487,16 @@
         }
       }
     },
+    "Dynamic Island Preview" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandのプレビュー"
+          }
+        }
+      }
+    },
     "Editing" : {
       "localizations" : {
         "ja" : {
@@ -643,6 +653,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ホーム"
+          }
+        }
+      }
+    },
+    "Horizontal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水平"
           }
         }
       }
@@ -1050,6 +1070,16 @@
         }
       }
     },
+    "Preview Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレビュータイプ"
+          }
+        }
+      }
+    },
     "Privacy & Security" : {
       "localizations" : {
         "ja" : {
@@ -1276,6 +1306,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サイドボタンDeflector"
+          }
+        }
+      }
+    },
+    "Smaller Horizontal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水平(小)"
           }
         }
       }
@@ -1538,6 +1578,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        }
+      }
+    },
+    "Vertical" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "垂直"
           }
         }
       }
