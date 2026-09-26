@@ -103,13 +103,12 @@ struct DynamicIslandPreview: View {
                     Image(systemName: "suit.diamond")
                         .resizable()
                         .scaledToFit()
-                        .padding(.top, 13)
-                        .padding(.bottom, 11)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 18, height: 18)
+                        .padding(.vertical, 8)
                         .foregroundStyle(.dropblue)
                         .transition(.blurReplace)
                 } else {
-                    Spacer().frame(width: 40, height: 40)
+                    Spacer().frame(width: 38, height: 34)
                 }
                 
                 if trailing {
@@ -117,13 +116,12 @@ struct DynamicIslandPreview: View {
                         .resizable()
                         .scaledToFit()
                         .id(leading ? "square.2.layers.3d" : "suit.diamond")
-                        .padding(.top, 11)
-                        .padding(.bottom, 13)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 18, height: 18)
+                        .padding(.vertical, 8)
                         .foregroundStyle(.dropblue)
                         .transition(.blurReplace)
                 } else {
-                    Spacer().frame(width: 40, height: 40)
+                    Spacer().frame(width: 38, height: 34)
                 }
             }
         }
@@ -150,7 +148,7 @@ struct DynamicIslandPreview: View {
                 makeVerticalIsland(
                     leading: compactLeading,
                     trailing: compactTrailing,
-                    topMargin: 40
+                    topMargin: 42
                 )
                 Spacer().frame(maxWidth: 50)
                 makeVerticalIsland(
