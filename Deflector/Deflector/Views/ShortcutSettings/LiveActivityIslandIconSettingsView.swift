@@ -38,6 +38,7 @@ struct LiveActivityIslandIconSettingsView: View {
                             dynamicIslandType: $previewType,
                         )
                     }
+                    .accessibilityElement(children: .combine)
                     .accessibilityLabel("Dynamic Island Preview")
                     .accessibilityRemoveTraits(.isImage)
                     .frame(maxWidth: .infinity)
