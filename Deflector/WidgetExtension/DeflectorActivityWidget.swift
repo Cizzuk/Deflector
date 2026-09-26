@@ -94,6 +94,10 @@ struct DeflectorActivityWidget: Widget {
                 case .compactLeading:
                     if islandIcons.compactLeading {
                         Image(systemName: "suit.diamond")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18, height: 18)
+                            .fontWeight(.regular)
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
                     } else {
@@ -102,6 +106,10 @@ struct DeflectorActivityWidget: Widget {
                 case .compactTrailing:
                     if islandIcons.compactTrailing {
                         Image(systemName: islandIcons.compactLeading ? "square.2.layers.3d" : "suit.diamond")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18, height: 18)
+                            .fontWeight(.regular)
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
                     } else {
@@ -110,6 +118,10 @@ struct DeflectorActivityWidget: Widget {
                 case .minimal:
                     if islandIcons.minimal {
                         Image(systemName: "suit.diamond")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18, height: 18)
+                            .fontWeight(.regular)
                             .foregroundStyle(.dropblue)
                             .padding(.horizontal, 2)
                     } else {
