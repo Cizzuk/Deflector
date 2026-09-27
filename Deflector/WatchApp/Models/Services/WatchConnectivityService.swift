@@ -53,6 +53,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         error: (any Error)?
     ) {
         updateSessionState()
+        guard activationState == .activated else { return }
         updateReceivedApplicationContext()
     }
     
