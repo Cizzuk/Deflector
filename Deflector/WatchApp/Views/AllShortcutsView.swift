@@ -50,9 +50,7 @@ struct AllShortcutsView: View {
         } message: {
             Text(vm.errorMessage ?? "")
         }
-        .onAppear {
-            watchConnectivity.sendAllShortcutsRequest()
-        }
+        .onAppear { vm.sendAllShortcutsRequest() }
         .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
             vm.handleDeviceShortcutsNotification(notification)
         }

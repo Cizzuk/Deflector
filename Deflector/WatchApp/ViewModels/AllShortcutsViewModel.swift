@@ -23,6 +23,14 @@ class AllShortcutsViewModel: ObservableObject {
         }
     }
     
+    func sendAllShortcutsRequest() {
+        watchConnectivity.sendAllShortcutsRequest() { error in
+            self.errorMessage = "Failed to request the list of all shortcuts."
+            self.shortcuts = []
+            self.loading = false
+        }
+    }
+    
     func handleDeviceShortcutsNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo,
            let receivedShortcuts = userInfo["shortcuts"] as? [String] {

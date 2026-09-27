@@ -37,6 +37,16 @@
         }
       }
     },
+    "Failed to request the list of all shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのショートカットの一覧のリクエストに失敗しました"
+          }
+        }
+      }
+    },
     "Failed to send the shortcut because Deflector couldn't connect to the iPhone." : {
       "localizations" : {
         "ja" : {
