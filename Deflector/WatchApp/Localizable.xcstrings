@@ -1,0 +1,39 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Cannot connect to iPhone. Make sure that your iPhone is within range." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneに接続できません。iPhoneが通信圏内にあることを確認してください。"
+          }
+        }
+      }
+    },
+    "Connection service is not activated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コネクションサービスが有効化されていません。"
+          }
+        }
+      }
+    },
+    "Deflector" : {
+      "shouldTranslate" : false
+    },
+    "You need to unlock your iPhone after restarting it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneの再起動後は、ロックを解除する必要があります。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

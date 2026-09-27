@@ -11,8 +11,6 @@
 		7A193EC3302E9D340041A05B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC2302E9D340041A05B /* SwiftUI.framework */; };
 		7A193ECE302E9D360041A05B /* Deflector Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A25B8B43068BE6B000AFEB9 /* Deflector Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7A6637113032195900EE1209 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7A6637103032195900EE1209 /* Localizable.xcstrings */; };
-		7A6637123032195900EE1209 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7A6637103032195900EE1209 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +58,6 @@
 		7A193EC2302E9D340041A05B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deflector Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5F993B3047A54F001BB665 /* WidgetExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtensionExtension.entitlements; sourceTree = "<group>"; };
-		7A6637103032195900EE1209 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -154,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				7A5F993B3047A54F001BB665 /* WidgetExtensionExtension.entitlements */,
-				7A6637103032195900EE1209 /* Localizable.xcstrings */,
 				7A31AA00302B24B10045FB9A /* Shared */,
 				000000000000000000000010 /* Deflector */,
 				7A193EC4302E9D340041A05B /* WidgetExtension */,
@@ -295,13 +291,11 @@
 		000000000000000140000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				7A6637113032195900EE1209 /* Localizable.xcstrings in Resources */,
 			);
 		};
 		7A193EBC302E9D340041A05B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				7A6637123032195900EE1209 /* Localizable.xcstrings in Resources */,
 			);
 		};
 		7A25B8A83068BE6A000AFEB9 /* Resources */ = {
