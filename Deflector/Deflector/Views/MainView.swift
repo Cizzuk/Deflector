@@ -127,6 +127,7 @@ struct MainView: View {
                     switch url.path {
                     case "/firstsetup": path = .firstSetup
                     case "/liveactivity": path = .liveActivitySettings
+                    case "/watch": path = .watchSettings
                     case "/sidebutton": path = .sideButtonSettings
                     default: break
                     }
