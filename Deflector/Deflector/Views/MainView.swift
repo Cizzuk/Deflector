@@ -110,7 +110,7 @@ struct MainView: View {
             switch path {
             case .firstSetup: FirstSetupView()
             case .liveActivitySettings: LiveActivitySettingsView()
-            case .watchSettings: EmptyView()
+            case .watchSettings: WatchSettingsView()
             case .sideButtonSettings: SideButtonSettingsView()
             case .about: AboutView()
             case .changeIcon: ChangeIconView()

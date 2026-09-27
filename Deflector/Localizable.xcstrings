@@ -311,6 +311,16 @@
         }
       }
     },
+    "Connection service is not activated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コネクションサービスが有効化されていません。"
+          }
+        }
+      }
+    },
     "Connectivity" : {
       "localizations" : {
         "ja" : {
@@ -426,6 +436,16 @@
     },
     "Deflector Automation" : {
       "shouldTranslate" : false
+    },
+    "Deflector is not installed on your Apple Watch. Please install it from the Watch app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple WatchにDeflectorがインストールされていません。Watchアプリからインストールしてください。"
+          }
+        }
+      }
     },
     "Deflector Settings" : {
       "localizations" : {
@@ -870,6 +890,16 @@
         }
       }
     },
+    "No Apple Watch is paired with this device." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスにApple Watchがペアリングされていません。"
+          }
+        }
+      }
+    },
     "No shortcut is set for the Side Button." : {
       "localizations" : {
         "ja" : {
@@ -1016,6 +1046,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットアプリを開く"
+          }
+        }
+      }
+    },
+    "Open Watch App" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watchアプリを開く"
           }
         }
       }

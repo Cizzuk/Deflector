@@ -13,10 +13,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     private let session = WCSession.default
     
+    @Published private(set) var activationState: WCSessionActivationState = .notActivated
     @Published private(set) var isPaired = false
     @Published private(set) var isWatchAppInstalled = false
-    @Published private(set) var isReachable = false
-    @Published private(set) var activationState: WCSessionActivationState = .notActivated
     
     override private init() {
         super.init()
@@ -29,10 +28,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     private func updateSessionState() {
         DispatchQueue.main.async {
+            self.activationState = self.session.activationState
             self.isPaired = self.session.isPaired
             self.isWatchAppInstalled = self.session.isWatchAppInstalled
-            self.isReachable = self.session.isReachable
-            self.activationState = self.session.activationState
         }
     }
 }
