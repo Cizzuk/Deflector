@@ -18,6 +18,7 @@ import WatchConnectivity
 }
 
 struct MainView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) private var isLuminanceReduced
     @StateObject private var watchConnectivity = WatchConnectivityService.shared
     
@@ -31,13 +32,25 @@ struct MainView: View {
                         Text("Connection service is not activated.")
                     }
                 } else if !watchConnectivity.isReachable {
-                    Section {} footer: {
-                        Text("Cannot connect to iPhone. Make sure that your iPhone is within range.")
+                    if scenePhase == .active {
+                        Section {} footer: {
+                            Text("Cannot connect to iPhone. Make sure that your iPhone is within range.")
+                        }
+                    } else {
+                        Section {} footer: {
+                            ZStack(alignment: .center) {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
                     }
                 } else {
                     Section {
                         ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
-                            Button(action: { }) {
+                            Button(action: {
+                                watchConnectivity.sendDeflection(shortcutName: shortcut.shortcutName)
+                            }) {
                                 Label(shortcut.shortcutName, systemImage: shortcut.symbol)
                             }
                         }

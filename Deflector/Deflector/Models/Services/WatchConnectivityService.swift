@@ -62,12 +62,15 @@ extension WatchConnectivityService: WCSessionDelegate {
         session.activate()
     }
     
-    func session(
-        _ session: WCSession,
-        didReceiveMessage message: [String : Any],
-        replyHandler: @escaping ([String : Any]) -> Void
-    ) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        guard let wcMessage = try? WCMessage(message) else { return }
         
+        switch wcMessage.method {
+        case .requestApplicationContext:
+            resendApplicationContext()
+        case .deflection(let shortcutName):
+            Task { await DeflectionService.shared.runShortcut(shortcutName: shortcutName) }
+        }
     }
     
     // MARK: - Application Context
@@ -81,5 +84,11 @@ extension WatchConnectivityService: WCSessionDelegate {
     
     func updateApplicationContext(_ context: WCAppContext) throws {
         try session.updateApplicationContext(context.toDictionary())
+    }
+    
+    private func resendApplicationContext() {
+        let context = session.applicationContext
+        try? session.updateApplicationContext([:]) // Refresh
+        try? session.updateApplicationContext(context)
     }
 }

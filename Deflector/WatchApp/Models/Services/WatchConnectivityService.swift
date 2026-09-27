@@ -43,6 +43,23 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             self.receivedApplicationContext = wcAppContext
         }
     }
+    
+    private func sendResendApplicationContextRequest() {
+        guard activationState == .activated, isReachable else { return }
+        let message = WCMessage(method: .requestApplicationContext)
+        session.sendMessage(message.toDictionary(), replyHandler: nil)
+    }
+    
+    // MARK: - Public Methods
+    
+    func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
+        let message = WCMessage(method: .deflection(shortcutName: shortcutName))
+        session.sendMessage(
+            message.toDictionary(),
+            replyHandler: nil,
+            errorHandler: errorHandler
+        )
+    }
 }
 
 // MARK: - WCSessionDelegate
@@ -53,12 +70,12 @@ extension WatchConnectivityService: WCSessionDelegate {
         error: (any Error)?
     ) {
         updateSessionState()
-        guard activationState == .activated else { return }
-        updateReceivedApplicationContext()
+        sendResendApplicationContextRequest()
     }
     
     func sessionReachabilityDidChange(_ session: WCSession) {
         updateSessionState()
+        sendResendApplicationContextRequest()
     }
     
     func session(
@@ -66,13 +83,5 @@ extension WatchConnectivityService: WCSessionDelegate {
         didReceiveApplicationContext applicationContext: [String : Any]
     ) {
         updateReceivedApplicationContext(applicationContext)
-    }
-    
-    func session(
-        _ session: WCSession,
-        didReceiveMessage message: [String : Any],
-        replyHandler: @escaping ([String : Any]) -> Void
-    ) {
-        
     }
 }

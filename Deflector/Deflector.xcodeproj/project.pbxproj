@@ -82,6 +82,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Models/WatchConnectivity/WCAppContext.swift,
+				Models/WatchConnectivity/WCMessage.swift,
 			);
 			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
 		};
@@ -89,6 +90,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Models/WatchConnectivity/WCAppContext.swift,
+				Models/WatchConnectivity/WCMessage.swift,
 			);
 			target = 7A25B8A93068BE6A000AFEB9 /* Deflector Watch */;
 		};
