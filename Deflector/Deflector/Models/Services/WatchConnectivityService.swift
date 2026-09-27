@@ -8,31 +8,59 @@
 import Combine
 import WatchConnectivity
 
-class WatchConnectivityService: NSObject, WCSessionDelegate, ObservableObject {
+final class WatchConnectivityService: NSObject, ObservableObject {
     static let shared = WatchConnectivityService()
+    
+    private let session = WCSession.default
+    
+    @Published private(set) var isPaired = false
+    @Published private(set) var isWatchAppInstalled = false
+    @Published private(set) var isReachable = false
+    @Published private(set) var activationState: WCSessionActivationState = .notActivated
     
     override private init() {
         super.init()
         guard DeviceInfo.isWatchSupported else { return }
         
-        let session = WCSession.default
         session.delegate = self
         session.activate()
+        updateSessionState()
     }
     
+    private func updateSessionState() {
+        DispatchQueue.main.async {
+            self.isPaired = self.session.isPaired
+            self.isWatchAppInstalled = self.session.isWatchAppInstalled
+            self.isReachable = self.session.isReachable
+            self.activationState = self.session.activationState
+        }
+    }
+}
+
+extension WatchConnectivityService: WCSessionDelegate {
     func session(
         _ session: WCSession,
         activationDidCompleteWith activationState: WCSessionActivationState,
         error: (any Error)?
     ) {
-        print("WCSession activated: \(activationState.rawValue)")
+        updateSessionState()
     }
     
-    func sessionDidBecomeInactive(_ session: WCSession) { }
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        updateSessionState()
+    }
+    
+    func sessionWatchStateDidChange(_ session: WCSession) {
+        updateSessionState()
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        updateSessionState()
+    }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print("WCSession deactivated")
-        WCSession.default.activate()
+        updateSessionState()
+        session.activate()
     }
     
     func session(
