@@ -71,7 +71,10 @@ struct LiveActivitySettingsView: View {
             
             if buttons.count < 4 {
                 Button(action: {
-                    buttons.append(DeflectorActivityButton(shortcutName: ""))
+                    let newButton = DeflectorActivityButton(shortcutName: "")
+                    buttons.append(newButton)
+                    shortcutPickerID = newButton.id
+                    shortcutPickerText = newButton.shortcutName
                 }) {
                     Label("Add Shortcut", systemImage: "plus")
                 }
