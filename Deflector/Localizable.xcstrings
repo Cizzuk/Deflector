@@ -195,6 +195,16 @@
         }
       }
     },
+    "Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        }
+      }
+    },
     "Argument" : {
       "localizations" : {
         "ja" : {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class DeviceInfo {
     static let modelIdentifier: String = {
@@ -41,6 +42,8 @@ class DeviceInfo {
             return .unknown
         }
     }()
+    
+    static let isWatchSupported: Bool = WCSession.isSupported()
     
     static let unsupportedSideButtonAccess: Bool = {
         // Not an iPhone
