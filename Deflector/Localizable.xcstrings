@@ -40,7 +40,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「Dynamic Islandで異なるショートカットを使用する」を${operation}に${state}"
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を${state}に${operation}"
           }
         }
       }
