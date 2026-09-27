@@ -22,6 +22,8 @@ struct WatchSettingsView: View {
     }
     
     @State private var isShowingShortcutPicker = false
+    @State private var symbolPickerID: String? = nil
+    @State private var symbolPickerText: String = ""
     
     var body: some View {
         NavigationStack {
@@ -58,7 +60,26 @@ struct WatchSettingsView: View {
                     // MARK: - Main Watch Settings
                     Section("Favorite Shortcuts") {
                         ForEach($favoriteShortcuts) { $shortcut in
-                            Text(shortcut.shortcutName)
+                            HStack(spacing: 18) {
+                                Button(action: {
+                                    symbolPickerID = shortcut.id
+                                    symbolPickerText = shortcut.symbol
+                                }) {
+                                    Label {
+                                        Text("Symbol")
+                                    } icon: {
+                                        SymbolHelper.getSymbolImage(shortcut.symbol).image
+                                            .font(.system(size: 20, weight: .regular))
+                                            .foregroundColor(Color(uiColor: .label))
+                                    }
+                                    .frame(width: 24, height: 24)
+                                    .labelStyle(.iconOnly)
+                                }
+                                .buttonStyle(.borderless)
+                                
+                                Text(shortcut.shortcutName)
+                                    .lineLimit(1)
+                            }
                         }
                         .onMove { indices, newOffset in
                             favoriteShortcuts.move(fromOffsets: indices, toOffset: newOffset)
@@ -73,6 +94,18 @@ struct WatchSettingsView: View {
                             }
                         }
                     }
+                }
+            }
+            .sheet(isPresented: Binding(
+                get: { symbolPickerID != nil },
+                set: { if !$0 { symbolPickerID = nil } }
+            )) {
+                SymbolPicker(symbolPickerText, showCustomSymbols: false) { symbol in
+                    if let symbolPickerID,
+                       let index = favoriteShortcuts.firstIndex(where: { $0.id == symbolPickerID }) {
+                        favoriteShortcuts[index].symbol = symbol
+                    }
+                    symbolPickerID = nil
                 }
             }
             .sheet(isPresented: $isShowingShortcutPicker) {
