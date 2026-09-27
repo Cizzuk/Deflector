@@ -34,6 +34,27 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         }
     }
     
+    // MARK: - Application Context
+    
+    var applicationContext: WCAppContext {
+        if let context = try? WCAppContext(session.applicationContext) {
+            return context
+        }
+        return WCAppContext()
+    }
+    
+    func updateApplicationContext(_ context: WCAppContext) throws {
+        try session.updateApplicationContext(context.toDictionary())
+    }
+    
+    private func resendApplicationContext() {
+        let context = session.applicationContext
+        try? session.updateApplicationContext([:]) // Refresh
+        try? session.updateApplicationContext(context)
+    }
+    
+    // MARK: - Message Handling
+    
     private func handleReceivedMethod(_ method: WCMessage.Method) {
         switch method {
         case .requestApplicationContext:
@@ -96,24 +117,5 @@ extension WatchConnectivityService: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         guard let wcMessage = try? WCMessage(message) else { return }
         handleReceivedMethod(wcMessage.method)
-    }
-    
-    // MARK: - Application Context
-    
-    var applicationContext: WCAppContext {
-        if let context = try? WCAppContext(session.applicationContext) {
-            return context
-        }
-        return WCAppContext()
-    }
-    
-    func updateApplicationContext(_ context: WCAppContext) throws {
-        try session.updateApplicationContext(context.toDictionary())
-    }
-    
-    private func resendApplicationContext() {
-        let context = session.applicationContext
-        try? session.updateApplicationContext([:]) // Refresh
-        try? session.updateApplicationContext(context)
     }
 }
