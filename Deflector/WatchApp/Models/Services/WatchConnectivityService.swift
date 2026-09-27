@@ -46,13 +46,21 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         }
     }
     
-    private func sendResendApplicationContextRequest() {
-        guard activationState == .activated, isReachable else { return }
+    // MARK: - Public Methods
+    
+    func activateSessionIfDeactivated() {
+        guard activationState != .activated else { return }
+        session.activate()
+    }
+    
+    func sendResendApplicationContextRequestIfNeeded() {
+        guard activationState == .activated,
+              isReachable,
+              receivedApplicationContext.favoriteShortcuts.isEmpty
+                else { return }
         let message = WCMessage(method: .requestApplicationContext)
         session.sendMessage(message.toDictionary(), replyHandler: nil)
     }
-    
-    // MARK: - Public Methods
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
@@ -72,12 +80,12 @@ extension WatchConnectivityService: WCSessionDelegate {
         error: (any Error)?
     ) {
         updateSessionState()
-        sendResendApplicationContextRequest()
+        sendResendApplicationContextRequestIfNeeded()
     }
     
     func sessionReachabilityDidChange(_ session: WCSession) {
         updateSessionState()
-        sendResendApplicationContextRequest()
+        sendResendApplicationContextRequestIfNeeded()
     }
     
     func session(

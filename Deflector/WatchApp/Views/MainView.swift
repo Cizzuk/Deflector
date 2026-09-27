@@ -21,6 +21,7 @@ struct MainView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) private var isLuminanceReduced
     @StateObject private var watchConnectivity = WatchConnectivityService.shared
+    @StateObject private var vm = MainViewModel()
     
     var body: some View {
         NavigationStack {
@@ -35,27 +36,10 @@ struct MainView: View {
                     Section {} footer: {
                         Text("You need to unlock your iPhone after restarting it.")
                     }
-                } else if !watchConnectivity.isReachable {
-                    if scenePhase == .active {
-                        Section {} footer: {
-                            Text("Cannot connect to iPhone. Make sure that your iPhone is within range.")
-                        }
-                    }
-                    Section {} footer: {
-                        ZStack(alignment: .center) {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .padding()
-                                .tint(.white)
-                        }
-                        .frame(maxWidth: .infinity)
-                    }
                 } else {
                     Section {
                         ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
-                            Button(action: {
-                                watchConnectivity.sendDeflection(shortcutName: shortcut.shortcutName)
-                            }) {
+                            Button(action: { vm.sendDeflection(shortcut.shortcutName) }) {
                                 Label(shortcut.shortcutName, systemImage: shortcut.symbol)
                             }
                         }
@@ -63,6 +47,15 @@ struct MainView: View {
                 }
             }
             .navigationTitle("Deflector")
+            .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
+            .alert("Error", isPresented: Binding(
+                get: { vm.errorMessage != nil },
+                set: { if !$0 { vm.errorMessage = nil } }
+            )) {
+                Button("OK", role: .close) { vm.errorMessage = nil }
+            } message: {
+                Text(vm.errorMessage ?? "")
+            }
         }
     }
 }
