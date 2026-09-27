@@ -38,7 +38,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         _ receivedApplicationContext: [String: Any]? = nil
     ) {
         let newContext = receivedApplicationContext ?? session.receivedApplicationContext
-        let wcAppContext = WCAppContext.fromDictionary(newContext) ?? WCAppContext()
+        let wcAppContext = (try? WCAppContext(newContext)) ?? WCAppContext()
         DispatchQueue.main.async {
             self.receivedApplicationContext = wcAppContext
         }

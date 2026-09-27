@@ -8,13 +8,24 @@
 import Foundation
 
 struct WCAppContext: Codable {
-    var favoriteShortcuts: [FavoriteShortcut] = []
+    var favoriteShortcuts: [FavoriteShortcut]
     
     struct FavoriteShortcut: Codable, Identifiable {
         var shortcutName: String
         var symbol: String = "suit.diamond"
         
         var id: String { return shortcutName }
+    }
+    
+    init(favoriteShortcuts: [FavoriteShortcut] = []) {
+        self.favoriteShortcuts = favoriteShortcuts
+    }
+    
+    init(_ dictionary: [String: Any]) throws {
+        let decoder = JSONDecoder()
+        let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+        let context = try decoder.decode(WCAppContext.self, from: data)
+        self = context
     }
     
     func toDictionary() -> [String: Any] {
@@ -24,14 +35,5 @@ struct WCAppContext: Codable {
             return [:]
         }
         return dictionary
-    }
-    
-    static func fromDictionary(_ dictionary: [String: Any]) -> WCAppContext? {
-        let decoder = JSONDecoder()
-        guard let data = try? JSONSerialization.data(withJSONObject: dictionary, options: []),
-              let context = try? decoder.decode(WCAppContext.self, from: data) else {
-            return nil
-        }
-        return context
     }
 }
