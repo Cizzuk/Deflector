@@ -86,6 +86,8 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     func sendAllShortcutsRequest(errorHandler: ((Error) -> Void)? = nil) {
+        guard receivedApplicationContext.allowShowAllShortcuts else { return }
+        
         let message = WCMessage(method: .requestAllShortcuts)
         session.sendMessage(
             message.toDictionary(),

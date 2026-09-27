@@ -43,6 +43,12 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             Task { await DeflectionService.shared.runShortcut(shortcutName: shortcutName) }
             
         case .requestAllShortcuts:
+            guard applicationContext.allowShowAllShortcuts else {
+                let message = WCMessage(method: .responseAllShortcuts(shortcuts: []))
+                session.sendMessage(message.toDictionary(), replyHandler: nil)
+                return
+            }
+            
             Task {
                 await DeviceShortcutsSupport.callDeviceShortcuts()
                 let notifications = NotificationCenter.default.notifications(named: .deviceShortcutsReceived)

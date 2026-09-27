@@ -7,18 +7,23 @@
 
 import Foundation
 
-struct WCAppContext: Codable {
+struct WCAppContext: Codable, Equatable {
     var favoriteShortcuts: [FavoriteShortcut]
+    var allowShowAllShortcuts: Bool
     
-    struct FavoriteShortcut: Codable, Identifiable {
+    struct FavoriteShortcut: Codable, Equatable, Identifiable {
         var shortcutName: String
         var symbol: String = "suit.diamond"
         
         var id: String { return shortcutName }
     }
     
-    init(favoriteShortcuts: [FavoriteShortcut] = []) {
+    init(
+        favoriteShortcuts: [FavoriteShortcut] = [],
+        allowShowAllShortcuts: Bool = true
+    ) {
         self.favoriteShortcuts = favoriteShortcuts
+        self.allowShowAllShortcuts = allowShowAllShortcuts
     }
     
     init(_ dictionary: [String: Any]) throws {

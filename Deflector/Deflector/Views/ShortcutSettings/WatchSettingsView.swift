@@ -11,19 +11,11 @@ import WatchConnectivity
 struct WatchSettingsView: View {
     @StateObject private var watchConnectivity = WatchConnectivityService.shared
     
-    @State private var favoriteShortcuts: [WCAppContext.FavoriteShortcut] = {
-        return WatchConnectivityService.shared.applicationContext.favoriteShortcuts
-    }() {
-        didSet {
-            var context = WatchConnectivityService.shared.applicationContext
-            context.favoriteShortcuts = favoriteShortcuts
-            try? WatchConnectivityService.shared.updateApplicationContext(context)
-        }
-    }
-    
     @State private var isShowingShortcutPicker = false
     @State private var symbolPickerID: String? = nil
     @State private var symbolPickerText: String = ""
+    
+    @State private var context = WatchConnectivityService.shared.applicationContext
     
     var body: some View {
         NavigationStack {
@@ -59,7 +51,7 @@ struct WatchSettingsView: View {
                 } else {
                     // MARK: - Main Watch Settings
                     Section("Favorite Shortcuts") {
-                        ForEach($favoriteShortcuts) { $shortcut in
+                        ForEach($context.favoriteShortcuts) { $shortcut in
                             HStack(spacing: 18) {
                                 Button(action: {
                                     symbolPickerID = shortcut.id
@@ -82,28 +74,34 @@ struct WatchSettingsView: View {
                             }
                         }
                         .onMove { indices, newOffset in
-                            favoriteShortcuts.move(fromOffsets: indices, toOffset: newOffset)
+                            context.favoriteShortcuts.move(fromOffsets: indices, toOffset: newOffset)
                         }
                         .onDelete { indexSet in
-                            favoriteShortcuts.remove(atOffsets: indexSet)
+                            context.favoriteShortcuts.remove(atOffsets: indexSet)
                         }
                         
-                        if favoriteShortcuts.count < 10 {
+                        if context.favoriteShortcuts.count < 10 {
                             Button(action: { isShowingShortcutPicker = true }) {
                                 Label("Add Shortcut", systemImage: "plus")
                             }
                         }
                     }
+                    
+                    Section {
+                        Toggle("Show All Shortcuts", isOn: $context.allowShowAllShortcuts)
+                    }
                 }
             }
+            .navigationTitle("Apple Watch")
+            .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: Binding(
                 get: { symbolPickerID != nil },
                 set: { if !$0 { symbolPickerID = nil } }
             )) {
                 SymbolPicker(symbolPickerText, showCustomSymbols: false) { symbol in
                     if let symbolPickerID,
-                       let index = favoriteShortcuts.firstIndex(where: { $0.id == symbolPickerID }) {
-                        favoriteShortcuts[index].symbol = symbol
+                       let index = context.favoriteShortcuts.firstIndex(where: { $0.id == symbolPickerID }) {
+                        context.favoriteShortcuts[index].symbol = symbol
                     }
                     symbolPickerID = nil
                 }
@@ -113,13 +111,14 @@ struct WatchSettingsView: View {
                     "",
                     prompt: "Please set the shortcut name to add it to your favorites.",
                 ) { shortcutName in
-                    if !shortcutName.isEmpty && !favoriteShortcuts.contains(where: { $0.shortcutName == shortcutName }) {
-                        favoriteShortcuts.append(WCAppContext.FavoriteShortcut(shortcutName: shortcutName))
+                    if !shortcutName.isEmpty && !context.favoriteShortcuts.contains(where: { $0.shortcutName == shortcutName }) {
+                        context.favoriteShortcuts.append(WCAppContext.FavoriteShortcut(shortcutName: shortcutName))
                     }
                 }
             }
-            .navigationTitle("Apple Watch")
-            .navigationBarTitleDisplayMode(.inline)
+        }
+        .onChange(of: context) {
+            try? watchConnectivity.updateApplicationContext(context)
         }
     }
 }

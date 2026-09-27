@@ -52,11 +52,13 @@ struct MainView: View {
                         }
                     }
                      
-                    Section {
-                        NavigationLink(destination: AllShortcutsView()) {
-                            Text("All Shortcuts")
+                    if watchConnectivity.receivedApplicationContext.allowShowAllShortcuts {
+                        Section {
+                            NavigationLink(destination: AllShortcutsView()) {
+                                Text("All Shortcuts")
+                            }
+                            .disabled(!watchConnectivity.isReachable)
                         }
-                        .disabled(!watchConnectivity.isReachable)
                     }
                 }
             }
