@@ -18,6 +18,7 @@ class AllShortcutsViewModel: ObservableObject {
     @Published var errorMessage: LocalizedStringResource? = nil
     
     func sendDeflection(_ shortcutName: String) {
+        WKInterfaceDevice.current().play(.click)
         watchConnectivity.sendDeflection(shortcutName: shortcutName) { error in
             self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
         }
