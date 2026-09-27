@@ -71,8 +71,8 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             }
             
             Task {
-                await DeviceShortcutsSupport.callDeviceShortcuts()
                 let notifications = NotificationCenter.default.notifications(named: .deviceShortcutsReceived)
+                await DeviceShortcutsSupport.callDeviceShortcuts()
                 for await notification in notifications {
                     let shortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) ?? []
                     let message = WCMessage(method: .responseAllShortcuts(shortcuts: shortcuts))
