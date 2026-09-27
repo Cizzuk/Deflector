@@ -16,6 +16,14 @@ class DeviceShortcutsSupport {
         NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
     }
     
+    static func parseDeviceShortcutsNotification(_ notification: Notification) -> [String]? {
+        if let userInfo = notification.userInfo,
+           let receivedShortcuts = userInfo["shortcuts"] as? [String] {
+            return receivedShortcuts
+        }
+        return nil
+    }
+    
     static func callDeviceShortcuts() async {
         let content = UNMutableNotificationContent()
         content.title = "Device Shortcuts"

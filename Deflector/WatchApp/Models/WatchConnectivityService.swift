@@ -8,6 +8,10 @@
 import Combine
 import WatchConnectivity
 
+extension Notification.Name {
+    static let deviceShortcutsReceived = Notification.Name("deviceShortcutsReceived")
+}
+
 final class WatchConnectivityService: NSObject, ObservableObject {
     static let shared = WatchConnectivityService()
     
@@ -46,6 +50,16 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         }
     }
     
+    private func handleReceivedMethod(_ method: WCMessage.Method) {
+        switch method {
+        case .responseAllShortcuts(shortcuts: let shortcuts):
+            NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
+            
+        default:
+            break
+        }
+    }
+    
     // MARK: - Public Methods
     
     func activateSessionIfDeactivated() {
@@ -64,6 +78,15 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
+        session.sendMessage(
+            message.toDictionary(),
+            replyHandler: nil,
+            errorHandler: errorHandler
+        )
+    }
+    
+    func sendAllShortcutsRequest(errorHandler: ((Error) -> Void)? = nil) {
+        let message = WCMessage(method: .requestAllShortcuts)
         session.sendMessage(
             message.toDictionary(),
             replyHandler: nil,
@@ -93,5 +116,10 @@ extension WatchConnectivityService: WCSessionDelegate {
         didReceiveApplicationContext applicationContext: [String : Any]
     ) {
         updateReceivedApplicationContext(applicationContext)
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        guard let wcMessage = try? WCMessage(message) else { return }
+        handleReceivedMethod(wcMessage.method)
     }
 }

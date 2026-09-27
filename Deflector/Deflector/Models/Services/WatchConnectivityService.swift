@@ -33,6 +33,31 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             self.isWatchAppInstalled = self.session.isWatchAppInstalled
         }
     }
+    
+    private func handleReceivedMethod(_ method: WCMessage.Method) {
+        switch method {
+        case .requestApplicationContext:
+            resendApplicationContext()
+            
+        case .deflection(let shortcutName):
+            Task { await DeflectionService.shared.runShortcut(shortcutName: shortcutName) }
+            
+        case .requestAllShortcuts:
+            Task {
+                await DeviceShortcutsSupport.callDeviceShortcuts()
+                let notifications = NotificationCenter.default.notifications(named: .deviceShortcutsReceived)
+                for await notification in notifications {
+                    let shortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) ?? []
+                    let message = WCMessage(method: .responseAllShortcuts(shortcuts: shortcuts))
+                    session.sendMessage(message.toDictionary(), replyHandler: nil)
+                    break
+                }
+            }
+            
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - WCSessionDelegate
@@ -64,13 +89,7 @@ extension WatchConnectivityService: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         guard let wcMessage = try? WCMessage(message) else { return }
-        
-        switch wcMessage.method {
-        case .requestApplicationContext:
-            resendApplicationContext()
-        case .deflection(let shortcutName):
-            Task { await DeflectionService.shared.runShortcut(shortcutName: shortcutName) }
-        }
+        handleReceivedMethod(wcMessage.method)
     }
     
     // MARK: - Application Context

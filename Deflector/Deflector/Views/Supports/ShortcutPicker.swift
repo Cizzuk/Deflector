@@ -54,8 +54,7 @@ struct ShortcutPicker: View {
     
     private func handleDeviceShortcutsNotification(_ notification: Notification) {
         if isWaitingAutomationCallback,
-           let userInfo = notification.userInfo,
-           let receivedShortcuts = userInfo["shortcuts"] as? [String] {
+           let receivedShortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             deviceShortcuts = receivedShortcuts
             isWaitingAutomationCallback = false

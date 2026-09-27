@@ -51,6 +51,13 @@ struct MainView: View {
                             }
                         }
                     }
+                     
+                    Section {
+                        NavigationLink(destination: AllShortcutsView()) {
+                            Text("All Shortcuts")
+                        }
+                        .disabled(!watchConnectivity.isReachable)
+                    }
                 }
             }
             .navigationTitle("Deflector")
