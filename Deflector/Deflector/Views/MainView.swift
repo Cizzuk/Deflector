@@ -72,7 +72,7 @@ struct MainView: View {
                                 Label("Apple Watch", systemImage: "applewatch")
                                     .font(.title3)
                                     .padding(5)
-                                Text("")
+                                Text("Run shortcuts on your iPhone from your Apple Watch.")
                                     .font(.subheadline)
                             }
                         }

@@ -1220,6 +1220,16 @@
         }
       }
     },
+    "Run shortcuts on your iPhone from your Apple Watch." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple WatchからiPhone上でショートカットを実行します。"
+          }
+        }
+      }
+    },
     "Search by Symbol Name" : {
       "localizations" : {
         "ja" : {
