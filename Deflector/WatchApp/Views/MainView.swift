@@ -41,6 +41,7 @@ struct MainView: View {
                         ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
                             Button(action: { vm.sendDeflection(shortcut.shortcutName) }) {
                                 Label(shortcut.shortcutName, systemImage: shortcut.symbol)
+                                    .lineLimit(2)
                             }
                         }
                     }
