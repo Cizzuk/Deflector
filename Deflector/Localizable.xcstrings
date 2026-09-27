@@ -577,6 +577,16 @@
         }
       }
     },
+    "Favorite Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのショートカット"
+          }
+        }
+      }
+    },
     "First Setup" : {
       "localizations" : {
         "ja" : {
@@ -1086,6 +1096,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。 次にショートカットを編集して、通知のオートメーションを有効にしてください。"
+          }
+        }
+      }
+    },
+    "Please set the shortcut name to add it to your favorites." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りに追加するショートカットの名前を設定してください。"
           }
         }
       }
