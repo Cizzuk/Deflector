@@ -38,10 +38,16 @@ struct MainView: View {
                     }
                 } else {
                     Section {
-                        ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
-                            Button(action: { vm.sendDeflection(shortcut.shortcutName) }) {
-                                Label(shortcut.shortcutName, systemImage: shortcut.symbol)
-                                    .lineLimit(2)
+                        if watchConnectivity.receivedApplicationContext.favoriteShortcuts.isEmpty {
+                            Button(action: { watchConnectivity.sendResendApplicationContextRequestIfNeeded() }) {
+                                Text("Reload Favorite Shortcuts")
+                            }
+                        } else {
+                            ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
+                                Button(action: { vm.sendDeflection(shortcut.shortcutName) }) {
+                                    Label(shortcut.shortcutName, systemImage: shortcut.symbol)
+                                        .lineLimit(2)
+                                }
                             }
                         }
                     }
