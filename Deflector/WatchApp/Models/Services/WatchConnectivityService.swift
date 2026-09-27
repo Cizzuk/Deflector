@@ -14,6 +14,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private let session = WCSession.default
     
     @Published private(set) var activationState: WCSessionActivationState = .notActivated
+    @Published private(set) var iOSDeviceNeedsUnlockAfterRebootForReachability: Bool = false
     @Published private(set) var isReachable: Bool = false
     
     @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
@@ -30,6 +31,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private func updateSessionState() {
         DispatchQueue.main.async {
             self.activationState = self.session.activationState
+            self.iOSDeviceNeedsUnlockAfterRebootForReachability = self.session.iOSDeviceNeedsUnlockAfterRebootForReachability
             self.isReachable = self.session.isReachable
         }
     }

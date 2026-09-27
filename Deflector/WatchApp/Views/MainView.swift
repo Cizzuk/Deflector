@@ -31,19 +31,24 @@ struct MainView: View {
                     Section {} footer: {
                         Text("Connection service is not activated.")
                     }
+                } else if watchConnectivity.iOSDeviceNeedsUnlockAfterRebootForReachability {
+                    Section {} footer: {
+                        Text("You need to unlock your iPhone after restarting it.")
+                    }
                 } else if !watchConnectivity.isReachable {
                     if scenePhase == .active {
                         Section {} footer: {
                             Text("Cannot connect to iPhone. Make sure that your iPhone is within range.")
                         }
-                    } else {
-                        Section {} footer: {
-                            ZStack(alignment: .center) {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                            }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    Section {} footer: {
+                        ZStack(alignment: .center) {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .padding()
+                                .tint(.white)
                         }
+                        .frame(maxWidth: .infinity)
                     }
                 } else {
                     Section {
