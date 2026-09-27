@@ -1,6 +1,6 @@
 //
 //  WatchConnectivityService.swift
-//  Deflector
+//  Deflector Watch
 //
 //  Created by Cizzuk on 2026/09/27.
 //
@@ -14,12 +14,13 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private let session = WCSession.default
     
     @Published private(set) var activationState: WCSessionActivationState = .notActivated
-    @Published private(set) var isPaired = false
-    @Published private(set) var isWatchAppInstalled = false
+    @Published private(set) var isReachable: Bool = false
+    
+    @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
     
     override private init() {
         super.init()
-        guard DeviceInfo.isWatchSupported else { return }
+        guard WCSession.isSupported() else { return }
         
         session.delegate = self
         session.activate()
@@ -29,8 +30,17 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private func updateSessionState() {
         DispatchQueue.main.async {
             self.activationState = self.session.activationState
-            self.isPaired = self.session.isPaired
-            self.isWatchAppInstalled = self.session.isWatchAppInstalled
+            self.isReachable = self.session.isReachable
+        }
+    }
+    
+    private func updateReceivedApplicationContext(
+        _ receivedApplicationContext: [String: Any]? = nil
+    ) {
+        let newContext = receivedApplicationContext ?? session.receivedApplicationContext
+        let wcAppContext = WCAppContext.fromDictionary(newContext) ?? WCAppContext()
+        DispatchQueue.main.async {
+            self.receivedApplicationContext = wcAppContext
         }
     }
 }
@@ -43,23 +53,18 @@ extension WatchConnectivityService: WCSessionDelegate {
         error: (any Error)?
     ) {
         updateSessionState()
+        updateReceivedApplicationContext()
     }
     
     func sessionReachabilityDidChange(_ session: WCSession) {
         updateSessionState()
     }
     
-    func sessionWatchStateDidChange(_ session: WCSession) {
-        updateSessionState()
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        updateSessionState()
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        updateSessionState()
-        session.activate()
+    func session(
+        _ session: WCSession,
+        didReceiveApplicationContext applicationContext: [String : Any]
+    ) {
+        updateReceivedApplicationContext(applicationContext)
     }
     
     func session(
@@ -68,18 +73,5 @@ extension WatchConnectivityService: WCSessionDelegate {
         replyHandler: @escaping ([String : Any]) -> Void
     ) {
         
-    }
-    
-    // MARK: - Application Context
-    
-    var applicationContext: WCAppContext {
-        if let context = WCAppContext.fromDictionary(session.applicationContext) {
-            return context
-        }
-        return WCAppContext()
-    }
-    
-    func updateApplicationContext(_ context: WCAppContext) throws {
-        try session.updateApplicationContext(context.toDictionary())
     }
 }
