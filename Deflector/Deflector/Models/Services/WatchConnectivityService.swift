@@ -73,7 +73,7 @@ extension WatchConnectivityService: WCSessionDelegate {
     // MARK: - Application Context
     
     var applicationContext: WCAppContext {
-        if let context = WCAppContext.fromDictionary(session.applicationContext) {
+        if let context = try? WCAppContext(session.applicationContext) {
             return context
         }
         return WCAppContext()
