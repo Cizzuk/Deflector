@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@main struct MyApp: App {
+@main struct Deflector: App {
     var body: some Scene {
         WindowGroup {
             MainView()
