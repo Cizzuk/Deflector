@@ -114,7 +114,7 @@ final class UserSettings: ObservableObject {
     @Published var liveActivityIslandIcons: DeflectorActivityIslandIcons? = {
         guard let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandIcons),
               let icons = try? JSONDecoder().decode(DeflectorActivityIslandIcons.self, from: data)
-        else {
+                else {
             return nil
         }
         
@@ -122,7 +122,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             if let icons = liveActivityIslandIcons,
-                let data = try? JSONEncoder().encode(icons) {
+               let data = try? JSONEncoder().encode(icons) {
                 UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandIcons)
             } else {
                 UserDefaults.standard.removeObject(forKey: Keys.liveActivityIslandIcons)

@@ -35,6 +35,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
 }
 
+// MARK: - WCSessionDelegate
 extension WatchConnectivityService: WCSessionDelegate {
     func session(
         _ session: WCSession,
@@ -67,5 +68,25 @@ extension WatchConnectivityService: WCSessionDelegate {
         replyHandler: @escaping ([String : Any]) -> Void
     ) {
         
+    }
+    
+    // MARK: - Application Context
+    
+    var applicationContext: WCAppContext {
+        if let context = WCAppContext.fromDictionary(session.applicationContext) {
+            return context
+        }
+        return WCAppContext()
+    }
+    
+    var receivedApplicationContext: WCAppContext {
+        if let context = WCAppContext.fromDictionary(session.receivedApplicationContext) {
+            return context
+        }
+        return WCAppContext()
+    }
+    
+    func updateApplicationContext(_ context: WCAppContext) throws {
+        try session.updateApplicationContext(context.toDictionary())
     }
 }

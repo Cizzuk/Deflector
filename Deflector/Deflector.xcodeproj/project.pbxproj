@@ -81,14 +81,14 @@
 		7AAF8ECF3068EA6E003B340B /* Exceptions for "Shared" folder in "Deflector Widget Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Models/WatchConnectivityStructures/WCAppContext.swift,
+				Models/WatchConnectivity/WCAppContext.swift,
 			);
 			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
 		};
 		7AAF8ED13068EA71003B340B /* Exceptions for "Shared" folder in "Deflector Watch" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Models/WatchConnectivityStructures/WCAppContext.swift,
+				Models/WatchConnectivity/WCAppContext.swift,
 			);
 			target = 7A25B8A93068BE6A000AFEB9 /* Deflector Watch */;
 		};
