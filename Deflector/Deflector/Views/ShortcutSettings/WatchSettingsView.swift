@@ -122,5 +122,8 @@ struct WatchSettingsView: View {
         .onChange(of: context) {
             try? wc.updateApplicationContext(context)
         }
+        .onReceive(NotificationCenter.default.publisher(for: .watchConnectivityApplicationContextDidChange)) { _ in
+            context = wc.applicationContext
+        }
     }
 }

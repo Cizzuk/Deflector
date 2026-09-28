@@ -8,6 +8,10 @@
 import Combine
 import WatchConnectivity
 
+extension Notification.Name {
+    static let watchConnectivityApplicationContextDidChange = Notification.Name("watchConnectivityApplicationContextDidChange")
+}
+
 final class WatchConnectivityService: NSObject, ObservableObject {
     static let shared = WatchConnectivityService()
     
@@ -44,7 +48,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     func updateApplicationContext(_ context: WCAppContext) throws {
+        guard context != applicationContext else { return }
         try session.updateApplicationContext(context.toDictionary())
+        NotificationCenter.default.post(name: .watchConnectivityApplicationContextDidChange, object: nil)
     }
     
     private func resendApplicationContext() {
