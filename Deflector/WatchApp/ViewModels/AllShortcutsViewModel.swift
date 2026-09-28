@@ -25,6 +25,7 @@ class AllShortcutsViewModel: ObservableObject {
     }
     
     func sendAllShortcutsRequest() {
+        WKInterfaceDevice.current().play(.start)
         watchConnectivity.sendAllShortcutsRequest() { error in
             self.errorMessage = "Failed to request the list of all shortcuts."
             self.shortcuts = []
@@ -35,6 +36,7 @@ class AllShortcutsViewModel: ObservableObject {
     func handleDeviceShortcutsNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo,
            let receivedShortcuts = userInfo["shortcuts"] as? [String] {
+            WKInterfaceDevice.current().play(.stop)
             shortcuts = receivedShortcuts
         }
         loading = false
