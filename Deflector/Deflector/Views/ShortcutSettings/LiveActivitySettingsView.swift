@@ -164,9 +164,11 @@ struct LiveActivitySettingsView: View {
             )) {
                 SymbolPicker(symbolPickerText, showCustomSymbols: true) { symbol in
                     if let symbolPickerID  {
-                        if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == symbolPickerID }) {
+                        if let index = userSettings.liveActivityButtons
+                            .firstIndex(where: { $0.id == symbolPickerID }) {
                             userSettings.liveActivityButtons[index].symbol = symbol
-                        } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == symbolPickerID }) {
+                        } else if let index = userSettings.liveActivityIslandButtons
+                            .firstIndex(where: { $0.id == symbolPickerID }) {
                             userSettings.liveActivityIslandButtons[index].symbol = symbol
                         }
                     }
@@ -182,9 +184,11 @@ struct LiveActivitySettingsView: View {
                     prompt: "Please set the shortcut name to run from the Live Activity."
                 ) { shortcutName in
                     if let shortcutPickerID  {
-                        if let index = userSettings.liveActivityButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
+                        if let index = userSettings.liveActivityButtons
+                            .firstIndex(where: { $0.id == shortcutPickerID }) {
                             userSettings.liveActivityButtons[index].shortcutName = shortcutName
-                        } else if let index = userSettings.liveActivityIslandButtons.firstIndex(where: { $0.id == shortcutPickerID }) {
+                        } else if let index = userSettings.liveActivityIslandButtons
+                            .firstIndex(where: { $0.id == shortcutPickerID }) {
                             userSettings.liveActivityIslandButtons[index].shortcutName = shortcutName
                         }
                     }
