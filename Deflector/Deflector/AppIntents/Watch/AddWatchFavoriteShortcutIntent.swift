@@ -9,7 +9,7 @@ import AppIntents
 
 struct AddWatchFavoriteShortcutIntent: AppIntent {
     static let title: LocalizedStringResource = "Add Favorite Shortcut to Apple Watch"
-    static let description: LocalizedStringResource = "Adds a favorite shortcut to Apple Watch. Adding more than 10 shortcuts will fail."
+    static let description: LocalizedStringResource = "Adds a favorite shortcut to Watch. Adding more than 10 shortcuts will fail."
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
     
