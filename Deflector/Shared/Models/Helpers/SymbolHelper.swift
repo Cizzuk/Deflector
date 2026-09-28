@@ -9,14 +9,13 @@ import SwiftUI
 
 class SymbolHelper {
     enum SymbolType: String, CaseIterable {
-        case custom, cizzuk
+        case custom
         case system
         case none, unknown
         
         var prefix: String {
             switch self {
             case .custom: return ".custom."
-            case .cizzuk: return ".cizzuk."
             case .system: return ""
             case .none: return ""
             case .unknown: return ""
@@ -26,7 +25,6 @@ class SymbolHelper {
         var isPicture: Bool {
             switch self {
             case .custom: return true
-            case .cizzuk: return false
             case .system: return false
             case .none: return false
             case .unknown: return false
@@ -45,44 +43,29 @@ class SymbolHelper {
     }()
         
     static func getSymbolImage(
-        _ symbolName: String,
-        types: [SymbolType] = SymbolType.allCases
+        _ symbolName: String
     ) -> (image: Image?, type: SymbolType) {
         // None
-        if types.contains(.none), symbolName.isEmpty {
+        if symbolName.isEmpty {
             return (Image(systemName: "square.dashed"), .none)
         }
         
         // Custom
-        if types.contains(.custom) && symbolName.hasPrefix(SymbolType.custom.prefix) {
-            if let customSymbolDirURL = customSymbolDirURL {
-                let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
-                if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
-                    return (Image(uiImage: uiImage), .custom)
-                }
-            }
-        }
-        
-        // Cizzuk
-        if types.contains(.cizzuk) && symbolName.hasPrefix(SymbolType.cizzuk.prefix) {
-            let availableSymbols = ["alare", "bolt.alare", "cbnote", "checkmark.alare", "cse.emoji", "cse.private", "cse.quick", "cse", "sidebridge", "sidefish"]
-            let strippedSymbolName = String(symbolName.dropFirst(SymbolType.cizzuk.prefix.count))
-            if availableSymbols.contains(strippedSymbolName) {
-                return (Image(strippedSymbolName), .cizzuk)
+        if let customSymbolDirURL,
+           symbolName.hasPrefix(SymbolType.custom.prefix) {
+            let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
+            if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
+                return (Image(uiImage: uiImage), .custom)
             }
         }
         
         // System
-        if types.contains(.system) && UIImage(systemName: symbolName) != nil {
+        if UIImage(systemName: symbolName) != nil {
             return (Image(systemName: symbolName), .system)
         }
         
         // Unknown
-        if types.contains(.unknown) {
-            return (Image(systemName: "questionmark.square.dashed"), .unknown)
-        }
-        
-        return (nil, .unknown)
+        return (Image(systemName: "questionmark.square.dashed"), .unknown)
     }
     
     static func getCustomSymbolNames() -> [String]? {
