@@ -43,7 +43,8 @@ class SymbolHelper {
     }()
         
     static func getSymbolImage(
-        _ symbolName: String
+        _ symbolName: String,
+        allowCustom: Bool = true
     ) -> (image: Image?, type: SymbolType) {
         // None
         if symbolName.isEmpty {
@@ -51,7 +52,8 @@ class SymbolHelper {
         }
         
         // Custom
-        if let customSymbolDirURL,
+        if allowCustom,
+           let customSymbolDirURL,
            symbolName.hasPrefix(SymbolType.custom.prefix) {
             let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
             if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {

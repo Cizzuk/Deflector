@@ -67,7 +67,7 @@ struct SymbolPicker: View {
                     HStack {
                         Spacer()
                         Group {
-                            let symbolImage = SymbolHelper.getSymbolImage(symbol)
+                            let symbolImage = SymbolHelper.getSymbolImage(symbol, allowCustom: showCustomSymbols)
                             if symbolImage.type.isPicture {
                                 symbolImage.image?
                                     .resizable()
