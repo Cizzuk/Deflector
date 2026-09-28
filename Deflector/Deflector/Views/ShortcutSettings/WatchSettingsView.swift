@@ -101,7 +101,8 @@ struct WatchSettingsView: View {
             )) {
                 SymbolPicker(symbolPickerText, showCustomSymbols: false) { symbol in
                     if let symbolPickerID,
-                       let index = context.favoriteShortcuts.firstIndex(where: { $0.id == symbolPickerID }) {
+                       let index = context.favoriteShortcuts
+                        .firstIndex(where: { $0.id == symbolPickerID }) {
                         context.favoriteShortcuts[index].symbol = symbol
                     }
                     symbolPickerID = nil
