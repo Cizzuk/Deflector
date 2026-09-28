@@ -136,7 +136,14 @@
       }
     },
     "Add Favorite Shortcut to Apple Watch" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watchにお気に入りのショートカットを追加"
+          }
+        }
+      }
     },
     "Add New Symbol" : {
       "localizations" : {
@@ -179,7 +186,14 @@
       }
     },
     "Adds a favorite shortcut to Apple Watch. Adding more than 10 shortcuts will fail." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watchにお気に入りのショートカットを追加します。10個より多くのショートカットを追加しようとすると失敗します。"
+          }
+        }
+      }
     },
     "Adds a shortcut to Live Activity. Adding 5 or more may cause display issues." : {
       "localizations" : {
@@ -629,6 +643,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ゲーム"
+          }
+        }
+      }
+    },
+    "Get All Favorite Shortcuts for Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのApple Watchのお気に入りのショートカットを取得"
           }
         }
       }
@@ -1186,6 +1210,16 @@
         }
       }
     },
+    "Remove Favorite Shortcut from Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watchからお気に入りのショートカットを削除"
+          }
+        }
+      }
+    },
     "Remove from Dynamic Island" : {
       "localizations" : {
         "ja" : {
@@ -1407,14 +1441,7 @@
       }
     },
     "Side Button Deflector" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サイドボタンDeflector"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Smaller Horizontal" : {
       "localizations" : {
