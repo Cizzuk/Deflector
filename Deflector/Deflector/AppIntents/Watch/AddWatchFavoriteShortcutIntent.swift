@@ -13,6 +13,12 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
     
+    @Parameter(title: "Shortcut Name")
+    var shortcutName: String
+    
+    @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "suit.diamond")
+    var symbol: String?
+    
     enum PerformError: LocalizedError {
         case shortcutNameIsEmpty
         case limitReached
@@ -26,12 +32,6 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
             }
         }
     }
-    
-    @Parameter(title: "Shortcut Name")
-    var shortcutName: String
-    
-    @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "suit.diamond")
-    var symbol: String?
     
     @MainActor
     func perform() async throws -> some IntentResult {
