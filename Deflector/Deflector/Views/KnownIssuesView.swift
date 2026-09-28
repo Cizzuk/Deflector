@@ -20,6 +20,7 @@ struct KnownIssuesView: View {
                     Text("2. When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing.")
                     Text("3. If a shortcut executed from an automation does not finish successfully, automations will not run for a while.")
                     Text("4. If an error occurs during an automation, such as entering a non-existent shortcut name, the automation may repeatedly trigger errors and become unable to run for a while.")
+                    Text("5. After restarting the device, an automation will not run until the device is unlocked.")
                 }
                 
                 Section {

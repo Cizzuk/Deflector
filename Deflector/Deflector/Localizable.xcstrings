@@ -85,6 +85,16 @@
         }
       }
     },
+    "5. After restarting the device, an automation will not run until the device is unlocked." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. デバイスの再起動後は、ロックを解除するまでオートメーションは実行されません。"
+          }
+        }
+      }
+    },
     "About" : {
       "localizations" : {
         "ja" : {
