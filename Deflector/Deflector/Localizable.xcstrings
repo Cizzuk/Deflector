@@ -185,12 +185,12 @@
         }
       }
     },
-    "Adds a favorite shortcut to Apple Watch. Adding more than 10 shortcuts will fail." : {
+    "Adds a favorite shortcut. Adding more than 10 shortcuts will fail." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple Watchにお気に入りのショートカットを追加します。10個より多くのショートカットを追加しようとすると失敗します。"
+            "value" : "お気に入りのショートカットを追加します。10個より多くのショートカットを追加しようとすると失敗します。"
           }
         }
       }
