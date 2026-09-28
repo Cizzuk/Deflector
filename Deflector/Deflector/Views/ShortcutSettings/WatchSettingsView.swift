@@ -60,10 +60,10 @@ struct WatchSettingsView: View {
                                     Label {
                                         Text("Symbol")
                                     } icon: {
-                                        SymbolHelper.getSymbolImage(shortcut.symbol, allowCustom: false)
-                                            .image?
+                                        let symbolImage = SymbolHelper.getSymbolImage(shortcut.symbol, allowCustom: false)
+                                        symbolImage.image?
                                             .font(.system(size: 20, weight: .regular))
-                                            .foregroundColor(Color(uiColor: .label))
+                                            .foregroundStyle(Color(uiColor: symbolImage.type == .none ? .placeholderText : .label))
                                     }
                                     .frame(width: 24, height: 24)
                                     .labelStyle(.iconOnly)

@@ -31,7 +31,7 @@ struct DeflectorActivityWidget: Widget {
                                 Label {
                                     Text(button.shortcutName)
                                 } icon: {
-                                    if symbolImage.type.isPicture {
+                                    if symbolImage.type == .custom {
                                         symbolImage.image?
                                             .resizable()
                                             .scaledToFit()

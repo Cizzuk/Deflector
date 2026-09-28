@@ -37,7 +37,7 @@ struct LiveActivitySettingsView: View {
                             Text("Symbol")
                         } icon: {
                             let symbolImage = SymbolHelper.getSymbolImage(button.symbol)
-                            if symbolImage.type.isPicture {
+                            if symbolImage.type == .custom {
                                 symbolImage.image?
                                     .resizable()
                                     .scaledToFit()

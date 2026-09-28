@@ -21,15 +21,6 @@ class SymbolHelper {
             case .unknown: return ""
             }
         }
-        
-        var isPicture: Bool {
-            switch self {
-            case .custom: return true
-            case .system: return false
-            case .none: return false
-            case .unknown: return false
-            }
-        }
     }
     
     static let customSymbolDirURL: URL? = {
