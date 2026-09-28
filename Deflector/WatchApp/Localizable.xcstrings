@@ -137,6 +137,16 @@
         }
       }
     },
+    "No favorite shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのショートカットがありません。"
+          }
+        }
+      }
+    },
     "No shortcuts." : {
       "localizations" : {
         "ja" : {

@@ -37,12 +37,17 @@ struct MainView: View {
                         Text("You need to unlock your iPhone after restarting it.")
                     }
                 } else {
-                    Section {
-                        if watchConnectivity.receivedApplicationContext.favoriteShortcuts.isEmpty {
+                    if watchConnectivity.receivedApplicationContext.favoriteShortcuts.isEmpty {
+                        Section {} footer: {
+                            Text("No favorite shortcuts.")
+                        }
+                        Section {
                             Button(action: { watchConnectivity.sendResendApplicationContextRequestIfNeeded() }) {
                                 Text("Reload Favorite Shortcuts")
                             }
-                        } else {
+                        }
+                    } else {
+                        Section {
                             ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
                                 Button(action: { vm.sendDeflection(shortcut.shortcutName) }) {
                                     Label(shortcut.shortcutName, systemImage: shortcut.symbol)
@@ -51,7 +56,7 @@ struct MainView: View {
                             }
                         }
                     }
-                     
+                    
                     if watchConnectivity.receivedApplicationContext.allowShowAllShortcuts {
                         Section {
                             NavigationLink(destination: AllShortcutsView()) {
