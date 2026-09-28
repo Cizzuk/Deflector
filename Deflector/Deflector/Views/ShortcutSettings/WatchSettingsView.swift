@@ -9,7 +9,7 @@ import SwiftUI
 import WatchConnectivity
 
 struct WatchSettingsView: View {
-    @StateObject private var watchConnectivity = WatchConnectivityService.shared
+    @StateObject private var wc = WatchConnectivityService.shared
     
     @State private var isShowingShortcutPicker = false
     @State private var symbolPickerID: String? = nil
@@ -20,11 +20,11 @@ struct WatchSettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                if watchConnectivity.activationState != .activated {
+                if wc.activationState != .activated {
                     Section {} footer: {
                         Text("Connection service is not activated.")
                     }
-                } else if !watchConnectivity.isPaired {
+                } else if !wc.isPaired {
                     Section {} footer: {
                         Text("No Apple Watch is paired with this device.")
                     }
@@ -36,7 +36,7 @@ struct WatchSettingsView: View {
                             }
                         }
                     }
-                } else if !watchConnectivity.isWatchAppInstalled {
+                } else if !wc.isWatchAppInstalled {
                     Section {} footer: {
                         Text("Deflector is not installed on your Apple Watch. Please install it from the Watch app.")
                     }
@@ -120,7 +120,7 @@ struct WatchSettingsView: View {
             }
         }
         .onChange(of: context) {
-            try? watchConnectivity.updateApplicationContext(context)
+            try? wc.updateApplicationContext(context)
         }
     }
 }

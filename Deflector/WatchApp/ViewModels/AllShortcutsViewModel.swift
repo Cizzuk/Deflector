@@ -10,7 +10,7 @@ import SwiftUI
 import WatchConnectivity
 
 class AllShortcutsViewModel: ObservableObject {
-    private let watchConnectivity = WatchConnectivityService.shared
+    private let wc = WatchConnectivityService.shared
     
     @Published var loading = true
     @Published var shortcuts: [String] = []
@@ -19,14 +19,14 @@ class AllShortcutsViewModel: ObservableObject {
     
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
-        watchConnectivity.sendDeflection(shortcutName: shortcutName) { error in
+        wc.sendDeflection(shortcutName: shortcutName) { error in
             self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
         }
     }
     
     func sendAllShortcutsRequest() {
         WKInterfaceDevice.current().play(.start)
-        watchConnectivity.sendAllShortcutsRequest() { error in
+        wc.sendAllShortcutsRequest() { error in
             self.errorMessage = "Failed to request the list of all shortcuts."
             self.shortcuts = []
             self.loading = false

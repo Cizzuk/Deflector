@@ -10,15 +10,15 @@ import SwiftUI
 import WatchConnectivity
 
 class MainViewModel: ObservableObject {
-    private let watchConnectivity = WatchConnectivityService.shared
+    private let wc = WatchConnectivityService.shared
     
     @Published var errorMessage: LocalizedStringResource? = nil
     
     func onChange(scenePhase: ScenePhase) {
         switch scenePhase {
         case .active:
-            watchConnectivity.activateSessionIfDeactivated()
-            watchConnectivity.sendResendApplicationContextRequestIfNeeded()
+            wc.activateSessionIfDeactivated()
+            wc.sendResendApplicationContextRequestIfNeeded()
         case .inactive:
             break
         case .background:
@@ -30,7 +30,7 @@ class MainViewModel: ObservableObject {
     
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
-        watchConnectivity.sendDeflection(shortcutName: shortcutName) { error in
+        wc.sendDeflection(shortcutName: shortcutName) { error in
             self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
         }
     }
