@@ -135,6 +135,9 @@
         }
       }
     },
+    "Add Favorite Shortcut to Apple Watch" : {
+
+    },
     "Add New Symbol" : {
       "localizations" : {
         "ja" : {
@@ -174,6 +177,9 @@
           }
         }
       }
+    },
+    "Adds a favorite shortcut to Apple Watch. Adding more than 10 shortcuts will fail." : {
+
     },
     "Adds a shortcut to Live Activity. Adding 5 or more may cause display issues." : {
       "localizations" : {
