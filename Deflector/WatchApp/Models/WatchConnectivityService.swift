@@ -33,19 +33,19 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     private func updateSessionState() {
-        DispatchQueue.main.async {
-            self.activationState = self.session.activationState
-            self.iOSDeviceNeedsUnlockAfterRebootForReachability = self.session.iOSDeviceNeedsUnlockAfterRebootForReachability
-            self.isReachable = self.session.isReachable
+        Task { @MainActor in
+            activationState = session.activationState
+            iOSDeviceNeedsUnlockAfterRebootForReachability = session.iOSDeviceNeedsUnlockAfterRebootForReachability
+            isReachable = session.isReachable
         }
     }
     
     private func updateReceivedApplicationContext(
         _ receivedApplicationContext: [String: Any]? = nil
     ) {
-        let newContext = receivedApplicationContext ?? session.receivedApplicationContext
-        let wcAppContext = (try? WCAppContext(newContext)) ?? WCAppContext()
-        DispatchQueue.main.async {
+        Task { @MainActor in
+            let newContext = receivedApplicationContext ?? session.receivedApplicationContext
+            let wcAppContext = (try? WCAppContext(newContext)) ?? WCAppContext()
             self.receivedApplicationContext = wcAppContext
         }
     }
@@ -53,7 +53,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private func handleReceivedMethod(_ method: WCMessage.Method) {
         switch method {
         case .responseAllShortcuts(shortcuts: let shortcuts):
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
             }
             

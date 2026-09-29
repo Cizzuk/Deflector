@@ -31,10 +31,10 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     private func updateSessionState() {
-        DispatchQueue.main.async {
-            self.activationState = self.session.activationState
-            self.isPaired = self.session.isPaired
-            self.isWatchAppInstalled = self.session.isWatchAppInstalled
+        Task { @MainActor in
+            activationState = session.activationState
+            isPaired = session.isPaired
+            isWatchAppInstalled = session.isWatchAppInstalled
         }
     }
     

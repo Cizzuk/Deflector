@@ -31,7 +31,7 @@ class MainViewModel: ObservableObject {
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { error in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
             }
         }

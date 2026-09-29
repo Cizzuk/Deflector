@@ -20,13 +20,13 @@ struct CustomSymbols: View {
     }
     
     private func loadCustomSymbols() {
-        DispatchQueue.global(qos: .userInteractive).async {
+        Task {
             guard let symbolNames = SymbolHelper.getCustomSymbolNames() else { return }
             
             for symbolName in symbolNames {
                 guard let image = SymbolHelper.getSymbolImage(symbolName).image else { continue }
                 
-                DispatchQueue.main.async {
+                await MainActor.run {
                     if customSymbols.first(where: { $0.id == symbolName }) == nil {
                         customSymbols.append(CustomSymbol(id: symbolName, image: image))
                     }
