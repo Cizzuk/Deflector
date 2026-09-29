@@ -20,16 +20,20 @@ class AllShortcutsViewModel: ObservableObject {
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { error in
-            self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
+            DispatchQueue.main.async {
+                self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
+            }
         }
     }
     
     func sendAllShortcutsRequest() {
         WKInterfaceDevice.current().play(.start)
         wc.sendAllShortcutsRequest() { error in
-            self.errorMessage = "Failed to request the list of all shortcuts."
-            self.shortcuts = []
-            self.loading = false
+            DispatchQueue.main.async {
+                self.errorMessage = "Failed to request the list of all shortcuts."
+                self.shortcuts = []
+                self.loading = false
+            }
         }
     }
     
