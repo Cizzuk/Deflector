@@ -18,6 +18,7 @@ import WatchConnectivity
 }
 
 struct MainView: View {
+    @Environment(\.isLuminanceReduced) private var isLuminanceReduced
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var watchConnectivity = WatchConnectivityService.shared
     @StateObject private var vm = MainViewModel()
@@ -25,7 +26,9 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             List {
-                if watchConnectivity.activationState != .activated {
+                if isLuminanceReduced {
+                    
+                } else if watchConnectivity.activationState != .activated {
                     Section {} footer: {
                         Text("Connection service is not activated.")
                     }
