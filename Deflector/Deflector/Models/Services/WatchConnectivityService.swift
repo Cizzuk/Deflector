@@ -59,6 +59,27 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         try? session.updateApplicationContext(context)
     }
     
+    // MARK: - Device Shortcuts Notification Observer
+    
+    var deviceShortcutsNotificationObserver: AnyCancellable?
+    
+    private func addDeviceShortcutsNotificationObserver() {
+        removeDeviceShortcutsNotificationObserver()
+        deviceShortcutsNotificationObserver = NotificationCenter.default.publisher(for: .deviceShortcutsReceived)
+            .sink { [weak self] notification in
+                guard let self = self else { return }
+                guard let shortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) else { return }
+                let message = WCMessage(method: .responseAllShortcuts(shortcuts: shortcuts))
+                self.session.sendMessage(message.toDictionary(), replyHandler: nil)
+                self.removeDeviceShortcutsNotificationObserver()
+            }
+    }
+    
+    private func removeDeviceShortcutsNotificationObserver() {
+        deviceShortcutsNotificationObserver?.cancel()
+        deviceShortcutsNotificationObserver = nil
+    }
+    
     // MARK: - Message Handling
     
     private func handleReceivedMethod(_ method: WCMessage.Method) {
@@ -76,16 +97,8 @@ final class WatchConnectivityService: NSObject, ObservableObject {
                 return
             }
             
-            Task {
-                let notifications = NotificationCenter.default.notifications(named: .deviceShortcutsReceived)
-                await DeviceShortcutsSupport.callDeviceShortcuts()
-                for await notification in notifications {
-                    let shortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) ?? []
-                    let message = WCMessage(method: .responseAllShortcuts(shortcuts: shortcuts))
-                    session.sendMessage(message.toDictionary(), replyHandler: nil)
-                    break
-                }
-            }
+            addDeviceShortcutsNotificationObserver()
+            Task { await DeviceShortcutsSupport.callDeviceShortcuts() }
             
         default:
             break
