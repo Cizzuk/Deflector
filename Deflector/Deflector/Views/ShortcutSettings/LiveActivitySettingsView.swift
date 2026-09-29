@@ -103,7 +103,7 @@ struct LiveActivitySettingsView: View {
                         .padding(.bottom, 10)
                 }
                 
-                Section {
+                Section("Shortcuts") {
                     ShortcutList(
                         buttons: $userSettings.liveActivityButtons,
                         symbolPickerID: $symbolPickerID,
@@ -111,8 +111,6 @@ struct LiveActivitySettingsView: View {
                         shortcutPickerID: $shortcutPickerID,
                         shortcutPickerText: $shortcutPickerText
                     )
-                } header: {
-                    Text("Shortcuts")
                 }
                 
                 Section {
@@ -129,11 +127,15 @@ struct LiveActivitySettingsView: View {
                             shortcutPickerText: $shortcutPickerText
                         )
                     }
-                } header: {
-                    Text("Dynamic Island")
                 }
                 
-                Section {
+                Section("Styles") {
+                    Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
+                        Text("Use Black Background on Lock Screen")
+                    }
+                    Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
+                        Text("Show Shortcut Names")
+                    }
                     NavigationLink(destination: LiveActivityIslandIconSettingsView()) {
                         HStack {
                             Text("Dynamic Island Icons")
@@ -142,15 +144,6 @@ struct LiveActivitySettingsView: View {
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.trailing)
                         }
-                    }
-                }
-                
-                Section {
-                    Toggle(isOn: $userSettings.liveActivityUseBlackBackground) {
-                        Text("Use Black Background on Lock Screen")
-                    }
-                    Toggle(isOn: $userSettings.liveActivityShowShortcutNames) {
-                        Text("Show Shortcut Names")
                     }
                 }
             }
