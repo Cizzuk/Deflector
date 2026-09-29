@@ -53,7 +53,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private func handleReceivedMethod(_ method: WCMessage.Method) {
         switch method {
         case .responseAllShortcuts(shortcuts: let shortcuts):
-            NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
+            }
             
         default:
             break
