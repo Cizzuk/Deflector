@@ -61,8 +61,8 @@ class SymbolHelper {
         return (Image(systemName: "questionmark.square.dashed"), .unknown)
     }
     
-    static func getCustomSymbolNames() -> [String]? {
-        guard let customSymbolDirURL = customSymbolDirURL,
+    static func getCustomSymbolNames() async -> [String]? {
+        guard let customSymbolDirURL,
               let fileURLs = try? FileManager.default.contentsOfDirectory(at: customSymbolDirURL, includingPropertiesForKeys: nil)
         else { return nil }
         
@@ -70,15 +70,15 @@ class SymbolHelper {
         return symbolNames
     }
     
-    static func saveCustomSymbol(image: UIImage) -> String? {
-        guard let customSymbolDirURL = customSymbolDirURL else { return nil }
+    static func saveCustomSymbol(image: UIImage) async -> String? {
+        guard let customSymbolDirURL else { return nil }
         
         try? FileManager.default.createDirectory(at: customSymbolDirURL, withIntermediateDirectories: true, attributes: nil)
         
         let symbolName = "\(SymbolType.custom.prefix)\(UUID().uuidString)"
         let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
         
-        let resizedImage = resize(image: image, target: CGSize(width: 200, height: 200))
+        let resizedImage = await resize(image: image, target: CGSize(width: 200, height: 200))
         
         if let imageData = resizedImage.pngData() {
             do {
@@ -92,8 +92,8 @@ class SymbolHelper {
         return nil
     }
     
-    static func deleteCustomSymbol(symbolName: String) -> Bool {
-        guard let customSymbolDirURL = customSymbolDirURL else { return false }
+    static func deleteCustomSymbol(symbolName: String) async -> Bool {
+        guard let customSymbolDirURL else { return false }
         
         let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
         
@@ -109,7 +109,7 @@ class SymbolHelper {
         return false
     }
     
-    static func resize(image: UIImage, target: CGSize) -> UIImage {
+    static func resize(image: UIImage, target: CGSize) async -> UIImage {
         let w = image.size.width
         let h = image.size.height
 

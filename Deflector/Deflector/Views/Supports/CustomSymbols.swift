@@ -19,17 +19,15 @@ struct CustomSymbols: View {
         var image: Image
     }
     
-    private func loadCustomSymbols() {
-        Task {
-            guard let symbolNames = SymbolHelper.getCustomSymbolNames() else { return }
+    private func loadCustomSymbols() async {
+        guard let symbolNames = await SymbolHelper.getCustomSymbolNames() else { return }
+        
+        for symbolName in symbolNames {
+            guard let image = SymbolHelper.getSymbolImage(symbolName).image else { continue }
             
-            for symbolName in symbolNames {
-                guard let image = SymbolHelper.getSymbolImage(symbolName).image else { continue }
-                
-                await MainActor.run {
-                    if customSymbols.first(where: { $0.id == symbolName }) == nil {
-                        customSymbols.append(CustomSymbol(id: symbolName, image: image))
-                    }
+            await MainActor.run {
+                if customSymbols.first(where: { $0.id == symbolName }) == nil {
+                    customSymbols.append(CustomSymbol(id: symbolName, image: image))
                 }
             }
         }
@@ -38,10 +36,10 @@ struct CustomSymbols: View {
     private func handlePhotoPickerSelection(_ item: PhotosPickerItem) async {
         if let data = try? await item.loadTransferable(type: Data.self),
            let uiImage = UIImage(data: data),
-           let newSymbolName = SymbolHelper.saveCustomSymbol(image: uiImage) {
+           let newSymbolName = await SymbolHelper.saveCustomSymbol(image: uiImage) {
             symbol = newSymbolName
             UINotificationFeedbackGenerator().notificationOccurred(.success)
-            loadCustomSymbols()
+            await loadCustomSymbols()
         } else {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
@@ -71,14 +69,16 @@ struct CustomSymbols: View {
                     .accessibilityValue(item.id)
                 }
                 .onDelete { indexSet in
-                    for index in indexSet.sorted(by: >) {
-                        let symbolNameToDelete = customSymbols[index].id
-                        
-                        if SymbolHelper.deleteCustomSymbol(symbolName: symbolNameToDelete) {
-                            customSymbols.remove(at: index)
-
-                            if symbol == symbolNameToDelete {
-                                symbol = ""
+                    Task {
+                        for index in indexSet.sorted(by: >) {
+                            let symbolNameToDelete = customSymbols[index].id
+                            
+                            if await SymbolHelper.deleteCustomSymbol(symbolName: symbolNameToDelete) {
+                                customSymbols.remove(at: index)
+                                
+                                if symbol == symbolNameToDelete {
+                                    symbol = ""
+                                }
                             }
                         }
                     }
@@ -101,6 +101,6 @@ struct CustomSymbols: View {
                 }
             }
         }
-        .onAppear { loadCustomSymbols() }
+        .task { await loadCustomSymbols() }
     }
 }
