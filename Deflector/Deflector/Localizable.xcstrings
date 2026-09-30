@@ -255,6 +255,16 @@
         }
       }
     },
+    "Available only in Japan. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本限定。サイドボタンに割り当てる音声アシスタントを変更できます。ショートカットを使ってお気に入りの音声アシスタントを使用します。"
+          }
+        }
+      }
+    },
     "Camera & Photos" : {
       "localizations" : {
         "ja" : {
@@ -843,16 +853,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "問題"
-          }
-        }
-      }
-    },
-    "Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "日本限定。サイドボタンに割り当てる音声アシスタントを変更できます。ショートカットを使ってお気に入りの音声アシスタントを使用します。"
           }
         }
       }

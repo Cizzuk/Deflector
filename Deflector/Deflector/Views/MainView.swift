@@ -86,7 +86,7 @@ struct MainView: View {
                                 Label("Side Button", systemImage: "button.vertical.right")
                                     .font(.title3)
                                     .padding(5)
-                                Text("Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
+                                Text("Available only in Japan. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
                                     .font(.subheadline)
                             }
                         }
