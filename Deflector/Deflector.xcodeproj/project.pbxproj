@@ -579,6 +579,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-D EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -615,6 +616,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-D EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;

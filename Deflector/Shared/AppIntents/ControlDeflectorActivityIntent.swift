@@ -30,15 +30,24 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
         Summary("\(\.$control) Deflector Live Activity")
     }
     
+    init() { }
+    
+    init(control: ControlEnum) {
+        self.control = control
+    }
+    
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+        #if !EXTENSION
         switch control {
         case .start:
             try await DeflectorActivitySupport.start()
         case .end:
+            try? await DeflectorActivitySupport.start()
             await DeflectorActivitySupport.endAll()
         case .toggle:
             if DeflectorActivitySupport.isActive() {
+                try? await DeflectorActivitySupport.start()
                 await DeflectorActivitySupport.endAll()
             } else {
                 try await DeflectorActivitySupport.start()
@@ -46,5 +55,8 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
         }
         
         return .result(value: DeflectorActivitySupport.isActive())
+        #else
+        return .result(value: false)
+        #endif
     }
 }
