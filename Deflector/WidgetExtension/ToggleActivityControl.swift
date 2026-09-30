@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ToggleActivityControl: ControlWidget {
     static let kind = "net.cizzuk.deflector.WidgetExtension.ToggleActivityControl"
-    static let title: LocalizedStringResource = "Toggle Deflector Live Activity"
+    static let title: LocalizedStringResource = "Toggle Activity"
     
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: ToggleActivityControl.kind) {

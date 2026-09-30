@@ -94,12 +94,12 @@
         }
       }
     },
-    "Toggle Deflector Live Activity" : {
+    "Toggle Activity" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deflectorのライブアクティビティを切り替える"
+            "value" : "アクティビティを切り替え"
           }
         }
       }
