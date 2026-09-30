@@ -5,9 +5,8 @@
 //  Created by Cizzuk on 2026/02/05.
 //
 
-import WidgetKit
-import AppIntents
 import SwiftUI
+import WidgetKit
 
 struct ToggleActivityControl: ControlWidget {
     static let kind = "net.cizzuk.deflector.WidgetExtension.ToggleActivityControl"
