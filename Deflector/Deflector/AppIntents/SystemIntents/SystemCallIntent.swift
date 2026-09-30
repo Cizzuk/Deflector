@@ -22,6 +22,7 @@ struct SystemCallIntent: LiveActivityIntent {
     @MainActor
     func perform() async throws -> some IntentResult {
         SystemCallSupport.handleSystemCall(argument)
+        DummyActivitySupport.flash()
         return .result()
     }
 }

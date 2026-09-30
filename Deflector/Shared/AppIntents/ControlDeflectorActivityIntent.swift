@@ -43,11 +43,11 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
         case .start:
             try await DeflectorActivitySupport.start()
         case .end:
-            try? await DeflectorActivitySupport.start()
+            DummyActivitySupport.flash()
             await DeflectorActivitySupport.endAll()
         case .toggle:
             if DeflectorActivitySupport.isActive() {
-                try? await DeflectorActivitySupport.start()
+                DummyActivitySupport.flash()
                 await DeflectorActivitySupport.endAll()
             } else {
                 try await DeflectorActivitySupport.start()

@@ -52,14 +52,7 @@
       }
     },
     "Send Deflection Notification" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deflection通知を送信"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Shortcut Name" : {
       "localizations" : {

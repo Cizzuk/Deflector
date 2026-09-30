@@ -1361,14 +1361,7 @@
       }
     },
     "Send Deflection Notification" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deflection通知を送信"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Set 'Use Different Shortcuts on Dynamic Island'" : {
       "localizations" : {
