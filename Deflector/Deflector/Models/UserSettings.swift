@@ -60,7 +60,7 @@ final class UserSettings: ObservableObject {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityButtons) {
                 UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
-                DeflectorActivitySupport.update()
+                Task { await DeflectorActivitySupport.update() }
             }
         }
     }
@@ -79,7 +79,7 @@ final class UserSettings: ObservableObject {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityIslandButtons) {
                 UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandButtons)
-                DeflectorActivitySupport.update()
+                Task { await DeflectorActivitySupport.update() }
             }
         }
     }
@@ -89,7 +89,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityUseDifferentOnIsland, forKey: Keys.liveActivityUseDifferentOnIsland)
-            DeflectorActivitySupport.update()
+            Task { await DeflectorActivitySupport.update() }
         }
     }
     
@@ -98,7 +98,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityUseBlackBackground, forKey: Keys.liveActivityUseBlackBackground)
-            try? DeflectorActivitySupport.refresh()
+            Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
     
@@ -107,7 +107,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
-            try? DeflectorActivitySupport.refresh()
+            Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
     
@@ -128,7 +128,7 @@ final class UserSettings: ObservableObject {
                 UserDefaults.standard.removeObject(forKey: Keys.liveActivityIslandIcons)
             }
             
-            try? DeflectorActivitySupport.refresh()
+            Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
 }

@@ -38,8 +38,8 @@ class DeflectorActivitySupport {
         return state
     }
     
-    static func start(endDate: Date? = nil) throws {
-        endAll(forStart: true)
+    static func start(endDate: Date? = nil) async throws {
+        await endAll()
         
         let content = ActivityContent(
             state: makeContentState(),
@@ -53,14 +53,12 @@ class DeflectorActivitySupport {
         )
         
         // Prepare a system call for automatic restart.
-        Task {
-            await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.5 * 60 * 60, repeats: false)
-            await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: trigger)
-        }
+        await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+        let triggerRefresh = UNTimeIntervalNotificationTrigger(timeInterval: 7.75 * 60 * 60, repeats: false)
+        await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: triggerRefresh)
     }
     
-    static func update() {
+    static func update() async {
         let activities = Activity<DeflectorActivityAttributes>.activities
         
         let content = ActivityContent(
@@ -68,37 +66,28 @@ class DeflectorActivitySupport {
             staleDate: nil
         )
         
-        Task {
-            for activity in activities {
-                await activity.update(content)
-            }
+        for activity in activities {
+            await activity.update(content)
         }
     }
     
-    static func endAll(forStart: Bool = false) {
+    static func endAll() async {
         let activities = Activity<DeflectorActivityAttributes>.activities
         
-        let semaphore = DispatchSemaphore(value: 0)
         Task.detached(priority: .userInitiated) {
             for activity in activities {
                 await activity.end(nil, dismissalPolicy: .immediate)
             }
-            semaphore.signal()
         }
-        semaphore.wait()
         
-        if !forStart {
-            // Remove the system call for automatic restart.
-            Task {
-                await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
-            }
-        }
+        // Remove the system call for automatic restart.
+        await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
     }
     
     // If activity is active, restart it to extend the time
-    static func refresh() throws {
+    static func refresh() async throws {
         if isActive() {
-            try start()
+            try await start()
         }
     }
 }

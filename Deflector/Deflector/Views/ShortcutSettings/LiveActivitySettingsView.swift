@@ -88,7 +88,7 @@ struct LiveActivitySettingsView: View {
             List {
                 Section {
                     if vm.isLiveActivityActive {
-                        Button(action: { vm.endLiveActivity() }) {
+                        Button(action: { Task { await vm.endLiveActivity() } }) {
                             Label("End Activity", systemImage: "stop.fill")
                         }
                     } else {

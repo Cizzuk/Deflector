@@ -34,14 +34,14 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
         switch control {
         case .start:
-            try DeflectorActivitySupport.start()
+            try await DeflectorActivitySupport.start()
         case .end:
-            DeflectorActivitySupport.endAll()
+            await DeflectorActivitySupport.endAll()
         case .toggle:
             if DeflectorActivitySupport.isActive() {
-                DeflectorActivitySupport.endAll()
+                await DeflectorActivitySupport.endAll()
             } else {
-                try DeflectorActivitySupport.start()
+                try await DeflectorActivitySupport.start()
             }
         }
         

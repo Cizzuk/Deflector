@@ -39,7 +39,7 @@ class LiveActivitySettingsViewModel: ObservableObject {
         }
         
         do {
-            try DeflectorActivitySupport.start()
+            try await DeflectorActivitySupport.start()
             isLiveActivityActive = true
             UINotificationFeedbackGenerator().notificationOccurred(.success)
         } catch let error as ActivityAuthorizationError {
@@ -68,8 +68,8 @@ class LiveActivitySettingsViewModel: ObservableObject {
         }
     }
     
-    func endLiveActivity() {
-        DeflectorActivitySupport.endAll()
+    func endLiveActivity() async {
+        await DeflectorActivitySupport.endAll()
         isLiveActivityActive = false
         UIImpactFeedbackGenerator().impactOccurred()
     }

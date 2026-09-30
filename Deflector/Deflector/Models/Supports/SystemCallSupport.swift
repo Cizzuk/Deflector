@@ -22,7 +22,7 @@ class SystemCallSupport {
         case .pingTest:
             NotificationCenter.default.post(name: .pingTestReceived, object: nil)
         case .refreshDeflectorActivity:
-            try? DeflectorActivitySupport.refresh()
+            Task { try? await DeflectorActivitySupport.refresh() }
         default:
             break
         }
