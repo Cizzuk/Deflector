@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		7A193EC1302E9D340041A05B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC0302E9D340041A05B /* WidgetKit.framework */; };
 		7A193EC3302E9D340041A05B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC2302E9D340041A05B /* SwiftUI.framework */; };
-		7A193ECE302E9D360041A05B /* WidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A193EBE302E9D340041A05B /* WidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7A6637113032195900EE1209 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7A6637103032195900EE1209 /* Localizable.xcstrings */; };
-		7A6637123032195900EE1209 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7A6637103032195900EE1209 /* Localizable.xcstrings */; };
+		7A193ECE302E9D360041A05B /* Deflector Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A25B8B43068BE6B000AFEB9 /* Deflector Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +21,13 @@
 			remoteGlobalIDString = 7A193EBD302E9D340041A05B;
 			remoteInfo = WidgetExtensionExtension;
 		};
+		7A25B8B23068BE6B000AFEB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A25B8A93068BE6A000AFEB9;
+			remoteInfo = "Watch App Watch App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,28 +36,37 @@
 			dstPath = "";
 			dstSubfolder = PlugIns;
 			files = (
-				7A193ECE302E9D360041A05B /* WidgetExtensionExtension.appex in Embed Foundation Extensions */,
+				7A193ECE302E9D360041A05B /* Deflector Widget Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+		};
+		7A25B8B53068BE6B000AFEB9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolder = Product;
+			files = (
+				7A25B8B43068BE6B000AFEB9 /* Deflector Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* Deflector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deflector.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A193EBE302E9D340041A05B /* WidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deflector Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A193EC0302E9D340041A05B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7A193EC2302E9D340041A05B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deflector Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5F993B3047A54F001BB665 /* WidgetExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtensionExtension.entitlements; sourceTree = "<group>"; };
-		7A6637103032195900EE1209 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "WidgetExtensionExtension" target */ = {
+		7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "Deflector Widget Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 7A193EBD302E9D340041A05B /* WidgetExtensionExtension */;
+			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
 		};
 		7A6637C130321CF600EE1209 /* Exceptions for "Deflector" folder in "Deflector" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -59,6 +74,22 @@
 				Info.plist,
 			);
 			target = 000000000000000100000000 /* Deflector */;
+		};
+		7AAF8ECF3068EA6E003B340B /* Exceptions for "Shared" folder in "Deflector Widget Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/WatchConnectivity/WCAppContext.swift,
+				Models/WatchConnectivity/WCMessage.swift,
+			);
+			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
+		};
+		7AAF8ED13068EA71003B340B /* Exceptions for "Shared" folder in "Deflector Watch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/WatchConnectivity/WCAppContext.swift,
+				Models/WatchConnectivity/WCMessage.swift,
+			);
+			target = 7A25B8A93068BE6A000AFEB9 /* Deflector Watch */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -74,13 +105,22 @@
 		7A193EC4302E9D340041A05B /* WidgetExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "WidgetExtensionExtension" target */,
+				7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "Deflector Widget Extension" target */,
 			);
 			path = WidgetExtension;
 			sourceTree = "<group>";
 		};
+		7A25B8AB3068BE6A000AFEB9 /* WatchApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WatchApp;
+			sourceTree = "<group>";
+		};
 		7A31AA00302B24B10045FB9A /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7AAF8ECF3068EA6E003B340B /* Exceptions for "Shared" folder in "Deflector Widget Extension" target */,
+				7AAF8ED13068EA71003B340B /* Exceptions for "Shared" folder in "Deflector Watch" target */,
+			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -99,6 +139,11 @@
 				7A193EC1302E9D340041A05B /* WidgetKit.framework in Frameworks */,
 			);
 		};
+		7A25B8A73068BE6A000AFEB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,10 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				7A5F993B3047A54F001BB665 /* WidgetExtensionExtension.entitlements */,
-				7A6637103032195900EE1209 /* Localizable.xcstrings */,
 				7A31AA00302B24B10045FB9A /* Shared */,
 				000000000000000000000010 /* Deflector */,
 				7A193EC4302E9D340041A05B /* WidgetExtension */,
+				7A25B8AB3068BE6A000AFEB9 /* WatchApp */,
 				7A193EBF302E9D340041A05B /* Frameworks */,
 				000000000000000000000020 /* Products */,
 			);
@@ -119,7 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				000000000000000000000120 /* Deflector.app */,
-				7A193EBE302E9D340041A05B /* WidgetExtensionExtension.appex */,
+				7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */,
+				7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,11 +190,13 @@
 				000000000000000130000000 /* Frameworks */,
 				000000000000000140000000 /* Resources */,
 				7A193ED3302E9D360041A05B /* Embed Foundation Extensions */,
+				7A25B8B53068BE6B000AFEB9 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				7A193ECD302E9D360041A05B /* PBXTargetDependency */,
+				7A25B8B33068BE6B000AFEB9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* Deflector */,
@@ -159,9 +207,9 @@
 			productReference = 000000000000000000000120 /* Deflector.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7A193EBD302E9D340041A05B /* WidgetExtensionExtension */ = {
+		7A193EBD302E9D340041A05B /* Deflector Widget Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A193ED0302E9D360041A05B /* Build configuration list for PBXNativeTarget "WidgetExtensionExtension" */;
+			buildConfigurationList = 7A193ED0302E9D360041A05B /* Build configuration list for PBXNativeTarget "Deflector Widget Extension" */;
 			buildPhases = (
 				7A193EBA302E9D340041A05B /* Sources */,
 				7A193EBB302E9D340041A05B /* Frameworks */,
@@ -173,10 +221,28 @@
 				7A193EC4302E9D340041A05B /* WidgetExtension */,
 				7A31AA00302B24B10045FB9A /* Shared */,
 			);
-			name = WidgetExtensionExtension;
+			name = "Deflector Widget Extension";
 			productName = WidgetExtensionExtension;
-			productReference = 7A193EBE302E9D340041A05B /* WidgetExtensionExtension.appex */;
+			productReference = 7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		7A25B8A93068BE6A000AFEB9 /* Deflector Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A25B8B83068BE6B000AFEB9 /* Build configuration list for PBXNativeTarget "Deflector Watch" */;
+			buildPhases = (
+				7A25B8A63068BE6A000AFEB9 /* Sources */,
+				7A25B8A73068BE6A000AFEB9 /* Frameworks */,
+				7A25B8A83068BE6A000AFEB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				7A25B8AB3068BE6A000AFEB9 /* WatchApp */,
+			);
+			name = "Deflector Watch";
+			productName = "Watch App Watch App";
+			productReference = 7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -185,14 +251,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2700;
-				LastUpgradeCheck = 2700;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
 				TargetAttributes = {
 					000000000000000100000000 = {
 						CreatedOnToolsVersion = 26.3;
 					};
 					7A193EBD302E9D340041A05B = {
 						CreatedOnToolsVersion = 27.0;
+					};
+					7A25B8A93068BE6A000AFEB9 = {
+						CreatedOnToolsVersion = 27.1;
 					};
 				};
 			};
@@ -212,7 +281,8 @@
 			projectRoot = "";
 			targets = (
 				000000000000000100000000 /* Deflector */,
-				7A193EBD302E9D340041A05B /* WidgetExtensionExtension */,
+				7A193EBD302E9D340041A05B /* Deflector Widget Extension */,
+				7A25B8A93068BE6A000AFEB9 /* Deflector Watch */,
 			);
 		};
 /* End PBXProject section */
@@ -221,13 +291,16 @@
 		000000000000000140000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				7A6637113032195900EE1209 /* Localizable.xcstrings in Resources */,
 			);
 		};
 		7A193EBC302E9D340041A05B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				7A6637123032195900EE1209 /* Localizable.xcstrings in Resources */,
+			);
+		};
+		7A25B8A83068BE6A000AFEB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
 			);
 		};
 /* End PBXResourcesBuildPhase section */
@@ -243,13 +316,23 @@
 			files = (
 			);
 		};
+		7A25B8A63068BE6A000AFEB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		7A193ECD302E9D360041A05B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7A193EBD302E9D340041A05B /* WidgetExtensionExtension */;
+			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
 			targetProxy = 7A193ECC302E9D360041A05B /* PBXContainerItemProxy */;
+		};
+		7A25B8B33068BE6B000AFEB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A25B8A93068BE6A000AFEB9 /* Deflector Watch */;
+			targetProxy = 7A25B8B23068BE6B000AFEB9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -260,6 +343,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLETVOS_DEPLOYMENT_TARGET = 27.0;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -291,6 +375,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Z8R89S24YT;
 				DRIVERKIT_DEPLOYMENT_TARGET = 27.0;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -331,6 +416,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLETVOS_DEPLOYMENT_TARGET = 27.0;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -362,6 +448,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Z8R89S24YT;
 				DRIVERKIT_DEPLOYMENT_TARGET = 27.0;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -395,8 +482,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Deflector/Deflector.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = Z8R89S24YT;
+				CURRENT_PROJECT_VERSION = 15;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -415,7 +501,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -439,8 +525,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Deflector/Deflector.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = Z8R89S24YT;
+				CURRENT_PROJECT_VERSION = 15;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -459,7 +544,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -476,25 +561,25 @@
 			};
 			name = Release;
 		};
-		7A193ED1302E9D360041A05B /* Debug configuration for PBXNativeTarget "WidgetExtensionExtension" */ = {
+		7A193ED1302E9D360041A05B /* Debug configuration for PBXNativeTarget "Deflector Widget Extension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtensionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = Z8R89S24YT;
+				CURRENT_PROJECT_VERSION = 15;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Deflector Widget Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-D EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -513,25 +598,25 @@
 			};
 			name = Debug;
 		};
-		7A193ED2302E9D360041A05B /* Release configuration for PBXNativeTarget "WidgetExtensionExtension" */ = {
+		7A193ED2302E9D360041A05B /* Release configuration for PBXNativeTarget "Deflector Widget Extension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtensionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = Z8R89S24YT;
+				CURRENT_PROJECT_VERSION = 15;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Deflector Widget Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-D EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -548,6 +633,71 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A25B8B63068BE6B000AFEB9 /* Debug configuration for PBXNativeTarget "Deflector Watch" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Deflector;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.cizzuk.deflector;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.6;
+			};
+			name = Debug;
+		};
+		7A25B8B73068BE6B000AFEB9 /* Release configuration for PBXNativeTarget "Deflector Watch" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Deflector;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.cizzuk.deflector;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.6;
 			};
 			name = Release;
 		};
@@ -570,11 +720,19 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		7A193ED0302E9D360041A05B /* Build configuration list for PBXNativeTarget "WidgetExtensionExtension" */ = {
+		7A193ED0302E9D360041A05B /* Build configuration list for PBXNativeTarget "Deflector Widget Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7A193ED1302E9D360041A05B /* Debug configuration for PBXNativeTarget "WidgetExtensionExtension" */,
-				7A193ED2302E9D360041A05B /* Release configuration for PBXNativeTarget "WidgetExtensionExtension" */,
+				7A193ED1302E9D360041A05B /* Debug configuration for PBXNativeTarget "Deflector Widget Extension" */,
+				7A193ED2302E9D360041A05B /* Release configuration for PBXNativeTarget "Deflector Widget Extension" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		7A25B8B83068BE6B000AFEB9 /* Build configuration list for PBXNativeTarget "Deflector Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A25B8B63068BE6B000AFEB9 /* Debug configuration for PBXNativeTarget "Deflector Watch" */,
+				7A25B8B73068BE6B000AFEB9 /* Release configuration for PBXNativeTarget "Deflector Watch" */,
 			);
 			defaultConfigurationName = Release;
 		};

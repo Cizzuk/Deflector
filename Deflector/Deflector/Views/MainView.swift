@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-@main struct MyApp: App {
+@main struct Deflector: App {
+    init() {
+        // Initialize Watch Connectivity Service
+        _ = WatchConnectivityService.shared
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()
@@ -28,7 +33,7 @@ struct MainView: View {
     
     enum Route: Hashable {
         case firstSetup
-        case liveActivitySettings, sideButtonSettings
+        case liveActivitySettings, watchSettings, sideButtonSettings
         case about, changeIcon
     }
     
@@ -60,14 +65,30 @@ struct MainView: View {
                     }
                 }
                 
-                Section {
-                    NavigationLink(value: Route.sideButtonSettings) {
-                        VStack(alignment: .leading) {
-                            Label("Side Button", systemImage: "button.vertical.right")
-                                .font(.title3)
-                                .padding(5)
-                            Text("Japan-only. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
-                                .font(.subheadline)
+                if DeviceInfo.isWatchSupported {
+                    Section {
+                        NavigationLink(value: Route.watchSettings) {
+                            VStack(alignment: .leading) {
+                                Label("Apple Watch", systemImage: "applewatch")
+                                    .font(.title3)
+                                    .padding(5)
+                                Text("Run shortcuts on your iPhone from your Apple Watch.")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+                
+                if !DeviceInfo.unsupportedSideButtonAccess {
+                    Section {
+                        NavigationLink(value: Route.sideButtonSettings) {
+                            VStack(alignment: .leading) {
+                                Label("Side Button", systemImage: "button.vertical.right")
+                                    .font(.title3)
+                                    .padding(5)
+                                Text("Available only in Japan. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant.")
+                                    .font(.subheadline)
+                            }
                         }
                     }
                 }
@@ -89,6 +110,7 @@ struct MainView: View {
             switch path {
             case .firstSetup: FirstSetupView()
             case .liveActivitySettings: LiveActivitySettingsView()
+            case .watchSettings: WatchSettingsView()
             case .sideButtonSettings: SideButtonSettingsView()
             case .about: AboutView()
             case .changeIcon: ChangeIconView()
@@ -96,5 +118,22 @@ struct MainView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .onOpenURL { url in
+            if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
+                switch url.host {
+                case "activity_action":
+                    path = .liveActivitySettings
+                case "open":
+                    switch url.path {
+                    case "/firstsetup": path = .firstSetup
+                    case "/liveactivity": path = .liveActivitySettings
+                    case "/watch": path = .watchSettings
+                    case "/sidebutton": path = .sideButtonSettings
+                    default: break
+                    }
+                default: break
+                }
+            }
+        }
     }
 }

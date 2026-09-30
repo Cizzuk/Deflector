@@ -14,12 +14,16 @@ final class UserSettings: ObservableObject {
     
     private enum Keys {
         static let isFirstSetupCompleted = "isFirstSetupCompleted"
+        
         static let sideButtonShortcutName = "sideButtonShortcutName"
+        
         static let liveActivityButtons = "liveActivityButtons"
         static let liveActivityIslandButtons = "liveActivityIslandButtons"
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
+        
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
+        static let liveActivityIslandIcons = "liveActivityIslandIcons"
     }
     
     @Published var isFirstSetupCompleted: Bool = {
@@ -56,7 +60,7 @@ final class UserSettings: ObservableObject {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityButtons) {
                 UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
-                DeflectorActivitySupport.update()
+                Task { await DeflectorActivitySupport.update() }
             }
         }
     }
@@ -75,7 +79,7 @@ final class UserSettings: ObservableObject {
         didSet {
             if let data = try? JSONEncoder().encode(liveActivityIslandButtons) {
                 UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandButtons)
-                DeflectorActivitySupport.update()
+                Task { await DeflectorActivitySupport.update() }
             }
         }
     }
@@ -85,7 +89,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityUseDifferentOnIsland, forKey: Keys.liveActivityUseDifferentOnIsland)
-            DeflectorActivitySupport.update()
+            Task { await DeflectorActivitySupport.update() }
         }
     }
     
@@ -94,7 +98,7 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityUseBlackBackground, forKey: Keys.liveActivityUseBlackBackground)
-            DeflectorActivitySupport.update()
+            Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
     
@@ -103,7 +107,28 @@ final class UserSettings: ObservableObject {
     }() {
         didSet {
             UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
-            DeflectorActivitySupport.update()
+            Task { try? await DeflectorActivitySupport.refresh() }
+        }
+    }
+    
+    @Published var liveActivityIslandIcons: DeflectorActivityIslandIcons? = {
+        guard let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandIcons),
+              let icons = try? JSONDecoder().decode(DeflectorActivityIslandIcons.self, from: data)
+                else {
+            return nil
+        }
+        
+        return icons
+    }() {
+        didSet {
+            if let icons = liveActivityIslandIcons,
+               let data = try? JSONEncoder().encode(icons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandIcons)
+            } else {
+                UserDefaults.standard.removeObject(forKey: Keys.liveActivityIslandIcons)
+            }
+            
+            Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
 }

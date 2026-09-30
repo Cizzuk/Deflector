@@ -1,0 +1,192 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    "All Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのショートカット"
+          }
+        }
+      }
+    },
+    "Connection service is not activated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コネクションサービスが有効化されていません。"
+          }
+        }
+      }
+    },
+    "Deflector" : {
+      "shouldTranslate" : false
+    },
+    "Error" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー"
+          }
+        }
+      }
+    },
+    "Failed to request the list of all shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのショートカットの一覧のリクエストに失敗しました"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because Deflector couldn't connect to the iPhone." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneへ接続できないため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the connection to the iPhone timed out." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneとの通信がタイムアウトしたため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the data of the shortcut is too large." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのデータが大きすぎるため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the iPhone couldn't reply." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneの応答がないため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the iPhone doesn't have enough available storage." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneの空き容量が不足しているため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the session with the iPhone is inactive." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneとの通信セッションが非アクティブのため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the session with the iPhone is not activated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneとの通信セッションが有効でないため、ショートカットの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut because the system couldn't deliver the data." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムがデータの送信に失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to send the shortcut: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットの送信に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "No favorite shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのショートカットがありません。"
+          }
+        }
+      }
+    },
+    "No shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットがありません。"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Reload Favorite Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのショートカットを再読み込み"
+          }
+        }
+      }
+    },
+    "You need to unlock your iPhone after restarting it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneの再起動後は、ロックを解除する必要があります。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

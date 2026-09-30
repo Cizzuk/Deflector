@@ -1,0 +1,1843 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "${control} Deflector Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorのライブアクティビティを${control}"
+          }
+        }
+      }
+    },
+    "${operation} 'Use Different Shortcuts on Dynamic Island'" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を${operation}"
+          }
+        }
+      }
+    },
+    "${operation} 'Use Different Shortcuts on Dynamic Island' ${state}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を${state}に${operation}"
+          }
+        }
+      }
+    },
+    "1. Automations do not work at all for the first few minutes after the device boots up." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. デバイス起動後の数分間オートメーションが全く機能しない。"
+          }
+        }
+      }
+    },
+    "2. When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 最後にショートカットを開いてから時間が経過すると、ショートカットのダイアログが表示されなくなることがある。"
+          }
+        }
+      }
+    },
+    "3. If a shortcut executed from an automation does not finish successfully, automations will not run for a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. オートメーションから実行されたショートカットが正常に終了しないと、しばらくオートメーションが実行されなくなる。"
+          }
+        }
+      }
+    },
+    "4. If an error occurs during an automation, such as entering a non-existent shortcut name, the automation may repeatedly trigger errors and become unable to run for a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. 存在しないショートカット名を入力した場合など、オートメーション中にエラーが発生すると、オートメーションがエラーを発生させ続けてしばらく実行不可能になることがある。"
+          }
+        }
+      }
+    },
+    "5. After restarting the device, an automation will not run until the device is unlocked." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. デバイスの再起動後は、ロックを解除するまでオートメーションは実行されません。"
+          }
+        }
+      }
+    },
+    "About" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報"
+          }
+        }
+      }
+    },
+    "Accessibility" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセシビリティ"
+          }
+        }
+      }
+    },
+    "Activities appear on the Lock Screen and in the Dynamic Island. To use a shortcut from the Dynamic Island, touch and hold it after closing Deflector." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティビティはロック画面とDynamic Islandに表示されます。Dynamic Islandからショートカットを使用するには、Deflectorを閉じた後に長押しします。"
+          }
+        }
+      }
+    },
+    "Activity Control" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティビティコントロール"
+          }
+        }
+      }
+    },
+    "Add Favorite Shortcut to Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watchにお気に入りのショートカットを追加"
+          }
+        }
+      }
+    },
+    "Add New Symbol" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボルを追加"
+          }
+        }
+      }
+    },
+    "Add Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを追加"
+          }
+        }
+      }
+    },
+    "Add Shortcut to Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティにショートカットを追加"
+          }
+        }
+      }
+    },
+    "Add to Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandに追加"
+          }
+        }
+      }
+    },
+    "Adds a favorite shortcut. Adding more than 10 shortcuts will fail." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのショートカットを追加します。10個より多くのショートカットを追加しようとすると失敗します。"
+          }
+        }
+      }
+    },
+    "Adds a shortcut to Live Activity. Adding 5 or more may cause display issues." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティにショートカットを追加します。5つ以上追加すると、表示上の問題を引き起こす可能性があります。"
+          }
+        }
+      }
+    },
+    "All Done!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了！"
+          }
+        }
+      }
+    },
+    "Allow Notifications" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知を許可"
+          }
+        }
+      }
+    },
+    "Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        }
+      }
+    },
+    "Argument" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "引数"
+          }
+        }
+      }
+    },
+    "Arrows" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "矢印"
+          }
+        }
+      }
+    },
+    "Available only in Japan. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本限定。サイドボタンに割り当てる音声アシスタントを変更できます。ショートカットを使ってお気に入りの音声アシスタントを使用します。"
+          }
+        }
+      }
+    },
+    "Camera & Photos" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラと写真"
+          }
+        }
+      }
+    },
+    "Cannot request the shortcut list because notifications are disabled. Please complete the first setup." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知が許可されていないため、ショートカットのリストをリクエストできません。初期セットアップを完了してください。"
+          }
+        }
+      }
+    },
+    "Change App Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコンを変更"
+          }
+        }
+      }
+    },
+    "Cizzuk" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cizzuk"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cizzuk"
+          }
+        }
+      }
+    },
+    "Color" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "色"
+          }
+        }
+      }
+    },
+    "Commerce" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コマース"
+          }
+        }
+      }
+    },
+    "Communication" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コミュニケーション"
+          }
+        }
+      }
+    },
+    "Compact" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンパクト"
+          }
+        }
+      }
+    },
+    "Connection service is not activated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コネクションサービスが有効化されていません。"
+          }
+        }
+      }
+    },
+    "Connectivity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コネクティビティ"
+          }
+        }
+      }
+    },
+    "Control" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コントロール"
+          }
+        }
+      }
+    },
+    "Control Deflector Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorのライブアクティビティをコントロール"
+          }
+        }
+      }
+    },
+    "Copy File Download Link" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルのダウンロードリンクをコピー"
+          }
+        }
+      }
+    },
+    "Copy iCloud Sharing Link" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud共有リンクをコピー"
+          }
+        }
+      }
+    },
+    "Custom Symbol" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムシンボル"
+          }
+        }
+      }
+    },
+    "Custom Symbols" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムシンボル"
+          }
+        }
+      }
+    },
+    "Customize Dynamic Island Icons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandのアイコンをカスタマイズする"
+          }
+        }
+      }
+    },
+    "Customized" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム"
+          }
+        }
+      }
+    },
+    "Default" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルト"
+          }
+        }
+      }
+    },
+    "Deflection failed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectionに失敗しました"
+          }
+        }
+      }
+    },
+    "Deflector" : {
+      "shouldTranslate" : false
+    },
+    "Deflector Automation" : {
+      "shouldTranslate" : false
+    },
+    "Deflector is not installed on your Apple Watch. Please install it from the Watch app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple WatchにDeflectorがインストールされていません。Watchアプリからインストールしてください。"
+          }
+        }
+      }
+    },
+    "Deflector Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorの設定へ"
+          }
+        }
+      }
+    },
+    "Deflector uses notifications and automation to run your favorite shortcuts from Live Activity and Side Button. To do this, you first need to complete a few setup steps." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorでは、ライブアクティビティやサイドボタンからショートカットを実行するために、通知とオートメーションを使用します。 そのため、最初にいくつかのセットアップを行う必要があります。"
+          }
+        }
+      }
+    },
+    "Developer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発者"
+          }
+        }
+      }
+    },
+    "Devices" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        }
+      }
+    },
+    "Dynamic Island Icons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandのアイコン"
+          }
+        }
+      }
+    },
+    "Dynamic Island Preview" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandのプレビュー"
+          }
+        }
+      }
+    },
+    "Editing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
+          }
+        }
+      }
+    },
+    "End" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
+          }
+        }
+      }
+    },
+    "End Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティビティを終了"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー"
+          }
+        }
+      }
+    },
+    "Export from Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandからエクスポート"
+          }
+        }
+      }
+    },
+    "Export Live Activity Shortcuts as JSON" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティのショートカットをJSON形式でエクスポート"
+          }
+        }
+      }
+    },
+    "Failed to start Live Activity: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティの開始に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "Favorite Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのショートカット"
+          }
+        }
+      }
+    },
+    "First Setup" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "初期セットアップ"
+          }
+        }
+      }
+    },
+    "Fitness" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィットネス"
+          }
+        }
+      }
+    },
+    "Gaming" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゲーム"
+          }
+        }
+      }
+    },
+    "Get All Favorite Shortcuts for Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのApple Watchのお気に入りのショートカットを取得"
+          }
+        }
+      }
+    },
+    "Get All Live Activity Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのライブアクティビティのショートカットを取得"
+          }
+        }
+      }
+    },
+    "Get Deflector Automation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflector Automationを入手"
+          }
+        }
+      }
+    },
+    "Get from Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandから取得"
+          }
+        }
+      }
+    },
+    "Get Side Button Shortcut Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカット名を取得"
+          }
+        }
+      }
+    },
+    "Get the List of Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのリストを取得"
+          }
+        }
+      }
+    },
+    "Health" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルスケア"
+          }
+        }
+      }
+    },
+    "Hexadecimal Color Code (RGBA)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "16進数カラーコード (RGBA)"
+          }
+        }
+      }
+    },
+    "Home" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム"
+          }
+        }
+      }
+    },
+    "Horizontal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水平"
+          }
+        }
+      }
+    },
+    "Human" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人"
+          }
+        }
+      }
+    },
+    "If Deflector does not work properly, please try restarting your device and redoing this setup." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もしDeflectorがうまく動作しない場合は、デバイスを再起動して、このセットアップをやり直してみてください。"
+          }
+        }
+      }
+    },
+    "If it still doesn't work properly, please return to this setup and try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "それでも正しく動作しない場合は、このセットアップを再度お試しください。"
+          }
+        }
+      }
+    },
+    "If shortcuts or automations are not working properly, restarting your device may resolve the issue." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットやオートメーションが正しく動作しないときは、デバイスを再起動すると改善することがあります。"
+          }
+        }
+      }
+    },
+    "If you import a single shortcut, it will be added. If you import an array of multiple shortcuts, it will overwrite existing shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひとつのショートカットをインポートした場合は追加をします。複数のショートカットの配列をインポートした場合は既存のショートカットを上書きします。"
+          }
+        }
+      }
+    },
+    "Import Live Activity Shortcuts from JSON" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティのショートカットをJSON形式でインポート"
+          }
+        }
+      }
+    },
+    "Import to Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandにインポート"
+          }
+        }
+      }
+    },
+    "Indices" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インデックス"
+          }
+        }
+      }
+    },
+    "Issues" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題"
+          }
+        }
+      }
+    },
+    "JSON" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON"
+          }
+        }
+      }
+    },
+    "Keyboard" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーボード"
+          }
+        }
+      }
+    },
+    "Known Issues" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既知の問題"
+          }
+        }
+      }
+    },
+    "Leading Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先頭のアイコン"
+          }
+        }
+      }
+    },
+    "License" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティ"
+          }
+        }
+      }
+    },
+    "Maps" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップ"
+          }
+        }
+      }
+    },
+    "Math" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数学"
+          }
+        }
+      }
+    },
+    "Media" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディア"
+          }
+        }
+      }
+    },
+    "Minimal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミニマル"
+          }
+        }
+      }
+    },
+    "Minimal Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミニマルのアイコン"
+          }
+        }
+      }
+    },
+    "MIT License\n\nCopyright (c) 2026 Cizzuk\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n \nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE." : {
+      "shouldTranslate" : false
+    },
+    "Name of the symbol in SF Symbols" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SF Symbolsのシンボル名"
+          }
+        }
+      }
+    },
+    "Nature" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自然"
+          }
+        }
+      }
+    },
+    "No Apple Watch is paired with this device." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスにApple Watchがペアリングされていません。"
+          }
+        }
+      }
+    },
+    "No shortcut is set for the Side Button." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカットが設定されていません。"
+          }
+        }
+      }
+    },
+    "Not Set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未設定"
+          }
+        }
+      }
+    },
+    "Not tested yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだテストしていません。"
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知"
+          }
+        }
+      }
+    },
+    "Notifications are allowed, but all alert types are disabled. Please enable Notification Center alert in Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていますが、すべての種類のアラートが無効になっています。設定から通知センターのアラートを有効にしてください。"
+          }
+        }
+      }
+    },
+    "Notifications are allowed, but banner alerts are enabled. I recommend enabling Notification Center only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていますが、バナーのアラートが有効です。通知センターのみ有効にすることをおすすめします。"
+          }
+        }
+      }
+    },
+    "Notifications are allowed, but lock screen alerts are enabled. I recommend enabling Notification Center only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていますが、ロック画面のアラートが有効です。通知センターのみ有効にすることをおすすめします。"
+          }
+        }
+      }
+    },
+    "Notifications are allowed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されています。"
+          }
+        }
+      }
+    },
+    "Notifications are disabled. Please allow notifications in Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は無効になっています。設定から許可してください。"
+          }
+        }
+      }
+    },
+    "Notifications are not allowed. Please complete the first setup." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知が許可されていません。初期セットアップを完了してください。"
+          }
+        }
+      }
+    },
+    "Objects" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物"
+          }
+        }
+      }
+    },
+    "Objects & Tools" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オブジェクトとツール"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定を開く"
+          }
+        }
+      }
+    },
+    "Open Shortcuts App" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットアプリを開く"
+          }
+        }
+      }
+    },
+    "Open Watch App" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watchアプリを開く"
+          }
+        }
+      }
+    },
+    "Operation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作"
+          }
+        }
+      }
+    },
+    "Please allow notifications to run the automation. Next, change the alert settings to Notification Center only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションを実行するために、通知を許可してください。次にアラートの設定を通知センターのみに変更してください。"
+          }
+        }
+      }
+    },
+    "Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。 次にショートカットを編集して、通知のオートメーションを有効にしてください。"
+          }
+        }
+      }
+    },
+    "Please set the shortcut name to add it to your favorites." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りに追加するショートカットの名前を設定してください。"
+          }
+        }
+      }
+    },
+    "Please set the shortcut name to launch the voice assistant." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声アシスタントを起動するショートカットの名前を設定してください。"
+          }
+        }
+      }
+    },
+    "Please set the shortcut name to run from the Live Activity." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティから実行するショートカットの名前を設定してください。"
+          }
+        }
+      }
+    },
+    "Please turn on \"Press Side Button for Deflector\" in the Settings. To run the shortcut from the Side Button, the device must be physically located in a region that supports [Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定で「サイドボタンを押してDeflectorを使用」をオンにしてください。サイドボタンからショートカットを実行するには、デバイスが[Side Button Access](https://developer.apple.com/documentation/appintents/launching-your-voice-based-conversational-app-from-the-side-button-of-iphone)をサポートする地域に物理的に存在している必要があります。"
+          }
+        }
+      }
+    },
+    "Preview Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレビュータイプ"
+          }
+        }
+      }
+    },
+    "Privacy & Security" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーとセキュリティ"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        }
+      }
+    },
+    "Remove Favorite Shortcut from Apple Watch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watchからお気に入りのショートカットを削除"
+          }
+        }
+      }
+    },
+    "Remove from Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandから削除"
+          }
+        }
+      }
+    },
+    "Remove Shortcut from Live Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティからショートカットを削除"
+          }
+        }
+      }
+    },
+    "Removes all shortcuts from Live Activity with matching names." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致する名前のショートカットをライブアクティビティからすべて削除します。"
+          }
+        }
+      }
+    },
+    "Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのリストをリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+          }
+        }
+      }
+    },
+    "Run Automation Test" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションのテストを実行"
+          }
+        }
+      }
+    },
+    "Run shortcuts on your iPhone from your Apple Watch." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple WatchからiPhone上でショートカットを実行します。"
+          }
+        }
+      }
+    },
+    "Search by Symbol Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル名で検索"
+          }
+        }
+      }
+    },
+    "Search Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを検索"
+          }
+        }
+      }
+    },
+    "Select Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを選択"
+          }
+        }
+      }
+    },
+    "Send Deflection Notification" : {
+      "shouldTranslate" : false
+    },
+    "Set 'Use Different Shortcuts on Dynamic Island'" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「Dynamic Islandで異なるショートカットを使用する」を設定"
+          }
+        }
+      }
+    },
+    "Set Side Button Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカットを設定"
+          }
+        }
+      }
+    },
+    "Set Side Button Shortcut to ${shortcutName}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタンのショートカットを ${shortcutName} に設定"
+          }
+        }
+      }
+    },
+    "Setup is complete! You can now assign and run your favorite shortcuts for Live Activities or Side Button." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セットアップが完了しました！ライブアクティビティやサイドボタンに、ショートカットを登録して実行することができます。"
+          }
+        }
+      }
+    },
+    "Shapes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図形"
+          }
+        }
+      }
+    },
+    "Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット"
+          }
+        }
+      }
+    },
+    "Shortcut Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット名"
+          }
+        }
+      }
+    },
+    "Shortcut name is not set." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット名が設定されていません。"
+          }
+        }
+      }
+    },
+    "Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット"
+          }
+        }
+      }
+    },
+    "Show All Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのショートカットを表示"
+          }
+        }
+      }
+    },
+    "Show Shortcut Names" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット名を表示"
+          }
+        }
+      }
+    },
+    "Side Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドボタン"
+          }
+        }
+      }
+    },
+    "Side Button Deflector" : {
+      "shouldTranslate" : false
+    },
+    "Smaller Horizontal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水平(小)"
+          }
+        }
+      }
+    },
+    "Source" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソースコード"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始"
+          }
+        }
+      }
+    },
+    "Start Activity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティビティを開始"
+          }
+        }
+      }
+    },
+    "State" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状態"
+          }
+        }
+      }
+    },
+    "Styles" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "見た目"
+          }
+        }
+      }
+    },
+    "Symbol" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル"
+          }
+        }
+      }
+    },
+    "Symbol Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シンボル名"
+          }
+        }
+      }
+    },
+    "Symbols" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記号"
+          }
+        }
+      }
+    },
+    "System Automation Detect Intent" : {
+      "shouldTranslate" : false
+    },
+    "System Call Intent" : {
+      "shouldTranslate" : false
+    },
+    "System Device Shortcuts Intent" : {
+      "shouldTranslate" : false
+    },
+    "System Device Shortcuts Intent ${shortcuts}" : {
+      "shouldTranslate" : false
+    },
+    "Test successful! It may be working correctly." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テストが成功しました！ おそらく正しく動作しています。"
+          }
+        }
+      }
+    },
+    "Text Formatting" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テキストフォーマット"
+          }
+        }
+      }
+    },
+    "The issues listed here are bugs in the Shortcuts app. Because Deflector runs shortcuts through automation, it is affected by these bugs. These issues cannot be fixed in Deflector." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このリストにある問題は、ショートカットアプリに由来するバグです。Deflectorはオートメーションを経由してショートカットを実行するため、これらのバグの影響を受けます。これらはDeflectorでは修正できません。"
+          }
+        }
+      }
+    },
+    "There may be various other issues besides these. If an issue caused by a shortcut occurs, waiting for a while before trying again or restarting your device may resolve it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これら以外にも様々な問題があるかもしれません。ショートカットに由来する問題が発生した時は、しばらく待ってから再度試すか、デバイスを再起動すると改善することがあります。"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時計"
+          }
+        }
+      }
+    },
+    "Toggle" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切り替える"
+          }
+        }
+      }
+    },
+    "Trailing Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "後方のアイコン"
+          }
+        }
+      }
+    },
+    "Transportation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交通"
+          }
+        }
+      }
+    },
+    "Turn" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変更"
+          }
+        }
+      }
+    },
+    "Unable to start the activity because Deflector has reached its maximum limit of activities." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorがアクティビティの最大制限に達しているため、アクティビティを開始できません。"
+          }
+        }
+      }
+    },
+    "Unable to start the activity because Live Activities are disabled in Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティが設定で無効になっているため、アクティビティを開始できません。"
+          }
+        }
+      }
+    },
+    "Unable to start the activity because the data of the shortcuts are too large." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットのデータが大きすぎるため、アクティビティを開始できません。"
+          }
+        }
+      }
+    },
+    "Unable to start the activity because the device has reached its maximum limit of activities." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスのアクティビティの最大数に達したため、アクティビティを開始できません。"
+          }
+        }
+      }
+    },
+    "Use Black Background on Lock Screen" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロック画面で黒い背景を使用する"
+          }
+        }
+      }
+    },
+    "Use Deflector Automation to request a list of your shortcuts and easily select the one you want." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflector Automationを用いてショートカットの一覧をリクエストし、簡単にショートカットを選択できるようにします。"
+          }
+        }
+      }
+    },
+    "Use Different Shortcuts on Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandで異なるショートカットを使用する"
+          }
+        }
+      }
+    },
+    "Variable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変数"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
+          }
+        }
+      }
+    },
+    "Vertical" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "垂直"
+          }
+        }
+      }
+    },
+    "Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションの応答を待っています。数秒待っても応答がない場合は、正しく設定できていない可能性があります。"
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天気"
+          }
+        }
+      }
+    },
+    "Welcome!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ようこそ！"
+          }
+        }
+      }
+    },
+    "You can set buttons to run shortcuts on the Dynamic Island and the Lock Screen." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandやロック画面に、ショートカットを実行するボタンを設定できます。"
+          }
+        }
+      }
+    },
+    "You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[SF Symbols](https://developer.apple.com/jp/sf-symbols/)に収録されているシンボルを利用できます。"
+          }
+        }
+      }
+    },
+    "Your Shortcuts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのショートカット"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}
