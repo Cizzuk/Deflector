@@ -527,17 +527,6 @@
         }
       }
     },
-    "Dynamic Island" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dynamic Island"
-          }
-        }
-      }
-    },
     "Dynamic Island Icons" : {
       "localizations" : {
         "ja" : {
@@ -594,6 +583,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "エラー"
+          }
+        }
+      }
+    },
+    "Export from Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandからエクスポート"
+          }
+        }
+      }
+    },
+    "Export Live Activity Shortcuts as JSON" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティのショートカットをJSON形式でエクスポート"
           }
         }
       }
@@ -788,6 +797,36 @@
         }
       }
     },
+    "If you import a single shortcut, it will be added. If you import an array of multiple shortcuts, it will overwrite existing shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひとつのショートカットをインポートした場合は追加をします。複数のショートカットの配列をインポートした場合は既存のショートカットを上書きします。"
+          }
+        }
+      }
+    },
+    "Import Live Activity Shortcuts from JSON" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブアクティビティのショートカットをJSON形式でインポート"
+          }
+        }
+      }
+    },
+    "Import to Dynamic Island" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Islandにインポート"
+          }
+        }
+      }
+    },
     "Indices" : {
       "localizations" : {
         "ja" : {
@@ -814,6 +853,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本限定。サイドボタンに割り当てる音声アシスタントを変更できます。ショートカットを使ってお気に入りの音声アシスタントを使用します。"
+          }
+        }
+      }
+    },
+    "JSON" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON"
           }
         }
       }
