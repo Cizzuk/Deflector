@@ -41,10 +41,6 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
         
         var context = WatchConnectivityService.shared.applicationContext
         
-        if context.favoriteShortcuts.count >= 10 {
-            throw PerformError.limitReached
-        }
-        
         let newShortcut = WCAppContext.FavoriteShortcut(
             shortcutName: shortcutName,
             symbol: symbol ?? "suit.diamond"
@@ -55,6 +51,9 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
             context.favoriteShortcuts[index] = newShortcut
         } else {
             // If the shortcut does not exist, append
+            guard context.favoriteShortcuts.count < 10 else {
+                throw PerformError.limitReached
+            }
             context.favoriteShortcuts.append(newShortcut)
         }
         
