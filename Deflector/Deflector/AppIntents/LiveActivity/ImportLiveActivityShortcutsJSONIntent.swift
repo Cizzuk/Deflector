@@ -25,10 +25,17 @@ struct ImportLiveActivityShortcutsJSONIntent: AppIntent {
         var newButtons = dynamicIsland ? UserSettings.shared.liveActivityIslandButtons : UserSettings.shared.liveActivityButtons
         
         if let buttons = try? decoder.decode([DeflectorActivityButton].self, from: Data(json.utf8)) {
+            // Replace
             newButtons = buttons
         } else {
             let button = try decoder.decode(DeflectorActivityButton.self, from: Data(json.utf8))
-            newButtons.append(button)
+            if let index = newButtons.firstIndex(where: { $0.id == button.id }) {
+                // Update
+                newButtons[index] = button
+            } else {
+                // Add
+                newButtons.append(button)
+            }
         }
         
         if dynamicIsland {
