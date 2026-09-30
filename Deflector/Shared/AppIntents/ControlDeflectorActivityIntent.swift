@@ -37,7 +37,7 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
     }
     
     @MainActor
-    func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+    func perform() async throws -> some IntentResult {
         #if !EXTENSION
         switch control {
         case .start:
@@ -56,7 +56,7 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
         
         return .result(value: DeflectorActivitySupport.isActive())
         #else
-        return .result(value: false)
+        return .result()
         #endif
     }
 }
