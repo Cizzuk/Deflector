@@ -17,12 +17,12 @@ class SystemCallSupport {
         case refreshDeflectorActivity = "Refresh Deflector Activity"
     }
     
-    static func handleSystemCall(_ argument: String) {
+    static func handleSystemCall(_ argument: String) async {
         switch SystemCallArgs(rawValue: argument) {
         case .pingTest:
             NotificationCenter.default.post(name: .pingTestReceived, object: nil)
         case .refreshDeflectorActivity:
-            Task { try? await DeflectorActivitySupport.refresh() }
+            try? await DeflectorActivitySupport.refresh()
         default:
             break
         }

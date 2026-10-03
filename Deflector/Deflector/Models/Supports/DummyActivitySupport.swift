@@ -22,16 +22,13 @@ class DummyActivitySupport {
                 staleDate: Date.now
             )
             
-            _ = try? Activity.request(
+            let activity = try? Activity.request(
                 attributes: DummyAttributes(),
                 content: content,
                 pushType: nil
             )
             
-            let activities = Activity<DummyAttributes>.activities
-            for activity in activities {
-                await activity.end(nil, dismissalPolicy: .immediate)
-            }
+            await activity?.end(nil, dismissalPolicy: .immediate)
         }
     }
 }
