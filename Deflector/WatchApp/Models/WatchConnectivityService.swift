@@ -32,6 +32,11 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         session.delegate = self
         session.activate()
         updateSessionState()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            // If receivedApplicationContext couldn't be received, request it again after 1s.
+            self?.sendResendApplicationContextRequestIfNeeded()
+        }
     }
     
     private func updateSessionState() {
