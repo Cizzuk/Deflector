@@ -52,8 +52,14 @@ struct CustomSymbols: View {
                     let isSelected = symbol == item.id
                     Button(action: { symbol = item.id }) {
                         HStack(spacing: 15) {
-                            Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                                .foregroundStyle(isSelected ? .accent : .secondary)
+                            if isSelected {
+                                Image(systemName: "checkmark")
+                                    .frame(width: 20)
+                                    .foregroundStyle(.accent)
+                                    .accessibilityHidden(true)
+                            } else {
+                                Spacer().frame(width: 20)
+                            }
                             item.image
                                 .resizable()
                                 .scaledToFit()
