@@ -69,10 +69,13 @@ struct WatchSettingsView: View {
                                     .labelStyle(.iconOnly)
                                 }
                                 .buttonStyle(.borderless)
+                                .accessibilityValue(shortcut.symbol.isEmpty ? "Not Set" : shortcut.symbol)
                                 
                                 Text(shortcut.shortcutName)
                                     .lineLimit(1)
                             }
+                            .accessibilityElement(children: .contain)
+                            .accessibilityLabel(shortcut.shortcutName.isEmpty ? "Not Set" : shortcut.shortcutName)
                         }
                         .onMove { indices, newOffset in
                             context.favoriteShortcuts.move(fromOffsets: indices, toOffset: newOffset)
