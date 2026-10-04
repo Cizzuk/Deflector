@@ -15,7 +15,7 @@ struct ToggleActivityControl: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: ToggleActivityControl.kind) {
             ControlWidgetButton(action: ControlDeflectorActivityIntent(control: .toggle)) {
-                Label(ToggleActivityControl.title, systemImage: "suit.diamond")
+                Label(ToggleActivityControl.title, systemImage: deflectorSymbol)
             }
         }
         .displayName(ToggleActivityControl.title)

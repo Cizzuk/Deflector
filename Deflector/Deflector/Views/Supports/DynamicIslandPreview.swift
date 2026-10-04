@@ -45,7 +45,7 @@ struct DynamicIslandPreview: View {
             
             HStack(alignment: .center, spacing: 0) {
                 if leading {
-                    Image(systemName: "suit.diamond")
+                    Image(systemName: deflectorSymbol)
                         .resizable()
                         .scaledToFit()
                         .padding(.trailing, 2)
@@ -62,10 +62,10 @@ struct DynamicIslandPreview: View {
                 Spacer().frame(width: centerMargin)
                 
                 if trailing {
-                    Image(systemName: leading ? "square.2.layers.3d" : "suit.diamond")
+                    Image(systemName: leading ? "square.2.layers.3d" : deflectorSymbol)
                         .resizable()
                         .scaledToFit()
-                        .id(leading ? "square.2.layers.3d" : "suit.diamond")
+                        .id(leading ? "square.2.layers.3d" : deflectorSymbol)
                         .padding(.leading, 2)
                         .frame(width: 18, height: 18)
                         .padding(.trailing, 11)
@@ -100,7 +100,7 @@ struct DynamicIslandPreview: View {
                 Spacer().frame(height: topMargin)
                 
                 if leading {
-                    Image(systemName: "suit.diamond")
+                    Image(systemName: deflectorSymbol)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 18, height: 18)
@@ -112,10 +112,10 @@ struct DynamicIslandPreview: View {
                 }
                 
                 if trailing {
-                    Image(systemName: leading ? "square.2.layers.3d" : "suit.diamond")
+                    Image(systemName: leading ? "square.2.layers.3d" : deflectorSymbol)
                         .resizable()
                         .scaledToFit()
-                        .id(leading ? "square.2.layers.3d" : "suit.diamond")
+                        .id(leading ? "square.2.layers.3d" : deflectorSymbol)
                         .frame(width: 18, height: 18)
                         .padding(.vertical, 8)
                         .foregroundStyle(.dropblue)

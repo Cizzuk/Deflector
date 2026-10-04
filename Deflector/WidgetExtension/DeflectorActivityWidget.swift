@@ -93,7 +93,7 @@ struct DeflectorActivityWidget: Widget {
                         .padding(.bottom, showLabel ? 15 : 18)
                 case .compactLeading:
                     if islandIcons.compactLeading {
-                        Image(systemName: "suit.diamond")
+                        Image(systemName: deflectorSymbol)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 18, height: 18)
@@ -105,7 +105,7 @@ struct DeflectorActivityWidget: Widget {
                     }
                 case .compactTrailing:
                     if islandIcons.compactTrailing {
-                        Image(systemName: islandIcons.compactLeading ? "square.2.layers.3d" : "suit.diamond")
+                        Image(systemName: islandIcons.compactLeading ? "square.2.layers.3d" : deflectorSymbol)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 18, height: 18)
@@ -117,7 +117,7 @@ struct DeflectorActivityWidget: Widget {
                     }
                 case .minimal:
                     if islandIcons.minimal {
-                        Image(systemName: "suit.diamond")
+                        Image(systemName: deflectorSymbol)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 18, height: 18)

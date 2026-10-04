@@ -30,8 +30,6 @@ struct OpenDeflectorWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
     var entry: OpenDeflectorProvider.Entry
     
-    let deflectorSymbol: String = "suit.diamond"
-    
     var body: some View {
         Group {
             switch family {
