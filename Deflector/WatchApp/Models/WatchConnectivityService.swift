@@ -84,7 +84,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     func sendResendApplicationContextRequestIfNeeded() {
         guard activationState == .activated,
-              isReachable,
+              session.isReachable,
               receivedApplicationContext.favoriteShortcuts.isEmpty
                 else { return }
         let message = WCMessage(method: .requestApplicationContext)
@@ -107,7 +107,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             }
         }
         
-        if isReachable {
+        if session.isReachable {
             task()
         } else {
             deflectionAfterReachable = task
