@@ -23,6 +23,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     @Published private(set) var isReachable: Bool = false
     
     private var deflectionAfterReachable: (() -> Void)?
+    private var deflectionReachabilityTimeout: Timer?
     
     @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext.loadLastContext()
     @Published private(set) var sentDeflectionShortcut: String?
@@ -100,7 +101,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
         if sentDeflectionShortcut == nil || deflectionAfterReachable != nil {
-            sentDeflectionShortcut = shortcutName
+            Task { @MainActor in
+                sentDeflectionShortcut = shortcutName
+            }
         }
         
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
@@ -118,6 +121,22 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             task()
         } else {
             deflectionAfterReachable = task
+            
+            // Set a timeout of 10s
+            deflectionReachabilityTimeout?.invalidate()
+            deflectionReachabilityTimeout = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [weak self] _ in
+                guard let self = self else { return }
+                self.deflectionAfterReachable = nil
+                self.deflectionReachabilityTimeout?.invalidate()
+                self.deflectionReachabilityTimeout = nil
+                Task { @MainActor in
+                    self.sentDeflectionShortcut = nil
+                }
+                errorHandler?(NSError(
+                    domain: WCErrorDomain,
+                    code: WCError.Code.notReachable.rawValue
+                ))
+            }
         }
     }
     
@@ -149,6 +168,8 @@ extension WatchConnectivityService: WCSessionDelegate {
         sendResendApplicationContextRequestIfNeeded()
         
         if session.isReachable {
+            deflectionReachabilityTimeout?.invalidate()
+            deflectionReachabilityTimeout = nil
             deflectionAfterReachable?()
             deflectionAfterReachable = nil
         }
