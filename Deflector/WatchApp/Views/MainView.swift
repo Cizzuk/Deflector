@@ -52,7 +52,6 @@ struct MainView: View {
                                         if wc.sentDeflectionShortcut == shortcut.shortcutName {
                                             ProgressView()
                                                 .progressViewStyle(.circular)
-                                                .frame(height: .infinity)
                                         } else {
                                             Image(systemName: shortcut.symbol)
                                         }
@@ -78,7 +77,7 @@ struct MainView: View {
             .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
             .alert("Error", isPresented: Binding(
                 get: { vm.errorMessage != nil },
-                set: { if !$0 { vm.errorMessage = nil } }
+                set: { if !$0 { Task { @MainActor in vm.errorMessage = nil } } }
             )) {
                 Button("OK", role: .close) { vm.errorMessage = nil }
             } message: {

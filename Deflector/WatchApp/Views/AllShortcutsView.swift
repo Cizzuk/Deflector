@@ -34,7 +34,6 @@ struct AllShortcutsView: View {
                                 if wc.sentDeflectionShortcut == shortcut {
                                     ProgressView()
                                         .progressViewStyle(.circular)
-                                        .frame(height: .infinity)
                                 } else {
                                     Image(systemName: defaultShortcutSymbol)
                                 }
@@ -54,7 +53,7 @@ struct AllShortcutsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .alert("Error", isPresented: Binding(
             get: { vm.errorMessage != nil },
-            set: { if !$0 { vm.errorMessage = nil } }
+            set: { if !$0 { Task { @MainActor in vm.errorMessage = nil } } }
         )) {
             Button("OK", role: .close) { vm.errorMessage = nil }
         } message: {

@@ -12,7 +12,7 @@ struct CenteredIconLabelStyle: LabelStyle {
         HStack(alignment: .center, spacing: 5) {
             configuration.icon
                 .imageScale(.large)
-                .frame(width: 25, height: .infinity, alignment: .center)
+                .frame(width: 25, alignment: .center)
             configuration.title
                 .multilineTextAlignment(.leading)
         }
