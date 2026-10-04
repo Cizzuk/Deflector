@@ -73,13 +73,10 @@
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* Deflector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deflector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A094EC63072127100E51E28 /* Deflector Watch Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deflector Watch Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A094EE430724E4100E51E28 /* Deflector Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Deflector Watch.entitlements"; sourceTree = "<group>"; };
-		7A094EE530724E4E00E51E28 /* Deflector Watch Widget Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Deflector Watch Widget Extension.entitlements"; sourceTree = "<group>"; };
 		7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deflector Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A193EC0302E9D340041A05B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7A193EC2302E9D340041A05B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deflector Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A5F993B3047A54F001BB665 /* WidgetExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtensionExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -216,9 +213,6 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				7A094EE530724E4E00E51E28 /* Deflector Watch Widget Extension.entitlements */,
-				7A094EE430724E4100E51E28 /* Deflector Watch.entitlements */,
-				7A5F993B3047A54F001BB665 /* WidgetExtensionExtension.entitlements */,
 				7A31AA00302B24B10045FB9A /* Shared */,
 				000000000000000000000010 /* Deflector */,
 				7A193EC4302E9D340041A05B /* WidgetExtension */,
@@ -677,7 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "Deflector Watch Widget Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WatchAppWidgetExtension/Deflector Watch Widget Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -710,7 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "Deflector Watch Widget Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WatchAppWidgetExtension/Deflector Watch Widget Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -744,7 +738,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WidgetExtensionExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "WidgetExtension/Deflector Widget Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -781,7 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WidgetExtensionExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "WidgetExtension/Deflector Widget Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -819,7 +813,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Deflector Watch.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WatchApp/Deflector Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				ENABLE_PREVIEWS = YES;
@@ -853,7 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Deflector Watch.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WatchApp/Deflector Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				ENABLE_PREVIEWS = YES;
