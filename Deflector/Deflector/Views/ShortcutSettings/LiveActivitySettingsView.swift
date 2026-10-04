@@ -51,6 +51,7 @@ struct LiveActivitySettingsView: View {
                         .labelStyle(.iconOnly)
                     }
                     .buttonStyle(.borderless)
+                    .accessibilityValue(button.symbol.isEmpty ? "Not Set" : button.symbol)
                     
                     Button(action: {
                         shortcutPickerID = button.id
@@ -61,6 +62,8 @@ struct LiveActivitySettingsView: View {
                             .foregroundStyle(button.shortcutName.isEmpty ? Color(uiColor: .placeholderText) : Color(uiColor: .label))
                     }
                 }
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel(button.shortcutName.isEmpty ? "Not Set" : button.shortcutName)
             }
             .onMove { indices, newOffset in
                 buttons.move(fromOffsets: indices, toOffset: newOffset)
