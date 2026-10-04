@@ -46,7 +46,7 @@ struct MainView: View {
                             Label("First Setup", systemImage: "gearshape")
                                 .font(.title3)
                                 .padding(5)
-                            Text("If Deflector does not work properly, please try restarting your device and redoing this setup.")
+                            Text("If Deflector does not work properly, please try restarting your device or redoing this setup.")
                                 .font(.subheadline)
                             
                         }

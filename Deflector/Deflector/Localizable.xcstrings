@@ -777,12 +777,12 @@
         }
       }
     },
-    "If Deflector does not work properly, please try restarting your device and redoing this setup." : {
+    "If Deflector does not work properly, please try restarting your device or redoing this setup." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "もしDeflectorがうまく動作しない場合は、デバイスを再起動して、このセットアップをやり直してみてください。"
+            "value" : "もしDeflectorがうまく動作しない場合は、デバイスを再起動するか、このセットアップをやり直してみてください。"
           }
         }
       }
@@ -803,6 +803,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットやオートメーションが正しく動作しないときは、デバイスを再起動すると改善することがあります。"
+          }
+        }
+      }
+    },
+    "If you cannot run the shortcut, please make sure that Deflector Automation is allowed to run when locked, and that your Apple Watch and iPhone are within communication range." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを実行できない場合は、Deflector Automationのロック中の実行が許可されていること、およびApple WatchとiPhoneが通信圏内にあることを確認してください。"
           }
         }
       }

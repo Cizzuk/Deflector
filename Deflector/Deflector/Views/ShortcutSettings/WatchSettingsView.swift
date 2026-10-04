@@ -92,6 +92,10 @@ struct WatchSettingsView: View {
                     Section {
                         Toggle("Show All Shortcuts", isOn: $context.allowShowAllShortcuts)
                     }
+                    
+                    Section {} footer: {
+                        Text("If you cannot run the shortcut, please make sure that Deflector Automation is allowed to run when locked, and that your Apple Watch and iPhone are within communication range.")
+                    }
                 }
             }
             .navigationTitle("Apple Watch")
