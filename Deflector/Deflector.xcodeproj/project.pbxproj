@@ -95,9 +95,17 @@
 			membershipExceptions = (
 				Constants.swift,
 				Models/WatchConnectivity/WCAppContext.swift,
+				"Models/WatchConnectivity/WCAppContext+Store.swift",
 				Models/WatchConnectivity/WCMessage.swift,
 			);
 			target = 7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */;
+		};
+		7A094EEA307251BA00E51E28 /* Exceptions for "Shared" folder in "Deflector" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Models/WatchConnectivity/WCAppContext+Store.swift",
+			);
+			target = 000000000000000100000000 /* Deflector */;
 		};
 		7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "Deflector Widget Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -117,6 +125,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Models/WatchConnectivity/WCAppContext.swift,
+				"Models/WatchConnectivity/WCAppContext+Store.swift",
 				Models/WatchConnectivity/WCMessage.swift,
 			);
 			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
@@ -126,6 +135,7 @@
 			membershipExceptions = (
 				Constants.swift,
 				Models/WatchConnectivity/WCAppContext.swift,
+				"Models/WatchConnectivity/WCAppContext+Store.swift",
 				Models/WatchConnectivity/WCMessage.swift,
 			);
 			target = 7A25B8A93068BE6A000AFEB9 /* Deflector Watch */;
@@ -165,6 +175,7 @@
 		7A31AA00302B24B10045FB9A /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				7A094EEA307251BA00E51E28 /* Exceptions for "Shared" folder in "Deflector" target */,
 				7AAF8ECF3068EA6E003B340B /* Exceptions for "Shared" folder in "Deflector Widget Extension" target */,
 				7AAF8ED13068EA71003B340B /* Exceptions for "Shared" folder in "Deflector Watch" target */,
 				7A094EE1307241AF00E51E28 /* Exceptions for "Shared" folder in "Deflector Watch Widget Extension" target */,
