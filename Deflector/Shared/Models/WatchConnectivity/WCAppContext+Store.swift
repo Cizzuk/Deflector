@@ -1,8 +1,8 @@
 //
 //  WCAppContext+Store.swift
-//  Deflector
+//  Deflector Watch
 //
-//  Created by Cizzuk on 2026/09/27.
+//  Created by Cizzuk on 2026/10/04.
 //
 
 import Foundation
