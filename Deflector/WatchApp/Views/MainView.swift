@@ -12,57 +12,65 @@ import WatchConnectivity
     var body: some Scene {
         WindowGroup {
             MainView()
-                .tint(.accent)
         }
     }
 }
 
 struct MainView: View {
-    @Environment(\.isLuminanceReduced) private var isLuminanceReduced
     @Environment(\.scenePhase) private var scenePhase
-    @StateObject private var watchConnectivity = WatchConnectivityService.shared
+    @StateObject private var wc = WatchConnectivityService.shared
     @StateObject private var vm = MainViewModel()
     
     var body: some View {
         NavigationStack {
             List {
-                if isLuminanceReduced {
-                    
-                } else if watchConnectivity.activationState != .activated {
+                if wc.activationState != .activated {
                     Section {} footer: {
                         Text("Connection service is not activated.")
                     }
-                } else if watchConnectivity.iOSDeviceNeedsUnlockAfterRebootForReachability {
+                } else if wc.iOSDeviceNeedsUnlockAfterRebootForReachability {
                     Section {} footer: {
                         Text("You need to unlock your iPhone after restarting it.")
                     }
                 } else {
-                    if watchConnectivity.receivedApplicationContext.favoriteShortcuts.isEmpty {
+                    if wc.receivedApplicationContext.favoriteShortcuts.isEmpty {
                         Section {} footer: {
                             Text("No favorite shortcuts.")
                         }
                         Section {
-                            Button(action: { watchConnectivity.sendResendApplicationContextRequestIfNeeded() }) {
+                            Button(action: { wc.sendResendApplicationContextRequestIfNeeded() }) {
                                 Text("Reload Favorite Shortcuts")
                             }
                         }
                     } else {
                         Section {
-                            ForEach(watchConnectivity.receivedApplicationContext.favoriteShortcuts) { shortcut in
+                            ForEach(wc.receivedApplicationContext.favoriteShortcuts) { shortcut in
                                 Button(action: { vm.sendDeflection(shortcut.shortcutName) }) {
-                                    Label(shortcut.shortcutName, systemImage: shortcut.symbol)
-                                        .lineLimit(2)
+                                    Label {
+                                        Text(shortcut.shortcutName)
+                                    } icon: {
+                                        if wc.sentDeflectionShortcuts.contains(shortcut.shortcutName) {
+                                            ProgressView()
+                                                .progressViewStyle(.circular)
+                                                .frame(height: .infinity)
+                                        } else {
+                                            Image(systemName: shortcut.symbol)
+                                        }
+                                    }
+                                    .lineLimit(2)
+                                    .labelStyle(CenteredIconLabelStyle())
                                 }
+                                .disabled(!wc.isReachable)
                             }
                         }
                     }
                     
-                    if watchConnectivity.receivedApplicationContext.allowShowAllShortcuts {
+                    if wc.receivedApplicationContext.allowShowAllShortcuts {
                         Section {
                             NavigationLink(destination: AllShortcutsView()) {
                                 Text("All Shortcuts")
                             }
-                            .disabled(!watchConnectivity.isReachable)
+                            .disabled(!wc.isReachable)
                         }
                     }
                 }

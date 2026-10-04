@@ -23,6 +23,8 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
     
+    @Published private(set) var sentDeflectionShortcuts: [String] = []
+    
     override private init() {
         super.init()
         guard WCSession.isSupported() else { return }
@@ -52,6 +54,11 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     private func handleReceivedMethod(_ method: WCMessage.Method) {
         switch method {
+        case .automationDetected:
+            Task { @MainActor in
+                sentDeflectionShortcuts.removeAll()
+            }
+            
         case .responseAllShortcuts(shortcuts: let shortcuts):
             Task { @MainActor in
                 NotificationCenter.default.post(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
@@ -79,12 +86,14 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
+        sentDeflectionShortcuts.append(shortcutName)
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
-        session.sendMessage(
-            message.toDictionary(),
-            replyHandler: nil,
-            errorHandler: errorHandler
-        )
+        session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
+            errorHandler?(error)
+            Task { @MainActor in
+                self.sentDeflectionShortcuts.removeAll()
+            }
+        }
     }
     
     func sendAllShortcutsRequest(errorHandler: ((Error) -> Void)? = nil) {

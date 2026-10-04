@@ -8,6 +8,10 @@
 import AppIntents
 import UserNotifications
 
+extension Notification.Name {
+    static let deflectorAutomationDetected = Notification.Name("deflectorAutomationDetected")
+}
+
 struct SystemAutomationDetectIntent: AppIntent {
     static let title: LocalizedStringResource = "System Automation Detect Intent"
     #if DEBUG
@@ -20,10 +24,18 @@ struct SystemAutomationDetectIntent: AppIntent {
     @Parameter(title: "Version")
     var version: Int
     
+    @MainActor
     func perform() async throws -> some IntentResult {
+        NotificationCenter.default.post(
+            name: .deflectorAutomationDetected,
+            object: nil,
+            userInfo: ["version": version]
+        )
+        
         Task.detached {
             UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         }
+        
         return .result()
     }
 }

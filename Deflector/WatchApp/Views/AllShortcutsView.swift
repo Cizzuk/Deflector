@@ -9,15 +9,12 @@ import SwiftUI
 import WatchConnectivity
 
 struct AllShortcutsView: View {
-    @Environment(\.isLuminanceReduced) private var isLuminanceReduced
-    @StateObject private var watchConnectivity = WatchConnectivityService.shared
+    @StateObject private var wc = WatchConnectivityService.shared
     @StateObject private var vm = AllShortcutsViewModel()
     
     var body: some View {
         List {
-            if isLuminanceReduced {
-                
-            } else if vm.loading {
+            if vm.loading {
                 Section {} footer: {
                     ZStack(alignment: .center) {
                         ProgressView()
@@ -29,9 +26,21 @@ struct AllShortcutsView: View {
                 Section {
                     ForEach(vm.shortcuts, id: \.self) { shortcut in
                         Button(action: { vm.sendDeflection(shortcut) }) {
-                            Text(shortcut)
-                                .lineLimit(2)
+                            Label {
+                                Text(shortcut)
+                            } icon: {
+                                if wc.sentDeflectionShortcuts.contains(shortcut) {
+                                    ProgressView()
+                                        .progressViewStyle(.circular)
+                                        .frame(height: .infinity)
+                                } else {
+                                    Image(systemName: "square.2.layers.3d.fill")
+                                }
+                            }
+                            .lineLimit(2)
+                            .labelStyle(CenteredIconLabelStyle())
                         }
+                        .disabled(!wc.isReachable)
                     }
                 } footer: {
                     if vm.shortcuts.isEmpty {

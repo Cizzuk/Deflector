@@ -61,6 +61,24 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     // MARK: - Device Shortcuts Notification Observer
     
+    var automationDetectedNotificationObserver: AnyCancellable?
+    
+    private func addAutomationDetectedNotificationObserver() {
+        removeAutomationDetectedNotificationObserver()
+        automationDetectedNotificationObserver = NotificationCenter.default.publisher(for: .deflectorAutomationDetected)
+            .sink { [weak self] notification in
+                guard let self = self else { return }
+                let message = WCMessage(method: .automationDetected)
+                self.session.sendMessage(message.toDictionary(), replyHandler: nil)
+                self.removeAutomationDetectedNotificationObserver()
+            }
+    }
+    
+    private func removeAutomationDetectedNotificationObserver() {
+        automationDetectedNotificationObserver?.cancel()
+        automationDetectedNotificationObserver = nil
+    }
+    
     var deviceShortcutsNotificationObserver: AnyCancellable?
     
     private func addDeviceShortcutsNotificationObserver() {
@@ -88,6 +106,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             resendApplicationContext()
             
         case .deflection(let shortcutName):
+            addAutomationDetectedNotificationObserver()
             Task { await DeflectionService.shared.runShortcut(shortcutName: shortcutName) }
             
         case .requestAllShortcuts:
