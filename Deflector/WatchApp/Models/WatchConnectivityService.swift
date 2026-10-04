@@ -92,7 +92,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
-        if sentDeflectionShortcut == nil {
+        if sentDeflectionShortcut == nil || deflectionAfterReachable != nil {
             sentDeflectionShortcut = shortcutName
         }
         
