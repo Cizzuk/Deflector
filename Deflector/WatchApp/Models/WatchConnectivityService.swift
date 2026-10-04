@@ -21,8 +21,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     @Published private(set) var iOSDeviceNeedsUnlockAfterRebootForReachability: Bool = false
     @Published private(set) var isReachable: Bool = false
     
-    @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
+    private var deflectionAfterReachable: (() -> Void)?
     
+    @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
     @Published private(set) var sentDeflectionShortcut: String?
     
     override private init() {
@@ -96,11 +97,20 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         }
         
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
-        session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
-            errorHandler?(error)
-            Task { @MainActor in
-                self.sentDeflectionShortcut = nil
+        
+        let task = {
+            self.session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
+                errorHandler?(error)
+                Task { @MainActor in
+                    self.sentDeflectionShortcut = nil
+                }
             }
+        }
+        
+        if isReachable {
+            task()
+        } else {
+            deflectionAfterReachable = task
         }
     }
     
@@ -130,6 +140,11 @@ extension WatchConnectivityService: WCSessionDelegate {
     func sessionReachabilityDidChange(_ session: WCSession) {
         updateSessionState()
         sendResendApplicationContextRequestIfNeeded()
+        
+        if session.isReachable {
+            deflectionAfterReachable?()
+            deflectionAfterReachable = nil
+        }
     }
     
     func session(

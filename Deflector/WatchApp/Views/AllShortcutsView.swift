@@ -40,7 +40,6 @@ struct AllShortcutsView: View {
                             .lineLimit(2)
                             .labelStyle(CenteredIconLabelStyle())
                         }
-                        .disabled(!wc.isReachable)
                     }
                 } footer: {
                     if vm.shortcuts.isEmpty {

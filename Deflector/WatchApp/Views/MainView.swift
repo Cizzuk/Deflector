@@ -60,7 +60,6 @@ struct MainView: View {
                                     .lineLimit(2)
                                     .labelStyle(CenteredIconLabelStyle())
                                 }
-                                .disabled(!wc.isReachable)
                             }
                         }
                     }
