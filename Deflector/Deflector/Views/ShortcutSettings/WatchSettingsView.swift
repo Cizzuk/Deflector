@@ -85,6 +85,7 @@ struct WatchSettingsView: View {
                             Button(action: { isShowingShortcutPicker = true }) {
                                 Label("Add Shortcut", systemImage: "plus")
                             }
+                            .keyboardShortcut("n", modifiers: [.command])
                         }
                     }
                     

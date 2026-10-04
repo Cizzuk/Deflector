@@ -97,6 +97,7 @@ struct ShortcutPicker: View {
                     }
                     .foregroundStyle(.accent)
                     .disabled(disableCallButton)
+                    .keyboardShortcut("r", modifiers: [.command])
                 } footer: {
                     if isWaitingAutomationCallback {
                         Text("Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly.")
@@ -144,6 +145,7 @@ struct ShortcutPicker: View {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)
+                    .keyboardShortcut(.defaultAction)
                 }
             }
             .alert("Error", isPresented: Binding(

@@ -233,6 +233,7 @@ struct SymbolPicker: View {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)
+                    .keyboardShortcut(.defaultAction)
                 }
             }
         }

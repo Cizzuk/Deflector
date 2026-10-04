@@ -29,6 +29,7 @@ struct SideButtonSettingsView: View {
                         }
                     }
                     .foregroundStyle(Color(uiColor: .label))
+                    .keyboardShortcut("n", modifiers: [.command])
                 } header: {
                     Text("Select Shortcut")
                 } footer: {

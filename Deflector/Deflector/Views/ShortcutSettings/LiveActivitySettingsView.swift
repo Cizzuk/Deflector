@@ -68,17 +68,6 @@ struct LiveActivitySettingsView: View {
             .onDelete { indexSet in
                 buttons.remove(atOffsets: indexSet)
             }
-            
-            if buttons.count < 4 {
-                Button(action: {
-                    let newButton = DeflectorActivityButton(shortcutName: "")
-                    buttons.append(newButton)
-                    shortcutPickerID = newButton.id
-                    shortcutPickerText = newButton.shortcutName
-                }) {
-                    Label("Add Shortcut", systemImage: "plus")
-                }
-            }
         }
     }
     
@@ -91,10 +80,12 @@ struct LiveActivitySettingsView: View {
                         Button(action: { Task { await vm.endLiveActivity() } }) {
                             Label("End Activity", systemImage: "stop.fill")
                         }
+                        .keyboardShortcut("s", modifiers: [.command])
                     } else {
                         Button(action: { Task { await vm.startLiveActivity() } }) {
                             Label("Start Activity", systemImage: "play.fill")
                         }
+                        .keyboardShortcut("s", modifiers: [.command])
                     }
                 } header: {
                     Text("Activity Control")
@@ -111,6 +102,20 @@ struct LiveActivitySettingsView: View {
                         shortcutPickerID: $shortcutPickerID,
                         shortcutPickerText: $shortcutPickerText
                     )
+                    
+                    if userSettings.liveActivityButtons.count < 4 {
+                        Button(action: {
+                            if shortcutPickerID == nil {
+                                let newButton = DeflectorActivityButton(shortcutName: "")
+                                userSettings.liveActivityButtons.append(newButton)
+                                shortcutPickerID = newButton.id
+                                shortcutPickerText = newButton.shortcutName
+                            }
+                        }) {
+                            Label("Add Shortcut", systemImage: "plus")
+                        }
+                        .keyboardShortcut("n", modifiers: [.command])
+                    }
                 }
                 
                 Section {
@@ -126,6 +131,20 @@ struct LiveActivitySettingsView: View {
                             shortcutPickerID: $shortcutPickerID,
                             shortcutPickerText: $shortcutPickerText
                         )
+                        
+                        if userSettings.liveActivityIslandButtons.count < 4 {
+                            Button(action: {
+                                if shortcutPickerID == nil {
+                                    let newButton = DeflectorActivityButton(shortcutName: "")
+                                    userSettings.liveActivityIslandButtons.append(newButton)
+                                    shortcutPickerID = newButton.id
+                                    shortcutPickerText = newButton.shortcutName
+                                }
+                            }) {
+                                Label("Add Shortcut", systemImage: "plus")
+                            }
+                            .keyboardShortcut("n", modifiers: [.command, .shift])
+                        }
                     }
                 }
                 
