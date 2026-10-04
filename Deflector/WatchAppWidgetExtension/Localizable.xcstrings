@@ -1,0 +1,46 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Open Deflector" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorを開く"
+          }
+        }
+      }
+    },
+    "Open Deflector and show your favorite shortcuts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflectorを開いてお気に入りのショートカットを表示します。"
+          }
+        }
+      }
+    },
+    "Run a shortcut on your iPhone." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone上でショートカットを実行します。"
+          }
+        }
+      }
+    },
+    "Run Shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットを実行"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A094EC73072127100E51E28 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC0302E9D340041A05B /* WidgetKit.framework */; };
+		7A094EC83072127100E51E28 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC2302E9D340041A05B /* SwiftUI.framework */; };
+		7A094ED33072127200E51E28 /* Deflector Watch Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A094EC63072127100E51E28 /* Deflector Watch Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A193EC1302E9D340041A05B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC0302E9D340041A05B /* WidgetKit.framework */; };
 		7A193EC3302E9D340041A05B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A193EC2302E9D340041A05B /* SwiftUI.framework */; };
 		7A193ECE302E9D360041A05B /* Deflector Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -14,6 +17,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A094ED13072127200E51E28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A094EC53072127100E51E28;
+			remoteInfo = "Deflector Watch WidgetExtensionExtension";
+		};
 		7A193ECC302E9D360041A05B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 000000000000000000000000 /* Project object */;
@@ -31,6 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7A094ED83072127200E51E28 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				7A094ED33072127200E51E28 /* Deflector Watch Widget Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
 		7A193ED3302E9D360041A05B /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			dstPath = "";
@@ -53,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* Deflector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deflector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A094EC63072127100E51E28 /* Deflector Watch Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deflector Watch Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deflector Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A193EC0302E9D340041A05B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7A193EC2302E9D340041A05B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -61,6 +81,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7A094ED73072127200E51E28 /* Exceptions for "WatchAppWidgetExtension" folder in "Deflector Watch Widget Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */;
+		};
 		7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "Deflector Widget Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -102,6 +129,14 @@
 			path = Deflector;
 			sourceTree = "<group>";
 		};
+		7A094EC93072127100E51E28 /* WatchAppWidgetExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7A094ED73072127200E51E28 /* Exceptions for "WatchAppWidgetExtension" folder in "Deflector Watch Widget Extension" target */,
+			);
+			path = WatchAppWidgetExtension;
+			sourceTree = "<group>";
+		};
 		7A193EC4302E9D340041A05B /* WidgetExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -132,6 +167,13 @@
 			files = (
 			);
 		};
+		7A094EC33072127100E51E28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				7A094EC83072127100E51E28 /* SwiftUI.framework in Frameworks */,
+				7A094EC73072127100E51E28 /* WidgetKit.framework in Frameworks */,
+			);
+		};
 		7A193EBB302E9D340041A05B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
@@ -155,6 +197,7 @@
 				000000000000000000000010 /* Deflector */,
 				7A193EC4302E9D340041A05B /* WidgetExtension */,
 				7A25B8AB3068BE6A000AFEB9 /* WatchApp */,
+				7A094EC93072127100E51E28 /* WatchAppWidgetExtension */,
 				7A193EBF302E9D340041A05B /* Frameworks */,
 				000000000000000000000020 /* Products */,
 			);
@@ -166,6 +209,7 @@
 				000000000000000000000120 /* Deflector.app */,
 				7A193EBE302E9D340041A05B /* Deflector Widget Extension.appex */,
 				7A25B8AA3068BE6A000AFEB9 /* Deflector Watch.app */,
+				7A094EC63072127100E51E28 /* Deflector Watch Widget Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,6 +251,24 @@
 			productReference = 000000000000000000000120 /* Deflector.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A094ED43072127200E51E28 /* Build configuration list for PBXNativeTarget "Deflector Watch Widget Extension" */;
+			buildPhases = (
+				7A094EC23072127100E51E28 /* Sources */,
+				7A094EC33072127100E51E28 /* Frameworks */,
+				7A094EC43072127100E51E28 /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				7A094EC93072127100E51E28 /* WatchAppWidgetExtension */,
+			);
+			name = "Deflector Watch Widget Extension";
+			productName = "Deflector Watch WidgetExtensionExtension";
+			productReference = 7A094EC63072127100E51E28 /* Deflector Watch Widget Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		7A193EBD302E9D340041A05B /* Deflector Widget Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A193ED0302E9D360041A05B /* Build configuration list for PBXNativeTarget "Deflector Widget Extension" */;
@@ -233,8 +295,12 @@
 				7A25B8A63068BE6A000AFEB9 /* Sources */,
 				7A25B8A73068BE6A000AFEB9 /* Frameworks */,
 				7A25B8A83068BE6A000AFEB9 /* Resources */,
+				7A094ED83072127200E51E28 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
+			);
+			dependencies = (
+				7A094ED23072127200E51E28 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				7A25B8AB3068BE6A000AFEB9 /* WatchApp */,
@@ -256,6 +322,9 @@
 				TargetAttributes = {
 					000000000000000100000000 = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					7A094EC53072127100E51E28 = {
+						CreatedOnToolsVersion = 27.1;
 					};
 					7A193EBD302E9D340041A05B = {
 						CreatedOnToolsVersion = 27.0;
@@ -283,12 +352,18 @@
 				000000000000000100000000 /* Deflector */,
 				7A193EBD302E9D340041A05B /* Deflector Widget Extension */,
 				7A25B8A93068BE6A000AFEB9 /* Deflector Watch */,
+				7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		000000000000000140000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		7A094EC43072127100E51E28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -311,6 +386,11 @@
 			files = (
 			);
 		};
+		7A094EC23072127100E51E28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 		7A193EBA302E9D340041A05B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
@@ -324,6 +404,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A094ED23072127200E51E28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */;
+			targetProxy = 7A094ED13072127200E51E28 /* PBXContainerItemProxy */;
+		};
 		7A193ECD302E9D360041A05B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7A193EBD302E9D340041A05B /* Deflector Widget Extension */;
@@ -561,6 +646,69 @@
 			};
 			name = Release;
 		};
+		7A094ED53072127200E51E28 /* Debug configuration for PBXNativeTarget "Deflector Watch Widget Extension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchAppWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Deflector Watch Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.watchkitapp.WidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		7A094ED63072127200E51E28 /* Release configuration for PBXNativeTarget "Deflector Watch Widget Extension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchAppWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Deflector Watch Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.deflector.watchkitapp.WidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		7A193ED1302E9D360041A05B /* Debug configuration for PBXNativeTarget "Deflector Widget Extension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -717,6 +865,14 @@
 			buildConfigurations = (
 				000000000000000111000000 /* Debug configuration for PBXNativeTarget "Deflector" */,
 				000000000000000112000000 /* Release configuration for PBXNativeTarget "Deflector" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		7A094ED43072127200E51E28 /* Build configuration list for PBXNativeTarget "Deflector Watch Widget Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A094ED53072127200E51E28 /* Debug configuration for PBXNativeTarget "Deflector Watch Widget Extension" */,
+				7A094ED63072127200E51E28 /* Release configuration for PBXNativeTarget "Deflector Watch Widget Extension" */,
 			);
 			defaultConfigurationName = Release;
 		};
