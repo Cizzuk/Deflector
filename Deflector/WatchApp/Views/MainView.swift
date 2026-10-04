@@ -49,7 +49,7 @@ struct MainView: View {
                                     Label {
                                         Text(shortcut.shortcutName)
                                     } icon: {
-                                        if wc.sentDeflectionShortcuts.contains(shortcut.shortcutName) {
+                                        if wc.sentDeflectionShortcut == shortcut.shortcutName {
                                             ProgressView()
                                                 .progressViewStyle(.circular)
                                                 .frame(height: .infinity)

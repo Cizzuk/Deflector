@@ -23,7 +23,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
     
-    @Published private(set) var sentDeflectionShortcuts: [String] = []
+    @Published private(set) var sentDeflectionShortcut: String?
     
     override private init() {
         super.init()
@@ -56,7 +56,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         switch method {
         case .automationDetected:
             Task { @MainActor in
-                sentDeflectionShortcuts.removeAll()
+                sentDeflectionShortcut = nil
             }
             
         case .responseAllShortcuts(shortcuts: let shortcuts):
@@ -86,12 +86,15 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
-        sentDeflectionShortcuts.append(shortcutName)
+        if sentDeflectionShortcut == nil {
+            sentDeflectionShortcut = shortcutName
+        }
+        
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
         session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
             errorHandler?(error)
             Task { @MainActor in
-                self.sentDeflectionShortcuts.removeAll()
+                self.sentDeflectionShortcut = nil
             }
         }
     }
