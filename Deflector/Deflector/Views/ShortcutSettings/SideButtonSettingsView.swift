@@ -21,10 +21,10 @@ struct SideButtonSettingsView: View {
                                 Text("Not Set")
                                     .foregroundStyle(Color(uiColor: .placeholderText))
                             } icon: {
-                                Image(systemName: "square.2.layers.3d")
+                                Image(systemName: defaultShortcutSymbol)
                             }
                         } else {
-                            Label(userSettings.sideButtonShortcutName, systemImage: "square.2.layers.3d")
+                            Label(userSettings.sideButtonShortcutName, systemImage: defaultShortcutSymbol)
                                 .lineLimit(1)
                         }
                     }
