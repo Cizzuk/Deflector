@@ -59,6 +59,7 @@ struct OpenDeflectorWidgetEntryView : View {
             }
         }
         .widgetAccentable()
+        .widgetURL(URL(string: "net.cizzuk.deflector://widget/open") ?? nil)
     }
 }
 

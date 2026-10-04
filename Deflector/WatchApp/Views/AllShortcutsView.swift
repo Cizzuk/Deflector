@@ -9,6 +9,8 @@ import SwiftUI
 import WatchConnectivity
 
 struct AllShortcutsView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @StateObject private var wc = WatchConnectivityService.shared
     @StateObject private var vm = AllShortcutsViewModel()
     
@@ -61,6 +63,18 @@ struct AllShortcutsView: View {
         .onAppear { vm.sendAllShortcutsRequest() }
         .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
             vm.handleDeviceShortcutsNotification(notification)
+        }
+        .onOpenURL { url in
+            if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
+                switch url.host {
+                case "widget":
+                    switch url.path {
+                    case "/open": dismiss()
+                    default: break
+                    }
+                default: break
+                }
+            }
         }
     }
 }

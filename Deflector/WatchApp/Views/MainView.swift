@@ -85,5 +85,22 @@ struct MainView: View {
                 Text(vm.errorMessage ?? "")
             }
         }
+        .onOpenURL { url in
+            if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
+                switch url.host {
+                case "widget":
+                    switch url.path {
+                    case "/deflection":
+                        // deflector://widget/deflection?shortcutName=xxx
+                        if let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems,
+                           let shortcutName = queryItems.first(where: { $0.name == "shortcutName" })?.value {
+                            vm.sendDeflection(shortcutName)
+                        }
+                    default: break
+                    }
+                default: break
+                }
+            }
+        }
     }
 }
