@@ -41,7 +41,7 @@ struct OpenDeflectorWidgetEntryView : View {
                     Image(systemName: deflectorSymbol)
                         .resizable()
                         .scaledToFit()
-                        .tint(.dropblue)
+                        .foregroundStyle(.dropblue)
                         .padding(10)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .accessibilityLabel("Open Deflector")
@@ -50,7 +50,8 @@ struct OpenDeflectorWidgetEntryView : View {
                 Image(systemName: deflectorSymbol)
                     .resizable()
                     .scaledToFit()
-                    .tint(.dropblue)
+                    .padding(2)
+                    .foregroundStyle(.dropblue)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .accessibilityLabel("Open Deflector")
             default:
