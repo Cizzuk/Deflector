@@ -16,7 +16,7 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
     @Parameter(title: "Shortcut Name")
     var shortcutName: String
     
-    @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "suit.diamond")
+    @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "square.2.layers.3d.fill")
     var symbol: String?
     
     enum PerformError: LocalizedError {
@@ -43,7 +43,7 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
         
         let newShortcut = WCAppContext.FavoriteShortcut(
             shortcutName: shortcutName,
-            symbol: symbol ?? "suit.diamond"
+            symbol: symbol ?? defaultShortcutSymbol
         )
         
         if let index = context.favoriteShortcuts.firstIndex(where: { $0.shortcutName == shortcutName }) {

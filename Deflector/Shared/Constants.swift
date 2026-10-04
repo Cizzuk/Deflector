@@ -6,3 +6,5 @@
 //
 
 let appGroupID = "group.net.cizzuk.deflector"
+
+nonisolated let defaultShortcutSymbol = "square.2.layers.3d.fill"

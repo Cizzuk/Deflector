@@ -13,7 +13,7 @@ struct WCAppContext: Codable, Equatable {
     
     struct FavoriteShortcut: Codable, Equatable, Identifiable {
         var shortcutName: String
-        var symbol: String = "suit.diamond"
+        var symbol: String = defaultShortcutSymbol
         
         var id: String { return shortcutName }
     }

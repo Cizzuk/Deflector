@@ -88,6 +88,13 @@
 			);
 			target = 7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */;
 		};
+		7A094EE1307241AF00E51E28 /* Exceptions for "Shared" folder in "Deflector Watch Widget Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Constants.swift,
+			);
+			target = 7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */;
+		};
 		7A193ECF302E9D360041A05B /* Exceptions for "WidgetExtension" folder in "Deflector Widget Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -113,6 +120,7 @@
 		7AAF8ED13068EA71003B340B /* Exceptions for "Shared" folder in "Deflector Watch" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Constants.swift,
 				Models/WatchConnectivity/WCAppContext.swift,
 				Models/WatchConnectivity/WCMessage.swift,
 			);
@@ -155,6 +163,7 @@
 			exceptions = (
 				7AAF8ECF3068EA6E003B340B /* Exceptions for "Shared" folder in "Deflector Widget Extension" target */,
 				7AAF8ED13068EA71003B340B /* Exceptions for "Shared" folder in "Deflector Watch" target */,
+				7A094EE1307241AF00E51E28 /* Exceptions for "Shared" folder in "Deflector Watch Widget Extension" target */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

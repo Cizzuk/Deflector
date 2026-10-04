@@ -13,7 +13,7 @@ import WidgetKit
 nonisolated struct DeflectorActivityButton: Codable, Equatable, Hashable, Identifiable {
     var id: UUID = UUID()
     var shortcutName: String
-    var symbol: String = "suit.diamond"
+    var symbol: String = defaultShortcutSymbol
     var color: UInt32 = 0xFFFFFFFF
 }
 

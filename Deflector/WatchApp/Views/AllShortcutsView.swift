@@ -36,7 +36,7 @@ struct AllShortcutsView: View {
                                         .progressViewStyle(.circular)
                                         .frame(height: .infinity)
                                 } else {
-                                    Image(systemName: "square.2.layers.3d.fill")
+                                    Image(systemName: defaultShortcutSymbol)
                                 }
                             }
                             .lineLimit(2)

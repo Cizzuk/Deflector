@@ -16,7 +16,7 @@ struct AddLiveActivityShortcutIntent: AppIntent {
     @Parameter(title: "Shortcut Name")
     var shortcutName: String
     
-    @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "suit.diamond")
+    @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "square.2.layers.3d.fill")
     var symbol: String?
     
     @Parameter(title: "Color", description: "Hexadecimal Color Code (RGBA)", default: "FFFFFFFF")
@@ -29,7 +29,7 @@ struct AddLiveActivityShortcutIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         let newButton = DeflectorActivityButton(
             shortcutName: shortcutName,
-            symbol: symbol ?? "suit.diamond",
+            symbol: symbol ?? defaultShortcutSymbol,
             color: ColorHelper.colorCodeToUInt32(color ?? "FFFFFFFF") ?? 0xFFFFFFFF
         )
         
