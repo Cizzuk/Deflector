@@ -20,8 +20,9 @@ extension WCAppContext {
         return context
     }
 
-    func saveLastContext() throws {
-        let data = try JSONEncoder().encode(self)
-        Self.groupUserDefaults?.set(data, forKey: Self.key)
+    func saveLastContext() {
+        if let data = try? JSONEncoder().encode(self) {
+            Self.groupUserDefaults?.set(data, forKey: Self.key)
+        }
     }
 }

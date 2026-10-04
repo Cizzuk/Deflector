@@ -7,6 +7,7 @@
 
 import Combine
 import WatchConnectivity
+import WidgetKit
 
 extension Notification.Name {
     static let deviceShortcutsReceived = Notification.Name("deviceShortcutsReceived")
@@ -23,7 +24,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     private var deflectionAfterReachable: (() -> Void)?
     
-    @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext()
+    @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext.loadLastContext()
     @Published private(set) var sentDeflectionShortcut: String?
     
     override private init() {
@@ -53,8 +54,14 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     ) {
         Task { @MainActor in
             let newContext = receivedApplicationContext ?? session.receivedApplicationContext
-            let wcAppContext = (try? WCAppContext(newContext)) ?? WCAppContext()
+            guard let wcAppContext = try? WCAppContext(newContext) else { return }
+            
             self.receivedApplicationContext = wcAppContext
+            
+            wcAppContext.saveLastContext()
+            WidgetCenter.shared.reloadTimelines(
+                ofKind: "net.cizzuk.deflector.watchkitapp.WidgetExtension.DeflectionWidget"
+            )
         }
     }
     

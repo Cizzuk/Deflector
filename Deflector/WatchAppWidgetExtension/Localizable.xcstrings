@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Deflection Widget Configuration" : {
+      "shouldTranslate" : false
+    },
     "Open Deflector" : {
       "localizations" : {
         "ja" : {
@@ -37,6 +40,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットを実行"
+          }
+        }
+      }
+    },
+    "Shortcut Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカット名"
           }
         }
       }

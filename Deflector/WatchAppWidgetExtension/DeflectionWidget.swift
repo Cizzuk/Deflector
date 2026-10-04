@@ -5,27 +5,51 @@
 //  Created by Cizzuk on 2026/10/04.
 //
 
-import WidgetKit
+import AppIntents
 import SwiftUI
-
-struct DeflectionProvider: TimelineProvider {
-    func placeholder(in context: Context) -> DeflectionEntry {
-        DeflectionEntry(shortcutName: "Shortcut")
-    }
-    
-    func getSnapshot(in context: Context, completion: @escaping (DeflectionEntry) -> Void) {
-        completion(DeflectionEntry(shortcutName: "Shortcut"))
-    }
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<DeflectionEntry>) -> Void) {
-        completion(Timeline(entries: [DeflectionEntry(shortcutName: "Shortcut")], policy: .never))
-    }
-}
+import WidgetKit
 
 struct DeflectionEntry: TimelineEntry {
     let date: Date = .now
     let shortcutName: String
-    let symbol: String = defaultShortcutSymbol
+    let symbol: String
+}
+
+struct DeflectionProvider: AppIntentTimelineProvider {
+    func placeholder(in context: Context) -> DeflectionEntry {
+        .init(shortcutName: "Shortcut", symbol: defaultShortcutSymbol)
+    }
+    
+    func snapshot(
+        for configuration: DeflectionWidgetConfigurationAppIntent,
+        in context: Context
+    ) async -> DeflectionEntry {
+        .init(
+            shortcutName: configuration.shortcutName,
+            symbol: getSymbol(for: configuration.shortcutName) ?? defaultShortcutSymbol
+        )
+    }
+    
+    func timeline(
+        for configuration: DeflectionWidgetConfigurationAppIntent,
+        in context: Context
+    ) async -> Timeline<DeflectionEntry> {
+        let entry = DeflectionEntry(
+            shortcutName: configuration.shortcutName,
+            symbol: getSymbol(for: configuration.shortcutName) ?? defaultShortcutSymbol
+        )
+        
+        return Timeline(entries: [entry], policy: .never)
+    }
+    
+    func recommendations() -> [AppIntentRecommendation<DeflectionWidgetConfigurationAppIntent>] {
+        []
+    }
+    
+    private func getSymbol(for shortcutName: String) -> String? {
+        let context = WCAppContext.loadLastContext()
+        return context.favoriteShortcuts.first(where: { $0.shortcutName == shortcutName })?.symbol
+    }
 }
 
 struct DeflectionWidgetEntryView : View {
@@ -85,7 +109,11 @@ struct DeflectionWidget: Widget {
     let kind: String = "net.cizzuk.deflector.watchkitapp.WidgetExtension.DeflectionWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: DeflectionProvider()) { entry in
+        AppIntentConfiguration(
+            kind: kind,
+            intent: DeflectionWidgetConfigurationAppIntent.self,
+            provider: DeflectionProvider()
+        ) { entry in
             DeflectionWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
@@ -97,5 +125,22 @@ struct DeflectionWidget: Widget {
             .accessoryInline,
             .accessoryRectangular
         ])
+    }
+}
+
+struct DeflectionWidgetConfigurationAppIntent: WidgetConfigurationIntent {
+    static let title: LocalizedStringResource = "Deflection Widget Configuration"
+    
+    @Parameter(
+        title: "Shortcut Name",
+        default: "Shortcut",
+        optionsProvider: FavoriteShortcutOptionsProvider()
+    )
+    var shortcutName: String
+}
+
+struct FavoriteShortcutOptionsProvider: DynamicOptionsProvider {
+    func results() async throws -> [String] {
+        WCAppContext.loadLastContext().favoriteShortcuts.map(\.shortcutName)
     }
 }
