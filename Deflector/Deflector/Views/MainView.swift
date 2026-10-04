@@ -121,8 +121,11 @@ struct MainView: View {
         .onOpenURL { url in
             if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
                 switch url.host {
-                case "activity_action":
-                    path = .liveActivitySettings
+                case "widget":
+                    switch url.path {
+                    case "/activity": path = .liveActivitySettings
+                    default: break
+                    }
                 case "open":
                     switch url.path {
                     case "/firstsetup": path = .firstSetup

@@ -143,7 +143,7 @@ struct DeflectorActivityWidget: Widget {
     }
     
     var body: some WidgetConfiguration {
-        let widgetURL = URL(string: "net.cizzuk.deflector://activity_action") ?? nil
+        let widgetURL = URL(string: "net.cizzuk.deflector://widget/activity") ?? nil
         
         return ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
             ActivityView(context: context, dynamicIsland: nil)
