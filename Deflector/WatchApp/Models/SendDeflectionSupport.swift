@@ -1,6 +1,6 @@
 //
 //  SendDeflectionSupport.swift
-//  Deflector
+//  Deflector Watch
 //
 //  Created by Cizzuk on 2026/09/27.
 //

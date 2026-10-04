@@ -1,6 +1,6 @@
 //
 //  ToggleActivityControl.swift
-//  Side Search
+//  Deflector Widget Extension
 //
 //  Created by Cizzuk on 2026/02/05.
 //
