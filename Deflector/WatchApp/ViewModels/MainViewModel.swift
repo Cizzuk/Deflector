@@ -31,7 +31,7 @@ class MainViewModel: ObservableObject {
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { [weak self] error in
-            guard let self else { return }
+            guard let self, DeflectorWatch.applicationState != .background else { return }
             WKInterfaceDevice.current().play(.failure)
             Task { @MainActor in
                 self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)

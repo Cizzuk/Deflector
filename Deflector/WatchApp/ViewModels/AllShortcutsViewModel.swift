@@ -20,7 +20,7 @@ class AllShortcutsViewModel: ObservableObject {
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { [weak self] error in
-            guard let self else { return }
+            guard let self, DeflectorWatch.applicationState != .background else { return }
             WKInterfaceDevice.current().play(.failure)
             Task { @MainActor in
                 self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
@@ -31,7 +31,7 @@ class AllShortcutsViewModel: ObservableObject {
     func sendAllShortcutsRequest() {
         WKInterfaceDevice.current().play(.start)
         wc.sendAllShortcutsRequest() { [weak self] error in
-            guard let self else { return }
+            guard let self, DeflectorWatch.applicationState != .background else { return }
             WKInterfaceDevice.current().play(.failure)
             Task { @MainActor in
                 self.errorMessage = "Failed to request the list of all shortcuts."

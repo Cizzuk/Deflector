@@ -9,9 +9,20 @@ import SwiftUI
 import WatchConnectivity
 
 @main struct DeflectorWatch: App {
+    @Environment(\.scenePhase) private var scenePhase
+    static var applicationState: ScenePhase = .active
+    
+    init() {
+        // Initialize Watch Connectivity Service
+        _ = WatchConnectivityService.shared
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()
+        }
+        .onChange(of: scenePhase) {
+            DeflectorWatch.applicationState = scenePhase
         }
     }
 }
