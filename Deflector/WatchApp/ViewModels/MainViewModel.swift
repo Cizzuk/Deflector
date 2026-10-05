@@ -14,20 +14,6 @@ class MainViewModel: ObservableObject {
     
     @Published var errorMessage: LocalizedStringResource? = nil
     
-    func onChange(scenePhase: ScenePhase) {
-        switch scenePhase {
-        case .active:
-            wc.activateSessionIfDeactivated()
-            wc.sendResendApplicationContextRequestIfNeeded()
-        case .inactive:
-            break
-        case .background:
-            break
-        @unknown default:
-            break
-        }
-    }
-    
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { [weak self] error in

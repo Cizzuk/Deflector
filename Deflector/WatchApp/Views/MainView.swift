@@ -23,12 +23,12 @@ import WatchConnectivity
         }
         .onChange(of: scenePhase) {
             DeflectorWatch.applicationState = scenePhase
+            WatchConnectivityService.shared.onChange(scenePhase: scenePhase)
         }
     }
 }
 
 struct MainView: View {
-    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var wc = WatchConnectivityService.shared
     @StateObject private var vm = MainViewModel()
     
@@ -85,7 +85,6 @@ struct MainView: View {
                 }
             }
             .navigationTitle("Deflector")
-            .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
             .alert("Error", isPresented: Binding(
                 get: { vm.errorMessage != nil },
                 set: { if !$0 { Task { @MainActor in vm.errorMessage = nil } } }

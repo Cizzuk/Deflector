@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SwiftUI
 import WatchConnectivity
 import WidgetKit
 
@@ -40,6 +41,11 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             // If receivedApplicationContext couldn't be received, request it again after 1s.
             self?.sendResendApplicationContextRequestIfNeeded()
         }
+    }
+    
+    private func activateSessionIfDeactivated() {
+        guard activationState != .activated else { return }
+        session.activate()
     }
     
     private func updateSessionState() {
@@ -91,9 +97,18 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     
     // MARK: - Public Methods
     
-    func activateSessionIfDeactivated() {
-        guard activationState != .activated else { return }
-        session.activate()
+    func onChange(scenePhase: ScenePhase) {
+        switch scenePhase {
+        case .active:
+            activateSessionIfDeactivated()
+            sendResendApplicationContextRequestIfNeeded()
+        case .inactive:
+            break
+        case .background:
+            sentDeflectionShortcut = nil
+        @unknown default:
+            break
+        }
     }
     
     func sendResendApplicationContextRequestIfNeeded() {
