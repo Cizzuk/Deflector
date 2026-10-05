@@ -20,9 +20,10 @@ class AllShortcutsViewModel: ObservableObject {
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { [weak self] error in
+            guard let self else { return }
             WKInterfaceDevice.current().play(.failure)
             Task { @MainActor in
-                self?.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
+                self.errorMessage = SendDeflectionSupport.makeErrorMessage(error: error)
             }
         }
     }
