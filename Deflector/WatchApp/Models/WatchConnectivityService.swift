@@ -101,6 +101,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
               session.isReachable,
               receivedApplicationContext.favoriteShortcuts.isEmpty
                 else { return }
+        
         let message = WCMessage(method: .requestApplicationContext)
         session.sendMessage(message.toDictionary(), replyHandler: nil)
     }
@@ -123,7 +124,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             }
         }
         
-        if session.isReachable {
+        if activationState == .activated && session.isReachable {
             task()
         } else {
             deflectionAfterReachable = task
@@ -173,7 +174,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         updateSessionState()
         sendResendApplicationContextRequestIfNeeded()
         
-        if session.isReachable {
+        if activationState == .activated && session.isReachable {
             deflectionReachabilityTimeout?.invalidate()
             deflectionReachabilityTimeout = nil
             deflectionAfterReachable?()
