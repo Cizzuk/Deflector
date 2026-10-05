@@ -1,6 +1,6 @@
 # Deflector
 
-With Deflector, you can add buttons to the Dynamic Island and Lock Screen to run any shortcut. You can long-press the Dynamic Island to quickly run shortcuts.
+With Deflector, you can add buttons to the Dynamic Island, Lock Screen and Apple Watch to run any shortcut. 
 
 On supported iPhones in Japan, you can use your preferred voice assistant using shortcuts with the Side Button.
 
