@@ -45,8 +45,14 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private func updateSessionState() {
         Task { @MainActor in
             activationState = session.activationState
-            iOSDeviceNeedsUnlockAfterRebootForReachability = session.iOSDeviceNeedsUnlockAfterRebootForReachability
-            isReachable = session.isReachable
+            
+            if activationState == .activated {
+                iOSDeviceNeedsUnlockAfterRebootForReachability = session.iOSDeviceNeedsUnlockAfterRebootForReachability
+                isReachable = session.isReachable
+            } else {
+                iOSDeviceNeedsUnlockAfterRebootForReachability = false
+                isReachable = false
+            }
         }
     }
     
