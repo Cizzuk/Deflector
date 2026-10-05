@@ -96,7 +96,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             
         case .deflection(let shortcutName):
             waitingAutomationDetectedNotification = true
-            Task { await DeflectionService.shared.runShortcut(shortcutName: shortcutName) }
+            Task {
+                await DeflectionService.shared.runShortcut(shortcutName: shortcutName, ignoreCooldown: true)
+            }
             
         case .requestAllShortcuts:
             guard applicationContext.allowShowAllShortcuts else {
