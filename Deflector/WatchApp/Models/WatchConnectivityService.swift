@@ -117,6 +117,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         
         let task = {
             self.session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
+                // The WCErrorCodeNotReachable error that occurs here is unreliable
+                // and is only sent when isReachable is true, so ignore it.
+                guard let wcError = error as? WCError, wcError.code != .notReachable else { return }
                 errorHandler?(error)
                 Task { @MainActor in
                     self.sentDeflectionShortcut = nil
