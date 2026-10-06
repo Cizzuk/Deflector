@@ -10,10 +10,6 @@ import SwiftUI
 import WatchConnectivity
 import WidgetKit
 
-extension Notification.Name {
-    static let deviceShortcutsReceived = Notification.Name("deviceShortcutsReceived")
-}
-
 final class WatchConnectivityService: NSObject, ObservableObject {
     static let shared = WatchConnectivityService()
     
@@ -114,14 +110,17 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
         
         let task = { [weak self] in
-            Task { @MainActor in
-                self?.sendingDeflectionShortcut = nil
-            }
             self?.session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
                 // The WCErrorCodeNotReachable error that occurs here is unreliable
                 // and is only sent when isReachable is true, so ignore it.
                 guard let wcError = error as? WCError, wcError.code != .notReachable else { return }
                 errorHandler?(error)
+            }
+            // Visual cooldown
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    self?.sendingDeflectionShortcut = nil
+                }
             }
         }
         
