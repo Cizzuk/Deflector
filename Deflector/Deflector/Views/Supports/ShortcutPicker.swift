@@ -73,6 +73,11 @@ struct ShortcutPicker: View {
                     TextField("Shortcut Name", text: $shortcutName)
                         .focused($isFocused)
                         .submitLabel(.done)
+                        .onChange(of: shortcutName) {
+                            if shortcutName.count > 1000 {
+                                shortcutName = String(shortcutName.prefix(1000))
+                            }
+                        }
                 } header: {
                     Text("Shortcut Name")
                 } footer: {
