@@ -84,7 +84,7 @@ struct WatchSettingsView: View {
                             context.favoriteShortcuts.remove(atOffsets: indexSet)
                         }
                         
-                        if context.favoriteShortcuts.count < 10 {
+                        if context.favoriteShortcuts.count < 50 {
                             Button(action: { isShowingShortcutPicker = true }) {
                                 Label("Add Shortcut", systemImage: "plus")
                             }
