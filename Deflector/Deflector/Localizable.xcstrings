@@ -185,16 +185,6 @@
         }
       }
     },
-    "Adds a favorite shortcut. Adding more than 10 shortcuts will fail." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "お気に入りのショートカットを追加します。10個より多くのショートカットを追加しようとすると失敗します。"
-          }
-        }
-      }
-    },
     "Adds a shortcut to Live Activity. Adding 5 or more may cause display issues." : {
       "localizations" : {
         "ja" : {

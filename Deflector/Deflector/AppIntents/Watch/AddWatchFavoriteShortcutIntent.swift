@@ -9,7 +9,6 @@ import AppIntents
 
 struct AddWatchFavoriteShortcutIntent: AppIntent {
     static let title: LocalizedStringResource = "Add Favorite Shortcut to Apple Watch"
-    static let description: LocalizedStringResource = "Adds a favorite shortcut. Adding more than 10 shortcuts will fail."
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
     
@@ -21,14 +20,11 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
     
     enum PerformError: LocalizedError {
         case shortcutNameIsEmpty
-        case limitReached
         
         var errorDescription: String? {
             switch self {
             case .shortcutNameIsEmpty:
                 return "Shortcut name cannot be empty."
-            case .limitReached:
-                return "You have reached the limit of 10 favorite shortcuts on Apple Watch."
             }
         }
     }
@@ -51,9 +47,6 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
             context.favoriteShortcuts[index] = newShortcut
         } else {
             // If the shortcut does not exist, append
-            guard context.favoriteShortcuts.count < 10 else {
-                throw PerformError.limitReached
-            }
             context.favoriteShortcuts.append(newShortcut)
         }
         
