@@ -83,8 +83,14 @@ struct SymbolPicker: View {
                         .accessibilityHidden(true)
                         Spacer()
                     }
+                    
                     TextField("Symbol Name", text: $symbol)
                         .submitLabel(.done)
+                        .onChange(of: symbol) {
+                            if symbol.count > 200 {
+                                symbol = String(symbol.prefix(200))
+                            }
+                        }
                 } footer: {
                     Text("You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/).")
                         .padding(.bottom, 10)
