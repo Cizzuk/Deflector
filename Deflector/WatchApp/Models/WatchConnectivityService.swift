@@ -127,7 +127,6 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         
         if activationState == .activated && session.isReachable {
             task()
-            sendingDeflectionShortcut = nil // Send immediately
         } else {
             deflectionAfterReachable = task
             
