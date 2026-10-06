@@ -30,6 +30,11 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         updateSessionState()
     }
     
+    func activateSessionIfDeactivated() {
+        guard activationState != .activated else { return }
+        session.activate()
+    }
+    
     private func updateSessionState() {
         Task { @MainActor in
             activationState = session.activationState

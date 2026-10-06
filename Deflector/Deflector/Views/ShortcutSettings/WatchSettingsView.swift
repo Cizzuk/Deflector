@@ -123,6 +123,7 @@ struct WatchSettingsView: View {
                 }
             }
         }
+        .onAppear { wc.activateSessionIfDeactivated() }
         .onChange(of: context) {
             try? wc.updateApplicationContext(context)
         }
