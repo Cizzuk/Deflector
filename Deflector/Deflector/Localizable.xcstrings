@@ -1463,16 +1463,6 @@
         }
       }
     },
-    "Show All Shortcuts" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "すべてのショートカットを表示"
-          }
-        }
-      }
-    },
     "Show Shortcut Names" : {
       "localizations" : {
         "ja" : {

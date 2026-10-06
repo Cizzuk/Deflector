@@ -9,7 +9,6 @@ import Foundation
 
 struct WCAppContext: Codable, Equatable {
     var favoriteShortcuts: [FavoriteShortcut]
-    var allowShowAllShortcuts: Bool
     
     struct FavoriteShortcut: Codable, Equatable, Identifiable {
         var shortcutName: String
@@ -19,11 +18,9 @@ struct WCAppContext: Codable, Equatable {
     }
     
     init(
-        favoriteShortcuts: [FavoriteShortcut] = [],
-        allowShowAllShortcuts: Bool = true
+        favoriteShortcuts: [FavoriteShortcut] = []
     ) {
         self.favoriteShortcuts = favoriteShortcuts
-        self.allowShowAllShortcuts = allowShowAllShortcuts
     }
     
     init(_ dictionary: [String: Any]) throws {

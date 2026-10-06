@@ -73,15 +73,6 @@ struct MainView: View {
                             }
                         }
                     }
-                    
-                    if wc.receivedApplicationContext.allowShowAllShortcuts {
-                        Section {
-                            NavigationLink(destination: AllShortcutsView()) {
-                                Text("All Shortcuts")
-                            }
-                            .disabled(!wc.isReachable)
-                        }
-                    }
                 }
             }
             .navigationTitle("Deflector")

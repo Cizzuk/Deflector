@@ -59,34 +59,6 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         try? session.updateApplicationContext(context)
     }
     
-    // MARK: - Device Shortcuts Notification Observer
-    
-    private var waitingAutomationDetectedNotification = false
-    private var waitingDeviceShortcutsNotification = false
-    
-    func postNotification(_ notification: Notification) {
-        guard activationState == .activated else { return }
-        
-        switch notification.name {
-        case .deflectorAutomationDetected:
-            guard waitingAutomationDetectedNotification else { return }
-            waitingAutomationDetectedNotification = false
-            
-            let message = WCMessage(method: .automationDetected)
-            session.sendMessage(message.toDictionary(), replyHandler: nil)
-            
-        case .deviceShortcutsReceived:
-            guard waitingDeviceShortcutsNotification else { return }
-            waitingDeviceShortcutsNotification = false
-            
-            guard let shortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) else { return }
-            let message = WCMessage(method: .responseAllShortcuts(shortcuts: shortcuts))
-            session.sendMessage(message.toDictionary(), replyHandler: nil)
-
-        default: break
-        }
-    }
-    
     // MARK: - Message Handling
     
     private func handleReceivedMethod(_ method: WCMessage.Method) {
@@ -95,23 +67,9 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             resendApplicationContext()
             
         case .deflection(let shortcutName):
-            waitingAutomationDetectedNotification = true
             Task {
                 await DeflectionService.shared.runShortcut(shortcutName: shortcutName, ignoreCooldown: true)
             }
-            
-        case .requestAllShortcuts:
-            guard applicationContext.allowShowAllShortcuts else {
-                let message = WCMessage(method: .responseAllShortcuts(shortcuts: []))
-                session.sendMessage(message.toDictionary(), replyHandler: nil)
-                return
-            }
-            
-            waitingDeviceShortcutsNotification = true
-            Task { await DeviceShortcutsSupport.callDeviceShortcuts() }
-            
-        default:
-            break
         }
     }
 }

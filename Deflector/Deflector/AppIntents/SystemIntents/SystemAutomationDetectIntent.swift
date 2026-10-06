@@ -27,9 +27,7 @@ struct SystemAutomationDetectIntent: AppIntent {
     @MainActor
     func perform() async throws -> some IntentResult {
         let notification = Notification(name: .deflectorAutomationDetected, object: nil, userInfo: ["version": version])
-        
         NotificationCenter.default.post(notification)
-        WatchConnectivityService.shared.postNotification(notification)
         
         Task.detached {
             UNUserNotificationCenter.current().removeAllDeliveredNotifications()

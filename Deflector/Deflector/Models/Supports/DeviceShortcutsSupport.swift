@@ -14,9 +14,7 @@ extension Notification.Name {
 class DeviceShortcutsSupport {
     static func handleDeviceShortcuts(_ shortcuts: [String]) {
         let notification = Notification(name: .deviceShortcutsReceived, object: nil, userInfo: ["shortcuts": shortcuts])
-        
         NotificationCenter.default.post(notification)
-        WatchConnectivityService.shared.postNotification(notification)
     }
     
     static func parseDeviceShortcutsNotification(_ notification: Notification) -> [String]? {
