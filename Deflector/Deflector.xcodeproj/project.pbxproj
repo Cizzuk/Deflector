@@ -93,7 +93,6 @@
 				Constants.swift,
 				Models/WatchConnectivity/WCAppContext.swift,
 				"Models/WatchConnectivity/WCAppContext+Store.swift",
-				Models/WatchConnectivity/WCMessage.swift,
 			);
 			target = 7A094EC53072127100E51E28 /* Deflector Watch Widget Extension */;
 		};

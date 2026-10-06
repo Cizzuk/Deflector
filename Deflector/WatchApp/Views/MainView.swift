@@ -60,7 +60,7 @@ struct MainView: View {
                                     Label {
                                         Text(shortcut.shortcutName)
                                     } icon: {
-                                        if wc.sentDeflectionShortcut == shortcut.shortcutName {
+                                        if wc.sendingDeflectionShortcut == shortcut.shortcutName {
                                             ProgressView()
                                                 .progressViewStyle(.circular)
                                         } else {

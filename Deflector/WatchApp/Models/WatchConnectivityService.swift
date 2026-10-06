@@ -27,7 +27,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     private var deflectionReachabilityTimeout: Timer?
     
     @Published private(set) var receivedApplicationContext: WCAppContext = WCAppContext.loadLastContext()
-    @Published private(set) var sentDeflectionShortcut: String?
+    @Published private(set) var sendingDeflectionShortcut: String?
     
     override private init() {
         super.init()
@@ -88,7 +88,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         case .inactive:
             break
         case .background:
-            sentDeflectionShortcut = nil
+            sendingDeflectionShortcut = nil
         @unknown default:
             break
         }
@@ -105,28 +105,29 @@ final class WatchConnectivityService: NSObject, ObservableObject {
     }
     
     func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
-        if sentDeflectionShortcut == nil || deflectionAfterReachable != nil {
+        if sendingDeflectionShortcut == nil || deflectionAfterReachable != nil {
             Task { @MainActor in
-                sentDeflectionShortcut = shortcutName
+                sendingDeflectionShortcut = shortcutName
             }
         }
         
         let message = WCMessage(method: .deflection(shortcutName: shortcutName))
         
-        let task = {
-            self.session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
+        let task = { [weak self] in
+            Task { @MainActor in
+                self?.sendingDeflectionShortcut = nil
+            }
+            self?.session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
                 // The WCErrorCodeNotReachable error that occurs here is unreliable
                 // and is only sent when isReachable is true, so ignore it.
                 guard let wcError = error as? WCError, wcError.code != .notReachable else { return }
                 errorHandler?(error)
-                Task { @MainActor in
-                    self.sentDeflectionShortcut = nil
-                }
             }
         }
         
         if activationState == .activated && session.isReachable {
             task()
+            sendingDeflectionShortcut = nil // Send immediately
         } else {
             deflectionAfterReachable = task
             
@@ -138,7 +139,7 @@ final class WatchConnectivityService: NSObject, ObservableObject {
                 self.deflectionReachabilityTimeout?.invalidate()
                 self.deflectionReachabilityTimeout = nil
                 Task { @MainActor in
-                    self.sentDeflectionShortcut = nil
+                    self.sendingDeflectionShortcut = nil
                 }
                 errorHandler?(NSError(
                     domain: WCErrorDomain,
