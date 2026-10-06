@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2700"
+   LastUpgradeVersion = "2710"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -18,6 +18,19 @@
                BlueprintIdentifier = "000000000000000100000000"
                BuildableName = "Deflector.app"
                BlueprintName = "Deflector"
+               ReferencedContainer = "container:Deflector.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A25B8A93068BE6A000AFEB9"
+               BuildableName = "Deflector Watch.app"
                ReferencedContainer = "container:Deflector.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

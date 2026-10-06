@@ -11,12 +11,18 @@ struct SymbolPicker: View {
     @Environment(\.dismiss) var dismiss
     
     @State var symbol: String
+    var showCustomSymbols: Bool
     var callback: (String) -> Void
     
     @State private var searchQuery: String = ""
     
-    init(_ symbol: String, callback: @escaping (String) -> Void) {
+    init(
+        _ symbol: String,
+        showCustomSymbols: Bool = true,
+        callback: @escaping (String) -> Void
+    ) {
         self.symbol = symbol
+        self.showCustomSymbols = showCustomSymbols
         self.callback = callback
     }
     
@@ -61,8 +67,8 @@ struct SymbolPicker: View {
                     HStack {
                         Spacer()
                         Group {
-                            let symbolImage = SymbolHelper.getSymbolImage(symbol)
-                            if symbolImage.type.isPicture {
+                            let symbolImage = SymbolHelper.getSymbolImage(symbol, allowCustom: showCustomSymbols)
+                            if symbolImage.type == .custom {
                                 symbolImage.image?
                                     .resizable()
                                     .scaledToFit()
@@ -77,17 +83,25 @@ struct SymbolPicker: View {
                         .accessibilityHidden(true)
                         Spacer()
                     }
+                    
                     TextField("Symbol Name", text: $symbol)
                         .submitLabel(.done)
+                        .onChange(of: symbol) {
+                            if symbol.count > 200 {
+                                symbol = String(symbol.prefix(200))
+                            }
+                        }
                 } footer: {
                     Text("You can use the symbols included in [SF Symbols](https://developer.apple.com/sf-symbols/).")
                         .padding(.bottom, 10)
                 }
                 
-                NavigationLink(destination: CustomSymbols(symbol: $symbol)) {
-                    Label("Custom Symbols", systemImage: "photo.badge.plus")
+                if showCustomSymbols {
+                    NavigationLink(destination: CustomSymbols(symbol: $symbol)) {
+                        Label("Custom Symbols", systemImage: "photo.badge.plus")
+                    }
+                    .foregroundStyle(.accent)
                 }
-                .foregroundStyle(.accent)
                 
                 SymbolButtonsGrid("Maps", [
                     "car.fill", "bus.fill", "tram.fill", "bicycle", "map.fill", "figure.walk", "location.fill", "mappin.and.ellipse", "arrow.up.and.down.and.arrow.left.and.right", "point.topleft.down.to.point.bottomright.curvepath"
@@ -225,6 +239,7 @@ struct SymbolPicker: View {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)
+                    .keyboardShortcut(.defaultAction)
                 }
             }
         }

@@ -54,8 +54,7 @@ struct ShortcutPicker: View {
     
     private func handleDeviceShortcutsNotification(_ notification: Notification) {
         if isWaitingAutomationCallback,
-           let userInfo = notification.userInfo,
-           let receivedShortcuts = userInfo["shortcuts"] as? [String] {
+           let receivedShortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification) {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             deviceShortcuts = receivedShortcuts
             isWaitingAutomationCallback = false
@@ -74,6 +73,11 @@ struct ShortcutPicker: View {
                     TextField("Shortcut Name", text: $shortcutName)
                         .focused($isFocused)
                         .submitLabel(.done)
+                        .onChange(of: shortcutName) {
+                            if shortcutName.count > 1000 {
+                                shortcutName = String(shortcutName.prefix(1000))
+                            }
+                        }
                 } header: {
                     Text("Shortcut Name")
                 } footer: {
@@ -98,6 +102,7 @@ struct ShortcutPicker: View {
                     }
                     .foregroundStyle(.accent)
                     .disabled(disableCallButton)
+                    .keyboardShortcut("r", modifiers: [.command])
                 } footer: {
                     if isWaitingAutomationCallback {
                         Text("Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly.")
@@ -117,10 +122,15 @@ struct ShortcutPicker: View {
                         ForEach(filteredShortcuts, id: \.self) { shortcut in
                             let isSelected = shortcutName == shortcut
                             Button(action: { shortcutName = shortcut }) {
-                                HStack(spacing: 15) {
-                                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                                        .foregroundStyle(isSelected ? .accent : .secondary)
-                                        .accessibilityHidden(true)
+                                HStack(spacing: 10) {
+                                    if isSelected {
+                                        Image(systemName: "checkmark")
+                                            .frame(width: 20)
+                                            .foregroundStyle(.accent)
+                                            .accessibilityHidden(true)
+                                    } else {
+                                        Spacer().frame(width: 20)
+                                    }
                                     Text(shortcut)
                                         .lineLimit(1)
                                         .foregroundStyle(isSelected ? .accent : .primary)
@@ -145,6 +155,7 @@ struct ShortcutPicker: View {
                         Label("Done", systemImage: "checkmark")
                     }
                     .buttonStyle(.glassProminent)
+                    .keyboardShortcut(.defaultAction)
                 }
             }
             .alert("Error", isPresented: Binding(
