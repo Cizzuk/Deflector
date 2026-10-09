@@ -12,7 +12,7 @@ struct CustomSymbols: View {
     @Binding var symbol: String
     
     @State private var customSymbols: [CustomSymbol] = []
-    @State private var selectedPhoto: PhotosPickerItem? = nil
+    @State private var selectedPhoto: PhotosPickerItem?
     
     struct CustomSymbol: Identifiable {
         var id: String

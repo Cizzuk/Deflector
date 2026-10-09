@@ -517,16 +517,6 @@
         }
       }
     },
-    "Done" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        }
-      }
-    },
     "Dynamic Island Icons" : {
       "localizations" : {
         "ja" : {
