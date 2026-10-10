@@ -14,7 +14,7 @@ class DeflectionService {
     var lastDeflectionTime: Date?
     
     func runShortcut(shortcutName: String, ignoreCooldown: Bool = false) async {
-        // Sent within 0.5 seconds will be ignored
+        // Sent within 0.25s will be ignored
         if !ignoreCooldown, let lastDeflectionTime {
             let distance = lastDeflectionTime.distance(to: Date())
             if distance < 0.25 { return }
