@@ -87,7 +87,18 @@ class DeflectorActivitySupport {
     // If activity is active, restart it to extend the time
     static func refresh() async throws {
         if isActive() {
-            try await start()
+            do {
+                try await start()
+            } catch {
+                if let error = error as? ActivityAuthorizationError,
+                   error == .visibility {
+                    // Retry with SystemCall after 3s
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    await SystemCallSupport.addSystemCall(.startDeflectorActivity)
+                } else {
+                    throw error
+                }
+            }
         }
     }
 }
