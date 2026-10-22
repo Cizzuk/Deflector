@@ -8,15 +8,10 @@
 import Combine
 import Foundation
 
-extension Notification.Name {
-    static let userSettingsLoadFailed = Notification.Name("userSettingsLoadFailed")
-}
-
 final class UserSettings: ObservableObject {
     static let shared = UserSettings()
     
     private enum Keys {
-        static let hasLaunchedBefore = "hasLaunchedBefore"
         static let isFirstSetupCompleted = "isFirstSetupCompleted"
         
         static let sideButtonShortcutName = "sideButtonShortcutName"
@@ -28,36 +23,6 @@ final class UserSettings: ObservableObject {
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
         static let liveActivityIslandIcons = "liveActivityIslandIcons"
-    }
-    
-    private init() {
-        // Validate UserDefaults data
-        Task {
-            let hasLaunchedBefore = UserDefaults.standard.bool(forKey: Keys.hasLaunchedBefore)
-            if hasLaunchedBefore {
-                print("UserSettings loaded successfully")
-            } else {
-                let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-                let flagFileURL = directory?.appendingPathComponent("hasLaunchedBefore")
-                
-                // Check if the flag file exists
-                if let flagFileURL, FileManager.default.fileExists(atPath: flagFileURL.path) {
-                    NotificationCenter.default.post(name: .userSettingsLoadFailed, object: nil)
-                    await UserNotificationSupport.addNotificationToDisplay(subtitle: "User Settings Load Failed")
-                    print("UserSettings failed to load.")
-                    return
-                } else {
-                    // If the flag file does not exist, this is the first launch
-                    print("First launch maybe detected.")
-                    UserDefaults.standard.set(true, forKey: Keys.hasLaunchedBefore)
-                    // Create the flag file
-                    if let flagFileURL {
-                        try? Data().write(to: flagFileURL)
-                        print("Flag file created at: \(flagFileURL.path)")
-                    }
-                }
-            }
-        }
     }
     
     @Published var isFirstSetupCompleted: Bool = {
