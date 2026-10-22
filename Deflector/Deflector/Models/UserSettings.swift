@@ -28,7 +28,7 @@ final class UserSettings: ObservableObject {
     // Manage Library/UserSettings/ data files
     private enum Store {
         private static let directoryURL: URL = {
-            let libraryURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
+            let libraryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let directoryURL = libraryURL.appending(path: "UserSettings", directoryHint: .isDirectory)
             try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
             return directoryURL
