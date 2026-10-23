@@ -8,7 +8,7 @@ To use Deflector, you need to set up an automation in the Shortcuts app. The aut
 
 **[Download on the App Store](https://apps.apple.com/app/deflector/id6802068584)**
 
-**[AltStore PAL Source](https://i.cizzuk.net/altstore/)**
+**[AltStore PAL Source](https://cizzuk.net/altstore/)**
 
 ## License
 

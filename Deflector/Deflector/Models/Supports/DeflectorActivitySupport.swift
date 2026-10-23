@@ -41,6 +41,18 @@ class DeflectorActivitySupport {
     static func start(endDate: Date? = nil) async throws {
         await endAll()
         
+        guard UserSettings.shared.isSettingsAvailable() else {
+            await UserNotificationSupport.addNotificationToDisplay(
+                subtitle: String(localized: "Failed to start Deflector Live Activity because loading Settings failed."),
+                body: String(localized: "If the device was restarted, please unlock the device, then try again.")
+            )
+            throw NSError(
+                domain: "DeflectorActivitySupport",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "Failed to start Deflector Live Activity because loading Settings failed."]
+            )
+        }
+        
         let content = ActivityContent(
             state: makeContentState(),
             staleDate: endDate
@@ -87,7 +99,18 @@ class DeflectorActivitySupport {
     // If activity is active, restart it to extend the time
     static func refresh() async throws {
         if isActive() {
-            try await start()
+            do {
+                try await start()
+            } catch {
+                if let error = error as? ActivityAuthorizationError,
+                   error == .visibility {
+                    // Retry with SystemCall after 3s
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    await SystemCallSupport.addSystemCall(.startDeflectorActivity)
+                } else {
+                    throw error
+                }
+            }
         }
     }
 }

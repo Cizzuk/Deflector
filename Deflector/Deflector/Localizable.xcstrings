@@ -517,16 +517,6 @@
         }
       }
     },
-    "Done" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        }
-      }
-    },
     "Dynamic Island Icons" : {
       "localizations" : {
         "ja" : {
@@ -603,6 +593,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ライブアクティビティのショートカットをJSON形式でエクスポート"
+          }
+        }
+      }
+    },
+    "Failed to load Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定の読み込みに失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to start Deflector Live Activity because loading Settings failed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定の読み込みに失敗したため、Deflectorのライブアクティビティを開始できませんでした。"
           }
         }
       }
@@ -793,6 +803,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットやオートメーションが正しく動作しないときは、デバイスを再起動すると改善することがあります。"
+          }
+        }
+      }
+    },
+    "If the device was restarted, please unlock the device, then try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスが再起動後の場合は、デバイスのロックを解除してから再度お試しください。"
           }
         }
       }

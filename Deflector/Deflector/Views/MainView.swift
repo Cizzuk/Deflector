@@ -8,6 +8,8 @@
 import SwiftUI
 
 @main struct Deflector: App {
+    @Environment(\.scenePhase) private var scenePhase
+    
     init() {
         // Initialize Watch Connectivity Service
         _ = WatchConnectivityService.shared
@@ -18,6 +20,13 @@ import SwiftUI
             MainView()
                 .tint(.accent)
                 .scrollDismissesKeyboard(.interactively)
+                .onChange(of: scenePhase) {
+                    if scenePhase == .active {
+                        Task {
+                            _ = !UserSettings.shared.isSettingsAvailable()
+                        }
+                    }
+                }
         }
     }
 }

@@ -21,6 +21,10 @@ struct RemoveLiveActivityShortcutIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         if dynamicIsland {
             UserSettings.shared.liveActivityIslandButtons.removeAll(where: { $0.shortcutName == shortcutName })
         } else {

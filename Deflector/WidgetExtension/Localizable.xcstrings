@@ -51,6 +51,16 @@
         }
       }
     },
+    "Failed to load Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定の読み込みに失敗しました。"
+          }
+        }
+      }
+    },
     "Send Deflection Notification" : {
       "shouldTranslate" : false
     },

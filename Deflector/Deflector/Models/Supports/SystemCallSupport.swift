@@ -14,6 +14,7 @@ extension Notification.Name {
 class SystemCallSupport {
     enum SystemCallArgs: String {
         case pingTest = "Ping Test"
+        case startDeflectorActivity = "Start Deflector Activity"
         case refreshDeflectorActivity = "Refresh Deflector Activity"
     }
     
@@ -21,6 +22,8 @@ class SystemCallSupport {
         switch SystemCallArgs(rawValue: argument) {
         case .pingTest:
             NotificationCenter.default.post(name: .pingTestReceived, object: nil)
+        case .startDeflectorActivity:
+            try? await DeflectorActivitySupport.start()
         case .refreshDeflectorActivity:
             try? await DeflectorActivitySupport.refresh()
         default:

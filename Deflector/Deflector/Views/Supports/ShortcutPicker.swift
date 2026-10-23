@@ -150,12 +150,10 @@ struct ShortcutPicker: View {
             .interactiveDismissDisabled()
             .accessibilityAction(.escape) { close() }
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: { close() }) {
-                        Label("Done", systemImage: "checkmark")
-                    }
-                    .buttonStyle(.glassProminent)
-                    .keyboardShortcut(.defaultAction)
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(role: .confirm, action: { close() })
+                        .buttonStyle(.glassProminent)
+                        .keyboardShortcut(.defaultAction)
                 }
             }
             .alert("Error", isPresented: Binding(

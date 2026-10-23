@@ -39,6 +39,10 @@ struct SetUseDifferentOnIslandIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         switch operation {
         case .turn:
             UserSettings.shared.liveActivityUseDifferentOnIsland = state
