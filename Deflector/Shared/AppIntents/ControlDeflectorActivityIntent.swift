@@ -58,9 +58,9 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
             await endActivity()
         case .toggle:
             if DeflectorActivitySupport.isActive() {
-                try await startActivity()
-            } else {
                 await endActivity()
+            } else {
+                try await startActivity()
             }
         }
         
