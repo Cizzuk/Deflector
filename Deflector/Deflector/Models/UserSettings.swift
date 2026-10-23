@@ -6,138 +6,155 @@
 //
 
 import Combine
-import Foundation
+import UIKit
 
 final class UserSettings: ObservableObject {
     static let shared = UserSettings()
     
-    private enum Keys {
+    private struct Keys {
         static let isFirstSetupCompleted = "isFirstSetupCompleted"
-        
         static let sideButtonShortcutName = "sideButtonShortcutName"
-        
         static let liveActivityButtons = "liveActivityButtons"
         static let liveActivityIslandButtons = "liveActivityIslandButtons"
         static let liveActivityUseDifferentOnIsland = "liveActivityUseDifferentOnIsland"
-        
         static let liveActivityUseBlackBackground = "liveActivityUseBlackBackground"
         static let liveActivityShowShortcutNames = "liveActivityShowShortcutNames"
         static let liveActivityIslandIcons = "liveActivityIslandIcons"
     }
     
-    // Manage Library/UserSettings/ data files
-    private enum Store {
-        private static let directoryURL: URL = {
-            let libraryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let directoryURL = libraryURL.appending(path: "UserSettings", directoryHint: .isDirectory)
-            try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
-            return directoryURL
-        }()
-        
-        private static func fileURL(for key: String) -> URL {
-            directoryURL.appending(path: key, directoryHint: .notDirectory)
+    private init() {
+        loadSettings()
+    }
+    
+    private var isSettingsLoaded = false
+    func isSettingsAvailable() -> Bool {
+        if isSettingsLoaded {
+            return true
         }
         
-        static func contents(for key: String) -> Data? {
-            try? Data(contentsOf: fileURL(for: key))
-        }
-        
-        static func load<T: Codable>(for key: String) -> T? {
-            if let data = contents(for: key) {
-                return try? JSONDecoder().decode(T.self, from: data)
-            }
-            
-            // Migrate from UserDefaults to FileManager
-            if let userDefaultsObject = UserDefaults.standard.object(forKey: key) {
-                let value: T?
-                if let data = userDefaultsObject as? Data,
-                   let decoded = try? JSONDecoder().decode(T.self, from: data) {
-                    value = decoded
-                } else {
-                    value = userDefaultsObject as? T
-                }
-                
-                if let value, save(value, for: key) {
-                    UserDefaults.standard.removeObject(forKey: key)
-                }
-                return value
-            }
-            
-            return nil
-        }
-        
-        @discardableResult
-        static func save<T: Codable>(_ value: T, for key: String) -> Bool {
-            do {
-                let data = try JSONEncoder().encode(value)
-                try data.write(to: fileURL(for: key), options: .atomic)
-                return true
-            } catch {
-                return false
+        loadSettings()
+        return isSettingsLoaded
+    }
+    
+    private func loadSettings() {
+        func setSettingsLoaded() {
+            if !isSettingsLoaded && UIApplication.shared.isProtectedDataAvailable {
+                isSettingsLoaded = true
             }
         }
         
-        static func remove(for key: String) {
-            try? FileManager.default.removeItem(at: fileURL(for: key))
+        // isFirstSetupCompleted
+        if UserDefaults.standard.object(forKey: Keys.isFirstSetupCompleted) != nil {
+            isFirstSetupCompleted = UserDefaults.standard.bool(forKey: Keys.isFirstSetupCompleted)
+            setSettingsLoaded()
+        }
+        
+        // sideButtonShortcutName
+        if let value = UserDefaults.standard.string(forKey: Keys.sideButtonShortcutName) {
+            sideButtonShortcutName = value
+            setSettingsLoaded()
+        }
+        
+        // liveActivityButtons
+        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityButtons),
+           let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
+            liveActivityButtons = buttons
+            setSettingsLoaded()
+        }
+        
+        // liveActivityIslandButtons
+        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandButtons),
+           let buttons = try? JSONDecoder().decode([DeflectorActivityButton].self, from: data) {
+            liveActivityIslandButtons = buttons
+            setSettingsLoaded()
+        }
+        
+        // liveActivityUseDifferentOnIsland
+        if UserDefaults.standard.object(forKey: Keys.liveActivityUseDifferentOnIsland) != nil {
+            liveActivityUseDifferentOnIsland = UserDefaults.standard.bool(forKey: Keys.liveActivityUseDifferentOnIsland)
+            setSettingsLoaded()
+        }
+        
+        // liveActivityUseBlackBackground
+        if UserDefaults.standard.object(forKey: Keys.liveActivityUseBlackBackground) != nil {
+            liveActivityUseBlackBackground = UserDefaults.standard.bool(forKey: Keys.liveActivityUseBlackBackground)
+            setSettingsLoaded()
+        }
+        
+        // liveActivityShowShortcutNames
+        if UserDefaults.standard.object(forKey: Keys.liveActivityShowShortcutNames) != nil {
+            liveActivityShowShortcutNames = UserDefaults.standard.bool(forKey: Keys.liveActivityShowShortcutNames)
+            setSettingsLoaded()
+        }
+        
+        // liveActivityIslandIcons
+        if let data = UserDefaults.standard.data(forKey: Keys.liveActivityIslandIcons),
+           let icons = try? JSONDecoder().decode(DeflectorActivityIslandIcons.self, from: data) {
+            liveActivityIslandIcons = icons
+            setSettingsLoaded()
         }
     }
     
-    // MARK: - User Settings
-    
-    @Published var isFirstSetupCompleted: Bool = Store.load(for: Keys.isFirstSetupCompleted) ?? false {
+    @Published var isFirstSetupCompleted: Bool = false {
         didSet {
-            Store.save(isFirstSetupCompleted, for: Keys.isFirstSetupCompleted)
+            UserDefaults.standard.set(isFirstSetupCompleted, forKey: Keys.isFirstSetupCompleted)
         }
     }
     
-    @Published var sideButtonShortcutName: String = Store.load(for: Keys.sideButtonShortcutName) ?? "" {
+    @Published var sideButtonShortcutName: String = "" {
         didSet {
-            Store.save(sideButtonShortcutName, for: Keys.sideButtonShortcutName)
+            UserDefaults.standard.set(sideButtonShortcutName, forKey: Keys.sideButtonShortcutName)
         }
     }
     
-    @Published var liveActivityButtons: [DeflectorActivityButton] = Store.load(for: Keys.liveActivityButtons) ?? [DeflectorActivityButton(shortcutName: "")] {
+    @Published var liveActivityButtons: [DeflectorActivityButton] = [DeflectorActivityButton(shortcutName: "")] {
         didSet {
-            Store.save(liveActivityButtons, for: Keys.liveActivityButtons)
+            if let data = try? JSONEncoder().encode(liveActivityButtons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityButtons)
+                Task { await DeflectorActivitySupport.update() }
+            }
+        }
+    }
+    
+    @Published var liveActivityIslandButtons: [DeflectorActivityButton] = [DeflectorActivityButton(shortcutName: "")] {
+        didSet {
+            if let data = try? JSONEncoder().encode(liveActivityIslandButtons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandButtons)
+                Task { await DeflectorActivitySupport.update() }
+            }
+        }
+    }
+    
+    @Published var liveActivityUseDifferentOnIsland: Bool = false {
+        didSet {
+            UserDefaults.standard.set(liveActivityUseDifferentOnIsland, forKey: Keys.liveActivityUseDifferentOnIsland)
             Task { await DeflectorActivitySupport.update() }
         }
     }
     
-    @Published var liveActivityIslandButtons: [DeflectorActivityButton] = Store.load(for: Keys.liveActivityIslandButtons) ?? [DeflectorActivityButton(shortcutName: "")] {
+    @Published var liveActivityUseBlackBackground: Bool = false {
         didSet {
-            Store.save(liveActivityIslandButtons, for: Keys.liveActivityIslandButtons)
-            Task { await DeflectorActivitySupport.update() }
-        }
-    }
-    
-    @Published var liveActivityUseDifferentOnIsland: Bool = Store.load(for: Keys.liveActivityUseDifferentOnIsland) ?? false {
-        didSet {
-            Store.save(liveActivityUseDifferentOnIsland, for: Keys.liveActivityUseDifferentOnIsland)
-            Task { await DeflectorActivitySupport.update() }
-        }
-    }
-    
-    @Published var liveActivityUseBlackBackground: Bool = Store.load(for: Keys.liveActivityUseBlackBackground) ?? false {
-        didSet {
-            Store.save(liveActivityUseBlackBackground, for: Keys.liveActivityUseBlackBackground)
+            UserDefaults.standard.set(liveActivityUseBlackBackground, forKey: Keys.liveActivityUseBlackBackground)
             Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
     
-    @Published var liveActivityShowShortcutNames: Bool = Store.load(for: Keys.liveActivityShowShortcutNames) ?? false {
+    @Published var liveActivityShowShortcutNames: Bool = false {
         didSet {
-            Store.save(liveActivityShowShortcutNames, for: Keys.liveActivityShowShortcutNames)
+            UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
             Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
     
-    @Published var liveActivityIslandIcons: DeflectorActivityIslandIcons? = Store.load(for: Keys.liveActivityIslandIcons) {
+    @Published var liveActivityIslandIcons: DeflectorActivityIslandIcons? = nil {
         didSet {
-            if let icons = liveActivityIslandIcons {
-                Store.save(icons, for: Keys.liveActivityIslandIcons)
+            if let icons = liveActivityIslandIcons,
+               let data = try? JSONEncoder().encode(icons) {
+                UserDefaults.standard.set(data, forKey: Keys.liveActivityIslandIcons)
             } else {
-                Store.remove(for: Keys.liveActivityIslandIcons)
+                UserDefaults.standard.removeObject(forKey: Keys.liveActivityIslandIcons)
             }
+            
             Task { try? await DeflectorActivitySupport.refresh() }
         }
     }
