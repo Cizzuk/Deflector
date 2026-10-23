@@ -612,7 +612,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定の読み込みに失敗したため、Deflectorのライブアクティビティの開始できませんでした。"
+            "value" : "設定の読み込みに失敗したため、Deflectorのライブアクティビティを開始できませんでした。"
           }
         }
       }
