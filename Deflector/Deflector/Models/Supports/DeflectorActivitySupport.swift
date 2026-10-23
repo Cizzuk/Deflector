@@ -41,6 +41,14 @@ class DeflectorActivitySupport {
     static func start(endDate: Date? = nil) async throws {
         await endAll()
         
+        guard UserSettings.shared.isSettingsAvailable() else {
+            await UserNotificationSupport.addNotificationToDisplay(
+                subtitle: String(localized: "Failed to start Deflector Live Activity because loading Settings failed."),
+                body: String(localized: "If the device was restarted, please unlock the device, then try again.")
+            )
+            throw NSError(domain: "DeflectorActivitySupport", code: -1)
+        }
+        
         let content = ActivityContent(
             state: makeContentState(),
             staleDate: endDate
