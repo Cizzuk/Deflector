@@ -46,7 +46,11 @@ class DeflectorActivitySupport {
                 subtitle: String(localized: "Failed to start Deflector Live Activity because loading Settings failed."),
                 body: String(localized: "If the device was restarted, please unlock the device, then try again.")
             )
-            throw NSError(domain: "DeflectorActivitySupport", code: -1)
+            throw NSError(
+                domain: "DeflectorActivitySupport",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "Failed to start Deflector Live Activity because loading Settings failed."]
+            )
         }
         
         let content = ActivityContent(
