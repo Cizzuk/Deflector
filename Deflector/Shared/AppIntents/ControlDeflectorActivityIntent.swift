@@ -38,23 +38,29 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
-        guard UserSettings.shared.isSettingsAvailable() else {
-            throw IntentUserSettingsError.loadSettingsFailed
+        #if !EXTENSION
+        func startActivity() async throws {
+            guard UserSettings.shared.isSettingsAvailable() else {
+                throw IntentUserSettingsError.loadSettingsFailed
+            }
+            try await DeflectorActivitySupport.start()
         }
         
-        #if !EXTENSION
-        switch control {
-        case .start:
-            try await DeflectorActivitySupport.start()
-        case .end:
+        func endActivity() async {
             await DeflectorActivitySupport.endAll()
             DummyActivitySupport.flash()
+        }
+        
+        switch control {
+        case .start:
+            try await startActivity()
+        case .end:
+            await endActivity()
         case .toggle:
             if DeflectorActivitySupport.isActive() {
-                await DeflectorActivitySupport.endAll()
-                DummyActivitySupport.flash()
+                try await startActivity()
             } else {
-                try await DeflectorActivitySupport.start()
+                await endActivity()
             }
         }
         
