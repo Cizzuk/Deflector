@@ -14,6 +14,10 @@ struct GetSideButtonShortcutIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         return .result(value: UserSettings.shared.sideButtonShortcutName)
     }
 }

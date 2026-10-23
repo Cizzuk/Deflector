@@ -21,6 +21,10 @@ struct SetSideButtonShortcutIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         UserSettings.shared.sideButtonShortcutName = shortcutName
         return .result()
     }

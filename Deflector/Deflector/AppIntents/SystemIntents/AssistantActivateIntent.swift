@@ -23,6 +23,11 @@ struct AssistantActivateIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            await DeflectionService.shared.sendErrorNotification(reason: "Failed to load Settings.")
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         let shortcutName = UserSettings.shared.sideButtonShortcutName
         
         if shortcutName.isEmpty {

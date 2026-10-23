@@ -38,6 +38,10 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         #if !EXTENSION
         switch control {
         case .start:

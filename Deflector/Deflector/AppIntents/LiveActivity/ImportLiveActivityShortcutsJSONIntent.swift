@@ -21,6 +21,10 @@ struct ImportLiveActivityShortcutsJSONIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
+        guard UserSettings.shared.isSettingsAvailable() else {
+            throw IntentUserSettingsError.loadSettingsFailed
+        }
+        
         let decoder = JSONDecoder()
         var newButtons = dynamicIsland ? UserSettings.shared.liveActivityIslandButtons : UserSettings.shared.liveActivityButtons
         
