@@ -38,7 +38,7 @@ final class UserSettings: ObservableObject {
     
     private func loadSettings() {
         func setSettingsLoaded() {
-            if !isSettingsLoaded && UIApplication.shared.isProtectedDataAvailable {
+            if !isSettingsLoaded {
                 isSettingsLoaded = true
             }
         }
