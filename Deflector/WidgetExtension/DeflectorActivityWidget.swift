@@ -11,15 +11,15 @@ import WidgetKit
 
 struct DeflectorActivityWidget: Widget {
     let kind: String = "net.cizzuk.deflector.WidgetExtension.DeflectorActivityWidget"
-    
+
     struct ShortcutButtons: View {
         @Environment(\.activityFamily) var activityFamily
         var buttons: [DeflectorActivityButton]
         var showLabel: Bool = true
-        
+
         var body: some View {
             let columns = Array(repeating: GridItem(.flexible()), count: buttons.count)
-            
+
             LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                 ForEach(buttons) { button in
                     let color = ColorHelper.uInt32ToColor(button.color)
@@ -37,13 +37,13 @@ struct DeflectorActivityWidget: Widget {
                                             .scaledToFit()
                                     } else {
                                         symbolImage.image?
-                                            .font(.system(size: size*0.8, weight: .regular))
+                                            .font(.system(size: size * 0.8, weight: .regular))
                                             .foregroundStyle(color)
                                     }
                                 }
                                 .frame(width: size, height: size)
                                 .labelStyle(.iconOnly)
-                                
+
                                 if showLabel && activityFamily != .small {
                                     Text(button.shortcutName)
                                         .lineLimit(1)
@@ -67,16 +67,16 @@ struct DeflectorActivityWidget: Widget {
             .padding(.horizontal, activityFamily == .small ? 0 : 20)
         }
     }
-    
+
     struct ActivityView: View {
         @Environment(\.activityFamily) var activityFamily
         var context: ActivityViewContext<DeflectorActivityAttributes>
         var dynamicIsland: DynamicIslandMode? = nil
-        
+
         var body: some View {
             let isSmall = activityFamily == .small
             let showLabel = context.attributes.showShortcutNames
-            
+
             if let dynamicIsland {
                 let islandIcons = context.attributes.islandIcons ?? .deviceDefault
                 let buttons = {
@@ -86,7 +86,7 @@ struct DeflectorActivityWidget: Widget {
                         return context.state.buttons
                     }
                 }()
-                
+
                 switch dynamicIsland {
                 case .expanded:
                     ShortcutButtons(buttons: buttons, showLabel: showLabel)
@@ -130,21 +130,21 @@ struct DeflectorActivityWidget: Widget {
                 default:
                     EmptyView().frame(width: 0, height: 0)
                 }
-                
+
             } else {
                 let blackBackground = context.attributes.blackBackground
                 let buttons = context.state.buttons
-                
+
                 ShortcutButtons(buttons: buttons, showLabel: showLabel)
                     .padding(20)
                     .activityBackgroundTint((blackBackground || isSmall) ? .black : .clear)
             }
         }
     }
-    
+
     var body: some WidgetConfiguration {
         let widgetURL = URL(string: "net.cizzuk.deflector://widget/activity") ?? nil
-        
+
         return ActivityConfiguration(for: DeflectorActivityAttributes.self) { context in
             ActivityView(context: context, dynamicIsland: nil)
                 .widgetURL(widgetURL)
@@ -170,7 +170,7 @@ struct DeflectorActivityWidget: Widget {
 extension DynamicIsland {
     func dynamicContentMargins(settings: DeflectorActivityIslandIcons?) -> DynamicIsland {
         let islandIcons = settings ?? .deviceDefault
-        
+
         var modifiedIsland = self
         if !islandIcons.compactLeading {
             modifiedIsland = modifiedIsland.contentMargins(.all, 0, for: .compactLeading)

@@ -10,25 +10,27 @@ import WatchConnectivity
 
 struct WatchSettingsView: View {
     @StateObject private var wc = WatchConnectivityService.shared
-    
+
     @State private var isShowingShortcutPicker = false
     @State private var symbolPickerID: String? = nil
     @State private var symbolPickerText: String = ""
-    
+
     @State private var context = WatchConnectivityService.shared.applicationContext
-    
+
     var body: some View {
         NavigationStack {
             List {
                 if wc.activationState != .activated {
-                    Section {} footer: {
+                    Section {
+                    } footer: {
                         Text("Connection service is not activated.")
                     }
                 } else if !wc.isPaired {
-                    Section {} footer: {
+                    Section {
+                    } footer: {
                         Text("No Apple Watch is paired with this device.")
                     }
-                    
+
                     if let url = URL(string: "itms-watchs://") {
                         Section {
                             Button(action: { UIApplication.shared.open(url) }) {
@@ -37,10 +39,11 @@ struct WatchSettingsView: View {
                         }
                     }
                 } else if !wc.isWatchAppInstalled {
-                    Section {} footer: {
+                    Section {
+                    } footer: {
                         Text("Deflector is not installed on your Apple Watch. Please install it from the Watch app.")
                     }
-                    
+
                     if let url = URL(string: "itms-watchs://") {
                         Section {
                             Button(action: { UIApplication.shared.open(url) }) {
@@ -70,7 +73,7 @@ struct WatchSettingsView: View {
                                 }
                                 .buttonStyle(.borderless)
                                 .accessibilityValue(shortcut.symbol.isEmpty ? "Not Set" : shortcut.symbol)
-                                
+
                                 Text(shortcut.shortcutName)
                                     .lineLimit(1)
                             }
@@ -83,7 +86,7 @@ struct WatchSettingsView: View {
                         .onDelete { indexSet in
                             context.favoriteShortcuts.remove(atOffsets: indexSet)
                         }
-                        
+
                         if context.favoriteShortcuts.count < 50 {
                             Button(action: { isShowingShortcutPicker = true }) {
                                 Label("Add Shortcut", systemImage: "plus")
@@ -91,22 +94,26 @@ struct WatchSettingsView: View {
                             .keyboardShortcut("n", modifiers: [.command])
                         }
                     }
-                    
-                    Section {} footer: {
+
+                    Section {
+                    } footer: {
                         Text("If you cannot run the shortcut, please make sure that Deflector Automation is allowed to run when locked, and that your Apple Watch and iPhone are within communication range.")
                     }
                 }
             }
             .navigationTitle("Apple Watch")
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: Binding(
-                get: { symbolPickerID != nil },
-                set: { if !$0 { symbolPickerID = nil } }
-            )) {
+            .sheet(
+                isPresented: Binding(
+                    get: { symbolPickerID != nil },
+                    set: { if !$0 { symbolPickerID = nil } }
+                )
+            ) {
                 SymbolPicker(symbolPickerText, showCustomSymbols: false) { symbol in
                     if let symbolPickerID,
-                       let index = context.favoriteShortcuts
-                        .firstIndex(where: { $0.id == symbolPickerID }) {
+                        let index = context.favoriteShortcuts
+                            .firstIndex(where: { $0.id == symbolPickerID })
+                    {
                         context.favoriteShortcuts[index].symbol = symbol
                     }
                     symbolPickerID = nil

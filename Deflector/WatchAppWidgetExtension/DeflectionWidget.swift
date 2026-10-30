@@ -19,7 +19,7 @@ struct DeflectionProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> DeflectionEntry {
         .init(shortcutName: "Shortcut", symbol: defaultShortcutSymbol)
     }
-    
+
     func snapshot(
         for configuration: DeflectionWidgetConfigurationAppIntent,
         in context: Context
@@ -29,7 +29,7 @@ struct DeflectionProvider: AppIntentTimelineProvider {
             symbol: getSymbol(for: configuration.shortcutName) ?? defaultShortcutSymbol
         )
     }
-    
+
     func timeline(
         for configuration: DeflectionWidgetConfigurationAppIntent,
         in context: Context
@@ -38,29 +38,29 @@ struct DeflectionProvider: AppIntentTimelineProvider {
             shortcutName: configuration.shortcutName,
             symbol: getSymbol(for: configuration.shortcutName) ?? defaultShortcutSymbol
         )
-        
+
         return Timeline(entries: [entry], policy: .never)
     }
-    
+
     func recommendations() -> [AppIntentRecommendation<DeflectionWidgetConfigurationAppIntent>] {
         []
     }
-    
+
     private func getSymbol(for shortcutName: String) -> String? {
         let context = WCAppContext.loadLastContext()
         return context.favoriteShortcuts.first(where: { $0.shortcutName == shortcutName })?.symbol
     }
 }
 
-struct DeflectionWidgetEntryView : View {
+struct DeflectionWidgetEntryView: View {
     @Environment(\.widgetFamily) var family
     var entry: DeflectionProvider.Entry
-    
+
     var widgetURL: URL? {
         guard let url = URL(string: "net.cizzuk.deflector://widget/deflection") else { return nil }
         return url.appending(queryItems: [.init(name: "shortcutName", value: entry.shortcutName)])
     }
-    
+
     var body: some View {
         Group {
             switch family {
@@ -107,7 +107,7 @@ struct DeflectionWidgetEntryView : View {
 
 struct DeflectionWidget: Widget {
     let kind: String = "net.cizzuk.deflector.watchkitapp.WidgetExtension.DeflectionWidget"
-    
+
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: kind,
@@ -123,14 +123,14 @@ struct DeflectionWidget: Widget {
             .accessoryCircular,
             .accessoryCorner,
             .accessoryInline,
-            .accessoryRectangular
+            .accessoryRectangular,
         ])
     }
 }
 
 struct DeflectionWidgetConfigurationAppIntent: WidgetConfigurationIntent {
     static let title: LocalizedStringResource = "Deflection Widget Configuration"
-    
+
     @Parameter(
         title: "Shortcut Name",
         default: "Shortcut",

@@ -11,9 +11,9 @@ import WatchConnectivity
 
 class MainViewModel: ObservableObject {
     private let wc = WatchConnectivityService.shared
-    
+
     @Published var errorMessage: LocalizedStringResource? = nil
-    
+
     func sendDeflection(_ shortcutName: String) {
         WKInterfaceDevice.current().play(.click)
         wc.sendDeflection(shortcutName: shortcutName) { [weak self] error in

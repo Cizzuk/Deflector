@@ -11,25 +11,25 @@ struct FirstSetupView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var vm = FirstSetupViewModel()
-    
+
     var body: some View {
         NavigationStack {
             List {
                 Section {
                     Text("Deflector uses notifications and automation to run your favorite shortcuts from Live Activity and Side Button. To do this, you first need to complete a few setup steps.")
                 }
-                
+
                 // MARK: - Notifications
-                
+
                 Section {
                     Text("Please allow notifications to run the automation. Next, change the alert settings to Notification Center only.")
-                    
+
                     if vm.showRequestUNAuthorizationButton {
                         Button(action: { Task { await vm.requestUNAuthorization() } }) {
                             Label("Allow Notifications", systemImage: "bell")
                         }
                     }
-                    
+
                     if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
                         Button(action: { UIApplication.shared.open(url) }) {
                             Label("Open Settings", systemImage: "gear")
@@ -41,13 +41,13 @@ struct FirstSetupView: View {
                     Text(vm.notificationStatusText)
                         .padding(.bottom, 20)
                 }
-                
+
                 // MARK: - Deflector Automation
-                
+
                 Section {
                     Text("Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation.")
-                    
-                    if let url =  URL(string: "https://cizz.uk/deflector/automation") {
+
+                    if let url = URL(string: "https://cizz.uk/deflector/automation") {
                         Link(destination: url) {
                             Label("Get Deflector Automation", systemImage: "square.and.arrow.down")
                         }
@@ -56,7 +56,7 @@ struct FirstSetupView: View {
                                 Label("Copy iCloud Sharing Link", systemImage: "icloud.and.arrow.down")
                             }
                             .tint(Color(uiColor: .label))
-                            
+
                             if let url = URL(string: "https://cizz.uk/deflector/automation/file") {
                                 Button(action: { UIPasteboard.general.string = url.absoluteString }) {
                                     Label("Copy File Download Link", systemImage: "arrow.down.document")
@@ -65,13 +65,13 @@ struct FirstSetupView: View {
                             }
                         }
                     }
-                    
+
                     if let url = URL(string: "shortcuts://") {
                         Button(action: { UIApplication.shared.open(url) }) {
                             Label("Open Shortcuts App", systemImage: "square.2.layers.3d")
                         }
                     }
-                    
+
                     Button(action: { vm.startDeflectorAutomationTest() }) {
                         Label {
                             Text("Run Automation Test")
@@ -91,9 +91,9 @@ struct FirstSetupView: View {
                     Text(vm.deflectorAutomationTestText)
                         .padding(.bottom, 20)
                 }
-                
+
                 // MARK: - All Done!
-                
+
                 Section {
                     Text("Setup is complete! You can now assign and run your favorite shortcuts for Live Activities or Side Button.")
                     Button(action: { dismiss() }) {
@@ -102,11 +102,11 @@ struct FirstSetupView: View {
                 } header: {
                     Label("All Done!", systemImage: "checkmark")
                 }
-                
+
                 Section {
                     Text("If shortcuts or automations are not working properly, restarting your device may resolve the issue.")
                     Text("If it still doesn't work properly, please return to this setup and try again.")
-                    
+
                     NavigationLink(destination: KnownIssuesView()) {
                         Text("Known Issues")
                             .foregroundStyle(.accent)

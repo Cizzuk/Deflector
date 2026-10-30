@@ -12,7 +12,7 @@ class SymbolHelper {
         case custom
         case system
         case none, unknown
-        
+
         var prefix: String {
             switch self {
             case .custom: return ".custom."
@@ -22,17 +22,19 @@ class SymbolHelper {
             }
         }
     }
-    
+
     static let customSymbolDirURL: URL? = {
-        guard let groupContainerURL = FileManager.default.containerURL(
-            forSecurityApplicationGroupIdentifier: appGroupID
-        ) else { return nil }
-        
+        guard
+            let groupContainerURL = FileManager.default.containerURL(
+                forSecurityApplicationGroupIdentifier: appGroupID
+            )
+        else { return nil }
+
         let itemURL = groupContainerURL.appending(path: "custom_symbols", directoryHint: .isDirectory)
-        
+
         return itemURL
     }()
-        
+
     static func getSymbolImage(
         _ symbolName: String,
         allowCustom: Bool = true
@@ -41,45 +43,46 @@ class SymbolHelper {
         if symbolName.isEmpty {
             return (Image(systemName: "square.dashed"), .none)
         }
-        
+
         // Custom
         if allowCustom,
-           let customSymbolDirURL,
-           symbolName.hasPrefix(SymbolType.custom.prefix) {
+            let customSymbolDirURL,
+            symbolName.hasPrefix(SymbolType.custom.prefix)
+        {
             let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
             if let uiImage = UIImage(contentsOfFile: symbolFileURL.path()) {
                 return (Image(uiImage: uiImage), .custom)
             }
         }
-        
+
         // System
         if UIImage(systemName: symbolName) != nil {
             return (Image(systemName: symbolName), .system)
         }
-        
+
         // Unknown
         return (Image(systemName: "questionmark.square.dashed"), .unknown)
     }
-    
+
     static func getCustomSymbolNames() async -> [String]? {
         guard let customSymbolDirURL,
-              let fileURLs = try? FileManager.default.contentsOfDirectory(at: customSymbolDirURL, includingPropertiesForKeys: nil)
+            let fileURLs = try? FileManager.default.contentsOfDirectory(at: customSymbolDirURL, includingPropertiesForKeys: nil)
         else { return nil }
-        
+
         let symbolNames = fileURLs.compactMap { $0.lastPathComponent }
         return symbolNames
     }
-    
+
     static func saveCustomSymbol(image: UIImage) async -> String? {
         guard let customSymbolDirURL else { return nil }
-        
+
         try? FileManager.default.createDirectory(at: customSymbolDirURL, withIntermediateDirectories: true, attributes: nil)
-        
+
         let symbolName = "\(SymbolType.custom.prefix)\(UUID().uuidString)"
         let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
-        
+
         let resizedImage = await resize(image: image, target: CGSize(width: 200, height: 200))
-        
+
         if let imageData = resizedImage.pngData() {
             do {
                 try imageData.write(to: symbolFileURL)
@@ -88,15 +91,15 @@ class SymbolHelper {
                 return nil
             }
         }
-        
+
         return nil
     }
-    
+
     static func deleteCustomSymbol(symbolName: String) async -> Bool {
         guard let customSymbolDirURL else { return false }
-        
+
         let symbolFileURL = customSymbolDirURL.appending(path: symbolName, directoryHint: .notDirectory)
-        
+
         if FileManager.default.fileExists(atPath: symbolFileURL.path()) {
             do {
                 try FileManager.default.removeItem(at: symbolFileURL)
@@ -105,10 +108,10 @@ class SymbolHelper {
                 return false
             }
         }
-        
+
         return false
     }
-    
+
     static func resize(image: UIImage, target: CGSize) async -> UIImage {
         let w = image.size.width
         let h = image.size.height
@@ -127,7 +130,7 @@ class SymbolHelper {
         let renderedImage = renderer.image { _ in
             image.draw(in: CGRect(origin: .zero, size: newSize))
         }
-        
+
         return renderedImage
     }
 }

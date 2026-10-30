@@ -12,9 +12,9 @@ import SwiftUI
 class LiveActivitySettingsViewModel: ObservableObject {
     @Published var errorMessage: LocalizedStringResource? = nil
     @Published var isLiveActivityActive: Bool = DeflectorActivitySupport.isActive()
-    
+
     // MARK: - Lifecycle
-    
+
     func onChange(scenePhase: ScenePhase) {
         switch scenePhase {
         case .active:
@@ -27,9 +27,9 @@ class LiveActivitySettingsViewModel: ObservableObject {
             break
         }
     }
-    
+
     // MARK: - Live Activity Management
-    
+
     func startLiveActivity() async {
         let settings = await UserNotificationSupport.notificationSettings()
         if !UserNotificationSupport.isAlertAvailable(settings: settings) {
@@ -37,7 +37,7 @@ class LiveActivitySettingsViewModel: ObservableObject {
             errorMessage = "Notifications are not allowed. Please complete the first setup."
             return
         }
-        
+
         do {
             try await DeflectorActivitySupport.start()
             isLiveActivityActive = true
@@ -58,7 +58,7 @@ class LiveActivitySettingsViewModel: ObservableObject {
             }
         } catch {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
-            
+
             let nsError = error as NSError
             if nsError.domain == "ActivityKit.ActivityPayloadError" && nsError.code == 0 {
                 errorMessage = "Unable to start the activity because the data of the shortcuts are too large."
@@ -67,7 +67,7 @@ class LiveActivitySettingsViewModel: ObservableObject {
             }
         }
     }
-    
+
     func endLiveActivity() async {
         await DeflectorActivitySupport.endAll()
         isLiveActivityActive = false

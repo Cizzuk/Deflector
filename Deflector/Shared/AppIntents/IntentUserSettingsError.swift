@@ -9,7 +9,7 @@ import AppIntents
 
 enum IntentUserSettingsError: LocalizedError {
     case loadSettingsFailed
-    
+
     var errorDescription: String? {
         switch self {
         case .loadSettingsFailed:

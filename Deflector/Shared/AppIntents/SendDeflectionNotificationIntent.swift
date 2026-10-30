@@ -11,15 +11,15 @@ struct SendDeflectionNotificationIntent: AppIntent {
     static let title: LocalizedStringResource = "Send Deflection Notification"
     static let isDiscoverable = false
     static var supportedModes: IntentModes = .background
-    
+
     @Parameter(title: "Shortcut Name")
     var shortcutName: String
-    
+
     init() {}
     init(shortcutName: String) {
         self.shortcutName = shortcutName
     }
-    
+
     @MainActor
     func perform() async throws -> some IntentResult {
         if shortcutName.isEmpty {
@@ -27,7 +27,7 @@ struct SendDeflectionNotificationIntent: AppIntent {
         } else {
             await DeflectionService.shared.runShortcut(shortcutName: shortcutName)
         }
-        
+
         return .result()
     }
 }

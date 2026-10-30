@@ -11,12 +11,12 @@ import WatchConnectivity
 @main struct DeflectorWatch: App {
     @Environment(\.scenePhase) private var scenePhase
     static var applicationState: ScenePhase = .active
-    
+
     init() {
         // Initialize Watch Connectivity Service
         _ = WatchConnectivityService.shared
     }
-    
+
     var body: some Scene {
         WindowGroup {
             MainView()
@@ -31,21 +31,24 @@ import WatchConnectivity
 struct MainView: View {
     @StateObject private var wc = WatchConnectivityService.shared
     @StateObject private var vm = MainViewModel()
-    
+
     var body: some View {
         NavigationStack {
             List {
                 if wc.activationState != .activated {
-                    Section {} footer: {
+                    Section {
+                    } footer: {
                         Text("Connection service is not activated.")
                     }
                 } else if wc.iOSDeviceNeedsUnlockAfterRebootForReachability {
-                    Section {} footer: {
+                    Section {
+                    } footer: {
                         Text("You need to unlock your iPhone after restarting it.")
                     }
                 } else {
                     if wc.receivedApplicationContext.favoriteShortcuts.isEmpty {
-                        Section {} footer: {
+                        Section {
+                        } footer: {
                             Text("No favorite shortcuts.")
                         }
                         Section {
@@ -76,10 +79,13 @@ struct MainView: View {
                 }
             }
             .navigationTitle("Deflector")
-            .alert("Error", isPresented: Binding(
-                get: { vm.errorMessage != nil },
-                set: { if !$0 { Task { @MainActor in vm.errorMessage = nil } } }
-            )) {
+            .alert(
+                "Error",
+                isPresented: Binding(
+                    get: { vm.errorMessage != nil },
+                    set: { if !$0 { Task { @MainActor in vm.errorMessage = nil } } }
+                )
+            ) {
                 Button("OK", role: .close) { vm.errorMessage = nil }
             } message: {
                 Text(vm.errorMessage ?? "")
@@ -93,7 +99,8 @@ struct MainView: View {
                     case "/deflection":
                         // deflector://widget/deflection?shortcutName=xxx
                         if let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems,
-                           let shortcutName = queryItems.first(where: { $0.name == "shortcutName" })?.value {
+                            let shortcutName = queryItems.first(where: { $0.name == "shortcutName" })?.value
+                        {
                             vm.sendDeflection(shortcutName)
                         }
                     default: break

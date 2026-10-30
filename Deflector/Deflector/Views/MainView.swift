@@ -9,12 +9,12 @@ import SwiftUI
 
 @main struct Deflector: App {
     @Environment(\.scenePhase) private var scenePhase
-    
+
     init() {
         // Initialize Watch Connectivity Service
         _ = WatchConnectivityService.shared
     }
-    
+
     var body: some Scene {
         WindowGroup {
             MainView()
@@ -39,13 +39,13 @@ struct MainView: View {
             return .firstSetup
         }
     }()
-    
+
     enum Route: Hashable {
         case firstSetup
         case liveActivitySettings, watchSettings, sideButtonSettings
         case about, changeIcon
     }
-    
+
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
             List(selection: $path) {
@@ -57,11 +57,11 @@ struct MainView: View {
                                 .padding(5)
                             Text("If Deflector does not work properly, please try restarting your device or redoing this setup.")
                                 .font(.subheadline)
-                            
+
                         }
                     }
                 }
-                
+
                 Section {
                     NavigationLink(value: Route.liveActivitySettings) {
                         VStack(alignment: .leading) {
@@ -73,7 +73,7 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
                 if DeviceInfo.isWatchSupported {
                     Section {
                         NavigationLink(value: Route.watchSettings) {
@@ -87,7 +87,7 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
                 if !DeviceInfo.unsupportedSideButtonAccess {
                     Section {
                         NavigationLink(value: Route.sideButtonSettings) {
@@ -101,7 +101,7 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
                 Section {
                     NavigationLink(value: Route.about) {
                         Label("About", systemImage: "info.circle")
@@ -111,7 +111,7 @@ struct MainView: View {
                             Label("Change App Icon", systemImage: "app.dashed")
                         }
                     }
-                    
+
                 }
             }
             .navigationTitle("Deflector")
