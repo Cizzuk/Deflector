@@ -36,6 +36,19 @@ class DeflectionService {
             print("Failed to add notification request: \(error)")
         }
     }
+    
+    func scheduleShortcut(shortcutName: String, trigger: UNNotificationTrigger?) async throws {
+        let content = UNMutableNotificationContent()
+        content.title = "Deflection"
+        content.body = shortcutName
+        content.sound = .none
+        content.interruptionLevel = .timeSensitive
+        content.userInfo = [:]
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        try await UNUserNotificationCenter.current().add(request)
+    }
 
     func sendErrorNotification(reason: LocalizedStringResource? = nil) async {
         let subtitle = String(localized: "Deflection failed")
