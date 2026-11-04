@@ -924,12 +924,12 @@
         }
       }
     },
-    "If the shortcut is not executed, please make sure that Deflector Automation is allowed to run when locked, and that the device has been unlocked after a restart." : {
+    "If the shortcut is not executed, please make sure that Deflector Automation is allowed to run when locked, and that the device has been unlocked after a restart. Executing multiple shortcuts at the same time may cause failures." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカットが実行されない場合は、Deflector Automationのロック中の実行が許可されていること、およびデバイスが再起動後にロック解除されていることを確認してください。"
+            "value" : "ショートカットが実行されない場合は、Deflector Automationのロック中の実行が許可されていること、およびデバイスが再起動後にロック解除されていることを確認してください。同じタイミングで複数のショートカットを実行すると失敗する可能性があります。"
           }
         }
       }
