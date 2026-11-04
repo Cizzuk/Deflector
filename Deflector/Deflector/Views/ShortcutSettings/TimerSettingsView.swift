@@ -152,6 +152,43 @@ struct TimerEditorView: View {
                             in: vm.dateRange,
                             displayedComponents: [.date, .hourAndMinute]
                         )
+
+                        HStack {
+                            Button(action: {
+                                vm.date = Calendar.current.date(byAdding: .month, value: 1, to: vm.date) ?? vm.date
+                                if vm.date > vm.dateRange.upperBound {
+                                    vm.date = vm.dateRange.upperBound
+                                }
+                            }) {
+                                Text("+ 1Month")
+                            }
+                            .buttonStyle(.borderedProminent)
+
+                            Spacer()
+
+                            Button(action: {
+                                vm.date = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: vm.date) ?? vm.date
+                                if vm.date > vm.dateRange.upperBound {
+                                    vm.date = vm.dateRange.upperBound
+                                }
+                            }) {
+                                Text("+ 1Week")
+                            }
+                            .buttonStyle(.borderedProminent)
+
+                            Spacer()
+
+                            Button(action: {
+                                vm.date = Calendar.current.date(byAdding: .day, value: 1, to: vm.date) ?? vm.date
+                                if vm.date > vm.dateRange.upperBound {
+                                    vm.date = vm.dateRange.upperBound
+                                }
+                            }) {
+                                Text("+ 1Day")
+                            }
+                            .buttonStyle(.borderedProminent)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
                     }
                 } footer: {
                     switch vm.mode {
