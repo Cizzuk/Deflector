@@ -89,7 +89,7 @@ class TimerSettingsViewModel: ObservableObject {
         } catch let error as TimerModel.ScheduleError {
             return fail(error.localizedStringResource)
         } catch {
-            return fail("Failed to schedule the timer.")
+            return fail("Failed to schedule the timer: \(error.localizedDescription)")
         }
     }
 
