@@ -4,6 +4,9 @@
     "" : {
       "shouldTranslate" : false
     },
+    "%@" : {
+      "shouldTranslate" : false
+    },
     "%@ (%@)" : {
       "localizations" : {
         "en" : {
@@ -14,6 +17,70 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "%lld hours" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld hour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld hours"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld時間"
+          }
+        }
+      }
+    },
+    "%lld min" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld分"
+          }
+        }
+      }
+    },
+    "%lld sec" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld秒"
+          }
+        }
+      }
     },
     "${control} Deflector Live Activity" : {
       "localizations" : {
@@ -171,6 +238,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ライブアクティビティにショートカットを追加"
+          }
+        }
+      }
+    },
+    "Add Timer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーを追加"
           }
         }
       }
@@ -441,6 +518,16 @@
         }
       }
     },
+    "Date & Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日時"
+          }
+        }
+      }
+    },
     "Default" : {
       "localizations" : {
         "ja" : {
@@ -513,6 +600,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイス"
+          }
+        }
+      }
+    },
+    "Duration" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "期間"
           }
         }
       }
@@ -603,6 +700,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定の読み込みに失敗しました。"
+          }
+        }
+      }
+    },
+    "Failed to schedule the timer: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーを設定できませんでした: %@"
           }
         }
       }
@@ -813,6 +920,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイスが再起動後の場合は、デバイスのロックを解除してから再度お試しください。"
+          }
+        }
+      }
+    },
+    "If the shortcut is not executed, please make sure that Deflector Automation is allowed to run when locked, and that the device has been unlocked after a restart." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットが実行されない場合は、Deflector Automationのロック中の実行が許可されていること、およびデバイスが再起動後にロック解除されていることを確認してください。"
           }
         }
       }
@@ -1230,6 +1347,16 @@
         }
       }
     },
+    "Please set the shortcut name to run at the scheduled time." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定した時間に実行するショートカット名を設定してください。"
+          }
+        }
+      }
+    },
     "Please set the shortcut name to run from the Live Activity." : {
       "localizations" : {
         "ja" : {
@@ -1350,6 +1477,36 @@
         }
       }
     },
+    "Schedule" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "予約"
+          }
+        }
+      }
+    },
+    "Schedule a shortcut to run later." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットをあとで実行するように予約できます。"
+          }
+        }
+      }
+    },
+    "Schedules" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "予約"
+          }
+        }
+      }
+    },
     "Search by Symbol Name" : {
       "localizations" : {
         "ja" : {
@@ -1389,6 +1546,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "「Dynamic Islandで異なるショートカットを使用する」を設定"
+          }
+        }
+      }
+    },
+    "Set a time within one year from now." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在から1年以内の時刻を指定してください。"
           }
         }
       }
@@ -1648,6 +1815,16 @@
         }
       }
     },
+    "Timer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマー"
+          }
+        }
+      }
+    },
     "Toggle" : {
       "localizations" : {
         "ja" : {
@@ -1814,6 +1991,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ようこそ！"
+          }
+        }
+      }
+    },
+    "You can schedule up to 30 timers." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーは最大30件まで設定できます。"
           }
         }
       }
