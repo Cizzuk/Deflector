@@ -13,6 +13,8 @@ import SwiftUI
     init() {
         // Initialize Watch Connectivity Service
         _ = WatchConnectivityService.shared
+        // Initialize Timer Model
+        _ = TimerModel.shared
     }
 
     var body: some Scene {
@@ -42,7 +44,7 @@ struct MainView: View {
 
     enum Route: Hashable {
         case firstSetup
-        case liveActivitySettings, watchSettings, sideButtonSettings
+        case liveActivitySettings, watchSettings, sideButtonSettings, timerSettings
         case about, changeIcon
     }
 
@@ -103,6 +105,18 @@ struct MainView: View {
                 }
 
                 Section {
+                    NavigationLink(value: Route.timerSettings) {
+                        VStack(alignment: .leading) {
+                            Label("Timer", systemImage: "timer")
+                                .font(.title3)
+                                .padding(5)
+                            Text("Schedule a shortcut to run later.")
+                                .font(.subheadline)
+                        }
+                    }
+                }
+
+                Section {
                     NavigationLink(value: Route.about) {
                         Label("About", systemImage: "info.circle")
                     }
@@ -121,6 +135,7 @@ struct MainView: View {
             case .liveActivitySettings: LiveActivitySettingsView()
             case .watchSettings: WatchSettingsView()
             case .sideButtonSettings: SideButtonSettingsView()
+            case .timerSettings: TimerSettingsView()
             case .about: AboutView()
             case .changeIcon: ChangeIconView()
             case .none: EmptyView()
@@ -141,6 +156,7 @@ struct MainView: View {
                     case "/liveactivity": path = .liveActivitySettings
                     case "/watch": path = .watchSettings
                     case "/sidebutton": path = .sideButtonSettings
+                    case "/timer": path = .timerSettings
                     default: break
                     }
                 default: break

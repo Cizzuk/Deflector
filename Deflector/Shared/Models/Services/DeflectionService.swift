@@ -37,13 +37,17 @@ class DeflectionService {
         }
     }
     
-    func scheduleShortcut(shortcutName: String, trigger: UNNotificationTrigger?) async throws {
+    func scheduleShortcut(
+        shortcutName: String,
+        trigger: UNNotificationTrigger?,
+        userInfo: [AnyHashable: Any] = [:]
+    ) async throws {
         let content = UNMutableNotificationContent()
         content.title = "Deflection"
         content.body = shortcutName
         content.sound = .none
         content.interruptionLevel = .timeSensitive
-        content.userInfo = [:]
+        content.userInfo = userInfo
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
