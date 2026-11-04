@@ -82,6 +82,36 @@
         }
       }
     },
+    "+ 1Day" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "＋1日"
+          }
+        }
+      }
+    },
+    "+ 1Month" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "＋1ヶ月"
+          }
+        }
+      }
+    },
+    "+ 1Week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "＋1週間"
+          }
+        }
+      }
+    },
     "${control} Deflector Live Activity" : {
       "localizations" : {
         "ja" : {
