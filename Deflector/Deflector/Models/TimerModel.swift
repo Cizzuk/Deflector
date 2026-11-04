@@ -8,7 +8,7 @@
 import Combine
 import UserNotifications
 
-struct ScheduledTimer: Identifiable, Equatable {
+struct ScheduledTimer: Identifiable, Equatable, Codable {
     let id: String
     let shortcutName: String
     let fireDate: Date

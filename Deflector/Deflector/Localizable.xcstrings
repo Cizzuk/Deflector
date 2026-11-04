@@ -794,6 +794,16 @@
         }
       }
     },
+    "Get All Timers" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのタイマーを取得"
+          }
+        }
+      }
+    },
     "Get Deflector Automation" : {
       "localizations" : {
         "ja" : {
@@ -880,6 +890,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "人"
+          }
+        }
+      }
+    },
+    "ID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID"
           }
         }
       }
@@ -1437,6 +1457,16 @@
         }
       }
     },
+    "Remove Timer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーを削除"
+          }
+        }
+      }
+    },
     "Removes all shortcuts from Live Activity with matching names." : {
       "localizations" : {
         "ja" : {
@@ -1447,12 +1477,32 @@
         }
       }
     },
+    "Removes the timer matching the ID. The ID can be obtained from the shortcut or the context menu in the app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーをIDで指定して削除します。タイマーのIDはショートカットか、アプリ内のコンテキストメニューで取得できます。"
+          }
+        }
+      }
+    },
     "Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットのリストをリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+          }
+        }
+      }
+    },
+    "Returns a JSON list of the timer IDs, shortcut names, and execution times as Unix time." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーのID、ショートカット名、実行される時間のUnix時間をJSONリストで返します。"
           }
         }
       }
