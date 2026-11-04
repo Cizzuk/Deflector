@@ -43,6 +43,22 @@ struct TimerSettingsView: View {
                                 .foregroundStyle(Color(uiColor: .label))
                         }
                         .accessibilityElement(children: .combine)
+                        .contextMenu {
+                            Button(action: {
+                                UIPasteboard.general.string = timer.id
+                            }) {
+                                Label("Copy Timer ID", systemImage: "document.on.document")
+                            }
+                            .tint(Color(uiColor: .label))
+
+                            Button(
+                                role: .destructive,
+                                action: { Task { await timerModel.remove(ids: [timer.id]) } }
+                            ) {
+                                Label("Remove Timer", systemImage: "trash")
+                            }
+                            .tint(Color(uiColor: .systemRed))
+                        }
                     }
                     .onDelete { offsets in
                         let ids = offsets.map { timerModel.timers[$0].id }

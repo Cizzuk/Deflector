@@ -478,6 +478,16 @@
         }
       }
     },
+    "Copy Timer ID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーのIDをコピー"
+          }
+        }
+      }
+    },
     "Custom Symbol" : {
       "localizations" : {
         "ja" : {
