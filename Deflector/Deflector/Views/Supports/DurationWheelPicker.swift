@@ -84,18 +84,20 @@ struct DurationWheelPicker: UIViewRepresentable {
         func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
             let width = pickerView.bounds.width
             guard width > 0 else { return 120 }
-            return width / 3
+            return width * 0.3
         }
 
         func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-            let label = view as? UILabel ?? {
-                let label = UILabel()
-                label.textAlignment = .center
-                label.font = .systemFont(ofSize: 23)
-                label.textColor = .label
-                label.backgroundColor = .clear
-                return label
-            }()
+            let label =
+                view as? UILabel
+                ?? {
+                    let label = UILabel()
+                    label.textAlignment = .center
+                    label.font = .systemFont(ofSize: 23)
+                    label.textColor = .label
+                    label.backgroundColor = .clear
+                    return label
+                }()
             label.text = Self.title(for: row, component: component)
             label.accessibilityLabel = Self.accessibilityLabel(for: row, component: component)
             return label
