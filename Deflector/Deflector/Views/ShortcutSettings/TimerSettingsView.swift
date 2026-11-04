@@ -161,6 +161,7 @@ struct TimerEditorView: View {
                                 }
                             }) {
                                 Text("+ 1Month")
+                                    .accessibilityLabel("Add 1 month")
                             }
                             .buttonStyle(.borderedProminent)
 
@@ -173,6 +174,7 @@ struct TimerEditorView: View {
                                 }
                             }) {
                                 Text("+ 1Week")
+                                    .accessibilityLabel("Add 1 week")
                             }
                             .buttonStyle(.borderedProminent)
 
@@ -185,6 +187,7 @@ struct TimerEditorView: View {
                                 }
                             }) {
                                 Text("+ 1Day")
+                                    .accessibilityLabel("Add 1 day")
                             }
                             .buttonStyle(.borderedProminent)
                         }
