@@ -163,7 +163,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "＋1ヶ月"
+            "value" : "＋1か月"
           }
         }
       }
@@ -294,6 +294,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アクティビティコントロール"
+          }
+        }
+      }
+    },
+    "Add 1 day" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1日追加"
+          }
+        }
+      }
+    },
+    "Add 1 month" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1か月追加"
+          }
+        }
+      }
+    },
+    "Add 1 week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1週間追加"
           }
         }
       }
