@@ -26,7 +26,7 @@ struct TimerSettingsView: View {
                                     .lineLimit(1)
                                 Group {
                                     if isShowingFireDate {
-                                        Text("\(timer.fireDate, format: .dateTime.month().day().hour().minute().second())")
+                                        Text("\(timer.fireDate, format: .dateTime.year().month().day().hour().minute().second())")
                                     } else {
                                         Text("\(timer.fireDate, style: .relative)")
                                     }
