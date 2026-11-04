@@ -67,7 +67,7 @@ struct TimerSettingsView: View {
 
                 Section {
                 } footer: {
-                    Text("If the shortcut is not executed, please make sure that Deflector Automation is allowed to run when locked, and that the device has been unlocked after a restart.")
+                    Text("If the shortcut is not executed, please make sure that Deflector Automation is allowed to run when locked, and that the device has been unlocked after a restart. Executing multiple shortcuts at the same time may cause failures.")
                         .padding(.bottom, 10)
                 }
             }
