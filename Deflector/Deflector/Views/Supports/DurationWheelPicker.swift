@@ -84,17 +84,42 @@ struct DurationWheelPicker: UIViewRepresentable {
         func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
             let width = pickerView.bounds.width
             guard width > 0 else { return 120 }
-            return component == 0 ? width * 0.4 : width * 0.3
+            return width / 3
         }
 
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+            let label = view as? UILabel ?? {
+                let label = UILabel()
+                label.textAlignment = .center
+                label.font = .systemFont(ofSize: 23)
+                label.textColor = .label
+                label.backgroundColor = .clear
+                return label
+            }()
+            label.text = Self.title(for: row, component: component)
+            label.accessibilityLabel = Self.accessibilityLabel(for: row, component: component)
+            return label
+        }
+
+        private static func title(for row: Int, component: Int) -> String {
+            switch component {
+            case 0:
+                String(localized: "\(row) h")
+            case 1:
+                String(localized: "\(row) min")
+            default:
+                String(localized: "\(row) s")
+            }
+        }
+
+        private static func accessibilityLabel(for row: Int, component: Int) -> String {
             switch component {
             case 0:
                 String(localized: "\(row) hours")
             case 1:
-                String(localized: "\(row) min")
+                String(localized: "\(row) minutes")
             default:
-                String(localized: "\(row) sec")
+                String(localized: "\(row) seconds")
             }
         }
 
