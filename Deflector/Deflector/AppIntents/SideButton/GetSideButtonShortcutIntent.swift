@@ -7,6 +7,7 @@
 
 import AppIntents
 
+@AppIntent(.tool)
 struct GetSideButtonShortcutIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Side Button Shortcut Name"
     static let isDiscoverable = true

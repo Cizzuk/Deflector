@@ -7,6 +7,7 @@
 
 import AppIntents
 
+@AppIntent(.tool)
 struct RemoveTimerIntent: AppIntent {
     static let title: LocalizedStringResource = "Remove Timer"
     static let description: LocalizedStringResource = "Removes the timer matching the ID. The ID can be obtained from the shortcut or the context menu in the app."

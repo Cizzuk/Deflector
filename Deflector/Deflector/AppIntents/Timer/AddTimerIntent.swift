@@ -7,6 +7,7 @@
 
 import AppIntents
 
+@AppIntent(.tool)
 struct AddTimerIntent: AppIntent {
     static let title: LocalizedStringResource = "Add Timer"
     static let description: LocalizedStringResource = "Schedule a shortcut to run later."
