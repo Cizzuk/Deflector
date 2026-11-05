@@ -33,6 +33,10 @@ struct SystemAutomationDetectIntent: AppIntent {
             UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         }
 
+        if version != UserSettings.shared.deflectorAutomationVersion {
+            UserSettings.shared.deflectorAutomationVersion = version
+        }
+
         return .result()
     }
 }

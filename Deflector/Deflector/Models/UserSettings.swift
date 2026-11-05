@@ -12,6 +12,7 @@ final class UserSettings: ObservableObject {
     static let shared = UserSettings()
 
     private struct Keys {
+        static let deflectorAutomationVersion = "deflectorAutomationVersion"
         static let isFirstSetupCompleted = "isFirstSetupCompleted"
         static let sideButtonShortcutName = "sideButtonShortcutName"
         static let liveActivityButtons = "liveActivityButtons"
@@ -41,6 +42,12 @@ final class UserSettings: ObservableObject {
             if !isSettingsLoaded {
                 isSettingsLoaded = true
             }
+        }
+
+        // deflectorAutomationVersion
+        if UserDefaults.standard.object(forKey: Keys.deflectorAutomationVersion) != nil {
+            deflectorAutomationVersion = UserDefaults.standard.integer(forKey: Keys.deflectorAutomationVersion)
+            setSettingsLoaded()
         }
 
         // isFirstSetupCompleted
@@ -95,6 +102,12 @@ final class UserSettings: ObservableObject {
         {
             liveActivityIslandIcons = icons
             setSettingsLoaded()
+        }
+    }
+
+    @Published var deflectorAutomationVersion: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(deflectorAutomationVersion, forKey: Keys.deflectorAutomationVersion)
         }
     }
 
