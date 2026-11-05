@@ -65,12 +65,16 @@ final class TimerModel: ObservableObject {
             .sorted { ($0.fireDate, $0.id) < ($1.fireDate, $1.id) }
     }
 
-    func schedule(shortcutName: String, interval: TimeInterval) async throws {
-        try await schedule(shortcutName, target: .interval(interval))
+    @discardableResult
+    func schedule(shortcutName: String, interval: TimeInterval) async throws -> String {
+        let uuid = try await schedule(shortcutName, target: .interval(interval))
+        return uuid
     }
 
-    func schedule(shortcutName: String, fireDate: Date) async throws {
-        try await schedule(shortcutName, target: .fireDate(fireDate))
+    @discardableResult
+    func schedule(shortcutName: String, fireDate: Date) async throws -> String {
+        let uuid = try await schedule(shortcutName, target: .fireDate(fireDate))
+        return uuid
     }
 
     func remove(ids: [String]) async {
@@ -88,7 +92,7 @@ final class TimerModel: ObservableObject {
         case fireDate(Date)
     }
 
-    private func schedule(_ shortcutName: String, target: Target) async throws {
+    private func schedule(_ shortcutName: String, target: Target) async throws -> String {
         await refresh()
         guard timers.count < Self.maxCount else {
             throw ScheduleError.limitReached
@@ -109,7 +113,7 @@ final class TimerModel: ObservableObject {
             throw ScheduleError.invalidDate
         }
 
-        try await DeflectionService.shared.scheduleShortcut(
+        let uuid = try await DeflectionService.shared.scheduleShortcut(
             shortcutName: shortcutName,
             trigger: UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false),
             userInfo: [
@@ -117,7 +121,9 @@ final class TimerModel: ObservableObject {
                 Keys.fireDate: fireDate.timeIntervalSince1970,
             ]
         )
+
         await refresh()
+        return uuid
     }
 
     private static func scheduledTimer(from request: UNNotificationRequest) -> ScheduledTimer? {

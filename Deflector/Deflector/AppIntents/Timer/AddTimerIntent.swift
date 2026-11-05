@@ -40,7 +40,7 @@ struct AddTimerIntent: AppIntent {
     }
 
     @MainActor
-    func perform() async throws -> some IntentResult {
+    func perform() async throws -> some IntentResult & ReturnsValue<String> {
         guard !shortcutName.isEmpty else {
             throw PerformError.shortcutNameIsEmpty
         }
@@ -51,13 +51,12 @@ struct AddTimerIntent: AppIntent {
         }
 
         do {
-            try await TimerModel.shared.schedule(shortcutName: shortcutName, fireDate: fireDate)
+            let uuid = try await TimerModel.shared.schedule(shortcutName: shortcutName, fireDate: fireDate)
+            return .result(value: uuid)
         } catch let error as TimerModel.ScheduleError {
             throw PerformError.schedule(error)
         } catch {
             throw PerformError.failed(error.localizedDescription)
         }
-
-        return .result()
     }
 }
