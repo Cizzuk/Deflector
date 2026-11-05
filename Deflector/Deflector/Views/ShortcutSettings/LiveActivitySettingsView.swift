@@ -222,6 +222,9 @@ struct LiveActivitySettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
+        .onReceive(NotificationCenter.default.publisher(for: .deflectorActivityToggled)) { _ in
+            vm.refreshActivityState()
+        }
         .alert(
             "Error",
             isPresented: Binding(

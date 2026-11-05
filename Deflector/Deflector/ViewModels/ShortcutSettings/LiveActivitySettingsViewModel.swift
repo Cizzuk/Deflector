@@ -18,13 +18,19 @@ class LiveActivitySettingsViewModel: ObservableObject {
     func onChange(scenePhase: ScenePhase) {
         switch scenePhase {
         case .active:
-            isLiveActivityActive = DeflectorActivitySupport.isActive()
+            refreshActivityState()
         case .inactive:
             break
         case .background:
             break
         @unknown default:
             break
+        }
+    }
+
+    func refreshActivityState() {
+        Task { @MainActor in
+            isLiveActivityActive = await DeflectorActivitySupport.isActive()
         }
     }
 

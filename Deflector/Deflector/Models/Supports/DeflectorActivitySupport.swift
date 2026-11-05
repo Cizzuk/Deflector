@@ -8,6 +8,10 @@
 import ActivityKit
 import UserNotifications
 
+extension Notification.Name {
+    static let deflectorActivityToggled = Notification.Name("deflectorActivityToggled")
+}
+
 class DeflectorActivitySupport {
     static func isActive() -> Bool {
         return !Activity<DeflectorActivityAttributes>.activities.isEmpty
@@ -68,6 +72,8 @@ class DeflectorActivitySupport {
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
         let triggerRefresh = UNTimeIntervalNotificationTrigger(timeInterval: 7.75 * 60 * 60, repeats: false)
         await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: triggerRefresh)
+
+        NotificationCenter.default.post(name: .deflectorActivityToggled, object: nil)
     }
 
     static func update() async {
@@ -94,6 +100,8 @@ class DeflectorActivitySupport {
 
         // Remove the system call for automatic restart.
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
+
+        NotificationCenter.default.post(name: .deflectorActivityToggled, object: nil)
     }
 
     // If activity is active, restart it to extend the time
