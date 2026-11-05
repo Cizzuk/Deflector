@@ -9,6 +9,7 @@ import AppIntents
 
 struct AddTimerIntent: AppIntent {
     static let title: LocalizedStringResource = "Add Timer"
+    static let description: LocalizedStringResource = "Schedule a shortcut to run later."
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
 
