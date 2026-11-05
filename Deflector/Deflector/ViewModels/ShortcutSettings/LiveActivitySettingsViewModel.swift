@@ -30,7 +30,7 @@ class LiveActivitySettingsViewModel: ObservableObject {
 
     func refreshActivityState() {
         Task { @MainActor in
-            isLiveActivityActive = await DeflectorActivitySupport.isActive()
+            isLiveActivityActive = DeflectorActivitySupport.isActive()
         }
     }
 
