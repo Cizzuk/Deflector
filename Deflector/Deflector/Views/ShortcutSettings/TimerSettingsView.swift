@@ -211,7 +211,7 @@ struct TimerEditorView: View {
             .animation(.default, value: vm.mode)
             .navigationTitle("Add Timer")
             .navigationBarTitleDisplayMode(.inline)
-            .interactiveDismissDisabled(vm.isScheduling)
+            .interactiveDismissDisabled(true)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(role: .close, action: { dismiss() })
