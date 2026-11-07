@@ -1623,12 +1623,12 @@
         }
       }
     },
-    "Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly." : {
+    "Requested the list of shortcuts. It may take some time if there are many shortcuts." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカットのリストをリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+            "value" : "ショートカットのリストをリクエストしました。 ショートカットが多いと時間がかかる場合があります。"
           }
         }
       }
