@@ -16,11 +16,11 @@ struct KnownIssuesView: View {
                 }
 
                 Section("Issues") {
-                    Text("1. Automations do not work at all for the first few minutes after the device boots up.")
-                    Text("2. When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing.")
-                    Text("3. If a shortcut executed from an automation does not finish successfully, automations will not run for a while.")
-                    Text("4. If an error occurs during an automation, such as entering a non-existent shortcut name, the automation may repeatedly trigger errors and become unable to run for a while.")
-                    Text("5. After restarting the device, an automation will not run until the device is unlocked.")
+                    Text("Automations do not work at all for the first few minutes after the device boots up.")
+                    Text("After restarting the device, an automation will not run until the device is unlocked.")
+                    Text("When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing.")
+                    Text("If a shortcut executed from an automation does not finish successfully, automations will not run for a while.")
+                    Text("Having too many shortcuts on your device will slow down the execution of automation.")
                 }
 
                 Section {

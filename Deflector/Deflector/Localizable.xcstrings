@@ -208,56 +208,6 @@
         }
       }
     },
-    "1. Automations do not work at all for the first few minutes after the device boots up." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. デバイス起動後の数分間オートメーションが全く機能しない。"
-          }
-        }
-      }
-    },
-    "2. When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2. 最後にショートカットを開いてから時間が経過すると、ショートカットのダイアログが表示されなくなることがある。"
-          }
-        }
-      }
-    },
-    "3. If a shortcut executed from an automation does not finish successfully, automations will not run for a while." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "3. オートメーションから実行されたショートカットが正常に終了しないと、しばらくオートメーションが実行されなくなる。"
-          }
-        }
-      }
-    },
-    "4. If an error occurs during an automation, such as entering a non-existent shortcut name, the automation may repeatedly trigger errors and become unable to run for a while." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "4. 存在しないショートカット名を入力した場合など、オートメーション中にエラーが発生すると、オートメーションがエラーを発生させ続けてしばらく実行不可能になることがある。"
-          }
-        }
-      }
-    },
-    "5. After restarting the device, an automation will not run until the device is unlocked." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5. デバイスの再起動後は、ロックを解除するまでオートメーションは実行されません。"
-          }
-        }
-      }
-    },
     "About" : {
       "localizations" : {
         "ja" : {
@@ -398,6 +348,16 @@
         }
       }
     },
+    "After restarting the device, an automation will not run until the device is unlocked." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの再起動後にロックを解除するまで、オートメーションが実行されない。"
+          }
+        }
+      }
+    },
     "All Done!" : {
       "localizations" : {
         "ja" : {
@@ -444,6 +404,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "矢印"
+          }
+        }
+      }
+    },
+    "Automations do not work at all for the first few minutes after the device boots up." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス起動後の数分間オートメーションが全く機能しない。"
           }
         }
       }
@@ -980,6 +950,16 @@
         }
       }
     },
+    "Having too many shortcuts on your device will slow down the execution of automation." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス上にあるショートカットが非常に多いと、オートメーションの実行が遅くなる。"
+          }
+        }
+      }
+    },
     "Health" : {
       "localizations" : {
         "ja" : {
@@ -1036,6 +1016,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID"
+          }
+        }
+      }
+    },
+    "If a shortcut executed from an automation does not finish successfully, automations will not run for a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションから実行されたショートカットが正常に終了しないと、しばらくオートメーションが実行されなくなる。"
           }
         }
       }
@@ -2177,6 +2167,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ようこそ！"
+          }
+        }
+      }
+    },
+    "When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最後にショートカットを開いてから時間が経過すると、ショートカットのダイアログが表示されなくなることがある。"
           }
         }
       }
