@@ -86,7 +86,7 @@ struct ShortcutPicker: View {
                     .keyboardShortcut("r", modifiers: [.command])
                 } footer: {
                     if vm.isWaitingAutomationCallback {
-                        Text("Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly.")
+                        Text("Requested the list of shortcuts. It may take some time if there are many shortcuts.")
                             .padding(.bottom, 10)
                     } else {
                         Text("Use Deflector Automation to request a list of your shortcuts and easily select the one you want.")
