@@ -13,7 +13,11 @@ class DeflectionService {
 
     var lastDeflectionTime: Date?
 
-    func runShortcut(shortcutName: String, ignoreCooldown: Bool = false) async {
+    func runShortcut(
+        shortcutName: String,
+        shortcutInput: String? = nil,
+        ignoreCooldown: Bool = false
+    ) async {
         // Sent within 0.25s will be ignored
         if !ignoreCooldown, let lastDeflectionTime {
             let distance = lastDeflectionTime.distance(to: Date())
@@ -22,11 +26,10 @@ class DeflectionService {
 
         lastDeflectionTime = Date()
 
-        let content = UNMutableNotificationContent()
-        content.title = "Deflection"
-        content.body = shortcutName
-        content.sound = .none
-        content.interruptionLevel = .timeSensitive
+        let content = buildDeflectionNotificationContent(
+            shortcutName: shortcutName,
+            shortcutInput: shortcutInput
+        )
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
 
@@ -39,22 +42,41 @@ class DeflectionService {
 
     func scheduleShortcut(
         shortcutName: String,
+        shortcutInput: String? = nil,
         trigger: UNNotificationTrigger?,
         userInfo: [AnyHashable: Any] = [:]
     ) async throws -> String {
         let uuid = UUID().uuidString
 
-        let content = UNMutableNotificationContent()
-        content.title = "Deflection"
-        content.body = shortcutName
-        content.sound = .none
-        content.interruptionLevel = .timeSensitive
+        let content = buildDeflectionNotificationContent(
+            shortcutName: shortcutName,
+            shortcutInput: shortcutInput
+        )
         content.userInfo = userInfo
 
         let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
         try await UNUserNotificationCenter.current().add(request)
 
         return uuid
+    }
+
+    private func buildDeflectionNotificationContent(
+        shortcutName: String,
+        shortcutInput: String? = nil,
+    ) -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        if let shortcutInput {
+            content.title = "Deflection with Input"
+            content.subtitle = shortcutName
+            content.body = shortcutInput
+        } else {
+            content.title = "Deflection"
+            content.body = shortcutName
+        }
+        content.sound = .none
+        content.interruptionLevel = .timeSensitive
+
+        return content
     }
 
     func sendErrorNotification(reason: LocalizedStringResource? = nil) async {
