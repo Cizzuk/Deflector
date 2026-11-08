@@ -212,11 +212,11 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				7A31AA00302B24B10045FB9A /* Shared */,
 				000000000000000000000010 /* Deflector */,
-				7A193EC4302E9D340041A05B /* WidgetExtension */,
+				7A31AA00302B24B10045FB9A /* Shared */,
 				7A25B8AB3068BE6A000AFEB9 /* WatchApp */,
 				7A094EC93072127100E51E28 /* WatchAppWidgetExtension */,
+				7A193EC4302E9D340041A05B /* WidgetExtension */,
 				7A193EBF302E9D340041A05B /* Frameworks */,
 				000000000000000000000020 /* Products */,
 			);
