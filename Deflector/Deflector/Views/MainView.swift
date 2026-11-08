@@ -42,6 +42,7 @@ struct MainView: View {
         }
     }()
     @State private var isShowingAutomationUpdate = false
+    @State private var automationUpdateVersion: Int?
 
     enum Route: Hashable {
         case firstSetup
@@ -144,9 +145,10 @@ struct MainView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .sheet(isPresented: $isShowingAutomationUpdate) {
-            AutomationUpdateView()
+            AutomationUpdateView(minimumVersion: automationUpdateVersion ?? 0)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .automationUpdateRequested)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .automationUpdateRequested)) { notification in
+            automationUpdateVersion = notification.userInfo?["version"] as? Int
             isShowingAutomationUpdate = true
         }
         .onOpenURL { url in
