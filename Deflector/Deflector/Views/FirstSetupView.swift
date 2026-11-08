@@ -45,7 +45,7 @@ struct FirstSetupView: View {
                 // MARK: - Deflector Automation
 
                 Section {
-                    Text("Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation.")
+                    Text("Please download \"Deflector Automation\", the automation required to run Deflector.")
 
                     if let url = URL(string: "https://cizz.uk/deflector/automation") {
                         Link(destination: url) {

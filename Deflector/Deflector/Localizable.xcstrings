@@ -1483,12 +1483,12 @@
         }
       }
     },
-    "Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation." : {
+    "Please download \"Deflector Automation\", the automation required to run Deflector." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。 次にショートカットを編集して、通知のオートメーションを有効にしてください。"
+            "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。"
           }
         }
       }
