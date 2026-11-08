@@ -13,6 +13,7 @@ struct WCMessage: Codable {
     enum Method: Codable {
         case requestApplicationContext
         case deflection(shortcutName: String)
+        case deflectionWithInput(shortcutName: String, input: String)
     }
 
     init(method: Method) {

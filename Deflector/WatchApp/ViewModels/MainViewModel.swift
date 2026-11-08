@@ -14,9 +14,9 @@ class MainViewModel: ObservableObject {
 
     @Published var errorMessage: LocalizedStringResource? = nil
 
-    func sendDeflection(_ shortcutName: String) {
+    func sendDeflection(_ shortcutName: String, input: String? = nil) {
         WKInterfaceDevice.current().play(.click)
-        wc.sendDeflection(shortcutName: shortcutName) { [weak self] error in
+        wc.sendDeflection(shortcutName: shortcutName, input: input) { [weak self] error in
             guard let self, DeflectorWatch.applicationState != .background else { return }
             WKInterfaceDevice.current().play(.failure)
             Task { @MainActor in

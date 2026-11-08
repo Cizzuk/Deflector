@@ -100,14 +100,25 @@ final class WatchConnectivityService: NSObject, ObservableObject {
         session.sendMessage(message.toDictionary(), replyHandler: nil)
     }
 
-    func sendDeflection(shortcutName: String, errorHandler: ((Error) -> Void)? = nil) {
+    func sendDeflection(
+        shortcutName: String,
+        input: String? = nil,
+        errorHandler: ((Error) -> Void)? = nil
+    ) {
         if sendingDeflectionShortcut == nil || deflectionAfterReachable != nil {
             Task { @MainActor in
                 sendingDeflectionShortcut = shortcutName
             }
         }
 
-        let message = WCMessage(method: .deflection(shortcutName: shortcutName))
+        let method: WCMessage.Method
+        if let input {
+            method = .deflectionWithInput(shortcutName: shortcutName, input: input)
+        } else {
+            method = .deflection(shortcutName: shortcutName)
+        }
+
+        let message = WCMessage(method: method)
 
         let task = { [weak self] in
             self?.session.sendMessage(message.toDictionary(), replyHandler: nil) { error in
