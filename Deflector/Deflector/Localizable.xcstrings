@@ -428,6 +428,16 @@
         }
       }
     },
+    "Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタン"
+          }
+        }
+      }
+    },
     "Camera & Photos" : {
       "localizations" : {
         "ja" : {
@@ -1126,6 +1136,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "インデックス"
+          }
+        }
+      }
+    },
+    "Input" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
           }
         }
       }
@@ -2037,6 +2057,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "変更"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
           }
         }
       }

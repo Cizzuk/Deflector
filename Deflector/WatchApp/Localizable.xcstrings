@@ -4,6 +4,16 @@
     "" : {
       "shouldTranslate" : false
     },
+    "Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタン"
+          }
+        }
+      }
+    },
     "Connection service is not activated." : {
       "localizations" : {
         "ja" : {
@@ -113,6 +123,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカットの送信に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "Input" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
           }
         }
       }

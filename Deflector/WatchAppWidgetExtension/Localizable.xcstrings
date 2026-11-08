@@ -1,8 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタン"
+          }
+        }
+      }
+    },
     "Deflection Widget Configuration" : {
       "shouldTranslate" : false
+    },
+    "Input" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
+          }
+        }
+      }
     },
     "Open Deflector" : {
       "localizations" : {

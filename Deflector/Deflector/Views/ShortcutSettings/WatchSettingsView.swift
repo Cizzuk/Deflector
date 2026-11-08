@@ -76,6 +76,19 @@ struct WatchSettingsView: View {
 
                                 Text(shortcut.shortcutName)
                                     .lineLimit(1)
+
+                                Spacer()
+
+                                Picker(selection: $shortcut.requestType, label: EmptyView()) {
+                                    ForEach(WCAppContext.FavoriteShortcut.RequestType.allCases, id: \.self) { requestType in
+                                        Text(requestType.localizedName).tag(requestType)
+                                    }
+                                }
+                                .accessibilityLabel("Type")
+                                .tint(Color(uiColor: .secondaryLabel))
+                                .onAppear {
+                                    shortcut.requestType = shortcut.requestType ?? .default
+                                }
                             }
                             .accessibilityElement(children: .contain)
                             .accessibilityLabel(shortcut.shortcutName.isEmpty ? "Not Set" : shortcut.shortcutName)

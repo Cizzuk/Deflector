@@ -13,8 +13,23 @@ struct WCAppContext: Codable, Equatable {
     struct FavoriteShortcut: Codable, Equatable, Identifiable {
         var shortcutName: String
         var symbol: String = defaultShortcutSymbol
+        var requestType: RequestType? = .default
 
         var id: String { return shortcutName }
+
+        enum RequestType: String, Codable, CaseIterable {
+            case button
+            case input
+
+            static let `default` = Self.button
+
+            var localizedName: LocalizedStringResource {
+                switch self {
+                case .button: return "Button"
+                case .input: return "Input"
+                }
+            }
+        }
     }
 
     init(
