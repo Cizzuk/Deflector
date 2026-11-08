@@ -149,6 +149,6 @@ struct ShortcutPicker: View {
                 Text(vm.errorMessage ?? "")
             }
         }
-        .onAppear { isFocused = true }
+        .onAppear { isFocused = vm.deviceShortcuts.isEmpty }
     }
 }
