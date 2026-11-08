@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-extension Notification.Name {
-    static let automationUpdateRequested = Notification.Name("automationUpdateRequested")
-}
-
 struct AutomationUpdateView: View {
     var body: some View {
         NavigationStack {
