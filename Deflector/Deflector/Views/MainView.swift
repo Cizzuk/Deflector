@@ -41,6 +41,7 @@ struct MainView: View {
             return .firstSetup
         }
     }()
+    @State private var isShowingAutomationUpdate = false
 
     enum Route: Hashable {
         case firstSetup
@@ -142,6 +143,12 @@ struct MainView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .sheet(isPresented: $isShowingAutomationUpdate) {
+            AutomationUpdateView()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .automationUpdateRequested)) { _ in
+            isShowingAutomationUpdate = true
+        }
         .onOpenURL { url in
             if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
                 switch url.host {
