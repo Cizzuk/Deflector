@@ -87,11 +87,11 @@ struct WatchSettingsView: View {
                                 .accessibilityLabel("Type")
                                 .tint(Color(uiColor: .secondaryLabel))
                                 .onChange(of: shortcut.requestType) { (old, _) in
-                                    if shortcut.requestType == .input && !FeatureAvailability.isInputAvailable() {
+                                    if shortcut.requestType == .input && !DeflectorAutomationSupport.isAvailable(.input) {
                                         Task { @MainActor in
                                             shortcut.requestType = old
                                         }
-                                        NotificationCenter.default.post(name: .automationUpdateRequested, object: nil)
+                                        DeflectorAutomationSupport.requestUpdate(.input)
                                     }
                                 }
                                 .onAppear {
