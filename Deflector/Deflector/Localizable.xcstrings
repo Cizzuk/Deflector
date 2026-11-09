@@ -208,6 +208,36 @@
         }
       }
     },
+    "1. Delete the existing Deflector Automation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 既存のDeflector Automationを削除"
+          }
+        }
+      }
+    },
+    "2. Download the latest Deflector Automation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 最新のDeflector Automationをダウンロード"
+          }
+        }
+      }
+    },
+    "3. Check the Automation Version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. オートメーションのバージョンを確認する"
+          }
+        }
+      }
+    },
     "About" : {
       "localizations" : {
         "ja" : {
@@ -404,6 +434,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "矢印"
+          }
+        }
+      }
+    },
+    "Automation Update" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションのアップデート"
           }
         }
       }
@@ -670,6 +710,16 @@
     "Deflector Automation" : {
       "shouldTranslate" : false
     },
+    "Deflector Automation is not the latest version." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflector Automationは最新バージョンではありません。"
+          }
+        }
+      }
+    },
     "Deflector is not installed on your Apple Watch. Please install it from the Watch app." : {
       "localizations" : {
         "ja" : {
@@ -716,6 +766,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイス"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        }
+      }
+    },
+    "Download Deflector Automation from the button below." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以下のボタンからDeflector Automationをダウンロードしてください。"
           }
         }
       }
@@ -856,6 +926,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お気に入りのショートカット"
+          }
+        }
+      }
+    },
+    "Find Deflector Automation in the Shortcuts app and delete it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットアプリからDeflector Automationを探して削除してください。"
           }
         }
       }
@@ -2237,6 +2317,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[SF Symbols](https://developer.apple.com/jp/sf-symbols/)に収録されているシンボルを利用できます。"
+          }
+        }
+      }
+    },
+    "You need to update Deflector Automation to use this feature." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能を利用するにはDeflector Automationをアップデートする必要があります。"
           }
         }
       }
