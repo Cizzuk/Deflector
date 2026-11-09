@@ -91,7 +91,7 @@ struct WatchSettingsView: View {
                                         Task { @MainActor in
                                             shortcut.requestType = old
                                         }
-                                        DeflectorAutomationSupport.requestUpdate(.input)
+                                        DeflectorAutomationSupport.requestUpdate()
                                     }
                                 }
                                 .onAppear {

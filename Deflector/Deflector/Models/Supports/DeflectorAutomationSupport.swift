@@ -12,6 +12,7 @@ extension Notification.Name {
 }
 
 class DeflectorAutomationSupport {
+    static let latestVersion = 2
     static let automationURL = URL(string: "https://cizz.uk/deflector/automation")!
     static let automationFileURL = URL(string: "https://cizz.uk/deflector/automation/file")!
 
@@ -32,8 +33,7 @@ class DeflectorAutomationSupport {
         return false
     }
 
-    static func requestUpdate(_ feature: Feature) {
-        let notification = Notification(name: .automationUpdateRequested, object: nil, userInfo: ["version": feature.minimumVersion])
-        NotificationCenter.default.post(notification)
+    static func requestUpdate() {
+        NotificationCenter.default.post(name: .automationUpdateRequested, object: nil)
     }
 }
