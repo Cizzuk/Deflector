@@ -20,6 +20,14 @@ struct AutomationUpdateView: View {
     }
 
     private func startDeflectorAutomationTest() async {
+        let settings = await UserNotificationSupport.notificationSettings()
+        guard UserNotificationSupport.isAlertAvailable(settings: settings) else {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            testStatus = .notTested
+            testText = "Notifications are disabled. Please allow notifications in Settings."
+            return
+        }
+
         UIImpactFeedbackGenerator().impactOccurred()
         testStatus = .testing
         testText = "Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly."
