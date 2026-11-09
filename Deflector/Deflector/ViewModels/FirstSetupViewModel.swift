@@ -98,12 +98,16 @@ class FirstSetupViewModel: ObservableObject {
         deflectorAutomationTestButtonIsActive = UserNotificationSupport.isAlertAvailable(settings: unNotificationSettings)
     }
 
-    func startDeflectorAutomationTest() {
+    func startDeflectorAutomationTest() async {
         UIImpactFeedbackGenerator().impactOccurred()
         deflectorAutomationTestStatus = .testing
         deflectorAutomationTestText = "Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly."
+        await SystemCallSupport.addSystemCall(.pingTest)
+
+        // Prevent rapidly tapping
         deflectorAutomationTestButtonIsActive = false
-        Task { await SystemCallSupport.addSystemCall(.pingTest) }
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        deflectorAutomationTestButtonIsActive = UserNotificationSupport.isAlertAvailable(settings: unNotificationSettings)
     }
 
     func handlePingTestReceived() {
@@ -111,7 +115,6 @@ class FirstSetupViewModel: ObservableObject {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             deflectorAutomationTestStatus = .success
             deflectorAutomationTestText = "Test successful! It may be working correctly."
-            deflectorAutomationTestButtonIsActive = false
         }
     }
 }

@@ -68,7 +68,7 @@ struct FirstSetupView: View {
                         }
                     }
 
-                    Button(action: { vm.startDeflectorAutomationTest() }) {
+                    Button(action: { Task { await vm.startDeflectorAutomationTest() } }) {
                         Label {
                             Text("Run Automation Test")
                         } icon: {
