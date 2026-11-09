@@ -26,10 +26,24 @@ import SwiftUI
                     if scenePhase == .active {
                         Task {
                             _ = !UserSettings.shared.isSettingsAvailable()
+                            await pingAutomationVersionIfNeeded()
                         }
                     }
                 }
         }
+    }
+
+    private func pingAutomationVersionIfNeeded() async {
+        guard UserSettings.shared.deflectorAutomationVersion == 0,
+            UserSettings.shared.isFirstSetupCompleted,
+            UserSettings.shared.isSettingsAvailable()
+        else { return }
+
+        let settings = await UserNotificationSupport.notificationSettings()
+        guard UserNotificationSupport.isAlertAvailable(settings: settings) else { return }
+
+        // For update deflectorAutomationVersion
+        await SystemCallSupport.addSystemCall(.pingTest)
     }
 }
 
