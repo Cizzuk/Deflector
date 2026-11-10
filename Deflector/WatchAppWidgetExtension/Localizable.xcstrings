@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
     "Button" : {
       "localizations" : {
         "ja" : {
@@ -70,6 +73,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカット名"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
           }
         }
       }

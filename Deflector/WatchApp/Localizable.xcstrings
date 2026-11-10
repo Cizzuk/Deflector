@@ -167,6 +167,16 @@
         }
       }
     },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
+          }
+        }
+      }
+    },
     "You need to unlock your iPhone after restarting it." : {
       "localizations" : {
         "ja" : {

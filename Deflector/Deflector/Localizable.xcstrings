@@ -2151,6 +2151,16 @@
         }
       }
     },
+    "Type of the shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットの種類"
+          }
+        }
+      }
+    },
     "Unable to start the activity because Deflector has reached its maximum limit of activities." : {
       "localizations" : {
         "ja" : {
