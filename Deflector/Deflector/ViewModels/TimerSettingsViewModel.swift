@@ -63,7 +63,7 @@ class TimerSettingsViewModel: ObservableObject {
     }
 
     func schedule() async -> Bool {
-        let name = shortcutName.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = shortcutName
         let interval = durationInterval()
         let fireDate = date
 
