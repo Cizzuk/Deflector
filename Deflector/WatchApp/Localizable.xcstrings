@@ -4,6 +4,16 @@
     "" : {
       "shouldTranslate" : false
     },
+    "Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタン"
+          }
+        }
+      }
+    },
     "Connection service is not activated." : {
       "localizations" : {
         "ja" : {
@@ -117,6 +127,16 @@
         }
       }
     },
+    "Input" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
+          }
+        }
+      }
+    },
     "No favorite shortcuts." : {
       "localizations" : {
         "ja" : {
@@ -143,6 +163,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お気に入りのショートカットを再読み込み"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
           }
         }
       }

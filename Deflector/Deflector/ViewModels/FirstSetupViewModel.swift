@@ -12,26 +12,26 @@ class FirstSetupViewModel: ObservableObject {
     @Published var notificationStatusText: LocalizedStringResource = ""
     @Published var showRequestUNAuthorizationButton: Bool = true
     private var unNotificationSettings: UNNotificationSettings?
-    
+
     @Published var deflectorAutomationTestText: LocalizedStringResource = "Not tested yet."
     @Published var deflectorAutomationTestButtonIsActive: Bool = false
     @Published var deflectorAutomationTestStatus: DeflectorAutomationTestStatus = .notTested
-    
+
     enum DeflectorAutomationTestStatus {
         case notTested
         case testing
         case success
     }
-    
+
     init() {
         Task {
             await updateUNAuthorizationStatus()
             resetDeflectorAutomationTest()
         }
     }
-    
+
     // MARK: - Lifecycle
-    
+
     func onChange(scenePhase: ScenePhase) {
         switch scenePhase {
         case .active:
@@ -47,34 +47,34 @@ class FirstSetupViewModel: ObservableObject {
             break
         }
     }
-    
+
     // MARK: - User Notification
-    
+
     func requestUNAuthorization() async {
         _ = await UserNotificationSupport.requestAuthorization()
         await updateUNAuthorizationStatus()
     }
-    
+
     func updateUNAuthorizationStatus() async {
         unNotificationSettings = await UserNotificationSupport.notificationSettings()
-        
+
         switch unNotificationSettings?.authorizationStatus {
         case .authorized:
             showRequestUNAuthorizationButton = false
             UserSettings.shared.isFirstSetupCompleted = true
-            
+
             if unNotificationSettings?.alertSetting == .enabled {
                 notificationStatusText = "Notifications are allowed, but banner alerts are enabled. I recommend enabling Notification Center only."
                 deflectorAutomationTestButtonIsActive = true
-                
+
             } else if unNotificationSettings?.lockScreenSetting == .enabled {
                 notificationStatusText = "Notifications are allowed, but lock screen alerts are enabled. I recommend enabling Notification Center only."
                 deflectorAutomationTestButtonIsActive = true
-                
+
             } else if unNotificationSettings?.alertSetting != .enabled && unNotificationSettings?.lockScreenSetting != .enabled && unNotificationSettings?.notificationCenterSetting != .enabled {
                 notificationStatusText = "Notifications are allowed, but all alert types are disabled. Please enable Notification Center alert in Settings."
                 deflectorAutomationTestButtonIsActive = false
-                
+
             } else {
                 notificationStatusText = "Notifications are allowed."
                 deflectorAutomationTestButtonIsActive = true
@@ -89,21 +89,25 @@ class FirstSetupViewModel: ObservableObject {
             deflectorAutomationTestButtonIsActive = false
         }
     }
-    
+
     // MARK: - Deflector Automation Test
-    
+
     func resetDeflectorAutomationTest() {
         deflectorAutomationTestStatus = .notTested
         deflectorAutomationTestText = "Not tested yet."
         deflectorAutomationTestButtonIsActive = UserNotificationSupport.isAlertAvailable(settings: unNotificationSettings)
     }
-    
-    func startDeflectorAutomationTest() {
+
+    func startDeflectorAutomationTest() async {
         UIImpactFeedbackGenerator().impactOccurred()
         deflectorAutomationTestStatus = .testing
         deflectorAutomationTestText = "Waiting for automation response.\nIf there is no response after a few seconds, it may not be configured correctly."
+        await SystemCallSupport.addSystemCall(.pingTest)
+
+        // Prevent rapidly tapping
         deflectorAutomationTestButtonIsActive = false
-        Task { await SystemCallSupport.addSystemCall(.pingTest) }
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        deflectorAutomationTestButtonIsActive = UserNotificationSupport.isAlertAvailable(settings: unNotificationSettings)
     }
 
     func handlePingTestReceived() {
@@ -111,7 +115,6 @@ class FirstSetupViewModel: ObservableObject {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             deflectorAutomationTestStatus = .success
             deflectorAutomationTestText = "Test successful! It may be working correctly."
-            deflectorAutomationTestButtonIsActive = false
         }
     }
 }

@@ -13,25 +13,25 @@ class UserNotificationSupport {
         let settings = await center.notificationSettings()
         return settings
     }
-    
+
     static func isAlertAvailable(settings: UNNotificationSettings?) -> Bool {
         guard let settings else { return false }
-        
+
         if settings.authorizationStatus != .authorized {
             return false
         }
-        
+
         if settings.alertSetting != .enabled && settings.lockScreenSetting != .enabled && settings.notificationCenterSetting != .enabled {
             return false
         }
-        
+
         return true
     }
-    
+
     static func requestAuthorization() async -> Bool {
         let center = UNUserNotificationCenter.current()
         let settings = await center.notificationSettings()
-        
+
         if settings.authorizationStatus == .notDetermined {
             do {
                 try await center.requestAuthorization(options: [.alert])
@@ -48,7 +48,7 @@ class UserNotificationSupport {
 
         return false
     }
-    
+
     static func addNotificationToDisplay(
         subtitle: String? = nil,
         body: String? = nil,
@@ -58,12 +58,12 @@ class UserNotificationSupport {
         content.title = "Notification"
         content.sound = .none
         content.interruptionLevel = .timeSensitive
-        
+
         if let subtitle { content.subtitle = subtitle }
         if let body { content.body = body }
-        
+
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
+
         do {
             try await UNUserNotificationCenter.current().add(request)
         } catch {

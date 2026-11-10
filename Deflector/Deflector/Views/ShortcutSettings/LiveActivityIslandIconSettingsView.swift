@@ -10,10 +10,10 @@ import WidgetKit
 
 struct LiveActivityIslandIconSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
-    
+
     @State private var isOnCustomize = UserSettings.shared.liveActivityIslandIcons != nil
     @State private var previewType: DeviceInfo.DynamicIslandType = DeviceInfo.dynamicIslandType
-    
+
     var body: some View {
         List {
             Section {
@@ -28,7 +28,7 @@ struct LiveActivityIslandIconSettingsView: View {
                     }
                 }
             }
-            
+
             if isOnCustomize {
                 Section {
                     ZStack(alignment: .center) {
@@ -51,28 +51,34 @@ struct LiveActivityIslandIconSettingsView: View {
                         Text("Vertical").tag(DeviceInfo.DynamicIslandType.vertical)
                     }
                 }
-                
+
                 Section("Compact") {
-                    Toggle(isOn: Binding(
-                        get: { userSettings.liveActivityIslandIcons?.compactLeading ?? false },
-                        set: { value in userSettings.liveActivityIslandIcons?.compactLeading = value }
-                    )) {
+                    Toggle(
+                        isOn: Binding(
+                            get: { userSettings.liveActivityIslandIcons?.compactLeading ?? false },
+                            set: { value in userSettings.liveActivityIslandIcons?.compactLeading = value }
+                        )
+                    ) {
                         Text("Leading Icon")
                     }
-                    
-                    Toggle(isOn: Binding(
-                        get: { userSettings.liveActivityIslandIcons?.compactTrailing ?? false },
-                        set: { value in userSettings.liveActivityIslandIcons?.compactTrailing = value }
-                    )) {
+
+                    Toggle(
+                        isOn: Binding(
+                            get: { userSettings.liveActivityIslandIcons?.compactTrailing ?? false },
+                            set: { value in userSettings.liveActivityIslandIcons?.compactTrailing = value }
+                        )
+                    ) {
                         Text("Trailing Icon")
                     }
                 }
-                
+
                 Section("Minimal") {
-                    Toggle(isOn: Binding(
-                        get: { userSettings.liveActivityIslandIcons?.minimal ?? false },
-                        set: { value in userSettings.liveActivityIslandIcons?.minimal = value }
-                    )) {
+                    Toggle(
+                        isOn: Binding(
+                            get: { userSettings.liveActivityIslandIcons?.minimal ?? false },
+                            set: { value in userSettings.liveActivityIslandIcons?.minimal = value }
+                        )
+                    ) {
                         Text("Minimal Icon")
                     }
                 }

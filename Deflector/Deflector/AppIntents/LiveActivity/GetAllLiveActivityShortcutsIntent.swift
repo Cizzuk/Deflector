@@ -11,23 +11,23 @@ struct GetAllLiveActivityShortcutsIntent: AppIntent {
     static let title: LocalizedStringResource = "Get All Live Activity Shortcuts"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
-    
+
     @Parameter(title: "Get from Dynamic Island", default: false)
     var dynamicIsland: Bool
-    
+
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
         guard UserSettings.shared.isSettingsAvailable() else {
             throw IntentUserSettingsError.loadSettingsFailed
         }
-        
+
         let buttons = dynamicIsland ? UserSettings.shared.liveActivityIslandButtons : UserSettings.shared.liveActivityButtons
         var shortcuts: [String] = []
-        
+
         buttons.forEach { button in
             shortcuts.append(button.shortcutName)
         }
-        
+
         return .result(value: shortcuts)
     }
 }

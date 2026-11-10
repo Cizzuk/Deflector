@@ -10,7 +10,7 @@ import SwiftUI
 struct SideButtonSettingsView: View {
     @StateObject private var userSettings = UserSettings.shared
     @State private var isShowingShortcutPicker = false
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -36,7 +36,7 @@ struct SideButtonSettingsView: View {
                     Text("Please set the shortcut name to launch the voice assistant.")
                         .padding(.bottom, 10)
                 }
-                
+
                 Section {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
                         Button(action: { UIApplication.shared.open(url) }) {

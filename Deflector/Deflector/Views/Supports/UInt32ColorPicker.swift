@@ -11,9 +11,9 @@ struct UInt32ColorPicker: View {
     let titleResource: LocalizedStringResource
     @Binding var selection: UInt32
     let supportsOpacity: Bool
-    
+
     @State private var tmpColor: Color
-    
+
     init(
         _ titleResource: LocalizedStringResource,
         selection: Binding<UInt32>,
@@ -24,7 +24,7 @@ struct UInt32ColorPicker: View {
         self.supportsOpacity = supportsOpacity
         self.tmpColor = ColorHelper.uInt32ToColor(selection.wrappedValue)
     }
-    
+
     var body: some View {
         ColorPicker(
             titleResource,

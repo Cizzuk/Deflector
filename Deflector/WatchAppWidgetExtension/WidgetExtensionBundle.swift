@@ -5,8 +5,8 @@
 //  Created by Cizzuk on 2026/10/04.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {

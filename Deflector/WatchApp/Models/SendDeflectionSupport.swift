@@ -10,7 +10,7 @@ import WatchConnectivity
 class SendDeflectionSupport {
     static func makeErrorMessage(error: any Error) -> LocalizedStringResource {
         let nsError = error as NSError
-        
+
         switch nsError {
         case WCError.sessionNotActivated:
             return "Failed to send the shortcut because the session with the iPhone is not activated."

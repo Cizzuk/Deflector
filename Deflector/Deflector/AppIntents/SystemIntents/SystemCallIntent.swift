@@ -10,15 +10,15 @@ import AppIntents
 struct SystemCallIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "System Call Intent"
     #if DEBUG
-    static let isDiscoverable = true
+        static let isDiscoverable = true
     #else
-    static let isDiscoverable = false
+        static let isDiscoverable = false
     #endif
     static var supportedModes: IntentModes = .background
-    
+
     @Parameter(title: "Argument")
     var argument: String
-    
+
     @MainActor
     func perform() async throws -> some IntentResult {
         await SystemCallSupport.handleSystemCall(argument)

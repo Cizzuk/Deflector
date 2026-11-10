@@ -7,31 +7,9 @@
 
 import SwiftUI
 
-@main struct Deflector: App {
-    @Environment(\.scenePhase) private var scenePhase
-    
-    init() {
-        // Initialize Watch Connectivity Service
-        _ = WatchConnectivityService.shared
-    }
-    
-    var body: some Scene {
-        WindowGroup {
-            MainView()
-                .tint(.accent)
-                .scrollDismissesKeyboard(.interactively)
-                .onChange(of: scenePhase) {
-                    if scenePhase == .active {
-                        Task {
-                            _ = !UserSettings.shared.isSettingsAvailable()
-                        }
-                    }
-                }
-        }
-    }
-}
-
 struct MainView: View {
+    @State private var isShowingAutomationUpdate = false
+    
     @State private var path: Route? = {
         if UserSettings.shared.isFirstSetupCompleted {
             return nil
@@ -39,13 +17,13 @@ struct MainView: View {
             return .firstSetup
         }
     }()
-    
+
     enum Route: Hashable {
         case firstSetup
-        case liveActivitySettings, watchSettings, sideButtonSettings
+        case liveActivitySettings, watchSettings, sideButtonSettings, timerSettings
         case about, changeIcon
     }
-    
+
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
             List(selection: $path) {
@@ -57,11 +35,11 @@ struct MainView: View {
                                 .padding(5)
                             Text("If Deflector does not work properly, please try restarting your device or redoing this setup.")
                                 .font(.subheadline)
-                            
+
                         }
                     }
                 }
-                
+
                 Section {
                     NavigationLink(value: Route.liveActivitySettings) {
                         VStack(alignment: .leading) {
@@ -73,7 +51,7 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
                 if DeviceInfo.isWatchSupported {
                     Section {
                         NavigationLink(value: Route.watchSettings) {
@@ -87,7 +65,7 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
                 if !DeviceInfo.unsupportedSideButtonAccess {
                     Section {
                         NavigationLink(value: Route.sideButtonSettings) {
@@ -101,7 +79,19 @@ struct MainView: View {
                         }
                     }
                 }
-                
+
+                Section {
+                    NavigationLink(value: Route.timerSettings) {
+                        VStack(alignment: .leading) {
+                            Label("Timer", systemImage: "timer")
+                                .font(.title3)
+                                .padding(5)
+                            Text("Schedule a shortcut to run later.")
+                                .font(.subheadline)
+                        }
+                    }
+                }
+
                 Section {
                     NavigationLink(value: Route.about) {
                         Label("About", systemImage: "info.circle")
@@ -111,7 +101,7 @@ struct MainView: View {
                             Label("Change App Icon", systemImage: "app.dashed")
                         }
                     }
-                    
+
                 }
             }
             .navigationTitle("Deflector")
@@ -121,12 +111,19 @@ struct MainView: View {
             case .liveActivitySettings: LiveActivitySettingsView()
             case .watchSettings: WatchSettingsView()
             case .sideButtonSettings: SideButtonSettingsView()
+            case .timerSettings: TimerSettingsView()
             case .about: AboutView()
             case .changeIcon: ChangeIconView()
             case .none: EmptyView()
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .sheet(isPresented: $isShowingAutomationUpdate) {
+            AutomationUpdateView()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .automationUpdateRequested)) { _ in
+            isShowingAutomationUpdate = true
+        }
         .onOpenURL { url in
             if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
                 switch url.host {
@@ -141,6 +138,7 @@ struct MainView: View {
                     case "/liveactivity": path = .liveActivitySettings
                     case "/watch": path = .watchSettings
                     case "/sidebutton": path = .sideButtonSettings
+                    case "/timer": path = .timerSettings
                     default: break
                     }
                 default: break

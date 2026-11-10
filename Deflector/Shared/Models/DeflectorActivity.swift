@@ -14,14 +14,14 @@ nonisolated struct DeflectorActivityButton: Codable, Equatable, Hashable, Identi
     var id: UUID = UUID()
     var shortcutName: String
     var symbol: String = defaultShortcutSymbol
-    var color: UInt32 = 0xFFFFFFFF
+    var color: UInt32 = 0xFFFF_FFFF
 }
 
 struct DeflectorActivityIslandIcons: Codable, Equatable, Hashable {
     var compactLeading: Bool
     var compactTrailing: Bool
     var minimal: Bool
-    
+
     static let deviceDefault: DeflectorActivityIslandIcons = {
         let placementForModel: [DynamicIslandMode] = {
             switch DeviceInfo.dynamicIslandType {
@@ -33,7 +33,7 @@ struct DeflectorActivityIslandIcons: Codable, Equatable, Hashable {
                 return [.compactLeading, .minimal]
             }
         }()
-        
+
         return DeflectorActivityIslandIcons(
             compactLeading: placementForModel.contains(.compactLeading),
             compactTrailing: placementForModel.contains(.compactTrailing),
@@ -47,7 +47,7 @@ nonisolated struct DeflectorActivityAttributes: ActivityAttributes {
         var buttons: [DeflectorActivityButton]
         var islandButtons: [DeflectorActivityButton]?
     }
-    
+
     var blackBackground: Bool
     var showShortcutNames: Bool
     var islandIcons: DeflectorActivityIslandIcons?

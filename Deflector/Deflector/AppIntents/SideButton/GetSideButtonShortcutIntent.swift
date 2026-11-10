@@ -11,13 +11,13 @@ struct GetSideButtonShortcutIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Side Button Shortcut Name"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
-    
+
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
         guard UserSettings.shared.isSettingsAvailable() else {
             throw IntentUserSettingsError.loadSettingsFailed
         }
-        
+
         return .result(value: UserSettings.shared.sideButtonShortcutName)
     }
 }

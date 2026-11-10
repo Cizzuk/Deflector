@@ -10,11 +10,11 @@ import WidgetKit
 
 struct DynamicIslandPreview: View {
     @Environment(\.colorScheme) var colorScheme
-    
+
     @Binding var compactLeading: Bool
     @Binding var compactTrailing: Bool
     @Binding var dynamicIslandType: DeviceInfo.DynamicIslandType
-    
+
     init(
         compactLeading: Binding<Bool>,
         compactTrailing: Binding<Bool>,
@@ -24,7 +24,7 @@ struct DynamicIslandPreview: View {
         self._compactTrailing = compactTrailing
         self._dynamicIslandType = dynamicIslandType
     }
-    
+
     private func makeHorizontalIsland(
         leading: Bool,
         trailing: Bool,
@@ -36,13 +36,13 @@ struct DynamicIslandPreview: View {
             if trailing { w += 29 } else if leading { w += 21 } else { w += 5 }
             return w + centerMargin
         }()
-        
+
         return ZStack {
             Capsule()
                 .fill(Color.black)
                 .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: colorScheme == .dark ? 1.5 : 0)
                 .frame(width: totalWidth, height: 38)
-            
+
             HStack(alignment: .center, spacing: 0) {
                 if leading {
                     Image(systemName: deflectorSymbol)
@@ -58,9 +58,9 @@ struct DynamicIslandPreview: View {
                 } else {
                     Spacer().frame(width: 5)
                 }
-                
+
                 Spacer().frame(width: centerMargin)
-                
+
                 if trailing {
                     Image(systemName: leading ? "square.2.layers.3d" : deflectorSymbol)
                         .resizable()
@@ -83,7 +83,7 @@ struct DynamicIslandPreview: View {
         .animation(.bouncy, value: compactLeading)
         .animation(.bouncy, value: compactTrailing)
     }
-    
+
     private func makeVerticalIsland(
         leading: Bool,
         trailing: Bool,
@@ -95,10 +95,10 @@ struct DynamicIslandPreview: View {
                 .fill(Color.black)
                 .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: colorScheme == .dark ? 1.5 : 0)
                 .frame(width: 38, height: totalHeight)
-            
+
             VStack(alignment: .center, spacing: 0) {
                 Spacer().frame(height: topMargin)
-                
+
                 if leading {
                     Image(systemName: deflectorSymbol)
                         .resizable()
@@ -110,7 +110,7 @@ struct DynamicIslandPreview: View {
                 } else {
                     Spacer().frame(width: 38, height: 34)
                 }
-                
+
                 if trailing {
                     Image(systemName: leading ? "square.2.layers.3d" : deflectorSymbol)
                         .resizable()
@@ -128,7 +128,7 @@ struct DynamicIslandPreview: View {
         .animation(.bouncy, value: compactLeading)
         .animation(.bouncy, value: compactTrailing)
     }
-    
+
     var body: some View {
         switch dynamicIslandType {
         case .horizontal:

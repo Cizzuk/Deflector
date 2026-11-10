@@ -11,62 +11,62 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Control Deflector Live Activity"
     static let isDiscoverable = true
     static var supportedModes: IntentModes = .background
-    
+
     enum ControlEnum: String, AppEnum {
         case start, end, toggle
-        
+
         static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Control")
         static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
             .start: "Start",
             .end: "End",
-            .toggle: "Toggle"
+            .toggle: "Toggle",
         ]
     }
-    
+
     @Parameter(title: "Control", default: .start)
     var control: ControlEnum
-    
+
     static var parameterSummary: some ParameterSummary {
         Summary("\(\.$control) Deflector Live Activity")
     }
-    
-    init() { }
-    
+
+    init() {}
+
     init(control: ControlEnum) {
         self.control = control
     }
-    
+
     @MainActor
     func perform() async throws -> some IntentResult {
         #if !EXTENSION
-        func startActivity() async throws {
-            guard UserSettings.shared.isSettingsAvailable() else {
-                throw IntentUserSettingsError.loadSettingsFailed
+            func startActivity() async throws {
+                guard UserSettings.shared.isSettingsAvailable() else {
+                    throw IntentUserSettingsError.loadSettingsFailed
+                }
+                try await DeflectorActivitySupport.start()
             }
-            try await DeflectorActivitySupport.start()
-        }
-        
-        func endActivity() async {
-            await DeflectorActivitySupport.endAll()
-            DummyActivitySupport.flash()
-        }
-        
-        switch control {
-        case .start:
-            try await startActivity()
-        case .end:
-            await endActivity()
-        case .toggle:
-            if DeflectorActivitySupport.isActive() {
-                await endActivity()
-            } else {
+
+            func endActivity() async {
+                await DeflectorActivitySupport.endAll()
+                DummyActivitySupport.flash()
+            }
+
+            switch control {
+            case .start:
                 try await startActivity()
+            case .end:
+                await endActivity()
+            case .toggle:
+                if DeflectorActivitySupport.isActive() {
+                    await endActivity()
+                } else {
+                    try await startActivity()
+                }
             }
-        }
-        
-        return .result(value: DeflectorActivitySupport.isActive())
+
+            return .result(value: DeflectorActivitySupport.isActive())
         #else
-        return .result()
+            return .result()
         #endif
     }
 }
