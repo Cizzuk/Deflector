@@ -2291,12 +2291,12 @@
         }
       }
     },
-    "You can schedule up to 30 timers." : {
+    "You can schedule up to %lld timers." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "タイマーは最大30件まで設定できます。"
+            "value" : "タイマーは最大%lld件まで設定できます。"
           }
         }
       }
