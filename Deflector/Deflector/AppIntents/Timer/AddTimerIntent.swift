@@ -41,7 +41,7 @@ struct AddTimerIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        guard !shortcutName.isEmpty else {
+        guard !shortcutName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             throw PerformError.shortcutNameIsEmpty
         }
 
