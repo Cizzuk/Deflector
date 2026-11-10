@@ -145,9 +145,10 @@ struct WatchSettingsView: View {
                     "",
                     prompt: "Please set the shortcut name to add it to your favorites.",
                 ) { shortcutName in
-                    if !shortcutName.isEmpty && !context.favoriteShortcuts.contains(where: { $0.shortcutName == shortcutName }) {
-                        context.favoriteShortcuts.append(WCAppContext.FavoriteShortcut(shortcutName: shortcutName))
-                    }
+                    guard !shortcutName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                        !context.favoriteShortcuts.contains(where: { $0.shortcutName == shortcutName })
+                    else { return }
+                    context.favoriteShortcuts.append(WCAppContext.FavoriteShortcut(shortcutName: shortcutName))
                 }
             }
         }
