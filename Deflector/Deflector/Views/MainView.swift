@@ -7,33 +7,9 @@
 
 import SwiftUI
 
-@main struct Deflector: App {
-    @Environment(\.scenePhase) private var scenePhase
-
-    init() {
-        // Initialize Watch Connectivity Service
-        _ = WatchConnectivityService.shared
-        // Initialize Timer Model
-        _ = TimerModel.shared
-    }
-
-    var body: some Scene {
-        WindowGroup {
-            MainView()
-                .tint(.accent)
-                .scrollDismissesKeyboard(.interactively)
-                .onChange(of: scenePhase) {
-                    if scenePhase == .active {
-                        Task {
-                            _ = !UserSettings.shared.isSettingsAvailable()
-                        }
-                    }
-                }
-        }
-    }
-}
-
 struct MainView: View {
+    @State private var isShowingAutomationUpdate = false
+    
     @State private var path: Route? = {
         if UserSettings.shared.isFirstSetupCompleted {
             return nil
@@ -142,6 +118,12 @@ struct MainView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .sheet(isPresented: $isShowingAutomationUpdate) {
+            AutomationUpdateView()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .automationUpdateRequested)) { _ in
+            isShowingAutomationUpdate = true
+        }
         .onOpenURL { url in
             if ["net.cizzuk.deflector", "deflector"].contains(url.scheme) {
                 switch url.host {

@@ -1,8 +1,31 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    "Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタン"
+          }
+        }
+      }
+    },
     "Deflection Widget Configuration" : {
       "shouldTranslate" : false
+    },
+    "Input" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
+          }
+        }
+      }
     },
     "Open Deflector" : {
       "localizations" : {
@@ -50,6 +73,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショートカット名"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
           }
         }
       }

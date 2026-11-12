@@ -17,6 +17,9 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
 
     @Parameter(title: "Symbol", description: "Name of the symbol in SF Symbols", default: "square.2.layers.3d.fill")
     var symbol: String?
+    
+    @Parameter(title: "Type", description: "Type of the shortcut", default: .button)
+    var requestType: WCAppContext.FavoriteShortcut.RequestType
 
     enum PerformError: LocalizedError {
         case shortcutNameIsEmpty
@@ -39,7 +42,8 @@ struct AddWatchFavoriteShortcutIntent: AppIntent {
 
         let newShortcut = WCAppContext.FavoriteShortcut(
             shortcutName: shortcutName,
-            symbol: symbol ?? defaultShortcutSymbol
+            symbol: symbol ?? defaultShortcutSymbol,
+            requestType: requestType
         )
 
         if let index = context.favoriteShortcuts.firstIndex(where: { $0.shortcutName == shortcutName }) {

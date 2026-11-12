@@ -29,7 +29,7 @@ final class TimerModel: ObservableObject {
         var localizedStringResource: LocalizedStringResource {
             switch self {
             case .limitReached:
-                "You can schedule up to 30 timers."
+                "You can schedule up to \(TimerModel.maxCount) timers."
             case .invalidDate:
                 "Set a time within one year from now."
             }

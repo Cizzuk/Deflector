@@ -45,25 +45,21 @@ struct FirstSetupView: View {
                 // MARK: - Deflector Automation
 
                 Section {
-                    Text("Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation.")
+                    Text("Please download \"Deflector Automation\", the automation required to run Deflector.")
 
-                    if let url = URL(string: "https://cizz.uk/deflector/automation") {
-                        Link(destination: url) {
-                            Label("Get Deflector Automation", systemImage: "square.and.arrow.down")
+                    Link(destination: DeflectorAutomationSupport.automationURL) {
+                        Label("Get Deflector Automation", systemImage: "square.and.arrow.down")
+                    }
+                    .contextMenu {
+                        Button(action: { UIPasteboard.general.string = DeflectorAutomationSupport.automationURL.absoluteString }) {
+                            Label("Copy iCloud Sharing Link", systemImage: "icloud.and.arrow.down")
                         }
-                        .contextMenu {
-                            Button(action: { UIPasteboard.general.string = url.absoluteString }) {
-                                Label("Copy iCloud Sharing Link", systemImage: "icloud.and.arrow.down")
-                            }
-                            .tint(Color(uiColor: .label))
+                        .tint(Color(uiColor: .label))
 
-                            if let url = URL(string: "https://cizz.uk/deflector/automation/file") {
-                                Button(action: { UIPasteboard.general.string = url.absoluteString }) {
-                                    Label("Copy File Download Link", systemImage: "arrow.down.document")
-                                }
-                                .tint(Color(uiColor: .label))
-                            }
+                        Button(action: { UIPasteboard.general.string = DeflectorAutomationSupport.automationFileURL.absoluteString }) {
+                            Label("Copy File Download Link", systemImage: "arrow.down.document")
                         }
+                        .tint(Color(uiColor: .label))
                     }
 
                     if let url = URL(string: "shortcuts://") {
@@ -72,7 +68,7 @@ struct FirstSetupView: View {
                         }
                     }
 
-                    Button(action: { vm.startDeflectorAutomationTest() }) {
+                    Button(action: { Task { await vm.startDeflectorAutomationTest() } }) {
                         Label {
                             Text("Run Automation Test")
                         } icon: {

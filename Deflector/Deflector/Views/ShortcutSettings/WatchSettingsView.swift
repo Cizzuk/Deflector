@@ -76,6 +76,27 @@ struct WatchSettingsView: View {
 
                                 Text(shortcut.shortcutName)
                                     .lineLimit(1)
+
+                                Spacer()
+
+                                Picker(selection: $shortcut.requestType, label: EmptyView()) {
+                                    ForEach(WCAppContext.FavoriteShortcut.RequestType.allCases, id: \.self) { requestType in
+                                        Text(requestType.localizedName).tag(requestType)
+                                    }
+                                }
+                                .accessibilityLabel("Type")
+                                .tint(Color(uiColor: .secondaryLabel))
+                                .onChange(of: shortcut.requestType) { (old, _) in
+                                    if shortcut.requestType == .input && !DeflectorAutomationSupport.isAvailable(.input) {
+                                        Task { @MainActor in
+                                            shortcut.requestType = old
+                                        }
+                                        DeflectorAutomationSupport.requestUpdate()
+                                    }
+                                }
+                                .onAppear {
+                                    shortcut.requestType = shortcut.requestType ?? .default
+                                }
                             }
                             .accessibilityElement(children: .contain)
                             .accessibilityLabel(shortcut.shortcutName.isEmpty ? "Not Set" : shortcut.shortcutName)
@@ -124,9 +145,10 @@ struct WatchSettingsView: View {
                     "",
                     prompt: "Please set the shortcut name to add it to your favorites.",
                 ) { shortcutName in
-                    if !shortcutName.isEmpty && !context.favoriteShortcuts.contains(where: { $0.shortcutName == shortcutName }) {
-                        context.favoriteShortcuts.append(WCAppContext.FavoriteShortcut(shortcutName: shortcutName))
-                    }
+                    guard !shortcutName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                        !context.favoriteShortcuts.contains(where: { $0.shortcutName == shortcutName })
+                    else { return }
+                    context.favoriteShortcuts.append(WCAppContext.FavoriteShortcut(shortcutName: shortcutName))
                 }
             }
         }

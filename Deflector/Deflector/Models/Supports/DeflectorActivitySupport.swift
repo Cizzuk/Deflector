@@ -92,10 +92,8 @@ class DeflectorActivitySupport {
     static func endAll() async {
         let activities = Activity<DeflectorActivityAttributes>.activities
 
-        Task.detached(priority: .userInitiated) {
-            for activity in activities {
-                await activity.end(nil, dismissalPolicy: .immediate)
-            }
+        for activity in activities {
+            await activity.end(nil, dismissalPolicy: .immediate)
         }
 
         // Remove the system call for automatic restart.

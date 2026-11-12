@@ -208,52 +208,32 @@
         }
       }
     },
-    "1. Automations do not work at all for the first few minutes after the device boots up." : {
+    "1. Delete the existing Deflector Automation" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1. デバイス起動後の数分間オートメーションが全く機能しない。"
+            "value" : "1. 既存のDeflector Automationを削除"
           }
         }
       }
     },
-    "2. When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing." : {
+    "2. Download the latest Deflector Automation" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "2. 最後にショートカットを開いてから時間が経過すると、ショートカットのダイアログが表示されなくなることがある。"
+            "value" : "2. 最新のDeflector Automationをダウンロード"
           }
         }
       }
     },
-    "3. If a shortcut executed from an automation does not finish successfully, automations will not run for a while." : {
+    "3. Check the Automation Version" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3. オートメーションから実行されたショートカットが正常に終了しないと、しばらくオートメーションが実行されなくなる。"
-          }
-        }
-      }
-    },
-    "4. If an error occurs during an automation, such as entering a non-existent shortcut name, the automation may repeatedly trigger errors and become unable to run for a while." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "4. 存在しないショートカット名を入力した場合など、オートメーション中にエラーが発生すると、オートメーションがエラーを発生させ続けてしばらく実行不可能になることがある。"
-          }
-        }
-      }
-    },
-    "5. After restarting the device, an automation will not run until the device is unlocked." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5. デバイスの再起動後は、ロックを解除するまでオートメーションは実行されません。"
+            "value" : "3. オートメーションのバージョンを確認する"
           }
         }
       }
@@ -398,6 +378,16 @@
         }
       }
     },
+    "After restarting the device, an automation will not run until the device is unlocked." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの再起動後にロックを解除するまで、オートメーションが実行されない。"
+          }
+        }
+      }
+    },
     "All Done!" : {
       "localizations" : {
         "ja" : {
@@ -448,12 +438,42 @@
         }
       }
     },
+    "Automation Update" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションのアップデート"
+          }
+        }
+      }
+    },
+    "Automations do not work at all for the first few minutes after the device boots up." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス起動後の数分間オートメーションが全く機能しない。"
+          }
+        }
+      }
+    },
     "Available only in Japan. You can change the voice assistant assigned to the Side Button. Use a shortcut to access your favorite voice assistant." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本限定。サイドボタンに割り当てる音声アシスタントを変更できます。ショートカットを使ってお気に入りの音声アシスタントを使用します。"
+          }
+        }
+      }
+    },
+    "Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタン"
           }
         }
       }
@@ -690,6 +710,16 @@
     "Deflector Automation" : {
       "shouldTranslate" : false
     },
+    "Deflector Automation is not the latest version." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deflector Automationは最新バージョンではありません。"
+          }
+        }
+      }
+    },
     "Deflector is not installed on your Apple Watch. Please install it from the Watch app." : {
       "localizations" : {
         "ja" : {
@@ -736,6 +766,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイス"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        }
+      }
+    },
+    "Download Deflector Automation from the button below." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以下のボタンからDeflector Automationをダウンロードしてください。"
           }
         }
       }
@@ -880,6 +930,16 @@
         }
       }
     },
+    "Find Deflector Automation in the Shortcuts app and delete it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットアプリからDeflector Automationを探して削除してください。"
+          }
+        }
+      }
+    },
     "First Setup" : {
       "localizations" : {
         "ja" : {
@@ -980,6 +1040,16 @@
         }
       }
     },
+    "Having too many shortcuts on your device will slow down the execution of automation." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス上にあるショートカットが非常に多いと、オートメーションの実行が遅くなる。"
+          }
+        }
+      }
+    },
     "Health" : {
       "localizations" : {
         "ja" : {
@@ -1036,6 +1106,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID"
+          }
+        }
+      }
+    },
+    "If a shortcut executed from an automation does not finish successfully, automations will not run for a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オートメーションから実行されたショートカットが正常に終了しないと、しばらくオートメーションが実行されなくなる。"
           }
         }
       }
@@ -1136,6 +1216,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "インデックス"
+          }
+        }
+      }
+    },
+    "Input" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
           }
         }
       }
@@ -1473,12 +1563,12 @@
         }
       }
     },
-    "Please download \"Deflector Automation\", the automation required to run Deflector. Next, edit the shortcut to enable the notification automation." : {
+    "Please download \"Deflector Automation\", the automation required to run Deflector." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。 次にショートカットを編集して、通知のオートメーションを有効にしてください。"
+            "value" : "Deflectorが動作するために必要な「Deflector Automation」をダウンロードしてください。"
           }
         }
       }
@@ -1623,12 +1713,12 @@
         }
       }
     },
-    "Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly." : {
+    "Requested the list of shortcuts. It may take some time if there are many shortcuts." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ショートカットのリストをリクエストしました。 表示されない場合はDeflector Automationが正しく動作していない可能性があります。"
+            "value" : "ショートカットのリストをリクエストしました。 ショートカットが多いと時間がかかる場合があります。"
           }
         }
       }
@@ -2051,6 +2141,26 @@
         }
       }
     },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
+          }
+        }
+      }
+    },
+    "Type of the shortcut" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショートカットの種類"
+          }
+        }
+      }
+    },
     "Unable to start the activity because Deflector has reached its maximum limit of activities." : {
       "localizations" : {
         "ja" : {
@@ -2181,12 +2291,22 @@
         }
       }
     },
-    "You can schedule up to 30 timers." : {
+    "When some time has passed since Shortcuts was last opened, the shortcut dialog may stop appearing." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "タイマーは最大30件まで設定できます。"
+            "value" : "最後にショートカットを開いてから時間が経過すると、ショートカットのダイアログが表示されなくなることがある。"
+          }
+        }
+      }
+    },
+    "You can schedule up to %lld timers." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーは最大%lld件まで設定できます。"
           }
         }
       }
@@ -2207,6 +2327,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[SF Symbols](https://developer.apple.com/jp/sf-symbols/)に収録されているシンボルを利用できます。"
+          }
+        }
+      }
+    },
+    "You need to update Deflector Automation to use this feature." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能を利用するにはDeflector Automationをアップデートする必要があります。"
           }
         }
       }

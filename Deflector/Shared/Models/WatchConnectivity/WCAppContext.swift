@@ -5,6 +5,7 @@
 //  Created by Cizzuk on 2026/09/27.
 //
 
+import AppIntents
 import Foundation
 
 struct WCAppContext: Codable, Equatable {
@@ -13,8 +14,29 @@ struct WCAppContext: Codable, Equatable {
     struct FavoriteShortcut: Codable, Equatable, Identifiable {
         var shortcutName: String
         var symbol: String = defaultShortcutSymbol
+        var requestType: RequestType? = .default
 
         var id: String { return shortcutName }
+
+        enum RequestType: String, Codable, CaseIterable, AppEnum {
+            case button
+            case input
+
+            static let `default` = Self.button
+
+            var localizedName: LocalizedStringResource {
+                return Self.caseDisplayRepresentations[self]?.title ?? ""
+            }
+
+            static var typeDisplayRepresentation: TypeDisplayRepresentation {
+                TypeDisplayRepresentation(name: "Type")
+            }
+
+            static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+                .button: "Button",
+                .input: "Input",
+            ]
+        }
     }
 
     init(

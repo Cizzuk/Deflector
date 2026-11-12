@@ -75,6 +75,15 @@ final class WatchConnectivityService: NSObject, ObservableObject {
             Task {
                 await DeflectionService.shared.runShortcut(shortcutName: shortcutName, ignoreCooldown: true)
             }
+
+        case .deflectionWithInput(let shortcutName, let input):
+            Task {
+                await DeflectionService.shared.runShortcut(
+                    shortcutName: shortcutName,
+                    shortcutInput: input,
+                    ignoreCooldown: true
+                )
+            }
         }
     }
 }

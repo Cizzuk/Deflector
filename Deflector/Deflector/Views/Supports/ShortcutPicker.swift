@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ShortcutPicker: View {
     @Environment(\.dismiss) var dismiss
+    @StateObject private var vm = ShortcutPickerViewModel.shared
 
     @State var shortcutName: String
-    @State var deviceShortcuts: [String] = []
     var prompt: LocalizedStringResource?
     var callback: (String) -> Void
 
     @State private var searchQuery: String = ""
+    @State private var disableCallButton = false
     @FocusState private var isFocused: Bool
-    @State private var disableCallButton: Bool = false
-    @State private var isWaitingAutomationCallback: Bool = false
-    @State private var errorMessage: LocalizedStringResource?
 
     init(
         _ shortcutName: String,
@@ -31,40 +29,22 @@ struct ShortcutPicker: View {
         self.callback = callback
     }
 
+    private func close() {
+        callback(shortcutName)
+        dismiss()
+    }
+
     private func callDeviceShortcuts() async {
-        let settings = await UserNotificationSupport.notificationSettings()
-        if !UserNotificationSupport.isAlertAvailable(settings: settings) {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-            errorMessage = "Cannot request the shortcut list because notifications are disabled. Please complete the first setup."
+        guard await vm.callDeviceShortcuts() else {
             return
         }
 
         isFocused = false
-        disableCallButton = true
-        isWaitingAutomationCallback = true
-
-        UIImpactFeedbackGenerator().impactOccurred()
-        await DeviceShortcutsSupport.callDeviceShortcuts()
 
         // Prevent rapidly tapping
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            disableCallButton = false
-        }
-    }
-
-    private func handleDeviceShortcutsNotification(_ notification: Notification) {
-        if isWaitingAutomationCallback,
-            let receivedShortcuts = DeviceShortcutsSupport.parseDeviceShortcutsNotification(notification)
-        {
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-            deviceShortcuts = receivedShortcuts
-            isWaitingAutomationCallback = false
-        }
-    }
-
-    private func close() {
-        callback(shortcutName)
-        dismiss()
+        disableCallButton = true
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        disableCallButton = false
     }
 
     var body: some View {
@@ -93,7 +73,7 @@ struct ShortcutPicker: View {
                         Label {
                             Text("Get the List of Shortcuts")
                         } icon: {
-                            if isWaitingAutomationCallback {
+                            if vm.isWaitingAutomationCallback {
                                 ProgressView()
                                     .progressViewStyle(.circular)
                             } else {
@@ -105,8 +85,8 @@ struct ShortcutPicker: View {
                     .disabled(disableCallButton)
                     .keyboardShortcut("r", modifiers: [.command])
                 } footer: {
-                    if isWaitingAutomationCallback {
-                        Text("Requested the list of shortcuts. If it does not appear, Deflector Automation may not be working correctly.")
+                    if vm.isWaitingAutomationCallback {
+                        Text("Requested the list of shortcuts. It may take some time if there are many shortcuts.")
                             .padding(.bottom, 10)
                     } else {
                         Text("Use Deflector Automation to request a list of your shortcuts and easily select the one you want.")
@@ -114,9 +94,9 @@ struct ShortcutPicker: View {
                     }
                 }
 
-                if !deviceShortcuts.isEmpty {
+                if !vm.deviceShortcuts.isEmpty {
                     Section {
-                        let filteredShortcuts = deviceShortcuts.filter { shortcut in
+                        let filteredShortcuts = vm.deviceShortcuts.filter { shortcut in
                             searchQuery.isEmpty || shortcut.localizedCaseInsensitiveContains(searchQuery)
                         }
 
@@ -160,18 +140,15 @@ struct ShortcutPicker: View {
             .alert(
                 "Error",
                 isPresented: Binding(
-                    get: { errorMessage != nil },
-                    set: { if !$0 { errorMessage = nil } }
+                    get: { vm.errorMessage != nil },
+                    set: { if !$0 { vm.errorMessage = nil } }
                 )
             ) {
-                Button("OK", role: .close) { errorMessage = nil }
+                Button("OK", role: .close) { vm.errorMessage = nil }
             } message: {
-                Text(errorMessage ?? "")
+                Text(vm.errorMessage ?? "")
             }
         }
-        .onAppear { isFocused = true }
-        .onReceive(NotificationCenter.default.publisher(for: .deviceShortcutsReceived)) { notification in
-            handleDeviceShortcutsNotification(notification)
-        }
+        .onAppear { isFocused = vm.deviceShortcuts.isEmpty }
     }
 }
