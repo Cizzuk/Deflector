@@ -15,20 +15,18 @@ class DummyActivitySupport {
 
     // LiveActivityIntent will freeze for 5 seconds if the activity is not started.
     // To avoid this, start a dummy activity and immediately end it.
-    static func flash() {
-        Task.detached(priority: .high) {
-            let content = ActivityContent(
-                state: DummyAttributes.ContentState(),
-                staleDate: Date.now
-            )
+    static func flash() async {
+        let content = ActivityContent(
+            state: DummyAttributes.ContentState(),
+            staleDate: Date.now
+        )
 
-            let activity = try? Activity.request(
-                attributes: DummyAttributes(),
-                content: content,
-                pushType: nil
-            )
+        let activity = try? Activity.request(
+            attributes: DummyAttributes(),
+            content: content,
+            pushType: nil
+        )
 
-            await activity?.end(nil, dismissalPolicy: .immediate)
-        }
+        await activity?.end(nil, dismissalPolicy: .immediate)
     }
 }

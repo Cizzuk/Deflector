@@ -48,7 +48,7 @@ struct ControlDeflectorActivityIntent: LiveActivityIntent {
 
             func endActivity() async {
                 await DeflectorActivitySupport.endAll()
-                DummyActivitySupport.flash()
+                await DummyActivitySupport.flash()
             }
 
             switch control {
