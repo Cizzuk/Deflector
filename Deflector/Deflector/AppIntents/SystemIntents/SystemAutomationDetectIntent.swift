@@ -29,9 +29,7 @@ struct SystemAutomationDetectIntent: AppIntent {
         let notification = Notification(name: .deflectorAutomationDetected, object: nil, userInfo: ["version": version])
         NotificationCenter.default.post(notification)
 
-        Task.detached {
-            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        }
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
 
         if version != UserSettings.shared.deflectorAutomationVersion {
             UserSettings.shared.deflectorAutomationVersion = version
