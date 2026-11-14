@@ -14,19 +14,8 @@ struct ControlDeflectorActivityToolIntent: LiveActivityIntent {
     static let isDiscoverable = false
     static var supportedModes: IntentModes = .background
 
-    enum ControlEnum: String, AppEnum {
-        case start, end, toggle
-
-        static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Control")
-        static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-            .start: "Start",
-            .end: "End",
-            .toggle: "Toggle",
-        ]
-    }
-
     @Parameter(title: "Control", default: .start)
-    var control: ControlEnum
+    var control: ControlDeflectorActivityIntent.ControlEnum
 
     static var parameterSummary: some ParameterSummary {
         Summary("\(\.$control) Deflector Live Activity")
@@ -34,7 +23,7 @@ struct ControlDeflectorActivityToolIntent: LiveActivityIntent {
 
     init() {}
 
-    init(control: ControlEnum) {
+    init(control: ControlDeflectorActivityIntent.ControlEnum) {
         self.control = control
     }
 
