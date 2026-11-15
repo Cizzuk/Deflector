@@ -82,7 +82,7 @@ class DeflectorActivitySupport {
 
         // Prepare a system call for automatic restart.
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
-        let triggerRefresh = UNTimeIntervalNotificationTrigger(timeInterval: 7.75 * 60 * 60, repeats: false)
+        let triggerRefresh = UNTimeIntervalNotificationTrigger(timeInterval: 7.9 * 60 * 60, repeats: false)
         await SystemCallSupport.addSystemCall(.refreshDeflectorActivity, trigger: triggerRefresh)
 
         NotificationCenter.default.post(name: .deflectorActivityToggled, object: nil)
