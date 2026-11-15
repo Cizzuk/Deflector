@@ -42,6 +42,18 @@ class DeflectorActivitySupport {
         return state
     }
 
+    static func restart() async throws {
+        if isActive() {
+            try await start()
+        } else {
+            throw NSError(
+                domain: "DeflectorActivitySupport",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "Deflector Live Activity is not active."]
+            )
+        }
+    }
+
     static func start(endDate: Date? = nil) async throws {
         await endAll()
 
@@ -100,24 +112,5 @@ class DeflectorActivitySupport {
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
 
         NotificationCenter.default.post(name: .deflectorActivityToggled, object: nil)
-    }
-
-    // If activity is active, restart it to extend the time
-    static func refresh() async throws {
-        if isActive() {
-            do {
-                try await start()
-            } catch {
-                if let error = error as? ActivityAuthorizationError,
-                    error == .visibility
-                {
-                    // Retry with SystemCall after 3s
-                    try? await Task.sleep(nanoseconds: 3_000_000_000)
-                    await SystemCallSupport.addSystemCall(.startDeflectorActivity)
-                } else {
-                    throw error
-                }
-            }
-        }
     }
 }
