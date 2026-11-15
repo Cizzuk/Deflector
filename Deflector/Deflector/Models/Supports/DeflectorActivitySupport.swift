@@ -59,7 +59,7 @@ class DeflectorActivitySupport {
 
         let content = ActivityContent(
             state: makeContentState(),
-            staleDate: endDate
+            staleDate: endDate ?? Date.now.addingTimeInterval(8 * 60 * 60)
         )
 
         let _ = try Activity.request(
