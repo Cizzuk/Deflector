@@ -55,8 +55,6 @@ class DeflectorActivitySupport {
     }
 
     static func start(endDate: Date? = nil) async throws {
-        await endAll()
-
         guard UserSettings.shared.isSettingsAvailable() else {
             await UserNotificationSupport.addNotificationToDisplay(
                 subtitle: String(localized: "Failed to start Deflector Live Activity because loading Settings failed."),
@@ -69,6 +67,8 @@ class DeflectorActivitySupport {
             )
         }
 
+        let activitiesToEnd = Activity<DeflectorActivityAttributes>.activities
+
         let content = ActivityContent(
             state: makeContentState(),
             staleDate: endDate ?? Date.now.addingTimeInterval(8 * 60 * 60)
@@ -79,6 +79,10 @@ class DeflectorActivitySupport {
             content: content,
             pushType: nil
         )
+
+        for activity in activitiesToEnd {
+            await activity.end(nil, dismissalPolicy: .immediate)
+        }
 
         // Prepare a system call for automatic restart.
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
