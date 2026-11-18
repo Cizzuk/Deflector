@@ -151,14 +151,14 @@ final class UserSettings: ObservableObject {
     @Published var liveActivityUseBlackBackground: Bool = false {
         didSet {
             UserDefaults.standard.set(liveActivityUseBlackBackground, forKey: Keys.liveActivityUseBlackBackground)
-            Task { try? await DeflectorActivitySupport.refresh() }
+            Task { try? await DeflectorActivitySupport.restart() }
         }
     }
 
     @Published var liveActivityShowShortcutNames: Bool = false {
         didSet {
             UserDefaults.standard.set(liveActivityShowShortcutNames, forKey: Keys.liveActivityShowShortcutNames)
-            Task { try? await DeflectorActivitySupport.refresh() }
+            Task { try? await DeflectorActivitySupport.restart() }
         }
     }
 
@@ -172,7 +172,7 @@ final class UserSettings: ObservableObject {
                 UserDefaults.standard.removeObject(forKey: Keys.liveActivityIslandIcons)
             }
 
-            Task { try? await DeflectorActivitySupport.refresh() }
+            Task { try? await DeflectorActivitySupport.restart() }
         }
     }
 }

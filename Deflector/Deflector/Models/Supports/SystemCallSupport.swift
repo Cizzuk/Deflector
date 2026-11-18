@@ -19,15 +19,25 @@ class SystemCallSupport {
     }
 
     static func handleSystemCall(_ argument: String) async {
+        var shouldFlash = true
+
         switch SystemCallArgs(rawValue: argument) {
         case .pingTest:
             NotificationCenter.default.post(name: .pingTestReceived, object: nil)
         case .startDeflectorActivity:
-            try? await DeflectorActivitySupport.start()
+            if (try? await DeflectorActivitySupport.start()) != nil {
+                shouldFlash = false
+            }
         case .refreshDeflectorActivity:
-            try? await DeflectorActivitySupport.refresh()
+            if (try? await DeflectorActivitySupport.restart()) != nil {
+                shouldFlash = false
+            }
         default:
             break
+        }
+
+        if shouldFlash {
+            await DummyActivitySupport.flash()
         }
     }
 

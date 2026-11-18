@@ -42,9 +42,19 @@ class DeflectorActivitySupport {
         return state
     }
 
-    static func start(endDate: Date? = nil) async throws {
-        await endAll()
+    static func restart() async throws {
+        if isActive() {
+            try await start()
+        } else {
+            throw NSError(
+                domain: "DeflectorActivitySupport",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "Deflector Live Activity is not active."]
+            )
+        }
+    }
 
+    static func start() async throws {
         guard UserSettings.shared.isSettingsAvailable() else {
             await UserNotificationSupport.addNotificationToDisplay(
                 subtitle: String(localized: "Failed to start Deflector Live Activity because loading Settings failed."),
@@ -57,9 +67,11 @@ class DeflectorActivitySupport {
             )
         }
 
+        let activitiesToEnd = Activity<DeflectorActivityAttributes>.activities
+
         let content = ActivityContent(
             state: makeContentState(),
-            staleDate: endDate
+            staleDate: nil
         )
 
         let _ = try Activity.request(
@@ -67,6 +79,10 @@ class DeflectorActivitySupport {
             content: content,
             pushType: nil
         )
+
+        for activity in activitiesToEnd {
+            await activity.end(nil, dismissalPolicy: .immediate)
+        }
 
         // Prepare a system call for automatic restart.
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
@@ -92,34 +108,13 @@ class DeflectorActivitySupport {
     static func endAll() async {
         let activities = Activity<DeflectorActivityAttributes>.activities
 
-        Task.detached(priority: .userInitiated) {
-            for activity in activities {
-                await activity.end(nil, dismissalPolicy: .immediate)
-            }
+        for activity in activities {
+            await activity.end(nil, dismissalPolicy: .immediate)
         }
 
         // Remove the system call for automatic restart.
         await SystemCallSupport.cancelSystemCalls(.refreshDeflectorActivity)
 
         NotificationCenter.default.post(name: .deflectorActivityToggled, object: nil)
-    }
-
-    // If activity is active, restart it to extend the time
-    static func refresh() async throws {
-        if isActive() {
-            do {
-                try await start()
-            } catch {
-                if let error = error as? ActivityAuthorizationError,
-                    error == .visibility
-                {
-                    // Retry with SystemCall after 3s
-                    try? await Task.sleep(nanoseconds: 3_000_000_000)
-                    await SystemCallSupport.addSystemCall(.startDeflectorActivity)
-                } else {
-                    throw error
-                }
-            }
-        }
     }
 }

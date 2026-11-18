@@ -31,6 +31,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7A25B8A93068BE6A000AFEB9"
                BuildableName = "Deflector Watch.app"
+               BlueprintName = "Deflector Watch"
                ReferencedContainer = "container:Deflector.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
