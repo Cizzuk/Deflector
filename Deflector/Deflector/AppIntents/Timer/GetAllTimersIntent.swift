@@ -7,6 +7,7 @@
 
 import AppIntents
 
+@AppIntent(.tool)
 struct GetAllTimersIntent: AppIntent {
     static let title: LocalizedStringResource = "Get All Timers"
     static let description: LocalizedStringResource = "Returns a JSON list of the timer IDs, shortcut names, and execution times as Unix time."
